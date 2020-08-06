@@ -1,0 +1,187 @@
+	<!-- begin:: Page -->
+
+	<!-- begin:: Header Mobile -->
+	<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+		<div class="kt-header-mobile__logo">
+			<img id="logo"  class="img-fluid" alt="Logo" >
+		</div>
+		<div class="kt-header-mobile__toolbar">
+			<button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+			<button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+			<%--<button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>--%>
+		</div>
+	</div>
+
+	<!-- end:: Header Mobile -->
+	<div class="kt-grid kt-grid--hor kt-grid--root">
+		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+			<!-- begin:: Aside -->
+			<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+			<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+
+				<!-- begin:: Aside -->
+				<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+					<div class="kt-aside__brand-logo">
+						<img class="img-fluid" alt="Logo"  id="logo1" >
+					</div>
+					<div class="kt-aside__brand-tools">
+						<button type="button" class="kt-aside__brand-aside-toggler" id="kt_aside_toggler"><span></span></button>
+					</div>
+				</div>
+
+				<!-- end:: Aside -->
+
+				<!-- begin:: Aside Menu -->
+				<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+					<div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
+
+						<ul class="kt-menu__nav ">
+							<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href=""  class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Home</span></a></li>
+							<li class="kt-menu__item" aria-haspopup="true"><a href="~/Customer/CustomerDashboard.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-chart-area"></i><span class="kt-menu__link-text">Dealer Dashboard</span></a></li>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-user"></i><span class="kt-menu__link-text">User Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="UserList.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">User List</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="CreateUser.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Create user</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-box-open"></i><span class="kt-menu__link-text">Order Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="OrderList.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Order List</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="PendingOrderRequest.aspx" class="kt-menu__link "><i class=" fa kt-menu__link-icon"><span></span></i><span class="kt-menu__link-text">Order Request</span></a></li>
+										<li id="orderjohnson"  visible="true" class="kt-menu__item " aria-haspopup="true"><a href="CreateOrderRequest.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Place Order Request</span></a></li>
+										<li id="orderrmc"  visible="false" class="kt-menu__item " aria-haspopup="true"><a href="CreateOrderforRMC.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Place Order Request</span></a></li>
+										
+										<li id="ordercement"  visible="false" class="kt-menu__item " aria-haspopup="true"><a href="CreateOrderForCement.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Place Order Request</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-dolly"></i><span class="kt-menu__link-text">Dispatches</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="DispatchDetails.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">List of Delivery Doc</span></a></li>
+									</ul>
+								</div>
+							</li>
+								<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-clipboard-list"></i><span class="kt-menu__link-text">Invoices</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="InvoiceDetails.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">My Invoices</span></a></li>
+									</ul>
+								</div>
+							</li>
+								<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-layer-group"></i><span class="kt-menu__link-text">Accounts Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="CustLedgerStatus.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Current Ledger</span></a></li>
+                                        <li class="kt-menu__item " aria-haspopup="true"><a href="CustomerLedger.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">History</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="PaymentOutstanding.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Pending Payments</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-database"></i><span class="kt-menu__link-text">Stock Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="Stock.aspx" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">My Stocks</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="CompanyStock.aspx" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Company Stocks</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="kt-menu__item  " aria-haspopup="true"><a href="~/Customer/RetailOrders.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-money-bill"></i><span class="kt-menu__link-text">Retail Order</span></a></li>
+<%--							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-piggy-bank"></i><span class="kt-menu__link-text">Account Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/CreditDetails.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-file-invoice-dollar"></i><span class="kt-menu__link-text">Credit Details</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/InvoiceDetails.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-file-alt"></i><span class="kt-menu__link-text">Invoice Details</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="DispatchDetails.aspx" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-truck-loading"></i><span class="kt-menu__link-text">Dispatch Details</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/CustomerLedger.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-cash-register"></i><span class="kt-menu__link-text">Customer Ledger</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/CustLedgerStatus.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-address-card"></i><span class="kt-menu__link-text">Customer Ledger Status</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/Stock.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-luggage-cart"></i><span class="kt-menu__link-text">Stock</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="Leads.aspx" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-network-wired"></i><span class="kt-menu__link-text">Leads</span></a></li>
+									</ul>
+								</div>
+							</li>--%>
+<%--							<li class="kt-menu__item  " aria-haspopup="true"><a href="~/Customer/MakePayment.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-money-bill"></i><span class="kt-menu__link-text">Make Payement</span></a></li>
+								<li class="kt-menu__item  " aria-haspopup="true"><a href="~/Customer/Stock.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-luggage-cart"></i><span class="kt-menu__link-text">Stocks</span></a></li>
+								<li class="kt-menu__item  " aria-haspopup="true"><a href="~/Customer/Leads.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon fa fa-network-wired"></i><span class="kt-menu__link-text">Leads</span></a></li>--%>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-ticket-alt"></i><span class="kt-menu__link-text">Feedback</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+									<ul class="kt-menu__subnav">
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/RaiseComplaints.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Raise Complaint</span></a></li>
+										<li class="kt-menu__item " aria-haspopup="true"><a href="~/Customer/ComplaintStatus.aspx"  class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Complaint Status</span></a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- end:: Aside Menu -->
+			</div>
+
+			<!-- end:: Aside -->
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+				<!-- begin:: Header -->
+				<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+
+					<!-- begin: Header Menu -->
+					<button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+					<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+						<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+							<ul class="kt-menu__nav ">
+								<li class="kt-menu__item"><a href="Profile.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-profile"></i><span class="kt-menu__link-text">My Profile</span></a></li>
+
+								<li class="kt-menu__item " aria-haspopup="true">
+									<a ID="LinkButton2" CssClass="kt-menu__link" data-toggle="modal" data-target="#password_modal" ><i class="kt-menu__link-icon  la la-key"></i><span class="kt-menu__link-text">Change Password</span></a></li>
+								<li class="kt-menu__item" aria-haspopup="true">
+									<a OnClick="logout" ID="LinkButton1"  CssClass="kt-menu__link"><i class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">Log Out</span></a>
+							</ul>
+							<!-- begin: Custom User-->
+							<div class="kt-custom-user">
+								<div class="kt-header-custom-user">
+									<span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
+									<span class="kt-header__topbar-username">Customer</span>
+									<img alt="Pic" class="kt-radius-100"  src="assets/media/users/300_23.jpg" />
+								</div>
+							</div>
+							<!-- end: Custom User-->
+						</div>
+					</div>
+					<!-- end: Header Menu -->
+				</div>
+
+				<!-- end:: Header -->
+				<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+					< <router-outlet></router-outlet>
+				</div>
+
+				<!-- begin:: Footer -->
+				<%--<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+					<div class="kt-container  kt-container--fluid ">
+						<div class="kt-footer__copyright">
+							2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Prism Johnson Limited</a>
+						</div>
+
+						<div class="kt-footer__menu">
+							<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
+							<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
+							<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+						</div>
+                    </div>
+                </div>--%>
+				<div class="kt-footer d-flex align-items-center">
+					<marquee width="100%" direction="left" scrollamount="7">
+                        <h5 class="mb-0">Get 5% CashBack on Sales Amount More than 10,00,000</h5>
+                    </marquee>
+				</div>
+
+				<!-- end:: Footer -->
+			</div>
+		</div>
+	</div>
+
+	<!-- end:: Page -->
