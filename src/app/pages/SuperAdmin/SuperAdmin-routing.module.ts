@@ -8,7 +8,6 @@ const routes: Routes = [
         path: '', component: SuperAdminComponent,
         children: [
             { path: 'Dashboard', component: Dashboardcomponent },
-           
         ]
     }
 ];

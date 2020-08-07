@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AccountService } from '@app/_core/_services';
 
-@Component({  selector: 'SuperAdmin', templateUrl: 'SuperAdmin.component.html'})
+@Component({ templateUrl: 'SuperAdmin.component.html'})
 export class SuperAdminComponent {
     constructor(
         private router: Router,

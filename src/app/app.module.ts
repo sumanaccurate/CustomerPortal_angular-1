@@ -11,11 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from '@app/_core/_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from '@app/_core/_components';
-import { HomeComponent } from './home';
-import { SuperAdminComponent } from '@app/pages/SuperAdmin';
-
-
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/index1';
+import { SuperAdminComponent } from './pages/SuperAdmin';
 import * as $ from 'jquery';
 
 @NgModule({
@@ -28,8 +25,6 @@ import * as $ from 'jquery';
   declarations: [
       AppComponent,
       AlertComponent,
-      HomeComponent,
-      SuperAdminComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
