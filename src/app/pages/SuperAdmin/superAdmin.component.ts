@@ -1,13 +1,17 @@
 ﻿import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import {  FormsModule } from '@angular/forms';
-import {SuperAdminComponent } from '@app/nav_bar/SuperAdmin.Component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
+import { AccountService } from '@app/_core/_services';
 
-@Component({ templateUrl: './superAdmin.component.html' })
-export class SuperAdmin {
-   
+@Component({  selector: 'SuperAdmin', templateUrl: 'SuperAdmin.component.html'})
+export class SuperAdminComponent {
+    constructor(
+        private router: Router,
+        private accountService: AccountService
+    ) {
+        // redirect to home if already logged in
+        if (this.accountService.userValue) {
+            this.router.navigate(['/']);
+        }
+    }
 }

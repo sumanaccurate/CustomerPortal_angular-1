@@ -12,6 +12,7 @@ import { JwtInterceptor, ErrorInterceptor } from '@app/_core/_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from '@app/_core/_components';
 import { HomeComponent } from './home';
+import { SuperAdminComponent } from '@app/pages/SuperAdmin';
 
 
 import { LoginComponent } from './login/login.component';
@@ -27,7 +28,8 @@ import * as $ from 'jquery';
   declarations: [
       AppComponent,
       AlertComponent,
-      HomeComponent
+      HomeComponent,
+      SuperAdminComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

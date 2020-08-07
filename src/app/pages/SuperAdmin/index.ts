@@ -1,1 +1,1 @@
-﻿export * from './superAdmin.component';
+﻿export * from './SuperAdmin.component';
