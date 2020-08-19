@@ -11,24 +11,29 @@ export class AlertService {
 
     // enable subscribing to alerts observable
     onAlert(id = this.defaultId): Observable<Alert> {
+
         return this.subject.asObservable().pipe(filter(x => x && x.id === id));
     }
 
     // convenience methods
     success(message: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Success, message }));
+        window.scroll(0,0);
     }
 
     error(message: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Error, message }));
+        window.scroll(0,0);
     }
 
     info(message: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Info, message }));
+        window.scroll(0,0);
     }
 
     warn(message: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
+        window.scroll(0,0);
     }
 
     // main alert method    

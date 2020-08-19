@@ -69,7 +69,7 @@
                                         <input
                                           class="form-control"
                                           type="text" formControlName="UserCodetxt"
-                                          placeholder="UserCode"
+                                          placeholder="UserCode" required
                                         />
                                       </div>
                                     </div>
@@ -83,7 +83,7 @@
                                           class="form-control"
                                           type="text"
                                           placeholder="UserName"
-                                          formControlName="UserNametxt"
+                                          formControlName="UserNametxt" required
                                         />
                                       </div>
                                     </div>
@@ -99,7 +99,7 @@
                                             class="form-control"
                                             formControlName="Divisionvtxt"
                                             placeholder="Division"
-                                            aria-describedby="basic-addon1"
+                                            aria-describedby="basic-addon1" required
                                           />
                                         </div>
                                       </div>
@@ -116,7 +116,7 @@
                                               class="form-control"
                                               formControlName="Mobilevtxt"
                                               placeholder="Mobile"
-                                              aria-describedby="basic-addon1"
+                                              aria-describedby="basic-addon1" required
                                             />
                                           </div>
                                         </div>
@@ -129,11 +129,11 @@
                                       <div class="col-lg-9 col-xl-9">
                                         <div class="input-group">
                                           <input
-                                            type="text"
+                                            type="email"
                                             class="form-control"
                                             formControlName="Emailvtxt"
                                             placeholder="Email"
-                                            aria-describedby="basic-addon1"
+                                            aria-describedby="basic-addon1" required
                                           />
                                         </div>
                                       </div>
@@ -151,7 +151,7 @@
                                               class="form-control"
                                               formControlName="Passwordvtxt"
                                               placeholder="Password"
-                                              aria-describedby="basic-addon1"
+                                              aria-describedby="basic-addon1" required
                                             />
                                           </div>
                                         </div>
@@ -166,14 +166,17 @@
                                             <input
                                               type="text"
                                               class="form-control"
-                                              formControlName="Passwordvtxt"
+                                              formControlName="CPasswordvtxt"
                                               placeholder="Confirm Password"
-                                              aria-describedby="basic-addon1"
+                                              aria-describedby="basic-addon1" required
                                             />
                                           </div>
                                           
                                         </div>
                                       </div>
+                                      <span *ngIf="userAdd.errors?.invalid">
+                                        Password doesn't match
+                                    </span>
 
                                   </div>
                                 </div>
@@ -183,14 +186,13 @@
                         </div>
 
                         <!--end: Form Wizard Step 1-->
-
                         <!--begin: Form Actions -->
                         <div class="kt-form__actions">
                           <div
                             class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
                             data-ktwizard-type="action-submit"
                           >
-                          <button type="submit" > Submit</button>
+                          <button type="submit" [disabled]="this.userAdd.invalid" > Submit</button>
                            
                           </div>
                         </div>

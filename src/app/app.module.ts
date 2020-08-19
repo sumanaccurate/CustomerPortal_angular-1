@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AlertModule } from './component/alert.module'
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
@@ -44,6 +45,7 @@ import { CustomerDetailComponent } from './SystemAdmin/customer-detail/customer-
     BrowserAnimationsModule,
     // MatSliderModule,
     FormsModule,
+    AlertModule,
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
