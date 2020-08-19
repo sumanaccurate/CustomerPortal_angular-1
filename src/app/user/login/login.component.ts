@@ -1,6 +1,6 @@
 import { UserService } from '@app/shared/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 
  import { AlertService } from '@app/component/alert.service';
@@ -11,11 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  formModel={
-    UserCodetxt : '',
-    Passwordvtxt : '',
-  }
-  
+ 
+  loginForm = new FormGroup({
+    UserCodetxt : new FormControl(''),
+    Passwordvtxt : new FormControl(''),
+  })
+
   constructor(private service: UserService, private router: Router , private alertService : AlertService) { }
 
   ngOnInit() {
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/SuperAdmin/dashboard');
   }
 
-  onSubmit(form: NgForm) {
-    this.service.login(form.value).subscribe(
+  onSubmit() {
+    this.service.login(this.loginForm.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
         this.router.navigateByUrl('/SuperAdmin/dashboard');
