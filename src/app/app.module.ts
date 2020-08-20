@@ -21,7 +21,13 @@ import { ProfileComponent } from './SuperAdmin/profile/profile.component';
 import { AddUserComponent } from './SuperAdmin/add-user/add-user.component';
 import { NavigationBarComponent } from './SystemAdmin/navigation-bar/navigation-bar.component';
 import { CustomerDetailComponent } from './SystemAdmin/customer-detail/customer-detail.component';
-
+1
+2
+3
+4
+5
+6
+import { StorageServiceModule} from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -43,6 +49,7 @@ import { CustomerDetailComponent } from './SystemAdmin/customer-detail/customer-
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    StorageServiceModule,
     // MatSliderModule,
     FormsModule,
     AlertModule,

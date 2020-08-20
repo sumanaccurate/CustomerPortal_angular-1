@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:'SuperAdmin/dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   {path:'SuperAdmin/profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'SuperAdmin/AddAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
+  {path:'SuperAdmin/EditAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
   {path:'SystemAdmin/CustomerDetail',component:CustomerDetailComponent,canActivate:[AuthGuard]},
 
   // otherwise redirect to home

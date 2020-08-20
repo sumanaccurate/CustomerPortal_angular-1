@@ -57,9 +57,16 @@ export class UserService {
     return this.http.post(this.BaseURI + '/UserMasters/postUserDetails', formData);
   }
 
+  updateUser(formData) {
+    return this.http.put(this.BaseURI + '/UserMasters/putUserDetails', formData);
+  }
 
-  getUserData() {
-    return this.http.get(this.BaseURI + '/UserMasters/GetUserDetails');
+
+  getUserData(ID) {
+    return this.http.get(this.BaseURI + '/UserMasters/GetUserDetails?ID='+ID);
+  }
+  getUsersData() {
+    return this.http.get(this.BaseURI + '/UserMasters/GetUsersDetails');
   }
 
   getUserProfile() {

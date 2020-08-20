@@ -26,25 +26,29 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>User Code:</small> <span class="kt-font-bold">{{User.UserCodetxt}}</span>
+            <div class="row col-md-11">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>User Code:</small> <span class="kt-font-bold">{{User.UserCodetxt}}</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>UserName:</small> <span class="kt-font-bold">{{User.UserNametxt}}</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>UserType:</small> <span class="kt-font-bold">{{User.UserTypetxt}}</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>Division:</small> <span class="kt-font-bold">{{User.Divisionvtxt}}</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>Mpbile:</small> <span class="kt-font-bold">{{User.Mobilevtxt}}</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <small>Email:</small> <span class="kt-font-bold">{{User.Emailvtxt}}</span>
+                </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>UserName:</small> <span class="kt-font-bold">{{User.UserNametxt}}</span>
+            <div class="row col-md-1">
+               <button formControlName="Idint" (click)="pass(this.User.Idint)" >Edit</button>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>UserType:</small> <span class="kt-font-bold">{{User.UserTypetxt}}</span>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>Division:</small> <span class="kt-font-bold">{{User.Divisionvtxt}}</span>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>Mpbile:</small> <span class="kt-font-bold">{{User.Mobilevtxt}}</span>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <small>Email:</small> <span class="kt-font-bold">{{User.Emailvtxt}}</span>
-            </div>
-           
         </div>
     </div>
 
