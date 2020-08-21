@@ -12,7 +12,10 @@ export class HomenavComponent implements OnInit {
   ngOnInit(): void {
   }
   onLogout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('IDbint');
+    localStorage.removeItem('UserType');
+    localStorage.removeItem('UserCode');
     this.router.navigate(['/user/login']);
   }
 }

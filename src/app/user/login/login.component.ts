@@ -1,10 +1,10 @@
-import { UserService } from '@app/shared/user.service';
+import { UserService } from '../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+ import { AlertService } from '../../component/alert.service';
 
- import { AlertService } from '@app/component/alert.service';
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,18 +17,32 @@ export class LoginComponent implements OnInit {
     Passwordvtxt : new FormControl(''),
   })
 
-  constructor(private service: UserService, private router: Router , private alertService : AlertService) { }
+  constructor(private service: UserService, private router: Router
+     , private alertService : AlertService ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('token') != null)
+    if (localStorage.getItem('id_token') != null)
+    {
       this.router.navigateByUrl('/SuperAdmin/dashboard');
+    }
   }
 
   onSubmit() {
     this.service.login(this.loginForm.value).subscribe(
       (res: any) => {
-        localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/SuperAdmin/dashboard');
+       localStorage.setItem('id_token', res.BearerToken);
+       localStorage.setItem('IDbint', res.IDbint);
+       localStorage.setItem('UserType', res.UserTypetxt);
+       localStorage.setItem('UserCode', res.UserCodetxt);
+        if(res.UserTypetxt=="SuperAdmin"){
+          this.router.navigateByUrl('/SuperAdmin/dashboard');
+        }else if (res.UserTypetxt=="SystemAdmin"){
+          this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
+        }else if (res.UserTypetxt=="SystemAdmin"){
+          this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
+        }else if (res.UserTypetxt=="SystemAdmin"){
+          this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
+        }
       },  
       err => {
          if (err.status == 400)

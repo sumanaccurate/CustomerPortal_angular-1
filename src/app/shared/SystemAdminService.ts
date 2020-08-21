@@ -14,7 +14,7 @@ export class SystemAdminService {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
    }
-  readonly BaseURI = 'http://localhost:62301';
+  readonly BaseURI = 'https://localhost:44354';
 
 
   login(formData) {
@@ -22,7 +22,7 @@ export class SystemAdminService {
   }
 
   GetCustomerData() {
-    return this.http.get(this.BaseURI + '/CustomerMasters/GetCustomerMaster');
+    return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomer');
   }
 
   getUserProfile() {

@@ -1,71 +1,15 @@
 
 <div class="kt-grid kt-grid--hor kt-grid--root ">
     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-  
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper  pl-0" id="kt_wrapper">
-  
-  
   <app-homenav></app-homenav>
   
   <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-      
-  
   
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
 
         <!--Begin::App-->
         <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
-
-            <!--Begin:: App Aside-->
-            <div  class="kt-grid__item" id="kt_user_profile_aside">
-
-                <!--Begin::Portlet-->
-                <div style="padding-right:50px;" class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__body ">
-
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-2">
-                            <div class="kt-widget__head mt-0">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-radius-100" src="/assets/media//users/300_23.jpg" alt="image">
-                                </div>
-                                <div class="kt-widget__info">
-                                    <a href="#" class="kt-widget__username">Ahmed Shaikh
-														</a>
-                                    <span class="kt-widget__desc"><i class="flaticon2-calendar-3 mr-2"></i>SystemAdmin
-														</span>
-                                </div>
-                            </div>
-                            <div class="kt-widget__body">
-                                <div class="kt-widget__item mt-4">
-                                    <div class="kt-widget__contact">
-                                        <span class="kt-widget__label">Email:</span>
-                                        <a href="#" class="kt-widget__data">matt@fifestudios.com</a>
-                                    </div>
-                                    <div class="kt-widget__contact">
-                                        <span class="kt-widget__label">Phone:</span>
-                                        <a href="#" class="kt-widget__data">44(76)34254578</a>
-                                    </div>
-                                    <div class="kt-widget__contact">
-                                        <span class="kt-widget__label">Location:</span>
-                                        <span class="kt-widget__data">Melbourne</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="kt-widget__footer">
-                                <a href="EditProf.aspx" class="btn btn-label-brand btn-lg btn-upper">Edit Profile</a>
-                            </div>
-                        </div>
-
-                        <!--end::Widget -->
-                    </div>
-                </div>
-
-                <!--End::Portlet-->
-            </div>
-
-            <!--End:: App Aside-->
-
             <!--Begin:: App Content-->
             <div  style="padding-right:50px;"  class="kt-grid__item kt-grid__item--fluid kt-app__content">
                 <div class="row">
@@ -78,6 +22,9 @@
                                     <h3 class="kt-portlet__head-title">Personal Information
 														</h3>
                                 </div>
+                                <div>
+                                    <button  (click)="pass(this.User.Idbint)" >Edit</button>
+                                </div>
                             </div>
 
                             <div  style="padding-right:50px;"  class="kt-portlet__body">
@@ -85,32 +32,32 @@
                                     <div class="kt-widget12__content">
                                         <div class="kt-widget12__item">
                                             <div class="kt-widget12__info">
-                                                <span class="kt-widget12__desc">First Name</span>
-                                                <span class="kt-widget12__value">Ahmed</span>
+                                                <span class="kt-widget12__desc">UserCode</span>
+                                                <span class="kt-widget12__value">{{this.User.UserCodetxt}}</span>
                                             </div>
                                             <div class="kt-widget12__info">
-                                                <span class="kt-widget12__desc">Last Name</span>
-                                                <span class="kt-widget12__value">Shaikh</span>
+                                                <span class="kt-widget12__desc">UserName</span>
+                                                <span class="kt-widget12__value">{{this.User.UserNametxt}}</span>
                                             </div>
                                         </div>
                                         <div class="kt-widget12__item">
                                             <div class="kt-widget12__info">
-                                                <span class="kt-widget12__desc">Address</span>
-                                                <span class="kt-widget12__value">RFD housing Road No 6 Ghatkopar</span>
+                                                <span class="kt-widget12__desc">User Type</span>
+                                                <span class="kt-widget12__value">{{this.User.UserTypetxt}}</span>
                                             </div>
                                             <div class="kt-widget12__info">
-                                                <span class="kt-widget12__desc">User Code</span>
-                                                <span class="kt-widget12__value">SA05</span>
+                                                <span class="kt-widget12__desc">Division</span>
+                                                <span class="kt-widget12__value">{{this.User.Divisionvtxt}}</span>
                                             </div>
                                         </div>
                                         <div class="kt-widget12__item">
                                             <div class="kt-widget12__info">
                                                 <span class="kt-widget12__desc">Mobile No</span>
-                                                <span class="kt-widget12__value">9416461754</span>
+                                                <span class="kt-widget12__value">{{this.User.Mobilevtxt}}</span>
                                             </div>
                                             <div class="kt-widget12__info">
-                                                <span class="kt-widget12__desc">Status</span>
-                                                <span class="kt-widget12__value">Active</span>
+                                                <span class="kt-widget12__desc">Email</span>
+                                                <span class="kt-widget12__value">{{this.User.Emailvtxt}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -129,8 +76,6 @@
         <!--End::App-->
     </div>
 
-      
-  
   </div>
   
   <!-- begin:: Footer -->

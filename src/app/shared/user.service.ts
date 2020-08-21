@@ -14,7 +14,7 @@ export class UserService {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
    }
-  readonly BaseURI = 'http://localhost:62301';
+  readonly BaseURI = 'https://localhost:44354';
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
@@ -50,26 +50,27 @@ export class UserService {
   }
 
   login(formData) {
-    return this.http.post(this.BaseURI + '/UserMasters/Login', formData);
+    return this.http.post(this.BaseURI + '/UserMaster/Login', formData);
   }
 
   addUser(formData) {
-    return this.http.post(this.BaseURI + '/UserMasters/postUserDetails', formData);
+    return this.http.post(this.BaseURI + '/UserMaster/Create', formData);
   }
 
   updateUser(formData) {
-    return this.http.put(this.BaseURI + '/UserMasters/putUserDetails', formData);
+    return this.http.put(this.BaseURI + '/UserMaster/Update', formData);
   }
 
 
   getUserData(ID) {
-    return this.http.get(this.BaseURI + '/UserMasters/GetUserDetails?ID='+ID);
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails?ID='+ID);
   }
+  
   getUsersData() {
-    return this.http.get(this.BaseURI + '/UserMasters/GetUsersDetails');
+    return this.http.get(this.BaseURI + '/UserMaster/GetUsersDetails');
   }
 
-  getUserProfile() {
-    return this.http.get(this.BaseURI + '/UserProfile');
+  getUserProfile(ID) {
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails?ID='+ID);
   }
 }
