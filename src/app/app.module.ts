@@ -64,6 +64,7 @@ import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit
     AppComponent,
     UserComponent,
     SystemAdminProfileComponent,
+    SystemAdminDashboardComponent ,
     SystemAdminProfileEditComponent,
     // RegistrationComponent,
     LoginComponent,
