@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UserService {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
    }
-  readonly BaseURI = 'https://localhost:44354';
+  readonly BaseURI = environment.ApiUrl;
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],

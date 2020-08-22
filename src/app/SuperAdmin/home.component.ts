@@ -14,13 +14,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
    
-    // this.service.getUserProfile().subscribe(
-    //   res => {
-    //     this.userDetails = res;
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   },
-    // );
+   
   }
 }

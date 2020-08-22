@@ -20,12 +20,36 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'SuperAdmin',component:HomeComponent,canActivate:[AuthGuard]},
-  {path:'SuperAdmin/dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
-  {path:'SuperAdmin/profile',component:ProfileComponent,canActivate:[AuthGuard]},
-  {path:'SuperAdmin/AddAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
-  {path:'SuperAdmin/EditAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
-  {path:'SystemAdmin/CustomerDetail',component:CustomerDetailComponent,canActivate:[AuthGuard]},
+  {
+    path: 'SuperAdmin', component: HomeComponent,
+    children: [
+      // { path: 'registration', component: RegistrationComponent },
+      {path:'',redirectTo:'dashboard',pathMatch:'full'},
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'AddAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
+      { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
+      { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
+    ]
+  },
+{
+    path: 'SystemAdmin', component: HomeComponent,
+    children: [
+      // { path: 'registration', component: RegistrationComponent },
+      {path:'',redirectTo:'dashboard',pathMatch:'full'},
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'AddAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
+      { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
+      { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
+    ]
+  },
+  // {path:'SuperAdmin',component:HomeComponent,canActivate:[AuthGuard]},
+  // {path:'SuperAdmin/dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
+  // {path:'SuperAdmin/profile',component:ProfileComponent,canActivate:[AuthGuard]},
+  // {path:'SuperAdmin/AddAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
+  // {path:'SuperAdmin/EditAdmin',component:AddUserComponent,canActivate:[AuthGuard]},
+  // {path:'SystemAdmin/CustomerDetail',component:CustomerDetailComponent,canActivate:[AuthGuard]},
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'LoginComponent' },

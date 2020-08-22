@@ -24,8 +24,10 @@
               "src/assets",
               "src/.htaccess"
             ],
-            "styles": [
-              "src/styles.scss",
+            "styles": [		
+				"src/assets/css/style.bundle.css",
+             			"src/assets/css/wizard-4.css",
+              			"src/styles.scss",
 				"node_modules/bootstrap/dist/css/bootstrap.css",
 				"node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
 				"node_modules/socicon/css/socicon.css",
@@ -46,7 +48,6 @@
                 ]
                 },
                     "es5BrowserSupport": true
-            
           },
           "configurations": {
             "production": {
@@ -140,6 +141,7 @@
           }
         }
       }
-    }},
+    }
+   },
   "defaultProject": "CustomerPortal"
 }
