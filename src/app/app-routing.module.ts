@@ -5,12 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 // import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './SuperAdmin/home.component';
-import { DashboardComponent } from './SuperAdmin/dashboard/dashboard.component';
-import { ProfileComponent } from './SuperAdmin/profile/profile.component';
+import { SuperAdminDashboardComponent } from './SuperAdmin/dashboard/dashboard.component';
+import { SuperAdminProfileComponent } from './SuperAdmin/profile/profile.component';
 import { AddUserComponent } from './SuperAdmin/add-user/add-user.component';
 import { CustomerDetailComponent } from './SystemAdmin/customer-detail/customer-detail.component';
-
-
+import { SystemAdminComponent } from './SystemAdmin/SystemAdmin.component';
+import { SystemAdminProfileComponent } from './SystemAdmin/profile/profile.component';
+import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit-profile.component';
+import { SystemAdminDashboardComponent } from './SystemAdmin/dashboard/dashboard.component';
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'},
   {
@@ -25,25 +27,24 @@ const routes: Routes = [
     children: [
       // { path: 'registration', component: RegistrationComponent },
       {path:'',redirectTo:'dashboard',pathMatch:'full'},
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard', component: SuperAdminDashboardComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: SuperAdminProfileComponent, canActivate: [AuthGuard] },
       { path: 'AddAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
       { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
       { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
     ]
   },
-{
-    path: 'SystemAdmin', component: HomeComponent,
-    children: [
-      // { path: 'registration', component: RegistrationComponent },
-      {path:'',redirectTo:'dashboard',pathMatch:'full'},
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'AddAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
-      { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
-      { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
-    ]
-  },
+  {
+      path: 'SystemAdmin', component: SystemAdminComponent,
+      children: [
+        // { path: 'registration', component: RegistrationComponent },
+        {path:'',redirectTo:'dashboard',pathMatch:'full'},
+        { path: 'dashboard', component: SystemAdminDashboardComponent, canActivate: [AuthGuard] },
+        { path: 'profile', component: SystemAdminProfileComponent, canActivate: [AuthGuard] },
+        { path: 'Editprofile', component: SystemAdminProfileEditComponent, canActivate: [AuthGuard] },
+        { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
+      ]
+    },
   // {path:'SuperAdmin',component:HomeComponent,canActivate:[AuthGuard]},
   // {path:'SuperAdmin/dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   // {path:'SuperAdmin/profile',component:ProfileComponent,canActivate:[AuthGuard]},

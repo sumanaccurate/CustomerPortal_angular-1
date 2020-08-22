@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-profile',
   templateUrl: './profile.component.html'
 })
-export class SuperAdminProfileComponent implements OnInit {
+export class SystemAdminProfileComponent implements OnInit {
   Userid =null ;
   User: any; 
   constructor(private service: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }

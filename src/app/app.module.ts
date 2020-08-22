@@ -2,7 +2,7 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
+import { GestureConfig} from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 // Angular in memory
 // Perfect Scroll bar
@@ -32,6 +32,7 @@ import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
 
 import { AlertModule } from './component/alert.module'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { JWTTokenService } from './auth/jwt';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
@@ -45,25 +46,32 @@ import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './SuperAdmin/home.component';
 import { HomenavComponent } from './SuperAdmin/homenav/homenav.component';
-import { DashboardComponent } from './SuperAdmin/dashboard/dashboard.component';
-import { ProfileComponent } from './SuperAdmin/profile/profile.component';
+import { SuperAdminDashboardComponent } from './SuperAdmin/dashboard/dashboard.component';
+import { SuperAdminProfileComponent } from './SuperAdmin/profile/profile.component';
 import { AddUserComponent } from './SuperAdmin/add-user/add-user.component';
 import { NavigationBarComponent } from './SystemAdmin/navigation-bar/navigation-bar.component';
 import { CustomerDetailComponent } from './SystemAdmin/customer-detail/customer-detail.component';
 import { StorageServiceModule} from 'ngx-webstorage-service';
 
+import { SystemAdminComponent } from './SystemAdmin/SystemAdmin.component';
+import { SystemAdminDashboardComponent } from './SystemAdmin/dashboard/dashboard.component';
+import { SystemAdminProfileComponent } from './SystemAdmin/profile/profile.component';
+import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit-profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
+    SystemAdminProfileComponent,
+    SystemAdminProfileEditComponent,
     // RegistrationComponent,
     LoginComponent,
     HomeComponent,
     HomenavComponent,
-    DashboardComponent,
-    ProfileComponent,
+    SuperAdminDashboardComponent,
+    SystemAdminComponent,
+    SuperAdminProfileComponent,
     AddUserComponent,
     NavigationBarComponent,
     CustomerDetailComponent,
@@ -78,7 +86,7 @@ import { StorageServiceModule} from 'ngx-webstorage-service';
     // MatSliderModule,
     FormsModule,
     AlertModule,
-    
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
 		BrowserModule,
 		AppRoutingModule,

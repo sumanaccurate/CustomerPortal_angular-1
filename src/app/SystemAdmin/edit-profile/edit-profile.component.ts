@@ -3,15 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
  import { AlertService } from '../../component/alert.service';
-import { HomenavComponent } from '../homenav/homenav.component';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { Inject } from '@angular/core';
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html'
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html'
 })
-export class AddUserComponent implements OnInit {
-
+export class SystemAdminProfileEditComponent implements OnInit {
   userAdd ;
   Userid =null ;
   User: any; 
@@ -43,17 +41,7 @@ export class AddUserComponent implements OnInit {
       );  
     }
     else{
-      this.userAdd = new FormGroup({
-        UserCodetxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        UserNametxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        UserTypetxt : new FormControl('SystemAdmin', [Validators.required, Validators.maxLength(256)]),
-        Divisionvtxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        Mobilevtxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        Emailvtxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        Passwordvtxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-        CPasswordvtxt : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-    
-      })
+      this.alertService.error('Error Session Expired.');
     }
 
   }

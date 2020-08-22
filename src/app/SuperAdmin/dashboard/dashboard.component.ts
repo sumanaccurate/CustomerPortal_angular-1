@@ -10,7 +10,7 @@ import { JWTTokenService } from '../../auth/jwt';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class SuperAdminDashboardComponent implements OnInit {
   Users: any[]; 
   constructor(private router: Router, private service: UserService,
     @Inject(SESSION_STORAGE) private storage: WebStorageService
