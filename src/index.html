@@ -1,21 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>CustomerPortal</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .gif-loader {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 50%;
+      width: 50%;
+    }
+  </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading kt-aside--enabled kt-aside--fixed kt-footer--fixed">
-    <app>
-      <mat-spinner></mat-spinner>
-      <!-- <div class="kt-splash-screen">
+
+<body
+  class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading kt-aside--enabled kt-aside--fixed kt-footer--fixed">
+  <app>
+    <!-- <img class="gif-loader"  src="./assets/media/misc/loading.gif"> -->
+    <div style=" display: block;
+      margin-left: auto;
+      margin-right: auto;" class="text-center   kt-align-center center align-items-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- <mat-progress-spinner></mat-progress-spinner> --> 
+    <!-- <div class="kt-splash-screen">
         <img src="assets/media/app_images/johnson-logo.png" alt="Logo">
         <mat-spinner diameter="40"></mat-spinner>
       </div> -->
-    </app>
+  </app>
 </body>
+
 </html>

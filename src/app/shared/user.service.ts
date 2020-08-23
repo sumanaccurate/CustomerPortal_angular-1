@@ -70,6 +70,14 @@ export class UserService {
     return this.http.get(this.BaseURI + '/UserMaster/GetUsersDetails');
   }
 
+  
+getAllUsers(pageNo,pageSize) {  
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserPagination?pageNo=' + pageNo+'&pageSize='+pageSize); 
+  }  
+  getAllUsersCount(): Observable<any> {  
+    return this.http.get(this.BaseURI + '/UserMaster/GetAllUserCount');
+  }  
+
   getUserProfile(ID) {
     return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails?ID='+ID);
   }

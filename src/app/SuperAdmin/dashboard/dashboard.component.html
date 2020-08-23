@@ -1,7 +1,18 @@
 
 
-       <div *ngFor="let User of Users" class="customerusers-list border shadow-sm p-3 mb-3">
-        <!-- <div class="row mb3">
+
+<div>    
+  Users (Total:{{totalUsersCount}})    
+</div>    
+
+
+
+
+<div
+  *ngFor="let User of Users"
+  class="customerusers-list border shadow-sm p-3 mb-3"
+>
+  <!-- <div class="row mb3">
             <div class="col">
                 <h5>{{customeruser.name}}</h5>
             </div>
@@ -14,32 +25,66 @@
                 </button>
             </div>
         </div> -->
-        
-        <div class="row">
-            <div class="row col-md-11">
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>User Code:</small> <span class="kt-font-bold">{{User.UserCodetxt}}</span>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>UserName:</small> <span class="kt-font-bold">{{User.UserNametxt}}</span>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>UserType:</small> <span class="kt-font-bold">{{User.UserTypetxt}}</span>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>Division:</small> <span class="kt-font-bold">{{User.Divisionvtxt}}</span>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>Mpbile:</small> <span class="kt-font-bold">{{User.Mobilevtxt}}</span>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <small>Email:</small> <span class="kt-font-bold">{{User.Emailvtxt}}</span>
-                </div>
-            </div>
-            <div class="row col-md-1">
-               <button  (click)="pass(this.User.Idbint)" >Edit</button>
-            </div>
-        </div>
+
+  <div class="row">
+    <div class="row col-md-11">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>User Code:</small>
+        <span class="kt-font-bold">{{ User.UserCodetxt }}</span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>UserName:</small>
+        <span class="kt-font-bold">{{ User.UserNametxt }}</span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>UserType:</small>
+        <span class="kt-font-bold">{{ User.UserTypetxt }}</span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>Division:</small>
+        <span class="kt-font-bold">{{ User.Divisionvtxt }}</span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>Mpbile:</small>
+        <span class="kt-font-bold">{{ User.Mobilevtxt }}</span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <small>Email:</small>
+        <span class="kt-font-bold">{{ User.Emailvtxt }}</span>
+      </div>
     </div>
+    <div class="row col-md-1">
+      <span class="glyphicon glyphicon-plus"></span>
+      <button (click)="pass(this.User.Idbint)">Edit
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container mw-100">    
+  <div class="row">    
+    <div class="col-md-3"> </div>    
+    <div *ngIf="Users !=0" class="col-md-6">    
+      <ul class="pagination justify-content-center">    
+        <li *ngIf="totalUsersCount > this.UsersPerPage" class="page-item">    
+          <a (click)="showPrevUsers()"    
+            [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"    
+            style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>    
+        <li *ngFor="let page of pageField;let i=index" class="page-item">    
+          <a (click)="showUsersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"    
+            style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>    
+               
+        </li>    
+        <li *ngIf="totalUsersCount > this.UsersPerPage" class="page-item"><a (click)="showNextUsers()"    
+            [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"    
+            style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>    
+      </ul>    
+      <div style="text-align: center;">    
+        Page {{currentPage}} of Total page {{paginationService.exactPageList}}    
+      </div>    
+    </div>    
+  </div>    
+</div>    
 
 

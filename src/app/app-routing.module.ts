@@ -13,6 +13,8 @@ import { SystemAdminComponent } from './SystemAdmin/SystemAdmin.component';
 import { SystemAdminProfileComponent } from './SystemAdmin/profile/profile.component';
 import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit-profile.component';
 import { SystemAdminDashboardComponent } from './SystemAdmin/dashboard/dashboard.component';
+import {ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
+
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'},
   {
@@ -32,6 +34,7 @@ const routes: Routes = [
       { path: 'AddAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
       { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
       { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
+      { path: 'progress', component: ProgressSpinnerOverviewExample, canActivate: [AuthGuard] },
     ]
   },
   {

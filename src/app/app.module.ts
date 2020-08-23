@@ -57,8 +57,8 @@ import { SystemAdminComponent } from './SystemAdmin/SystemAdmin.component';
 import { SystemAdminDashboardComponent } from './SystemAdmin/dashboard/dashboard.component';
 import { SystemAdminProfileComponent } from './SystemAdmin/profile/profile.component';
 import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit-profile.component';
-
-
+import {ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
+import { PaginationService } from './component/pagination/pagination.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +76,7 @@ import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit
     AddUserComponent,
     NavigationBarComponent,
     CustomerDetailComponent,
+    ProgressSpinnerOverviewExample,
   ],
   imports: [
     BrowserModule,
@@ -93,11 +94,13 @@ import { SystemAdminProfileEditComponent } from './SystemAdmin/edit-profile/edit
 		AppRoutingModule,
 		HttpClientModule,
   ],
+ 
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   },
+  PaginationService,
   JWTTokenService,
 ],
   bootstrap: [AppComponent]

@@ -25,7 +25,15 @@ export class SystemAdminService {
     return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomer');
   }
 
-  getUserProfile() {
-    return this.http.get(this.BaseURI + '/UserProfile');
-  }
+  
+// getAllCustomer(Division,pageNo,pageSize) {  
+//   return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerMaster?pageNo=' + pageNo+'&pageSize='+pageSize); 
+// }  
+ 
+getAllCustomer(Division,pageNo,pageSize,KeyWord) {  
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerMaster?Division=' + Division+'&pageNo='+pageNo+'&pageSize='+pageSize); 
+}  
+getAllCustomerCount(Division): Observable<any> {  
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerCount?Division=' +Division);
+}  
 }

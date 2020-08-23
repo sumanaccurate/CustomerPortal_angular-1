@@ -8,7 +8,7 @@
   -ms-overflow-style: none;
   touch-action: auto;
   -ms-touch-action: auto; }
-
+  @import '~bootstrap/dist/css/bootstrap.min.css';  
 /*
  * Scrollbar rail styles
  */

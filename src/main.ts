@@ -2,7 +2,8 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-
+import {ProgressSpinnerOverviewExample} from './app/component/loader/progress-spinner-overview-example';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 if (environment.production) {
   enableProdMode();
 }
