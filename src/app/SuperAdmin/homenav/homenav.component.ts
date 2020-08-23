@@ -16,6 +16,7 @@ export class HomenavComponent implements OnInit {
     localStorage.removeItem('IDbint');
     localStorage.removeItem('UserType');
     localStorage.removeItem('UserCode');
+    localStorage.removeItem('Division');
     this.router.navigate(['/user/login']);
   }
 }

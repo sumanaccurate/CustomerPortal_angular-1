@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('IDbint', res.IDbint);
        localStorage.setItem('UserType', res.UserTypetxt);
        localStorage.setItem('UserCode', res.UserCodetxt);
-       localStorage.setItem('Division', res.Divisionvtxt);
-
+       if(res.UserTypetxt=="SuperAdmin"){
+        localStorage.setItem('Division', res.Divisionvtxt);
+       }
         if(res.UserTypetxt=="SuperAdmin"){
           this.router.navigateByUrl('/SuperAdmin/dashboard');
         }else if (res.UserTypetxt=="SystemAdmin"){
