@@ -1,41 +1,151 @@
-<!-- begin:: Header Mobile -->
-<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
-    <div class="kt-header-mobile__logo">
-        <img src="assets/media/johnson-logo.png" class="img-fluid" alt="Logo" id="logo">
-    </div>
-    <div class="kt-header-mobile__toolbar">
+<mat-toolbar>
+    <mat-toolbar-row>
 
-        <button type="button" class="kt-header-mobile__toolbar-toggler"
-            id="kt_header_mobile_toggler"><span></span></button>
-        <!-- <%--<button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>--%> -->
-    </div>
-</div>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <div class="kt-padding-r-25  kt-padding-l-25 d-flex align-items-center  ">
+            <a [routerLink]="['/SystemAdmin/dashboard']">
+                <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo"
+                    runat="server" id="logo1">
+            </a>
+        </div>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button [routerLink]="['/SystemAdmin/dashboard']" class="kt-menu__link "><i
+                    class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">Dashboard</span></a>
+            <a mat-button [routerLink]="['/SystemAdmin/profile']" class="kt-menu__link "><i
+                    class="kt-menu__link-icon flaticon-profile"></i><span class="kt-menu__link-text">My
+                    Profile</span></a>
+            <a mat-button (click)="onLogout()" class="kt-menu__link "><i
+                    class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">Log
+                    Out</span></a>
 
-<!-- end:: Header Mobile -->
-<div class="kt-grid kt-grid--hor kt-grid--root ">
-    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
 
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper pl-0" id="kt_wrapper">
 
-            <app-navigation-bar></app-navigation-bar>
-            <alert></alert>
-            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-                <router-outlet></router-outlet>
-            </div>
 
-            <!-- begin:: Footer -->
-            <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer"
-                style="left: 0;">
-                <div class="kt-container  kt-container--fluid ">
-                    <div class="kt-footer__copyright">
-                        2019&nbsp;&copy;&nbsp;<a class="kt-link">Prism Johnson Limited</a>
-                    </div>
-                    <div class="kt-footer__menu">
-                    </div>
+<mat-sidenav-container class=" ">
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+
+            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1"
+                    data-ktmenu-dropdown-timeout="500">
+                    <ul class="kt-menu__nav">
+                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="Dashboard.aspx"
+                                class="kt-menu__link "><i
+                                    class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span
+                                    class="kt-menu__link-text">Home</span></a></li>
+                        <li class="kt-menu__section ">
+                            <h4 class="kt-menu__section-text">ADMINISTRATION</h4>
+                            <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                        </li>
+                        <mat-accordion>
+                            <!-- #enddocregion basic-panel -->
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <i class="kt-menu__link-icon flaticon-avatar"></i><span
+                                            class="kt-menu__link-text"> Employee Management</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p class=" text-center"><a href="EmployeeMgt.aspx" class="kt-menu__link left-align "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Upload Employee</span></a></p>
+                                <p class=" text-center "><a href="EmployeeDetails.aspx"
+                                        class="kt-menu__link right-align "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Employee Details</span></a></p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                        <mat-accordion>
+                            <!-- #enddocregion basic-panel -->
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <i class="kt-menu__link-icon flaticon2-avatar"></i><span
+                                            class="kt-menu__link-text">Customer Management</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p class=" text-center">
+                                    <a href="EmployeeMgt.aspx" class="kt-menu__link left-align "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Upload Employee</span></a>
+                                </p>
+                                <p class=" text-center ">
+                                    <a [routerLink]="['/SystemAdmin/CustomerDetail']"  class="kt-menu__link "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Customer Details</span></a>
+                                </p>
+                                <p class=" text-center ">
+                                    <a href="CustomerSalesPromoterMapping.aspx" class="kt-menu__link "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Upload Mapping <br>
+                                            Customer and C&F<br>
+                                            Agents</span></a>
+                                </p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="ContentDetails.aspx"
+                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span
+                                    class="kt-menu__link-text">Content Details</span></a></li>
+
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="AssignRoles.aspx"
+                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-rotate"></i><span
+                                    class="kt-menu__link-text">Role Management</span></a></li>
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="BroadCastDetails.aspx"
+                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-browser"></i><span
+                                    class="kt-menu__link-text">BroadCast Details</span></a></li>
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="SwitchUser.aspx"
+                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-group"></i><span
+                                    class="kt-menu__link-text">Swicth User</span></a></li>
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="ComplaintMgt.aspx"
+                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-layers"></i><span
+                                    class="kt-menu__link-text">View Complaints</span></a></li>
+
+
+
+                        <mat-accordion>
+                            <!-- #enddocregion basic-panel -->
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <i class="kt-menu__link-icon flaticon-interface-3"></i><span
+                                            class="kt-menu__link-text">Feedback</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p class=" text-center">
+                                    <a href="UploadUser.aspx" class="kt-menu__link "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Upload User</span></a>
+                                </p>
+                                <p class=" text-center ">
+                                    <a href="UserDetails.aspx" class="kt-menu__link "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">User Details</span></a>
+                                </p>
+                                <p class=" text-center ">
+                                    <a href="CreateDept.aspx" class="kt-menu__link "><i
+                                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                            class="kt-menu__link-text">Create Department</span></a>
+                                </p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                        <!-- Below is the Example For Menu Link Submenu || Copy code and Use-->
+                    </ul>
                 </div>
             </div>
-
-            <!-- end:: Footer -->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class=" h-100">
+            <router-outlet></router-outlet>
         </div>
-    </div>
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

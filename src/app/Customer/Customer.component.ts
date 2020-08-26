@@ -5,10 +5,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 
 @Component({
   selector: 'app-SA',
-  templateUrl: './SystemAdmin.component.html'
+  templateUrl: './Customer.component.html'
  
 })
-export class SystemAdminComponent implements OnInit {
+export class CustomerComponent implements OnInit {
   userDetails; 
   constructor(private router: Router, private service: UserService) { }
   

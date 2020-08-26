@@ -31,9 +31,9 @@ export class SystemAdminService {
 // }  
  
 getAllCustomer(Division,pageNo,pageSize,KeyWord) {  
-  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerMaster?Division=' + Division+'&pageNo='+pageNo+'&pageSize='+pageSize); 
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerMaster/'+Division+','+pageNo+','+pageSize+','+KeyWord); 
 }  
 getAllCustomerCount(Division): Observable<any> {  
-  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerCount?Division=' +Division);
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerCount/'+Division);
 }  
 }

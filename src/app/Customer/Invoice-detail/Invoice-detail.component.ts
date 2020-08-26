@@ -1,56 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemAdminService } from '../../shared/SystemAdminService';
 import { Router } from '@angular/router';
+import { NgModule } from '@angular/core';    
 import { PaginationService } from '../../component/pagination/pagination.service';
+import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
+import { CustomerService } from 'src/app/shared/CustomerService';
 @Component({
-  selector: 'app-customer-detail',
-  templateUrl: './customer-detail.component.html',
-  styleUrls: ['./customer-detail.component.css']
+  selector: 'app-COrder-detail',
+  templateUrl: './Invoice-detail.component.html',
+  styleUrls: ['./Invoice-detail.component.css']
 })
-export class CustomerDetailComponent implements OnInit {
-  Customers: any[]; 
-  constructor(private router: Router, private _SystemAdminService: SystemAdminService
+export class CustomerInvoiceDetailComponent implements OnInit {
+  Invoices: any[]; 
+  constructor(private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService) { }
-
+  userData ; 
   pageNo: any = 1;  
+  search=null;
   pageNumber: boolean[] = [];  
-  sortOrder: any = 'CompanyName_ASC';  
-  order:any='CompanyName';  
+  sortInvoice: any = 'CompanyName_ASC';  
+  Invoice:any='CompanyName';  
   //Pagination Variables  
   //Page Row variables  
-  smallPageRow: boolean = true;  
-  mediumPageRow: boolean = false;  
-  largePageRow: boolean = false;  
-  
-  small = 10;  
-  medium = 10;  
-  large =10;  
   
   pageField = [];  
   exactPageList: any;  
   paginationData: number;  
-  CustomersPerPage: any = 10;  
-  orderBy: string='Asc';  
+  InvoicesPerPage: any = 10;  
+  InvoiceBy: string='Asc';  
   
-  totalCustomers: any;  
-  totalCustomersCount: any;  
+  totalInvoices: any;  
+  totalInvoicesCount: any;  
   currentPage = 1;  
   
   ngOnInit() {  
     this.pageNumber[0] = true;  
     this.paginationService.temppage = 0;  
-    this.getAllCustomers();  
+    this.getAllInvoices();  
   }  
-  getAllCustomers() {  
-       this._SystemAdminService.getAllCustomer(localStorage.getItem('Division'),this.pageNo, this.CustomersPerPage,'NoSearch').subscribe((data: any) => {
-      this.Customers = data as any[];
-      this.getAllCustomersCount();
+
+  getAllInvoices() {  
+       this._CustomerService.getAllInvoiceData(localStorage.getItem('UserCode'),this.pageNo,this.InvoicesPerPage,this.search).subscribe((data: any) => {
+      this.Invoices = data as any[];
+      this.getAllInvoicesCount();
     })
     
   }  
-  getAllCustomersCount() {  
-    this._SystemAdminService.getAllCustomerCount(localStorage.getItem('Division')).subscribe((res: any) => {  
-      this.totalCustomersCount = res;  
+  getAllInvoicesCount() {  
+    this._CustomerService.getAllInvoiceCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
+      this.totalInvoicesCount = res;  
       this.totalNoOfPages();  
     })  
   }  
@@ -58,7 +55,7 @@ export class CustomerDetailComponent implements OnInit {
   //Method For Pagination  
   totalNoOfPages() {  
   
-    this.paginationData = Number(this.totalCustomersCount / this.CustomersPerPage);  
+    this.paginationData = Number(this.totalInvoicesCount / this.InvoicesPerPage);  
     let tempPageData = this.paginationData.toFixed();  
     if (Number(tempPageData) < this.paginationData) {  
       this.exactPageList = Number(tempPageData) + 1;  
@@ -71,51 +68,51 @@ export class CustomerDetailComponent implements OnInit {
     this.pageField = this.paginationService.pageField;  
   
   }  
-  showCustomersByPageNumber(page, i) {  
-    this.Customers = [];  
+  showInvoicesByPageNumber(page, i) {  
+    this.Invoices = [];  
     this.pageNumber = [];  
     this.pageNumber[i] = true;  
     this.pageNo = page;  
     this.currentPage =page;  
-    this.getAllCustomers();  
+    this.getAllInvoices();  
   }  
   
   //Pagination Start  
   
-  showPrevCustomers() {  
+  showPrevInvoices() {  
   
     if (this.paginationService.showNoOfCurrentPage != 1) {  
       this.paginationService.prevPage();  
       this.pageNumber = [];  
       this.pageNumber[0] = true;  
       this.currentPage = this.paginationService.pageField[0];  
-      this.getAllCustomers();  
+      this.getAllInvoices();  
     }  
   
   }  
   
-  showNextCustomers() {  
+  showNextInvoices() {  
   
     if (this.paginationService.disabledNextBtn == false) {  
       this.pageNumber = [];  
       this.paginationService.nextPage();  
       this.pageNumber[0] = true;  
       this.currentPage = this.paginationService.pageField[0];  
-      this.getAllCustomers();  
+      this.getAllInvoices();  
     }  
   }  
   sortByHeading(value: string, id) {  
-    this.Customers = [];  
-    this.sortOrder = value;  
-    this.order =value;  
-    if (this.orderBy == "Desc") {  
-      this.orderBy = "Asc"  
-      this.sortOrder =this.sortOrder+'_ASC';  
+    this.Invoices = [];  
+    this.sortInvoice = value;  
+    this.Invoice =value;  
+    if (this.InvoiceBy == "Desc") {  
+      this.InvoiceBy = "Asc"  
+      this.sortInvoice =this.sortInvoice+'_ASC';  
     } else {  
-      this.orderBy = "Desc";  
-      this.sortOrder =this.sortOrder+'_DESC'  
+      this.InvoiceBy = "Desc";  
+      this.sortInvoice =this.sortInvoice+'_DESC'  
     }  
-    this.getAllCustomers();  
+    this.getAllInvoices();  
   }  
   
 }   

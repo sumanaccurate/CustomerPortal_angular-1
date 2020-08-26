@@ -34,15 +34,15 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('IDbint', res.IDbint);
        localStorage.setItem('UserType', res.UserTypetxt);
        localStorage.setItem('UserCode', res.UserCodetxt);
-       if(res.UserTypetxt=="SuperAdmin"){
+       if(res.UserTypetxt!=="SuperAdmin"){
         localStorage.setItem('Division', res.Divisionvtxt);
        }
         if(res.UserTypetxt=="SuperAdmin"){
           this.router.navigateByUrl('/SuperAdmin/dashboard');
         }else if (res.UserTypetxt=="SystemAdmin"){
           this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
-        }else if (res.UserTypetxt=="SystemAdmin"){
-          this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
+        }else if (res.UserTypetxt=="Customer"){
+          this.router.navigateByUrl('/Customer/dashboard');
         }else if (res.UserTypetxt=="SystemAdmin"){
           this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
         }

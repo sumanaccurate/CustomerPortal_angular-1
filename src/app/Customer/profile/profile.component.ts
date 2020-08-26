@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-profile',
   templateUrl: './profile.component.html'
 })
-export class SystemAdminProfileComponent implements OnInit {
+export class CustomerProfileComponent implements OnInit {
   Userid =null ;
   User: any; 
   constructor(private service: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
@@ -32,7 +32,7 @@ export class SystemAdminProfileComponent implements OnInit {
   pass(value): void {
     // console.log('recieved= key:' + key + 'value:' + val);
     this.storage.set('Userid',value);
-    this.router.navigateByUrl('/SystemAdmin/Editprofile');
+    this.router.navigateByUrl('/Customer/Editprofile');
     console.log(this.storage.get('Userid'));
     // this.data[key]= this.storage.get(key);
    }

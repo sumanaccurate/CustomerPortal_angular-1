@@ -1,0 +1,151 @@
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+
+  <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid  m-4">
+
+    <div class="kt-portlet kt-portlet--mobile">
+      <div class="kt-portlet__head kt-portlet__head--lg bg-light">
+        <div class="kt-portlet__head-label">
+
+          <h3 class="kt-portlet__head-title text-dark">Dispatch Details
+          </h3>
+        </div>
+       
+      </div>
+      <div class="p-4 bg-light border-top border-bottom">
+        <!--begin: Search Form -->
+        <div class="kt-form kt-form--label-right ">
+          <div class="row align-items-center">
+            <div class="col-xl-12 order-2 order-xl-1">
+              <div class="row align-items-center">
+                <!-- <div class="col-md kt-margin-b-20-tablet-and-mobile">
+
+                  <select class="form-control">
+                    <option value="AD">Status</option>
+                    <option value="AD">Delivered</option>
+                    <option value="AF">Blocked</option>
+                    <option value="AX">Partially Delivered</option>
+                  </select>
+
+                </div> -->
+                <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                  <div class="kt-input-icon kt-input-icon--left">
+                    <input type="text" class="form-control" placeholder="From Date" id="kt_datepicker_1">
+                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                      <span><i class="la la-calendar"></i></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                  <div class="kt-input-icon kt-input-icon--left">
+                    <input type="text" class="form-control" placeholder="To Date" id="kt_datepicker_2">
+                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                      <span><i class="la la-calendar"></i></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                  <div class="kt-input-icon kt-input-icon--left">
+                    <input type="text" class="form-control"  [(ngModel)]="search"   placeholder="Type To Search...">
+                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                      <span><i class="la la-search"></i></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-dark" (click)="getAllOrders()" title="bigger">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--end: Search Form -->
+      </div>
+      <div class="kt-portlet__body ">
+
+        <div>
+          <div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
+            <div class="row">
+              <div class="col-md-4 ">
+                
+                <div>
+                  Invoice Number : <span class="kt-font-bold">{{Order.InvoiceNumbervtxt}}</span>
+                </div>
+                <div>
+                  ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{ShipToPartyNamevtxt}}
+                </div>
+                <div>
+                  Sales Order No : <span class="kt-font-bold">{{Order.SalesOrderNovtxt}}</span>
+                </div>
+               
+                <div>
+                  Status : <span class="kt-font-bold">{{Order.DeliveryStatusvtxt}}</span>
+                </div>
+                
+                
+              </div>
+
+              <div class="col-md-4 ">
+                <div>
+                  Delivery Order No : <span class="kt-font-bold">{{Order.DeliveryOrderNovtxt}}</span>
+                </div>
+
+                <div>
+                  Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate}}</span>
+                </div>
+                <div>
+                  Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
+                </div>
+                
+              </div>
+
+              <div class="col-md-4 ">
+                <div>
+                  Packaging Date : <span class="kt-font-bold">{{Order.Pgidatedate}}</span>
+                </div>
+                <div>
+                  Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+                </div>
+                <div>
+                  Material Description : <span class="kt-font-bold">{{Order.MaterialDescriptionvtxt}}
+                </span></div>
+              
+              </div>
+            </div>
+          </div>
+
+
+          <div class="container mw-100">
+            <div class="row">
+              <div class="col-md-3"> </div>
+              <div *ngIf="Orders !=0" class="col-md-6">
+                <ul class="pagination justify-content-center">
+                  <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item">
+                    <a (click)="showPrevOrders()"
+                      [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
+                      style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
+                  <li *ngFor="let page of pageField;let i=index" class="page-item">
+                    <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
+                      style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
+
+                  </li>
+                  <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item"><a (click)="showNextOrders()"
+                      [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
+                      style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                </ul>
+                <div style="text-align: center;">
+                  Page {{currentPage}} of Total page {{paginationService.exactPageList}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--end: Datatable -->
+      </div>
+    </div>
+  </div>
+
+</div>

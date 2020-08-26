@@ -65,14 +65,8 @@ export class SystemAdminProfileEditComponent implements OnInit {
     if(this.Userid!==null && this.Userid!==''){
       this.service.updateUser(this.userAdd.value).subscribe(
         (res: any) => {
-          if(localStorage.getItem('IDbint')==this.Userid){
-            this.router.navigateByUrl('/SuperAdmin/profile');
+            this.router.navigateByUrl('/SystemAdmin/profile');
             this.alertService.success('Profile updated succesfully.');
-          }else
-          {
-            this.router.navigateByUrl('/SuperAdmin/dashboard');
-            this.alertService.success('User Updated Succesfully.');
-          }
         },  
         err => {
            if (err.status == 400)
@@ -86,7 +80,7 @@ export class SystemAdminProfileEditComponent implements OnInit {
       this.service.addUser(this.userAdd.value).subscribe(
         (res: any) => {
           // if(res==201){
-           this.router.navigateByUrl('/SuperAdmin/dashboard');
+           this.router.navigateByUrl('/SystemAdmin/dashboard');
            this.alertService.success('User added succesfully.');
           // }
           // else

@@ -62,8 +62,8 @@ export class UserService {
   }
 
 
-  getUserData(ID) {
-    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails?ID='+ID);
+  getUserData(Id) {
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails/'+Id);
   }
   
   getUsersData() {
@@ -72,13 +72,13 @@ export class UserService {
 
   
 getAllUsers(pageNo,pageSize) {  
-    return this.http.get(this.BaseURI + '/UserMaster/GetUserPagination?pageNo=' + pageNo+'&pageSize='+pageSize); 
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserPagination/' + pageNo+','+pageSize); 
   }  
   getAllUsersCount(): Observable<any> {  
     return this.http.get(this.BaseURI + '/UserMaster/GetAllUserCount');
   }  
 
-  getUserProfile(ID) {
-    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails?ID='+ID);
+  getUserProfile(Id) {
+    return this.http.get(this.BaseURI + '/UserMaster/GetUserDetails/'+Id);
   }
 }
