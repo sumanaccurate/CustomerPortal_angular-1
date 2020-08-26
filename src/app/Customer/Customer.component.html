@@ -5,7 +5,7 @@
             <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
         </button>
         <div class="kt-padding-r-25  kt-padding-l-25 d-flex align-items-center  ">
-            <a [routerLink]="['/SystemAdmin/dashboard']">
+            <a [routerLink]="['/Customer/dashboard']">
                 <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo"
                     runat="server" id="logo1">
             </a>
@@ -81,6 +81,10 @@
                                     <a  class="kt-menu__link "><i
                                         class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Place Order
                                         Request</span></a>
+                                </p>
+                                <p class=" text-center "> 
+                                    <a  [routerLink]="['/Customer/SalesOrderDetail']"  class="kt-menu__link "><i
+                                        class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Sales Order</span></a>
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>

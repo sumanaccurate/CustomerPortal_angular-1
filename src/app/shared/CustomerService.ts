@@ -41,5 +41,30 @@ getAllInvoiceCount(SoldToPartyCode,KeyWord): Observable<any> {
   }
   return this.http.get(this.BaseURI + '/InvoiceMaster/GetDeliveryOrderCount/'+SoldToPartyCode+','+KeyWord);
 }  
-
+getAllSalesOrderData(SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
+  if(KeyWord==null ||KeyWord==""){
+    KeyWord="NoSearch";
+  }
+  return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrder/'+SoldToPartyCodevtxt+','+pageNo+','+DataPerPage+','+KeyWord); 
+}  
+getAllSalesOrderCount(SoldToPartyCode,KeyWord): Observable<any> {  
+  if(KeyWord==null ||KeyWord==""){
+    KeyWord="NoSearch";
+  }
+  return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrderCount/'+SoldToPartyCode+','+KeyWord);
+}  
+getAllOrdersCountforDashboard(UserCode): Observable<any> {  
+ 
+  return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderCount/'+UserCode+',NoSearch');
+}  
+getAllOutStandingforDashboard(UserCode): Observable<any> {  
+  return this.http.get(this.BaseURI + '/Outstanding/GetOutstandingCount/'+UserCode);
+} 
+getAllCreditLimitforDashboard(UserCode): Observable<any> {  
+  return this.http.get(this.BaseURI + '/Creditlimit/GetCreditlimit/'+UserCode);
+} 
+getAllSalesOrderforDashboard(UserCode): Observable<any> {  
+ 
+  return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrderCount/'+UserCode+',NoSearch');
+}  
 }

@@ -69,6 +69,7 @@ import { PaginationService } from './component/pagination/pagination.service';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoice-detail.component';
+import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/SalesOrder-detail.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -76,6 +77,7 @@ import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoic
     CustomerDashboardComponent,
     CustomerProfileEditComponent,
     CustomerProfileComponent,
+    CustomerSalesOrderDetailComponent,
     CustomerDispatchOrderDetailComponent,
     AppComponent,
     UserComponent,

@@ -73,7 +73,7 @@
                   Invoice Number : <span class="kt-font-bold">{{Order.InvoiceNumbervtxt}}</span>
                 </div>
                 <div>
-                  ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{ShipToPartyNamevtxt}}
+                  ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
                 </div>
                 <div>
                   Sales Order No : <span class="kt-font-bold">{{Order.SalesOrderNovtxt}}</span>
@@ -92,7 +92,7 @@
                 </div>
 
                 <div>
-                  Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate}}</span>
+                  Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate | date : 'yyyy/MM/dd'}}</span>
                 </div>
                 <div>
                   Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
@@ -102,7 +102,7 @@
 
               <div class="col-md-4 ">
                 <div>
-                  Packaging Date : <span class="kt-font-bold">{{Order.Pgidatedate}}</span>
+                  Packaging Date : <span class="kt-font-bold">{{Order.Pgidatedate | date : 'yyyy/MM/dd'}}</span>
                 </div>
                 <div>
                   Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>

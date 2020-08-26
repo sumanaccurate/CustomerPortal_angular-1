@@ -1,4 +1,4 @@
-<div class="kt-content ng-star-inserted  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 
   <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid  m-4">
@@ -6,9 +6,11 @@
     <div class="kt-portlet kt-portlet--mobile">
       <div class="kt-portlet__head kt-portlet__head--lg bg-light">
         <div class="kt-portlet__head-label">
-          <h3 class="kt-portlet__head-title text-dark">Invoice Details
+
+          <h3 class="kt-portlet__head-title text-dark">Sales Details
           </h3>
         </div>
+       
       </div>
       <div class="p-4 bg-light border-top border-bottom">
         <!--begin: Search Form -->
@@ -17,12 +19,14 @@
             <div class="col-xl-12 order-2 order-xl-1">
               <div class="row align-items-center">
                 <!-- <div class="col-md kt-margin-b-20-tablet-and-mobile">
+
                   <select class="form-control">
                     <option value="AD">Status</option>
                     <option value="AD">Delivered</option>
                     <option value="AF">Blocked</option>
                     <option value="AX">Partially Delivered</option>
                   </select>
+
                 </div> -->
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
@@ -49,7 +53,7 @@
                   </div>
                 </div>
                 <div class="col-1">
-                  <button class="btn btn-dark" (click)="getAllInvoices()" title="bigger">Search</button>
+                  <button class="btn btn-dark" (click)="getAllOrders()" title="bigger">Search</button>
                 </div>
               </div>
             </div>
@@ -61,81 +65,89 @@
       <div class="kt-portlet__body ">
 
         <div>
-          <div *ngFor="let Invoice of Invoices" class="customerCustomers-list border shadow-sm p-3 mb-3">
+          <div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
             <div class="row">
               <div class="col-md-4 ">
                 
                 <div>
-                  Invoice Number : <span class="kt-font-bold">{{Invoice.InvoiceDocumentNovtxt}}</span>
+                  SoldToParty Code & Name : {{Order.SoldToPartyCodevtxt}} - {{Order.SoldTopPartyNamevtxt}}
                 </div>
                 <div>
-                   Quantity : {{Invoice.InvoiceQuantityint}} 
+                  ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
                 </div>
                 <div>
-                  Unit Of Measurement : <span class="kt-font-bold">{{Invoice.InvoiceUoMvtxt}}</span>
+                  Address : <span class="kt-font-bold">{{Order.Addressvtxt}}</span>
                 </div>
-                <div>
-                  Material Code : <span class="kt-font-bold">{{Invoice.MaterialCodevtxt}}</span>
-                </div>
-                
-                <div>
-                  Material Description : <span class="kt-font-bold">{{Invoice.MaterialDescriptionvtxt}}</span>
-                </div>
-                
-              </div>
-
-              <div class="col-md-4 ">
-                <div>
-                  Billing Date : <span class="kt-font-bold">{{Invoice.BillingDatedate  | date : 'yyyy/MM/dd' }}</span>
-                </div>
-                <div>
-                  Billing Type : <span class="kt-font-bold">{{Invoice.BillingTypevtxt}}</span>
-                </div>
-
-                <div>
-                  Billing Category : <span class="kt-font-bold">{{Invoice.BillingCategoryvtxt}}</span>
-                </div>
-                <div>
-                  Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl}}
-                </span></div>
-              
                
+                <div>
+                  City : <span class="kt-font-bold">{{Order.Cityvtxt}}</span>
+                </div>
+                <div>
+                  NetValue : <span class="kt-font-bold">{{Order.NetValuedcl}}</span>
+                </div>
+                
+                
               </div>
 
               <div class="col-md-4 ">
                 <div>
-                  Plant : <span class="kt-font-bold">{{Invoice.Plantvtxt}}</span>
+                  Unit Of Measurement : <span class="kt-font-bold">{{Order.UnitOfMeasurevtxt}}</span>
+                </div>
+                <div>
+                  Delivery Order No : <span class="kt-font-bold">{{Order.DeliveryOrderNovtxt}}</span>
+                </div>
+
+                <div>
+                  Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate}}</span>
+                </div>
+                <div>
+                  Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
+                </div>
+                <div>
+                  Created On date : <span class="kt-font-bold">{{Order.CreatedOndatetime}}</span>
                 </div>
                 
+              </div>
+
+              <div class="col-md-4 ">
                 <div>
-                  Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
+                  Phone No : <span class="kt-font-bold">{{Order.Ponumbervtxt}}</span>
                 </div>
                 <div>
-                  Income Terms : <span class="kt-font-bold">{{Invoice.IncoTermsvtxt}}</span>
+                  Sales Order Number : <span class="kt-font-bold">{{Order.SalesOrderNumbervtxt}}</span>
                 </div>
                 <div>
-                  Status : <span class="kt-font-bold">{{Invoice.Statusvtxt}}</span>
-                </div>
+                  SalesOrderType : <span class="kt-font-bold">{{Order.SalesOrderTypevtxt}}
+                </span></div>
+                <div>
+                  Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}
+                </span></div>
+                <div>
+                  Material Description : <span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}
+                </span></div>
+                <div>
+                  Status : <span class="kt-font-bold">{{Order.Statusvtxt}}
+                </span></div>
               </div>
             </div>
           </div>
-
+          
 
           <div class="container mw-100">
             <div class="row">
               <div class="col-md-3"> </div>
-              <div *ngIf="Invoices !=0" class="col-md-6">
+              <div *ngIf="Orders !=0" class="col-md-6">
                 <ul class="pagination justify-content-center">
-                  <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item">
-                    <a (click)="showPrevInvoices()"
+                  <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item">
+                    <a (click)="showPrevOrders()"
                       [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
                       style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
                   <li *ngFor="let page of pageField;let i=index" class="page-item">
-                    <a (click)="showInvoicesByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
+                    <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
                       style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 
                   </li>
-                  <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item"><a (click)="showNextInvoices()"
+                  <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item"><a (click)="showNextOrders()"
                       [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
                       style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
                 </ul>

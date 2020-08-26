@@ -20,6 +20,7 @@ import { CustomerProfileComponent } from './Customer/profile/profile.component';
 import { CustomerProfileEditComponent } from './Customer/edit-profile/edit-profile.component';
 import { CustomerDispatchOrderDetailComponent } from './Customer/DispatchOrder-detail/DispatchOrder-detail.component';
 import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoice-detail.component';
+import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/SalesOrder-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
       { path: 'Editprofile', component: CustomerProfileEditComponent, canActivate: [AuthGuard] },
       { path: 'DispatchOrderDetail', component: CustomerDispatchOrderDetailComponent, canActivate: [AuthGuard] },
       { path: 'InvoiceDetail', component: CustomerInvoiceDetailComponent, canActivate: [AuthGuard] },
+      { path: 'SalesOrderDetail', component: CustomerSalesOrderDetailComponent, canActivate: [AuthGuard] },
     ]
   },
 
