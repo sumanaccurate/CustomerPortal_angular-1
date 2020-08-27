@@ -69,9 +69,7 @@
             <div class="row">
               <div class="col-md-4 ">
                 
-                <div>
-                  SoldToParty Code & Name : {{Order.SoldToPartyCodevtxt}} - {{Order.SoldTopPartyNamevtxt}}
-                </div>
+              
                 <div>
                   ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
                 </div>
@@ -85,7 +83,9 @@
                 <div>
                   NetValue : <span class="kt-font-bold">{{Order.NetValuedcl}}</span>
                 </div>
-                
+                <div>
+                  Created On date : <span class="kt-font-bold">{{Order.CreatedOndatetime}}</span>
+                </div>
                 
               </div>
 
@@ -104,8 +104,8 @@
                   Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
                 </div>
                 <div>
-                  Created On date : <span class="kt-font-bold">{{Order.CreatedOndatetime}}</span>
-                </div>
+                  Status : <span class="kt-font-bold">{{Order.Statusvtxt}}
+                </span></div>
                 
               </div>
 
@@ -125,9 +125,7 @@
                 <div>
                   Material Description : <span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}
                 </span></div>
-                <div>
-                  Status : <span class="kt-font-bold">{{Order.Statusvtxt}}
-                </span></div>
+                
               </div>
             </div>
           </div>

@@ -63,7 +63,6 @@ import { CustomerDashboardComponent } from './Customer/dashboard/dashboard.compo
 import { CustomerProfileComponent } from './Customer/profile/profile.component';
 import { CustomerProfileEditComponent } from './Customer/edit-profile/edit-profile.component';
 import { CustomerDispatchOrderDetailComponent } from './Customer/DispatchOrder-detail/DispatchOrder-detail.component';
-
 import {ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
 import { PaginationService } from './component/pagination/pagination.service';
 import {MatMenuModule} from '@angular/material/menu';
