@@ -1,54 +1,54 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';    
-import { PaginationService } from '../../component/pagination/pagination.service';
-import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
-import { CustomerService } from 'src/app/shared/CustomerService';
+
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
+import { Inject } from '@angular/core';
+import { JWTTokenService } from '../../auth/jwt';
+
+import { PaginationService } from '../../component/pagination/pagination.service';
 @Component({
-  selector: 'app-COrder-detail',
-  templateUrl: './SalesOrder-detail.component.html',
-  styleUrls: ['./SalesOrder-detail.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class CustomerSalesOrderDetailComponent implements OnInit {
-  Orders: any[]; 
-  constructor(private router: Router, private _CustomerService: CustomerService
-    , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
-  userData ; 
+export class TechnicalDashboardComponent implements OnInit {
+  Users: any[];
+  constructor(private router: Router, private service: UserService,
+    @Inject(SESSION_STORAGE) private storage: WebStorageService
+    , private jwtservice: JWTTokenService, public paginationService: PaginationService) { }
+  
   pageNo: any = 1;  
-  search=null;
   pageNumber: boolean[] = [];  
-  sortOrder: any = 'CompanyName_ASC';  
-  order:any='CompanyName';  
+  sortOrder: any = 'UserName_ASC';  
+  order:any='UserName';  
   //Pagination Variables  
   //Page Row variables  
-  
   pageField = [];  
   exactPageList: any;  
   paginationData: number;  
-  OrdersPerPage: any = 10;  
+  UsersPerPage: any = 10;  
   orderBy: string='Asc';  
   
-  totalOrders: any;  
-  totalOrdersCount: any;  
+  totalUsers: any;  
+  totalUsersCount: any;  
   currentPage = 1;  
   
   ngOnInit() {  
     this.pageNumber[0] = true;  
     this.paginationService.temppage = 0;  
-    this.getAllOrders();  
+    this.getAllUsers();  
   }  
-
-  getAllOrders() {  
-       this._CustomerService.getAllSalesOrderData(localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
-      this.Orders = data as any[];
-      this.getAllOrdersCount();
+  getAllUsers() {  
+       this.service.getAllUsers(this.pageNo, this.UsersPerPage).subscribe((data: any) => {
+      this.Users = data as any[];
+      this.getAllUsersCount();
     })
     
   }  
-  getAllOrdersCount() {  
-    this._CustomerService.getAllSalesOrderCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
-      this.totalOrdersCount = res;  
+  getAllUsersCount() {  
+    this.service.getAllUsersCount().subscribe((res: any) => {  
+      this.totalUsersCount = res;  
       this.totalNoOfPages();  
     })  
   }  
@@ -56,7 +56,7 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   //Method For Pagination  
   totalNoOfPages() {  
   
-    this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);  
+    this.paginationData = Number(this.totalUsersCount / this.UsersPerPage);  
     let tempPageData = this.paginationData.toFixed();  
     if (Number(tempPageData) < this.paginationData) {  
       this.exactPageList = Number(tempPageData) + 1;  
@@ -69,41 +69,39 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
     this.pageField = this.paginationService.pageField;  
   
   }  
-  showOrdersByPageNumber(page, i) {  
-    this.Orders = [];  
+  showUsersByPageNumber(page, i) {  
     this.pageNumber = [];  
     this.pageNumber[i] = true;  
     this.pageNo = page;  
     this.currentPage =page;  
-    this.getAllOrders();  
+    this.getAllUsers();  
   }  
   
   //Pagination Start  
   
-  showPrevOrders() {  
+  showPrevUsers() {  
   
     if (this.paginationService.showNoOfCurrentPage != 1) {  
       this.paginationService.prevPage();  
       this.pageNumber = [];  
       this.pageNumber[0] = true;  
       this.currentPage = this.paginationService.pageField[0];  
-      this.getAllOrders();  
+      this.getAllUsers();  
     }  
   
   }  
   
-  showNextOrders() {  
+  showNextUsers() {  
   
     if (this.paginationService.disabledNextBtn == false) {  
       this.pageNumber = [];  
       this.paginationService.nextPage();  
       this.pageNumber[0] = true;  
       this.currentPage = this.paginationService.pageField[0];  
-      this.getAllOrders();  
+      this.getAllUsers();  
     }  
   }  
   sortByHeading(value: string, id) {  
-    this.Orders = [];  
     this.sortOrder = value;  
     this.order =value;  
     if (this.orderBy == "Desc") {  
@@ -113,14 +111,16 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
       this.orderBy = "Desc";  
       this.sortOrder =this.sortOrder+'_DESC'  
     }  
-    this.getAllOrders();  
+    this.getAllUsers();  
   }  
   
-  
+
   pass(value): void {
     // console.log('recieved= key:' + key + 'value:' + val);
-    this.storage.set('OrderId',value);
-    this.router.navigateByUrl('/Customer/SalesOrderDetailView');
-   }
+    this.storage.set('Userid', value);
+    this.router.navigateByUrl('/SuperAdmin/EditAdmin');
+    console.log(this.storage.get('Userid'));
+    // this.data[key]= this.storage.get(key);
+  }
 
-}   
+}

@@ -23,6 +23,12 @@ getAllOrderData(SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {
   }
   return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrder/'+SoldToPartyCodevtxt+','+pageNo+','+DataPerPage+','+KeyWord); 
 }  
+getAllOrderDataByOrderNo(no) {  
+  return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderByOrderNo/'+no); 
+} 
+getDeliveryOrderHeaderDataByOrderNo(no) {  
+  return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderHeaderByOrderNo/'+no); 
+}   
 getAllOrderCount(SoldToPartyCode,KeyWord): Observable<any> {  
   if(KeyWord==null ||KeyWord==""){
     KeyWord="NoSearch";
@@ -39,8 +45,23 @@ getAllInvoiceCount(SoldToPartyCode,KeyWord): Observable<any> {
   if(KeyWord==null ||KeyWord==""){
     KeyWord="NoSearch";
   }
-  return this.http.get(this.BaseURI + '/InvoiceMaster/GetDeliveryOrderCount/'+SoldToPartyCode+','+KeyWord);
+  return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoiceCount/'+SoldToPartyCode+','+KeyWord);
 }  
+getAllInvoiceDataByInvoiceNo(no) {  
+  return this.http.get(this.BaseURI + '/InvoiceMaster/getAllInvoiceDataByInvoiceNo/'+no); 
+}  
+getInvoiceHeaderDataByInvoiceNo(no) {  
+  return this.http.get(this.BaseURI + '/InvoiceMaster/getInvoiceHeaderDataByInvoiceNo/'+no); 
+}  
+getAllSalesOrderDataByOrderNo(no): Observable<any> {  
+  return this.http.get(this.BaseURI + '/SalesOrder/getAllSalesOrderDataByOrderNo/'+no);
+} 
+getAllDeliveryOrderDataBySalesOrderNo(no): Observable<any> {  
+  return this.http.get(this.BaseURI + '/DeliveryOrder/getAllDeliveryOrderDataBySalesOrderNo/'+no);
+} 
+getSalesOrderHeaderDataByOrderNo(no): Observable<any> {  
+  return this.http.get(this.BaseURI + '/SalesOrder/getAllSalesOrderHeaderDataByOrderNo/'+no);
+} 
 getAllSalesOrderData(SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
   if(KeyWord==null ||KeyWord==""){
     KeyWord="NoSearch";

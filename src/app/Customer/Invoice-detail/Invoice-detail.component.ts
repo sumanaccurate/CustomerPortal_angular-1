@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';    
 import { PaginationService } from '../../component/pagination/pagination.service';
 import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './Invoice-detail.component.html',
@@ -12,7 +13,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 export class CustomerInvoiceDetailComponent implements OnInit {
   Invoices: any[]; 
   constructor(private router: Router, private _CustomerService: CustomerService
-    , public paginationService: PaginationService) { }
+    , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData ; 
   pageNo: any = 1;  
   search=null;
@@ -114,5 +115,11 @@ export class CustomerInvoiceDetailComponent implements OnInit {
     }  
     this.getAllInvoices();  
   }  
+  pass(value): void {
+    // console.log('recieved= key:' + key + 'value:' + val);
+    this.storage.set('InvoiceId',value);
+    this.router.navigateByUrl('/Customer/InvoiceDetailView');
+   }
+
   
 }   

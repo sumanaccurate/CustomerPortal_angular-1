@@ -5,6 +5,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 
 @Component({
   selector: 'app-SA',
+  styleUrls: ['../app.component.css'],
   templateUrl: './SystemAdmin.component.html'
  
 })

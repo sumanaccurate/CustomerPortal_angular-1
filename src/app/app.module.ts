@@ -69,6 +69,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoice-detail.component';
 import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/SalesOrder-detail.component';
+import { DispatchOrderViewComponent } from './Customer/dispatch-order-view/dispatch-order-view.component';
+import { CustomerSalesOrderViewComponent } from './Customer/Sales-order-view/Sales-order-view.component';
+import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-view.component';
+import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -77,9 +81,12 @@ import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/
     CustomerProfileEditComponent,
     CustomerProfileComponent,
     CustomerSalesOrderDetailComponent,
+    CustomerCreateOrderComponent,
     CustomerDispatchOrderDetailComponent,
     AppComponent,
     UserComponent,
+    CustomerInvoiceViewComponent,
+    CustomerSalesOrderViewComponent,
     SystemAdminProfileComponent,
     SystemAdminDashboardComponent ,
     SystemAdminProfileEditComponent,
@@ -94,6 +101,7 @@ import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/
     NavigationBarComponent,
     CustomerDetailComponent,
     ProgressSpinnerOverviewExample,
+    DispatchOrderViewComponent,
   ],
   imports: [
     BrowserModule,

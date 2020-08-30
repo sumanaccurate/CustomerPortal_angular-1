@@ -14,17 +14,10 @@
         <!--begin: Search Form -->
         <div class="kt-form kt-form--label-right ">
           <div class="row align-items-center">
-            <div class="col-xl-12 order-2 order-xl-1">
+            <div class="col-xl-3 order-2 order-xl-1">
               <div class="row align-items-center">
+
                 <!-- <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <select class="form-control">
-                    <option value="AD">Status</option>
-                    <option value="AD">Delivered</option>
-                    <option value="AF">Blocked</option>
-                    <option value="AX">Partially Delivered</option>
-                  </select>
-                </div> -->
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
                     <input type="text" class="form-control" placeholder="From Date" id="kt_datepicker_1">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
@@ -39,10 +32,10 @@
                       <span><i class="la la-calendar"></i></span>
                     </span>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  [(ngModel)]="search"   placeholder="Type To Search...">
+                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
                       <span><i class="la la-search"></i></span>
                     </span>
@@ -61,66 +54,56 @@
       <div class="kt-portlet__body ">
 
         <div>
-          <div *ngFor="let Invoice of Invoices" class="customerCustomers-list border shadow-sm p-3 mb-3">
-            <div class="row">
+          <div *ngFor="let Invoice of Invoices" class="customerCustomers-list row border shadow-sm p-3 mb-3">
+            <div class="row col-md-11">
               <div class="col-md-4 ">
-                
                 <div>
-                  Invoice Number : <span class="kt-font-bold">{{Invoice.InvoiceDocumentNovtxt}}</span>
+                  Sold To Party : <span class="kt-font-bold">{{Invoice.SoldToPartyCodevtxt}} -
+                    {{Invoice.SoldTopPartyNamevtxt}}</span>
                 </div>
                 <div>
-                   Quantity : {{Invoice.InvoiceQuantityint}} 
+                  Billing Date : <span class="kt-font-bold">{{Invoice.BillingDatedate  | date :'dd/MM/yyyy'}}</span>
                 </div>
+
                 <div>
-                  Unit Of Measurement : <span class="kt-font-bold">{{Invoice.InvoiceUoMvtxt}}</span>
+                  Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl}}</span>
                 </div>
-                <div>
-                  Material Code : <span class="kt-font-bold">{{Invoice.MaterialCodevtxt}}</span>
-                </div>
-                
-                <div>
-                  Material Description : <span class="kt-font-bold">{{Invoice.MaterialDescriptionvtxt}}</span>
-                </div>
-                
               </div>
 
               <div class="col-md-4 ">
                 <div>
-                  Billing Date : <span class="kt-font-bold">{{Invoice.BillingDatedate  | date : 'yyyy/MM/dd' }}</span>
-                </div>
-                <div>
-                  Billing Type : <span class="kt-font-bold">{{Invoice.BillingTypevtxt}}</span>
+                  Ship To Party : : <span class="kt-font-bold">{{Invoice.ShipToPartyCodevtxt}} -
+                    {{Invoice.ShipToPartyNamevtxt}}</span>
                 </div>
 
-                <div>
-                  Billing Category : <span class="kt-font-bold">{{Invoice.BillingCategoryvtxt}}</span>
-                </div>
-                <div>
-                  Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl}}
-                </span></div>
-              
-               
-              </div>
 
-              <div class="col-md-4 ">
                 <div>
-                  Plant : <span class="kt-font-bold">{{Invoice.Plantvtxt}}</span>
+                  Total Quantity : {{Invoice.InvoiceQuantityint}}
                 </div>
-                
-                <div>
-                  Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
-                </div>
-                <div>
-                  Income Terms : <span class="kt-font-bold">{{Invoice.IncoTermsvtxt}}</span>
-                </div>
+
                 <div>
                   Status : <span class="kt-font-bold">{{Invoice.Statusvtxt}}</span>
                 </div>
               </div>
+              <div class="col-md-4 ">
+                <div>
+                  Invoice No : <span class="kt-font-bold">{{Invoice.InvoiceDocumentNovtxt}}</span>
+                </div>
+                <div>
+                  Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
+                </div>
+
+              </div>
+            </div>
+            <div class=" col-md-1">
+              <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
+                (click)="pass(this.Invoice.InvoiceDocumentNovtxt)"><i class="fa fa-eye"></i>
+              </button>&nbsp;&nbsp;
+              <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
+              ><i class="fa fa-file-pdf" ></i>
+            </button>
             </div>
           </div>
-
-
           <div class="container mw-100">
             <div class="row">
               <div class="col-md-3"> </div>
@@ -135,7 +118,8 @@
                       style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 
                   </li>
-                  <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item"><a (click)="showNextInvoices()"
+                  <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item"><a
+                      (click)="showNextInvoices()"
                       [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
                       style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
                 </ul>

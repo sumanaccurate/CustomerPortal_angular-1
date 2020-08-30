@@ -1,54 +1,8 @@
-<style>
-    mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
-}
-
-mat-sidenav {
-    width: 250px;
-}
-
-main {
-    padding: 10px;
-}
-/* for sidenav to take a whole page */
-html, body { 
-    margin: 0;
-    height: 100%;
-}
-a {
-    text-decoration: none;
-    color: black;
-}
-a:hover, a:active{
-    color: red;
-}
-.navigation-items{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-mat-toolbar{
-    background-color: white;
-    border-radius: 3px;
-}
-@media(max-width: 959px){
-    mat-toolbar{
-        border-radius: 0px;
-    }
-}
-.custom-logo{
-    padding-top: 15px;
-    padding-bottom: 10px;
-    width: 200px;;
-    height: min-content;
-}
-</style>
-
 <mat-toolbar>
     <mat-toolbar-row>
 
         <button mat-icon-button>
-            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+            <mat-icon (click)="sidenav.toggle(); topnav.close() ">menu</mat-icon>
         </button>
         <div class="align-items-center  ">
             <a [routerLink]="['/Customer/dashboard']">
@@ -56,8 +10,9 @@ mat-toolbar{
                     runat="server" id="logo1">
             </a>
         </div>
+      
         <span class="menu-spacer"></span>
-        <div>
+        <div class="top-nava">
             <a mat-button [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
                     class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">Dashboard</span></a>
 
@@ -69,12 +24,29 @@ mat-toolbar{
                     Out</span></a>
 
         </div>
+        
+            <button class="Mob-btn" mat-icon-button>
+                <mat-icon (click)="topnav.toggle() ; sidenav.close()">menu</mat-icon>
+            </button>
+      
     </mat-toolbar-row>
 </mat-toolbar>
 
-
-
 <mat-sidenav-container class=" ">
+    <mat-sidenav #topnav class="topnav">
+        <mat-nav-list>
+            <p class=" pl-3"><a mat-button [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
+                        class="kt-menu__link-icon flaticon-users"></i><span
+                        class="kt-menu__link-text">&nbsp;&nbsp;Dashboard</span></a>
+            </p>
+            <p class=" pl-3"> <a mat-button [routerLink]="['/Customer/profile']" class="kt-menu__link "><i
+                        class="kt-menu__link-icon flaticon-profile"></i><span class="kt-menu__link-text"> &nbsp;&nbsp;My
+                        Profile</span></a></p>
+            <p class=" pl-3"> <a mat-button (click)="onLogout()" class="kt-menu__link "><i
+                        class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">&nbsp;&nbsp;Log
+                        Out</span></a></p>
+        </mat-nav-list>
+    </mat-sidenav>
     <mat-sidenav #sidenav>
         <mat-nav-list>
 
@@ -82,8 +54,8 @@ mat-toolbar{
                 <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1"
                     data-ktmenu-dropdown-timeout="500">
                     <ul class="kt-menu__nav">
-                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a   [routerLink]="['/Customer/dashboard']" 
-                                class="kt-menu__link "><i
+                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                                [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
                                     class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span
                                     class="kt-menu__link-text">Home</span></a></li>
                         <mat-accordion>
@@ -91,16 +63,15 @@ mat-toolbar{
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                       <i class="kt-menu__link-icon fa fa-user"></i><span class="kt-menu__link-text">User
+                                        <i class="kt-menu__link-icon fa fa-user"></i><span
+                                            class="kt-menu__link-text">User
                                             Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center"><a 
-                                    class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">User List</span></a></p>
-                                <p class=" text-center "><a 
-                                    class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
-                                        class="kt-menu__link-text">Create user</span></a></p>
+                                <p class="  p-2"><a class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">User List</span></a></p>
+                                <p class=" p-2 "><a class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                            class="kt-menu__link-text">Create user</span></a></p>
                             </mat-expansion-panel>
                         </mat-accordion>
 
@@ -114,23 +85,23 @@ mat-toolbar{
                                         </i><span class="kt-menu__link-text">Order Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a
-                                    class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
-                                        class="kt-menu__link-text">Order List</span></a>
+                                <p class=" p-2">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                            class="kt-menu__link-text">Order List</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                    <a   class="kt-menu__link "><i class=" fa kt-menu__link-icon"><span></span></i><span
-                                        class="kt-menu__link-text">Order Request</span></a>
+                                <p class=" p-2 ">
+                                    <a class="kt-menu__link "><i class=" fa kt-menu__link-icon"><span></span></i><span
+                                            class="kt-menu__link-text">Order Request</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                    <a  class="kt-menu__link "><i
-                                        class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Place Order
-                                        Request</span></a>
+                                <p class=" p-2 ">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                            class="kt-menu__link-text">Place Order
+                                            Request</span></a>
                                 </p>
-                                <p class=" text-center "> 
-                                    <a  [routerLink]="['/Customer/SalesOrderDetail']"  class="kt-menu__link "><i
-                                        class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Sales Order</span></a>
+                                <p class=" p-2 ">
+                                    <a [routerLink]="['/Customer/SalesOrderDetail']" class="kt-menu__link "><i
+                                            class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Sales
+                                            Order</span></a>
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
@@ -140,14 +111,14 @@ mat-toolbar{
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i  class="kt-menu__link-icon fa fa-dolly"></i>
+                                        <i class="kt-menu__link-icon fa fa-dolly"></i>
                                         <span class="kt-menu__link-text">Dispatches</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a  [routerLink]="['/Customer/DispatchOrderDetail']" 
-                                    class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">List of Delivery Doc</span></a>
+                                <p class=" p-2">
+                                    <a [routerLink]="['/Customer/DispatchOrderDetail']" class="kt-menu__link "><i
+                                            class="kt-menu__link-icon "></i><span class="kt-menu__link-text">List of
+                                            Delivery Doc</span></a>
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
@@ -157,20 +128,20 @@ mat-toolbar{
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i   class="kt-menu__link-icon fa fa-clipboard-list"></i><span
-                        class="kt-menu__link-text">Invoices</span>
+                                        <i class="kt-menu__link-icon fa fa-clipboard-list"></i><span
+                                            class="kt-menu__link-text">Invoices</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a  [routerLink]="['/Customer/InvoiceDetail']" >
-                                        <i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">My Invoices</span>
+                                <p class=" p-2">
+                                    <a [routerLink]="['/Customer/InvoiceDetail']">
+                                        <i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">My
+                                            Invoices</span>
                                     </a>
                                 </p>
-                              
+
                             </mat-expansion-panel>
                         </mat-accordion>
-                       
+
                         <mat-accordion>
                             <!-- #enddocregion basic-panel -->
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -180,20 +151,17 @@ mat-toolbar{
                                         <span class="kt-menu__link-text">Accounts Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a 
-                                    class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">Current Ledger</span></a>
+                                <p class=" p-2">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">Current Ledger</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                    <a
-                                    class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">History</span></a>
+                                <p class=" p-2 ">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">History</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                    <a 
-                                class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                    class="kt-menu__link-text">Pending Payments</span></a>
+                                <p class=" p-2 ">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">Pending Payments</span></a>
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
@@ -207,42 +175,41 @@ mat-toolbar{
                                         <span class="kt-menu__link-text">Stock Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a
-                                    class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">Company Stocks</span></a>
+                                <p class=" p-2">
+                                    <a class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">Company Stocks</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                   
+                                <p class=" p-2 ">
+
                                 </p>
-                                <p class=" text-center ">
-                                    
+                                <p class=" p-2 ">
+
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
 
-                        <p class="kt-menu__item  " aria-haspopup="true"><a  runat="server" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-money-bill"></i><span class="kt-menu__link-text">Retail Order</span></a></p>
+                        <p class="kt-menu__item  " aria-haspopup="true"><a runat="server" class="kt-menu__link "><i
+                                    class="kt-menu__link-icon fa fa-money-bill"></i><span
+                                    class="kt-menu__link-text">Retail Order</span></a></p>
                         <mat-accordion>
                             <!-- #enddocregion basic-panel -->
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon fa fa-ticket-alt"></i> 
+                                        <i class="kt-menu__link-icon fa fa-ticket-alt"></i>
                                         <span class="kt-menu__link-text">Feedback</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" text-center">
-                                    <a
-                                    runat="server" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                        class="kt-menu__link-text">Raise Complaint</span></a>
+                                <p class=" p-2">
+                                    <a runat="server" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">Raise Complaint</span></a>
                                 </p>
-                                <p class=" text-center ">
-                                   
+                                <p class=" p-2 ">
+
                                 </p>
-                                <p class=" text-center ">
-                                    <a
-                                runat="server" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
-                                    class="kt-menu__link-text">Complaint Status</span></a>
+                                <p class=" p-2 ">
+                                    <a runat="server" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span
+                                            class="kt-menu__link-text">Complaint Status</span></a>
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
@@ -261,4 +228,3 @@ mat-toolbar{
         </main>
     </mat-sidenav-content>
 </mat-sidenav-container>
-

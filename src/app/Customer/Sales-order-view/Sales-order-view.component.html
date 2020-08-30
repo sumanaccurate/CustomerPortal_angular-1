@@ -1,0 +1,140 @@
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
+	<div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
+		<!--begin::Portlet-->
+
+		<div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm bg-light">
+			<div class="kt-portlet__head-label">
+				<h3 class="kt-portlet__head-title">Sales Order Info
+				</h3>
+			</div>
+		</div>
+
+		<div class="kt-portlet__body">
+			<div >
+				<table class="text-dark col-md-12">
+
+					<tbody>
+						<tr class="mt-4">
+							<th scope="row">Sold To Party : </th>
+							<td>{{this.OrderInfo.SoldToPartyCodevtxt}} - {{this.OrderInfo.SoldTopPartyNamevtxt}}</td>
+							<th scope="row"> Ship To Party :</th>
+							<td>{{this.OrderInfo.ShipToPartyCodevtxt}} - {{this.OrderInfo.ShipToPartyNamevtxt}}</td>
+							
+						</tr>
+						<tr class="mt-4">
+							<th scope="row">Sales Order Number : </th>
+							<td>{{this.OrderInfo.SalesOrderNumbervtxt}}</td>
+							<th scope="row">Sales Order Date : </th>
+							<td>{{this.OrderInfo.CreatedOndatetime | date :'dd/MM/yyyy'}}</td>
+							
+						</tr>
+						<tr class="mt-4">
+							<th scope="row"> PO No : </th>
+							<td>{{this.OrderInfo.Ponumbervtxt}}</td>
+							<th scope="row"> Total Order Quantity : </th>
+							<td>{{this.OrderInfo.TotalOrderQuantity }}</td>
+						</tr>
+						<tr class="mt-4">
+							<th scope="row">Total Delivery Quantity : </th>
+							<td>{{this.OrderInfo.TotalDeliveryQuantity}}</td>
+							<th scope="row">Total balance Quantity : </th>
+							<td>{{this.OrderInfo.BalanceQuantity - this.OrderInfo.DeliveryQuantityint}}</td>
+							
+						</tr>
+						<tr class="mt-4">
+							<th scope="row"> Total Order Value : </th>
+							<td>{{this.OrderInfo.TotalOrderValue}}</td>
+							<th scope="row">Status : </th>
+							<td>{{this.OrderInfo.SalesOrderStatusvtxt}}</td>
+						
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+			<h5 class="mt-4" >Sales Order Detail</h5>
+			<div >
+				<div class="kt-portlet__body ">
+
+					<div>
+						<div *ngFor="let Order of Orders;  let i=index" class="customerCustomers-list border shadow-sm p-3 mb-3">
+							<div class="row col-11">
+								<div class="col-md-4 ">
+									<div>
+										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+									</div>
+									<div>
+										Quantity : <span class="kt-font-bold">{{Order.OrderQuantityint}}</span>
+									</div>
+									<div>
+										Status : <span class="kt-font-bold">{{Order.ItemStatusvtxt}}</span>
+									</div>
+								</div>
+
+								<div class="col-md-4 ">
+									<div>
+										Material Description :
+										<span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}</span>
+									</div>
+									
+								</div>
+
+								<div class="col-md-4 ">
+									<div>
+										Unit of Measurement :
+										<span class="kt-font-bold">{{Order.UnitOfMeasurevtxt}}</span>
+									</div>
+									
+
+									<div>
+										Delivery Quantity :
+										<span class="kt-font-bold">{{Order.DeliveryQuantityint}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<h5 class="mt-4">Dispatch Order Detail</h5>
+			<div >
+				<div class="kt-portlet__body ">
+
+					<div>
+						<div *ngFor="let Order of DeliveryOrders;  let i=index" class="customerCustomers-list border shadow-sm p-3 mb-3">
+							<div class="row col-11">
+								<div class="col-md-4 ">
+									<div>
+										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+									</div>
+								</div>
+
+								<div class="col-md-4 ">
+									<div>
+										Material Description :
+										<span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}</span>
+									</div>
+									
+								</div>
+
+								<div class="col-md-4 ">
+									<div>
+										Delivery Quantity :
+										<span class="kt-font-bold">{{Order.Qtyint}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h2 *ngIf="this.DeliveryOrders==null">No Data Available for Dispatch Order </h2>
+					</div>
+
+
+				</div>
+			</div>
+
+			<button (click)="Back()" class="btn col-md-1 btn-primary">Close</button>
+		</div>

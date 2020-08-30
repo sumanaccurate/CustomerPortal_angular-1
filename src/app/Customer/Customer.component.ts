@@ -5,10 +5,11 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 
 @Component({
   selector: 'app-SA',
+  styleUrls: ['../app.component.css'],
   templateUrl: './Customer.component.html'
  
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent implements OnInit{
   userDetails; 
   constructor(private router: Router, private service: UserService) { }
   

@@ -15,7 +15,7 @@ import {
   animateChild
 } from '@angular/animations';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html',
+@Component({ selector: 'app',styleUrls: ['./app.component.css'], templateUrl: 'app.component.html',
 animations: [
     trigger('myAnimation', [
       transition('* => *', [

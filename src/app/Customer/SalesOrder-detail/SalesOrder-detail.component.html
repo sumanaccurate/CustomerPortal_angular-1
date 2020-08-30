@@ -7,28 +7,18 @@
       <div class="kt-portlet__head kt-portlet__head--lg bg-light">
         <div class="kt-portlet__head-label">
 
-          <h3 class="kt-portlet__head-title text-dark">Sales Details
+          <h3 class="kt-portlet__head-title text-dark">Sales Order List
           </h3>
         </div>
-       
+
       </div>
       <div class="p-4 bg-light border-top border-bottom">
         <!--begin: Search Form -->
         <div class="kt-form kt-form--label-right ">
           <div class="row align-items-center">
-            <div class="col-xl-12 order-2 order-xl-1">
+            <div class="col-xl-3 order-2 order-xl-1">
               <div class="row align-items-center">
                 <!-- <div class="col-md kt-margin-b-20-tablet-and-mobile">
-
-                  <select class="form-control">
-                    <option value="AD">Status</option>
-                    <option value="AD">Delivered</option>
-                    <option value="AF">Blocked</option>
-                    <option value="AX">Partially Delivered</option>
-                  </select>
-
-                </div> -->
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
                     <input type="text" class="form-control" placeholder="From Date" id="kt_datepicker_1">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
@@ -43,10 +33,10 @@
                       <span><i class="la la-calendar"></i></span>
                     </span>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  [(ngModel)]="search"   placeholder="Type To Search...">
+                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
                       <span><i class="la la-search"></i></span>
                     </span>
@@ -65,71 +55,50 @@
       <div class="kt-portlet__body ">
 
         <div>
-          <div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
-            <div class="row">
+          <div *ngFor="let Order of Orders" class="customerCustomers-list border row shadow-sm p-3 mb-3">
+            <div class="row col-11">
               <div class="col-md-4 ">
-                
-              
                 <div>
-                  ShipToParty Code & Name : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
+                  Sold To Party : {{Order.SoldToPartyCodevtxt}} - {{Order.SoldTopPartyNamevtxt}}
                 </div>
                 <div>
-                  Address : <span class="kt-font-bold">{{Order.Addressvtxt}}</span>
-                </div>
-               
-                <div>
-                  City : <span class="kt-font-bold">{{Order.Cityvtxt}}</span>
+                  Sales Order Date : <span class="kt-font-bold">{{Order.CreatedOndatetime | date :'dd/MM/yyyy'}}</span>
                 </div>
                 <div>
-                  NetValue : <span class="kt-font-bold">{{Order.NetValuedcl}}</span>
+                  Total Order Value : <span class="kt-font-bold">{{Order.NetValuedcl}}</span>
                 </div>
-                <div>
-                  Created On date : <span class="kt-font-bold">{{Order.CreatedOndatetime}}</span>
-                </div>
-                
+
+
               </div>
-
               <div class="col-md-4 ">
                 <div>
-                  Unit Of Measurement : <span class="kt-font-bold">{{Order.UnitOfMeasurevtxt}}</span>
+                  Ship To Party : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
                 </div>
                 <div>
-                  Delivery Order No : <span class="kt-font-bold">{{Order.DeliveryOrderNovtxt}}</span>
-                </div>
-
-                <div>
-                  Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate}}</span>
+                  PO No : <span class="kt-font-bold">{{Order.Ponumbervtxt}}</span>
                 </div>
                 <div>
-                  Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
-                </div>
-                <div>
-                  Status : <span class="kt-font-bold">{{Order.Statusvtxt}}
-                </span></div>
-                
+                  Status : <span class="kt-font-bold">{{Order.SalesOrderStatusvtxt}}
+                  </span></div>
               </div>
-
               <div class="col-md-4 ">
-                <div>
-                  Phone No : <span class="kt-font-bold">{{Order.Ponumbervtxt}}</span>
-                </div>
                 <div>
                   Sales Order Number : <span class="kt-font-bold">{{Order.SalesOrderNumbervtxt}}</span>
                 </div>
+
                 <div>
-                  SalesOrderType : <span class="kt-font-bold">{{Order.SalesOrderTypevtxt}}
-                </span></div>
-                <div>
-                  Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}
-                </span></div>
-                <div>
-                  Material Description : <span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}
-                </span></div>
-                
+                  Total Order Quantity : <span class="kt-font-bold">{{Order.OrderQuantityint}}</span>
+                </div>
+
               </div>
             </div>
+            <div class=" col-md-1">
+              <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
+                (click)="pass(this.Order.SalesOrderNumbervtxt)" ><i class="fa fa-eye"></i>
+              </button>
+            </div>
           </div>
-          
+
 
           <div class="container mw-100">
             <div class="row">
