@@ -64,10 +64,17 @@
                 <div>
                   Delivery Date : <span class="kt-font-bold">{{Order.DeliveryDatedate | date :'dd/MM/yyyy'}}</span>
                 </div>
-                
                 <div>
-                  Total Order Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
+                  TruckNo : <span class="kt-font-bold">{{Order.TruckNovtxt}}</span>
                 </div>
+                <div>
+                  LR No : <span class="kt-font-bold">{{Order.Lrnumbervtxt}}</span>
+                </div>
+                <div>
+                  Driver Mobile No : <span class="kt-font-bold">{{Order.DriverMobileNovtxt}}</span>
+                </div>
+                
+               
               </div>
               <div class="col-md-4 ">
                 <div>
@@ -77,7 +84,14 @@
                   Sales Order No : <span class="kt-font-bold">{{Order.SalesOrderNovtxt}}</span>
                 </div>
                 <div>
-                  Status : <span class="kt-font-bold">{{Order.DeliveryStatusvtxt}}</span>
+                  Transporter No : <span class="kt-font-bold">{{Order.Transportervtxt}}</span>
+                </div>
+                <div>
+                  LR date : <span class="kt-font-bold">{{Order.Lrdatedate | date :'dd/MM/yyyy'}}</span>
+                </div>
+               
+                <div>
+                  Driver : <span class="kt-font-bold">{{Order.Drivervtxt}}</span>
                 </div>
                 
               </div>
@@ -89,7 +103,13 @@
                 <div>
                   Invoice No : <span class="kt-font-bold">{{Order.InvoiceNumbervtxt}}</span>
                 </div>
-              
+                <div>
+                  Total Order Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
+                </div>
+                <div>
+                  Status : <span class="kt-font-bold">{{Order.DeliveryStatusvtxt}}</span>
+                </div>
+                
               </div>
             </div>
             <div class=" col-md-1">
@@ -98,8 +118,7 @@
               </button>
             </div>
           </div>
-
-
+           
           <div class="container mw-100">
             <div class="row">
               <div class="col-md-3"> </div>

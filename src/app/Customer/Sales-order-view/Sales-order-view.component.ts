@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import { SalesOrderService } from 'src/app/shared/SalesOrderService';
+import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 
 @Component({
   selector: 'app-Sales-order-view',
@@ -10,31 +12,32 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 })
 export class CustomerSalesOrderViewComponent implements OnInit {
 
-  constructor(private _CustomerService: CustomerService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  constructor(private _DeliveryOrder : DeliveryOrderService, private _SalesService: SalesOrderService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   Orders: any[];
   DeliveryOrders: any[];
   OrderInfo: any;
   ngOnInit() {
     let OrderNo =this.storage.get('OrderId');
+    this.getAllDeliveryOrderDataBySalesOrderNo(OrderNo);
     this.getAllSalesOrderDataByOrderNo(OrderNo);
     this.getSalesOrderHeaderDataByOrderNo(OrderNo);
-    this.getAllDeliveryOrderDataBySalesOrderNo(OrderNo);
+   
   }
 
   getAllDeliveryOrderDataBySalesOrderNo(OrderNo){
-    this._CustomerService.getAllDeliveryOrderDataBySalesOrderNo(OrderNo).subscribe((data: any) => {
+    this._DeliveryOrder.getAllDeliveryOrderDataBySalesOrderNo(OrderNo).subscribe((data: any) => {
       this.DeliveryOrders = data as any[];
     });
   }
 
   getAllSalesOrderDataByOrderNo(OrderNo){
-    this._CustomerService.getAllSalesOrderDataByOrderNo(OrderNo).subscribe((data: any) => {
+    this._SalesService.getAllSalesOrderDataByOrderNo(OrderNo).subscribe((data: any) => {
       this.Orders = data as any[];
     });
   }
 
   getSalesOrderHeaderDataByOrderNo(OrderNo){
-    this._CustomerService.getSalesOrderHeaderDataByOrderNo(OrderNo).subscribe(  
+    this._SalesService.getSalesOrderHeaderDataByOrderNo(OrderNo).subscribe(  
       data => {  
        this.OrderInfo = data[0] ;  
       }  

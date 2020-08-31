@@ -65,7 +65,7 @@
                   Sales Order Date : <span class="kt-font-bold">{{Order.CreatedOndatetime | date :'dd/MM/yyyy'}}</span>
                 </div>
                 <div>
-                  Total Order Value : <span class="kt-font-bold">{{Order.NetValuedcl}}</span>
+                  Total Order Value : <span class="kt-font-bold">{{Order.NetValuedcl | number : '1.0-0'  }}</span>
                 </div>
 
 

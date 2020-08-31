@@ -13,8 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref" : "/v2/",
-            "deployUrl": "/v2/",
             "outputPath": "dist/CustomerPortal",
             "index": "src/index.html",
             "main": "src/main.ts",

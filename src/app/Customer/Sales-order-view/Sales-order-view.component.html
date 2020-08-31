@@ -104,32 +104,49 @@
 				<div class="kt-portlet__body ">
 
 					<div>
-						<div *ngFor="let Order of DeliveryOrders;  let i=index" class="customerCustomers-list border shadow-sm p-3 mb-3">
+						<div *ngFor="let DeliveryOrder of DeliveryOrders" class="customerCustomers-list border shadow-sm p-3 mb-3">
 							<div class="row col-11">
 								<div class="col-md-4 ">
 									<div>
-										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+										Delivery Order No :
+										<span class="kt-font-bold">{{DeliveryOrder.DeliveryOrderNovtxt}}</span>
 									</div>
-								</div>
-
-								<div class="col-md-4 ">
 									<div>
 										Material Description :
-										<span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}</span>
+										<span class="kt-font-bold">{{DeliveryOrder.MaterialDescriptionvtxt}}</span>
 									</div>
+									
+									
 									
 								</div>
 
 								<div class="col-md-4 ">
 									<div>
 										Delivery Quantity :
-										<span class="kt-font-bold">{{Order.Qtyint}}</span>
+										<span class="kt-font-bold">{{DeliveryOrder.Qtyint}}</span>
+									</div>
+									<div>
+										Delivery Date :
+										<span class="kt-font-bold">{{DeliveryOrder.DeliveryDatedate | date :'dd/MM/yyyy'}}</span>
+									</div>
+									
+									
+								</div>
+
+								<div class="col-md-4 ">
+									<div>
+										Material Code : <span class="kt-font-bold">{{DeliveryOrder.MaterialCodevtxt}}</span>
+									</div>
+									
+									<div>
+										Delivery Status :
+										<span class="kt-font-bold">{{DeliveryOrder.DeliveryStatusvtxt}}</span>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<h2 *ngIf="this.DeliveryOrders==null">No Data Available for Dispatch Order </h2>
+						<h2 *ngIf="this.DeliveryOrders[0]==null">No Data Available for Dispatch Order </h2>
 					</div>
 
 

@@ -6,6 +6,7 @@ import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/fo
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
+import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './DispatchOrder-detail.component.html',
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class CustomerDispatchOrderDetailComponent implements OnInit {
   Orders: any[]; 
-  constructor(private service: UserService,private router: Router, private _CustomerService: CustomerService
+  constructor(private _DeliveryOrderService :DeliveryOrderService,private service: UserService,private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData ; 
   pageNo: any = 1;  
@@ -59,14 +60,14 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   }
 
   getAllOrders() {  
-       this._CustomerService.getAllOrderData(localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
+       this._DeliveryOrderService.getAllOrderData(localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
       this.Orders = data as any[];
       this.getAllOrdersCount();
     })
     
   }  
   getAllOrdersCount() {  
-    this._CustomerService.getAllOrderCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
+    this._DeliveryOrderService.getAllOrderCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
       this.totalOrdersCount = res;  
       this.totalNoOfPages();  
     })  

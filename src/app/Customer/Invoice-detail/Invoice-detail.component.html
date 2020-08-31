@@ -66,7 +66,7 @@
                 </div>
 
                 <div>
-                  Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl}}</span>
+                  Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl | number : '1.0-0'  }}</span>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@
                   Invoice No : <span class="kt-font-bold">{{Invoice.InvoiceDocumentNovtxt}}</span>
                 </div>
                 <div>
-                  Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
+                  Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl  | number : '1.0-0'  }}</span>
                 </div>
 
               </div>

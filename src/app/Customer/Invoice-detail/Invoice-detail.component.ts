@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';    
 import { PaginationService } from '../../component/pagination/pagination.service';
 import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
-import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
+import { InvoiceService } from 'src/app/shared/InvoiceService';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './Invoice-detail.component.html',
@@ -12,7 +12,7 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class CustomerInvoiceDetailComponent implements OnInit {
   Invoices: any[]; 
-  constructor(private router: Router, private _CustomerService: CustomerService
+  constructor(private _InvoiceService : InvoiceService,private router: Router
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData ; 
   pageNo: any = 1;  
@@ -40,14 +40,14 @@ export class CustomerInvoiceDetailComponent implements OnInit {
   }  
 
   getAllInvoices() {  
-       this._CustomerService.getAllInvoiceData(localStorage.getItem('UserCode'),this.pageNo,this.InvoicesPerPage,this.search).subscribe((data: any) => {
+       this._InvoiceService.getAllInvoiceData(localStorage.getItem('UserCode'),this.pageNo,this.InvoicesPerPage,this.search).subscribe((data: any) => {
       this.Invoices = data as any[];
       this.getAllInvoicesCount();
     })
     
   }  
   getAllInvoicesCount() {  
-    this._CustomerService.getAllInvoiceCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
+    this._InvoiceService.getAllInvoiceCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
       this.totalInvoicesCount = res;  
       this.totalNoOfPages();  
     })  

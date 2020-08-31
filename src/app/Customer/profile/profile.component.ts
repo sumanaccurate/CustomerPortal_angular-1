@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html'
 })
 export class CustomerProfileComponent implements OnInit {
-  Userid =null ;
-  User: any; 
   constructor(private service: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
-
+  User: any; 
   ngOnInit(): void {
-    this.Userid= localStorage.getItem('IDbint');
-    if(this.Userid!==null && this.Userid!==""){
-      this.service.getUserProfile(this.Userid).subscribe(  
+    let Userid= localStorage.getItem('IDbint');
+    this.getUserData(Userid);
+  }
+
+  getUserData(Userid){
+    if(Userid!==null &&Userid!==""){
+      this.service.getUserProfile(Userid).subscribe(  
         data => {  
          this.User = data ;  
         }  
@@ -26,7 +28,6 @@ export class CustomerProfileComponent implements OnInit {
     else{
       this.router.navigate(['/user/login']);
     }
-
   }
 
   pass(value): void {

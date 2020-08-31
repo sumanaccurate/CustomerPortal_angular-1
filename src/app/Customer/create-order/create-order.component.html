@@ -10,8 +10,6 @@
 
         <div class="kt-portlet__body">
             <div class="kt-form">
-
-
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="kt-section p-3">
@@ -29,29 +27,29 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">User Code</label>
                                         <div class="col-md-3">
-
+                                            {{this.User.UserCodetxt}}
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">User Name</label>
                                         <div class="col-md-3">
-
+                                            {{this.User.UserNametxt}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Division</label>
                                         <div class="col-md-3">
-
+                                            {{this.User.Divisionvtxt}}
                                         </div>
-                                        <label class="col-md-3 kt-font-boldest">Design</label>
+                                        <label class="col-md-3 kt-font-boldest">Sales Group</label>
                                         <div class="col-md-3">
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Size</label>
+                                        <label class="col-md-3 kt-font-boldest">Company</label>
                                         <div class="col-md-3">
 
                                         </div>
-                                        <label class="col-md-3 kt-font-boldest">Tiles</label>
+                                        <label class="col-md-3 kt-font-boldest">Billing Address</label>
                                         <div class="col-md-3">
 
                                         </div>
@@ -60,23 +58,27 @@
 
                                 <div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Mother Category</label>
-                                        <div class="col-md-3">
+                                        <label class="col-md-3 kt-font-boldest">Ship to Address</label>
+                                        <div class="col-md-5">
 
                                         </div>
-                                        <label class="col-md-3 kt-font-boldest">Frt Group</label>
-                                        <div class="col-md-3">
 
-                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Range</label>
-                                        <div class="col-md-3">
+                                        <label class="col-md-3 kt-font-boldest">Ship to Name</label>
+                                        <div class="col-md-5">
 
                                         </div>
                                     </div>
                                 </div>
-
+                                <div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 kt-font-boldest">PO No</label>
+                                        <div class="col-md-5">
+                                            <input type="text" />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 kt-font-boldest">Item Code</label>
                                     <div class="col-md-9">
@@ -84,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Item Description</label>
+                                    <label class="col-md-3 kt-font-boldest"></label>
                                     <div class="col-md-9">
                                         O7VM 1200X295-4 ALDER WOOD SATIN-P
                                     </div>
@@ -162,7 +164,7 @@
                     <!--end::Form-->
                 </div>
             </div>
-            <div  class="border mt-3">
+            <div class="border mt-3">
 
                 <!--begin::Portlet-->
                 <div class="kt-portlet mb-0">
@@ -178,38 +180,38 @@
                             <div class="kt-section__content">
                                 <tr *ngFor="let project of projects; let i = index">
                                     <td>
-                                      <span [hidden]="project.inedit">{{project.projectID}}</span>
-                                      <input type="text" [hidden]="!project.inedit" value="{{project.projectID}}"/>
+                                        <span [hidden]="project.inedit">{{project.projectID}}</span>
+                                        <input type="text" [hidden]="!project.inedit" value="{{project.projectID}}" />
                                     </td>
                                     <td>
-                                      <span [hidden]="project.inedit">{{project.projectName}}</span>
-                                      <input type="text" [hidden]="!project.inedit" value="{{project.projectName}}"/>
-                                    </td>          
+                                        <span [hidden]="project.inedit">{{project.projectName}}</span>
+                                        <input type="text" [hidden]="!project.inedit" value="{{project.projectName}}" />
+                                    </td>
                                     <td><span [hidden]="project.inedit">{{project.dateOfStart}}</span>
-                                      <input type="text" [hidden]="!project.inedit" value="{{project.dateOfStart}}"/>
+                                        <input type="text" [hidden]="!project.inedit" value="{{project.dateOfStart}}" />
                                     </td>
                                     <td><span [hidden]="project.inedit">{{project.teamSize}}</span>
-                                      <input type="text" [hidden]="!project.inedit" value="{{project.teamSize}}"/>
+                                        <input type="text" [hidden]="!project.inedit" value="{{project.teamSize}}" />
                                     </td>
                                     <td>
-                                      <div class="btnactions" [hidden]="project.inedit" >
-                                          <button class="btn btn-info" (click)="onEditClick($event, i)" data-toggle="modal"
-                                          data-target="#editModal">Edit</button>|
-                                      </div>
-                                        
-                                      <div class="btnactions" [hidden]="!project.inedit">
-                                          <button class="btn btn-info" (click)="onSaveClick($event, i)" data-toggle="modal"
-                                          data-target="#editModal">Save</button>|
-                                          <button class="btn btn-info" (click)="onCancelClick(i)" data-toggle="modal"
-                                          data-target="#editModal">Cancel</button>|
-                                      </div>
-                                      <div class="btnactions">
-                                          <button class="btn btn-warning" (click)="onDeleteClick($event, i)" data-toggle="modal"
-                                          data-target="#deleteModal">Delete</button>
-                                      </div>
-                                      
+                                        <div class="btnactions" [hidden]="project.inedit">
+                                            <button class="btn btn-info" (click)="onEditClick($event, i)"
+                                                data-toggle="modal" data-target="#editModal">Edit</button>|
+                                        </div>
+
+                                        <div class="btnactions" [hidden]="!project.inedit">
+                                            <button class="btn btn-info" (click)="onSaveClick($event, i)"
+                                                data-toggle="modal" data-target="#editModal">Save</button>|
+                                            <button class="btn btn-info" (click)="onCancelClick(i)" data-toggle="modal"
+                                                data-target="#editModal">Cancel</button>|
+                                        </div>
+                                        <div class="btnactions">
+                                            <button class="btn btn-warning" (click)="onDeleteClick($event, i)"
+                                                data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                        </div>
+
                                     </td>
-                                  </tr>
+                                </tr>
                             </div>
                         </div>
 

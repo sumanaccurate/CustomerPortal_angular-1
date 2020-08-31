@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
-import { CustomerService } from 'src/app/shared/CustomerService';
+import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 
 @Component({
   selector: 'app-dispatch-order-view',
@@ -10,7 +10,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 })
 export class DispatchOrderViewComponent implements OnInit {
 
-  constructor(private _CustomerService: CustomerService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  constructor(private _DeliveryOrderService :DeliveryOrderService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   Orders: any[];
   OrderInfo ;
   ngOnInit() {
@@ -20,13 +20,13 @@ export class DispatchOrderViewComponent implements OnInit {
   }
 
   getAllOrderDataByOrderNo(OrderNo){
-    this._CustomerService.getAllOrderDataByOrderNo(OrderNo).subscribe((data: any) => {
+    this._DeliveryOrderService.getAllOrderDataByOrderNo(OrderNo).subscribe((data: any) => {
       this.Orders = data as any[];
     });
   }
 
   getDeliveryOrderHeaderDataByOrderNo(OrderNo){
-    this._CustomerService.getDeliveryOrderHeaderDataByOrderNo(OrderNo).subscribe(  
+    this._DeliveryOrderService.getDeliveryOrderHeaderDataByOrderNo(OrderNo).subscribe(  
       data => {  
        this.OrderInfo = data[0] ;  
       }  

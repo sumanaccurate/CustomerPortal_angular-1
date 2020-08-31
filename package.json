@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve  --rebase-root-relative-css-urls=true",
+    "start": "ng serve  ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

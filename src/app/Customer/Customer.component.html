@@ -94,7 +94,7 @@
                                             class="kt-menu__link-text">Order Request</span></a>
                                 </p>
                                 <p class=" p-2 ">
-                                    <a class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                    <a  [routerLink]="['/Customer/CreateOrderRequest']"  class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
                                             class="kt-menu__link-text">Place Order
                                             Request</span></a>
                                 </p>
@@ -221,10 +221,7 @@
     </mat-sidenav>
     <mat-sidenav-content style="margin-left: 200px;" class="mat-drawer-content mat-sidenav-content">
         <main class="content">
-            <div class="container-fluid margin-top-55px">
                 <router-outlet></router-outlet>
-
-            </div>
         </main>
     </mat-sidenav-content>
 </mat-sidenav-container>

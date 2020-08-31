@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import { InvoiceService } from 'src/app/shared/InvoiceService';
 
 @Component({
   selector: 'app-Invoice-view',
@@ -10,7 +11,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 })
 export class CustomerInvoiceViewComponent implements OnInit {
 
-  constructor(private _CustomerService: CustomerService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  constructor(private _InvoiceService : InvoiceService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   Invoices: any[];
   InvoiceInfo: any;
   ngOnInit() {
@@ -20,14 +21,14 @@ export class CustomerInvoiceViewComponent implements OnInit {
   }
 
   getAllInvoiceDataByInvoiceNo(InvoiceNo){
-    this._CustomerService.getAllInvoiceDataByInvoiceNo(InvoiceNo).subscribe((data: any) => {
+    this._InvoiceService.getAllInvoiceDataByInvoiceNo(InvoiceNo).subscribe((data: any) => {
       this.Invoices = data as any[];
       this.InvoiceInfo=this.Invoices[0];
     });
   }
 
   getInvoiceHeaderDataByInvoiceNo(InvoiceNo){
-    this._CustomerService.getInvoiceHeaderDataByInvoiceNo(InvoiceNo).subscribe(  
+    this._InvoiceService.getInvoiceHeaderDataByInvoiceNo(InvoiceNo).subscribe(  
       data => {  
        this.InvoiceInfo = data[0] ;  
       }  
