@@ -51,7 +51,7 @@
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">Billing Address</label>
                                         <div class="col-md-3">
-                                            {{this.CustomerData.Address1vtxt}}  , {{this.CustomerData.Address2vtxt}}
+                                            {{this.CustomerData.Address1vtxt}} , {{this.CustomerData.Address2vtxt}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -77,23 +77,24 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Address</label>
                                         <div class="col-md-5">
-                                            <!-- <select  class="form-control"  formControlName="ShiptoAddress"  [(ngModel)]="SelCountryId" (change)="FillStateDDL();">  
-                                                <option value="">--Select--</option>  
-                                                <option *ngFor="let Country of ShiptoAddress | async" value={{Country.CountryId}}>  
-                                                    {{Country.CountryName}}  
-                                                </option>  
-                                          </select>  -->
+                                            <label>Summary: </label>
+                                            <select (change)="getShipToNameData($event.target.value)">
+                                                <option value="0">--All--</option>
+                                                <option *ngFor="let ShiptoAddress of ShiptoAddresss" value={{ShiptoAddress.ShipToCodevtxt}}>
+                                                    {{ShiptoAddress.ShipToNamevtxt}}
+                                                </option>
+                                            </select>
                                         </div>
 
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name</label>
-                                        <div class="col-md-5">
-
+                                        <div class="col-md-6">
+                                            {{ShipToName}}
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label class="col-md-3 kt-font-boldest">Item Code</label>
                                     <div class="col-md-9">
@@ -193,33 +194,22 @@
                         <!--begin::Section-->
                         <div class="kt-section mb-0">
                             <div class="kt-section__content">
-                                <tr *ngFor="let project of projects; let i = index">
+                                <tr *ngFor="let Item of ItemMaster; let i = index">
                                     <td>
-                                        <span [hidden]="project.inedit">{{project.projectID}}</span>
-                                        <input type="text" [hidden]="!project.inedit" value="{{project.projectID}}" />
-                                    </td>
-                                    <td>
-                                        <span [hidden]="project.inedit">{{project.projectName}}</span>
-                                        <input type="text" [hidden]="!project.inedit" value="{{project.projectName}}" />
-                                    </td>
-                                    <td><span [hidden]="project.inedit">{{project.dateOfStart}}</span>
-                                        <input type="text" [hidden]="!project.inedit" value="{{project.dateOfStart}}" />
-                                    </td>
-                                    <td><span [hidden]="project.inedit">{{project.teamSize}}</span>
-                                        <input type="text" [hidden]="!project.inedit" value="{{project.teamSize}}" />
+                                        <span [hidden]="Item.Idint">{{Item.Idint}}</span>
                                     </td>
                                     <td>
-                                        <div class="btnactions" [hidden]="project.inedit">
-                                            <button class="btn btn-info" (click)="onEditClick($event, i)"
-                                                data-toggle="modal" data-target="#editModal">Edit</button>|
-                                        </div>
-
-                                        <div class="btnactions" [hidden]="!project.inedit">
-                                            <button class="btn btn-info" (click)="onSaveClick($event, i)"
-                                                data-toggle="modal" data-target="#editModal">Save</button>|
-                                            <button class="btn btn-info" (click)="onCancelClick(i)" data-toggle="modal"
-                                                data-target="#editModal">Cancel</button>|
-                                        </div>
+                                        <span >{{Item.ItemCodevtxt}}</span>
+                                    </td>
+                                    <td><span ">{{Item.ItemDescvtxt}}</span>
+                                    </td>
+                                    
+                                    <td><span >{{Item.Uomnvtxt}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{Item.Quantity}}" />
+                                    </td>
+                                    <td>
                                         <div class="btnactions">
                                             <button class="btn btn-warning" (click)="onDeleteClick($event, i)"
                                                 data-toggle="modal" data-target="#deleteModal">Delete</button>
