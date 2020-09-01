@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserService } from 'src/app/shared/user.service';
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
+import { CustomerService } from 'src/app/shared/CustomerService';
 
 @Component({
   selector: 'app-create-order',
@@ -9,11 +9,13 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
   styleUrls: ['./create-order.component.css']
 })
 export class CustomerCreateOrderComponent implements OnInit {
-  User: any; 
-  constructor(private _userservice: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  CustomerData: any; 
+  constructor(private _CustomerService: CustomerService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
  
   projects={projectID: 'wxp001', projectName: 'TYC001', dateOfStart: '2018-12-23', teamSize: 'L', inedit: false};
   ngOnInit() {
+    let Userid= localStorage.getItem('UserCode');
+    this.getCustomerData(Userid);
   }
 
   onEditClick(event, index: number) {
@@ -22,8 +24,8 @@ export class CustomerCreateOrderComponent implements OnInit {
   
     // code logic here
     // ...
-    let Userid= localStorage.getItem('IDbint');
-    this.getUserData(Userid);
+    
+    
   }
 
  
@@ -35,11 +37,11 @@ export class CustomerCreateOrderComponent implements OnInit {
   }
 
 
-  getUserData(Userid){
+  getCustomerData(Userid){
     if(Userid!==null &&Userid!==""){
-      this._userservice.getUserProfile(Userid).subscribe(  
+      this._CustomerService.getCustomerData(Userid).subscribe(  
         data => {  
-         this.User = data ;  
+         this.CustomerData = data['0'] ;  
         }  
       );  
     }

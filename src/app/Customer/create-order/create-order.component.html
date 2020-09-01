@@ -11,7 +11,7 @@
         <div class="kt-portlet__body">
             <div class="kt-form">
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-12">
                         <div class="kt-section p-3">
                             <div class="kt-section__body">
 
@@ -25,48 +25,42 @@
                                 </div> -->
                                 <div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">User Code</label>
+                                        <label class="col-md-3 kt-font-boldest">Customer Code</label>
                                         <div class="col-md-3">
-                                            {{this.User.UserCodetxt}}
+                                            {{this.CustomerData.CustCodevtxt}}
                                         </div>
-                                        <label class="col-md-3 kt-font-boldest">User Name</label>
+                                        <label class="col-md-3 kt-font-boldest">Customer Name</label>
                                         <div class="col-md-3">
-                                            {{this.User.UserNametxt}}
+                                            {{this.CustomerData.CustNamevtxt}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Division</label>
                                         <div class="col-md-3">
-                                            {{this.User.Divisionvtxt}}
+                                            {{this.CustomerData.DivisionCdvtxt}}
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">Sales Group</label>
                                         <div class="col-md-3">
-
+                                            {{this.CustomerData.SalesOrgNamevtxt}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Company</label>
                                         <div class="col-md-3">
-
+                                            {{this.CustomerData.CompanyNamevtxt}}
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">Billing Address</label>
                                         <div class="col-md-3">
-
+                                            {{this.CustomerData.Address1vtxt}}  , {{this.CustomerData.Address2vtxt}}
                                         </div>
                                     </div>
-                                </div>
-
-                                <div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Ship to Address</label>
-                                        <div class="col-md-5">
+                                        <label class="col-md-3 kt-font-boldest">Order No</label>
+                                        <div class="col-md-3">
 
                                         </div>
-
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Ship to Name</label>
-                                        <div class="col-md-5">
+                                        <label class="col-md-3 kt-font-boldest">Order Date</label>
+                                        <div class="col-md-3">
 
                                         </div>
                                     </div>
@@ -79,6 +73,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 kt-font-boldest">Ship to Address</label>
+                                        <div class="col-md-5">
+                                            <!-- <select  class="form-control"  formControlName="ShiptoAddress"  [(ngModel)]="SelCountryId" (change)="FillStateDDL();">  
+                                                <option value="">--Select--</option>  
+                                                <option *ngFor="let Country of ShiptoAddress | async" value={{Country.CountryId}}>  
+                                                    {{Country.CountryName}}  
+                                                </option>  
+                                          </select>  -->
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 kt-font-boldest">Ship to Name</label>
+                                        <div class="col-md-5">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row">
                                     <label class="col-md-3 kt-font-boldest">Item Code</label>
                                     <div class="col-md-9">
