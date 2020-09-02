@@ -73,6 +73,8 @@ import { DispatchOrderViewComponent } from './Customer/dispatch-order-view/dispa
 import { CustomerSalesOrderViewComponent } from './Customer/Sales-order-view/Sales-order-view.component';
 import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-view.component';
 import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
+
+import { TokenInterceptor } from './services/token.interceptor';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -127,7 +129,7 @@ import { CustomerCreateOrderComponent } from './Customer/create-order/create-ord
  
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
+    useClass: TokenInterceptor,
     multi: true
   },
   

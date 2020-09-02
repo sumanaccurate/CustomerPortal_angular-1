@@ -23,4 +23,16 @@ getAllOutStandingforDashboard(UserCode): Observable<any> {
 getAllCreditLimitforDashboard(UserCode): Observable<any> {  
   return this.http.get(this.BaseURI + '/Creditlimit/GetCreditlimit/'+UserCode);
 } 
+
+getCustomerData(Id) {
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerDataByUserId/'+Id);
+}
+
+GetShipToAddress(Id) {
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetShipToAddress/'+Id);
+}
+
+getGetShipToData(Id) {
+  return this.http.get(this.BaseURI + '/CustomerMaster/GetShipTo/'+Id);
+}
 }

@@ -1,4 +1,4 @@
-import { AuthGuard } from './auth/auth.guard';
+// import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
@@ -25,6 +25,7 @@ import { DispatchOrderViewComponent } from './Customer/dispatch-order-view/dispa
 import { CustomerSalesOrderViewComponent } from './Customer/Sales-order-view/Sales-order-view.component';
 import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-view.component';
 import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
+import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {

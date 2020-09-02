@@ -1,8 +1,8 @@
-import { UserService } from '../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
  import { AlertService } from '../../component/alert.service';
+import { AuthService } from 'src/app/services/auth.service';
 
  
 @Component({
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     Passwordvtxt : new FormControl(''),
   })
 
-  constructor(private service: UserService, private router: Router
+  constructor( private router: Router,private authService :AuthService
      , private alertService : AlertService ) { }
 
   ngOnInit() {
@@ -28,33 +28,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.service.login(this.loginForm.value).subscribe(
-      (res: any) => {
-       localStorage.setItem('id_token', res.BearerToken);
-       localStorage.setItem('IDbint', res.IDbint);
-       localStorage.setItem('UserType', res.UserTypetxt);
-       localStorage.setItem('UserCode', res.UserCodetxt);
-       if(res.UserTypetxt!=="SuperAdmin"){
-        localStorage.setItem('Division', res.Divisionvtxt);
-       }
-        if(res.UserTypetxt=="SuperAdmin"){
+
+  onSubmit(): void {
+      this.authService.login(this.loginForm.value).subscribe(() => {
+         let UserTypetxt=  localStorage.getItem('UserType');
+         if(UserTypetxt=="SuperAdmin"){
           this.router.navigateByUrl('/SuperAdmin/dashboard');
-        }else if (res.UserTypetxt=="SystemAdmin"){
+        }else if (UserTypetxt=="SystemAdmin"){
           this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
-        }else if (res.UserTypetxt=="Customer"){
+        }else if (UserTypetxt=="Customer"){
           this.router.navigateByUrl('/Customer/dashboard');
-        }else if (res.UserTypetxt=="SystemAdmin"){
+        }else if (UserTypetxt=="SystemAdmin"){
           this.router.navigateByUrl('/SystemAdmin/CustomerDetail');
         }
-      },  
-      err => {
-         if (err.status == 400)
-           this.alertService.error('Incorrect username or password.', 'Authentication failed.');
-         //  this.toastr.error('Incorrect username or password.', 'Authentication failed.');
-         else
-          console.log(err);
-      }
-    );
+      }, err => {
+        let errorMessage = err && err.error;
+      this.alertService.error(errorMessage);
+      });
+    
   }
+ 
 }
