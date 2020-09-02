@@ -1,5 +1,5 @@
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
-
+    <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
     <div class="kt-portlet kt-portlet--responsive-mobile">
         <div class="kt-portlet__head bg-light">
             <div class="kt-portlet__head-label">
@@ -13,6 +13,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="kt-section p-3">
+                           
                             <div class="kt-section__body">
 
                                 <!-- <div >
@@ -57,19 +58,23 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Order No</label>
                                         <div class="col-md-3">
-
+                                            {{this.OrderInfo.ReqOrderNo}} 
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">Order Date</label>
                                         <div class="col-md-3">
-
+                                            {{this.OrderInfo.OrderDatedate}} 
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">PO No</label>
-                                        <div class="col-md-5">
-                                            <input type="text" />
+                                        <div class="col-md-3">
+                                            <input type="text"  value="{{this.Pono}}" />
+                                        </div>
+                                        <label class="col-md-3 kt-font-boldest">PO Date</label>
+                                        <div class="col-md-3">
+                                            <input type="text"  value="{{this.PoDate}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +84,8 @@
                                         <div class="col-md-5">
                                             <select (change)="getShipToNameData($event.target.value)">
                                                 <option value="0">--All--</option>
-                                                <option *ngFor="let ShiptoAddress of ShiptoAddresss" value={{ShiptoAddress.ShipToCodevtxt}}>
+                                                <option *ngFor="let ShiptoAddress of ShiptoAddresss"
+                                                    value={{ShiptoAddress.ShipToCodevtxt}}>
                                                     {{ShiptoAddress.ShipToNamevtxt}}
                                                 </option>
                                             </select>
@@ -89,7 +95,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name</label>
                                         <div class="col-md-6">
-                                            {{ShipToAddress}}
+                                            {{this.ShipTo.Addressvtxt}}
                                         </div>
                                     </div>
                                 </div>
@@ -99,17 +105,18 @@
                                         <select (change)="AddDataInItemMaster($event.target.value)">
                                             <option value="0">--All--</option>
                                             <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
-                                                {{Item.ItemCodevtxt}} -  {{Item.ItemDescvtxt}}
+                                                {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
                                             </option>
                                         </select>
                                     </div>
 
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
-                    <a Class="btn btn-brand btn-sm">Save To List</a>
+                <a Class="btn btn-brand btn-sm">Save To List</a>
             </div>
             <div class="border mt-3">
 
@@ -117,7 +124,7 @@
                 <div class="kt-portlet mb-0">
                     <div class="kt-portlet__head bg-light">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title text-dark">ORDER SUMMARY
+                            <h3 class="kt-portlet__head-title text-dark">Item List
                             </h3>
                         </div>
                     </div>
@@ -127,53 +134,82 @@
                             <div class="kt-section__content p-2">
                                 <table class="" style="width:100%;">
                                     <thead style="vertical-align:bottom">
-                                      <tr >
-                                        <th>
-                                        </th>
-                                        <th class=" mr-3">
-                                            ItemCode
-                                        </th>
-                                        <th class=" mr-3">ItemDesc
-                                        </th>
-                                        <th class=" mr-3">
-                                           Quantity
-                                        </th>
-                                        <th class=" mr-3">Uomnvtxt
-                                        </th>
-                                        <th class=" mr-3">HSNCodevtxt
-                                        </th>
-                                      </tr>
+                                        <tr>
+                                            <th>
+                                            </th>
+                                            <th class=" mr-3">
+                                                ItemCode
+                                            </th>
+                                            <th class=" mr-3">ItemDesc
+                                            </th>
+                                            <th class=" mr-3">Uomnvtxt
+                                            </th>
+                                            <th class=" mr-3">Rate
+                                            </th>
+                                            <th class=" mr-3">
+                                                Quantity
+                                            </th>
+                                            <th class=" mr-3">
+                                                Amount
+                                            </th>
+                                        </tr>
                                     </thead>
-                                     <tbody>
-                                
-                                <tr *ngFor="let Item of ItemMaster; let i = index">
-                                    <td>
-                                        <span [hidden]="Item.Idint">{{Item.Idint}}</span>
-                                    </td>
-                                    <td class=" mr-3">
-                                        <span >{{Item.ItemCodevtxt}}</span>
-                                    </td>
-                                    <td class=" mr-3"><span >{{Item.ItemDescvtxt}}</span>
-                                    </td>
-                                    <td class=" mr-3">
-                                        <input type="text" value="{{Item.Quantity}}" />
-                                    </td>
-                                    <td class=" mr-3"><span >{{Item.Uomnvtxt}}</span>
-                                    </td>
-                                    <td class=" mr-3"><span >{{Item.HSNCodevtxt}}</span>
-                                    </td>
-                                    <td>
-                                        <div class="btnactions">
-                                            <button class="btn btn-warning" (click)="onDeleteClick( i)"
-                                                >Delete</button>
-                                        </div>
+                                    <tbody>
 
-                                    </td>
-                                </tr>
-                                     </tbody>
+                                        <tr *ngFor="let Item of ItemMaster; let i = index">
+                                            <td>
+                                                <span [hidden]="Item.Idint">{{Item.Idint}}</span>
+                                            </td>
+                                            <td class=" mr-3">
+                                                <span>{{Item.ItemCodevtxt}}</span>
+                                            </td>
+                                            <td class=" mr-3"><span>{{Item.ItemDescvtxt}}</span>
+                                            </td>
+                                            <td class=" mr-3"><span>{{Item.Uomnvtxt}}</span>
+                                            </td>
+                                            <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
+                                            </td>
+                                            <td class=" mr-3">
+
+                                                <mat-form-field>
+                                                    <input type="number" onlyNumber class="form-control" matInput
+                                                        (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)"
+                                                        value="{{Item.qty}}">
+                                                </mat-form-field>
+                                            </td>
+                                            <td class=" mr-3">
+                                                {{Item.Amount }}
+                                            </td>
+
+                                            <td>
+                                                <div class="btnactions">
+                                                    <button class="btn btn-warning"
+                                                        (click)="onDeleteClick( i)">Delete</button>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 kt-font-boldest">Total Order Quantity</label>
+                            <div class="col-md-2">
+                                {{this.TotalQuantity}}
+                            </div>
+                            <label class="col-md-2 kt-font-boldest">Total Order Amount</label>
+                            <div class="col-md-2">
+                                {{this.TotalAmount}}
+                            </div>
+                            <label class="col-md-2 kt-font-boldest">Other Charges</label>
+                            <div class="col-md-2">
+                                    <input type="number"  value="{{this.othercharges}}"
+                                        value="othercharges">
+                             
+                            </div>
+                        </div>
+                         
 
                         <!--end::Section-->
                     </div>
@@ -185,7 +221,7 @@
             <div class="kt-form__actions">
                 <div class="row">
                     <div class="col">
-                        <a Class="btn btn-brand btn-sm">Submit</a>
+                        <a  type="Submit" Class="btn btn-brand btn-sm">Submit</a>
                         <a Class="btn btn-brand btn-sm">Save in Drafts</a>
                         <a Class="btn btn-brand btn-sm">Cancel</a>
                     </div>
@@ -193,4 +229,5 @@
             </div>
         </div>
     </div>
+</form>
 </div>

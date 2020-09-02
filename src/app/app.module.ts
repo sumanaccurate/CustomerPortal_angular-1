@@ -2,7 +2,7 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { GestureConfig, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import { GestureConfig, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatRippleModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 import $ from "jquery";
 // Angular in memory
@@ -125,8 +125,16 @@ import { TokenInterceptor } from './services/token.interceptor';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
- 
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
