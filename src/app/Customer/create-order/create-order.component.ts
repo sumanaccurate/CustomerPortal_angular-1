@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import { ItemMasterService } from 'src/app/shared/ItemMasterService';
 
 @Component({
   selector: 'app-create-order',
@@ -10,9 +11,11 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 })
 export class CustomerCreateOrderComponent implements OnInit {
   CustomerData: any; 
-  ShipToName;
+  ShipToAddress;
   ItemMaster;
-  constructor(private _CustomerService: CustomerService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  AllItemMasterDate;
+  constructor(private _CustomerService: CustomerService,private _ItemMasterService:ItemMasterService,
+     private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   ShiptoAddresss: any; 
   projects={projectID: 'wxp001', projectName: 'TYC001', dateOfStart: '2018-12-23', teamSize: 'L', inedit: false};
   ngOnInit() {
@@ -20,12 +23,13 @@ export class CustomerCreateOrderComponent implements OnInit {
     this.getCustomerData(Userid);
     this.getShiptoAddressData(Userid);
     this.GetTopItemMaster();
+    this.getAllItemMasterData();
   }
 
   getShipToNameData(Userid){
     if(Userid!==null &&Userid!==""){
       this._CustomerService.GetShipToAddress(Userid).subscribe((res: any) => {  
-        this.ShipToName = res['0'].Addressvtxt;
+        this.ShipToAddress = res['0'].Addressvtxt;
       })  
     }
     else{
@@ -33,6 +37,21 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
   }
 
+  
+  getAllItemMasterData(){
+     this._ItemMasterService.getAllItemMasterData().subscribe(  
+        data => {  
+         this.AllItemMasterDate = data;
+        }  
+      );  
+  }
+  AddDataInItemMaster(ItemCode){
+    this._ItemMasterService.getItemMasterDataByKeyword(ItemCode).subscribe(  
+      data => {  
+       this.ItemMaster.push(data['0']); 
+      }  
+    );  
+  }
   
   getShiptoAddressData(Userid){
     if(Userid!==null &&Userid!==""){
@@ -45,9 +64,16 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
   }
 
+
+  onDeleteClick(i) {
+    // const index: number = this.ItemMaster.indexOf(msg);
+    if (i !== -1) {
+        this.ItemMaster.splice(i, 1);
+    }        
+}
   
   GetTopItemMaster(){
-      this._CustomerService.GetTopItemMaster().subscribe(  
+      this._ItemMasterService.GetTopItemMaster().subscribe(  
         data => {  
          this.ItemMaster = data;
         }  

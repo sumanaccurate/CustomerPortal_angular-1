@@ -7,7 +7,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class ItemMasterService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -16,23 +16,16 @@ export class CustomerService {
    }
   readonly BaseURI =  environment.ApiUrl;
 
- 
-getAllOutStandingforDashboard(UserCode): Observable<any> {  
-  return this.http.get(this.BaseURI + '/Outstanding/GetOutstandingCount/'+UserCode);
-} 
-getAllCreditLimitforDashboard(UserCode): Observable<any> {  
-  return this.http.get(this.BaseURI + '/Creditlimit/GetCreditlimit/'+UserCode);
-} 
+  getAllItemMasterData() {
+    return this.http.get(this.BaseURI + '/ItemMaster/GetAllItemMaster/All');
+  }
 
-getCustomerData(Id) {
-  return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerDataByUserId/'+Id);
-}
+  
+  getItemMasterDataByKeyword(Keyword) {
+    return this.http.get(this.BaseURI + '/ItemMaster/GetAllItemMaster/'+Keyword);
+  }
 
-GetShipToAddress(Id) {
-  return this.http.get(this.BaseURI + '/CustomerMaster/GetShipToAddress/'+Id);
-}
-
-getGetShipToData(Id) {
-  return this.http.get(this.BaseURI + '/CustomerMaster/GetShipTo/'+Id);
+GetTopItemMaster() {
+  return this.http.get(this.BaseURI + '/ItemMaster/GetTopItemMaster');
 }
 }

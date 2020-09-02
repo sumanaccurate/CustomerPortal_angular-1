@@ -77,7 +77,6 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Address</label>
                                         <div class="col-md-5">
-                                            <label>Summary: </label>
                                             <select (change)="getShipToNameData($event.target.value)">
                                                 <option value="0">--All--</option>
                                                 <option *ngFor="let ShiptoAddress of ShiptoAddresss" value={{ShiptoAddress.ShipToCodevtxt}}>
@@ -90,72 +89,27 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name</label>
                                         <div class="col-md-6">
-                                            {{ShipToName}}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Item Code</label>
-                                    <div class="col-md-9">
-                                        Y7ALDWO000000V1P
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest"></label>
-                                    <div class="col-md-9">
-                                        O7VM 1200X295-4 ALDER WOOD SATIN-P
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Quantity</label>
-                                    <div class="col-md-3">
-
-
-                                    </div>
-                                    <div class="col-md-3">
-
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Ship to Code</label>
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Ship to Name and Address</label>
-                                    <div class="col-md-9">
-
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Delivery Address</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-
+                                            {{ShipToAddress}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Transporter</label>
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-
-                                        </div>
+                                    <label class="col-md-3 kt-font-boldest">Select Item</label>
+                                    <div class="col-md-5">
+                                        <select (change)="AddDataInItemMaster($event.target.value)">
+                                            <option value="0">--All--</option>
+                                            <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
+                                                {{Item.ItemCodevtxt}} -  {{Item.ItemDescvtxt}}
+                                            </option>
+                                        </select>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div>
                     <a Class="btn btn-brand btn-sm">Save To List</a>
-                </div>
             </div>
             <div class="border mt-3">
 
@@ -170,53 +124,54 @@
                     <div class="kt-portlet__body kt-portlet__body--fit">
                         <!--begin::Section-->
                         <div class="kt-section mb-0">
-                            <div class="kt-section__content">
-
-                            </div>
-                        </div>
-
-                        <!--end::Section-->
-                    </div>
-                    <!--end::Form-->
-                </div>
-            </div>
-            <div class="border mt-3">
-
-                <!--begin::Portlet-->
-                <div class="kt-portlet mb-0">
-                    <div class="kt-portlet__head bg-light">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title text-dark">ORDER SUMMARY
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit">
-                        <!--begin::Section-->
-                        <div class="kt-section mb-0">
-                            <div class="kt-section__content">
+                            <div class="kt-section__content p-2">
+                                <table class="" style="width:100%;">
+                                    <thead style="vertical-align:bottom">
+                                      <tr >
+                                        <th>
+                                        </th>
+                                        <th class=" mr-3">
+                                            ItemCode
+                                        </th>
+                                        <th class=" mr-3">ItemDesc
+                                        </th>
+                                        <th class=" mr-3">
+                                           Quantity
+                                        </th>
+                                        <th class=" mr-3">Uomnvtxt
+                                        </th>
+                                        <th class=" mr-3">HSNCodevtxt
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                     <tbody>
+                                
                                 <tr *ngFor="let Item of ItemMaster; let i = index">
                                     <td>
                                         <span [hidden]="Item.Idint">{{Item.Idint}}</span>
                                     </td>
-                                    <td>
+                                    <td class=" mr-3">
                                         <span >{{Item.ItemCodevtxt}}</span>
                                     </td>
-                                    <td><span >{{Item.ItemDescvtxt}}</span>
+                                    <td class=" mr-3"><span >{{Item.ItemDescvtxt}}</span>
                                     </td>
-                                    
-                                    <td><span >{{Item.Uomnvtxt}}</span>
-                                    </td>
-                                    <td>
+                                    <td class=" mr-3">
                                         <input type="text" value="{{Item.Quantity}}" />
+                                    </td>
+                                    <td class=" mr-3"><span >{{Item.Uomnvtxt}}</span>
+                                    </td>
+                                    <td class=" mr-3"><span >{{Item.HSNCodevtxt}}</span>
                                     </td>
                                     <td>
                                         <div class="btnactions">
-                                            <button class="btn btn-warning" (click)="onDeleteClick($event, i)"
-                                                data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                            <button class="btn btn-warning" (click)="onDeleteClick( i)"
+                                                >Delete</button>
                                         </div>
 
                                     </td>
                                 </tr>
+                                     </tbody>
+                                </table>
                             </div>
                         </div>
 
