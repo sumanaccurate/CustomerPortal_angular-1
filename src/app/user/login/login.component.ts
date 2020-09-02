@@ -21,8 +21,9 @@ export class LoginComponent implements OnInit {
      , private alertService : AlertService ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('id_token') != null)
-    {
+    $('body, #kt_header_menu_wrapper').removeClass('kt-header-menu-wrapper--on');
+
+    if (localStorage.getItem('id_token') != null) {
       this.router.navigateByUrl('/SuperAdmin/dashboard');
     }
   }

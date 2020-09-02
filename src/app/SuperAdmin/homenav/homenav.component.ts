@@ -9,8 +9,7 @@ export class HomenavComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onLogout() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('IDbint');

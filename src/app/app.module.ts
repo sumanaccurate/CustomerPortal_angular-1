@@ -4,7 +4,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { GestureConfig, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatRippleModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
-import $ from "jquery";
+
 // Angular in memory
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 // Perfect Scroll bar
@@ -146,4 +146,4 @@ import { TokenInterceptor } from './services/token.interceptor';
 ],
   bootstrap: [AppComponent]
 })
-export class AppModule { };
+export class AppModule {}

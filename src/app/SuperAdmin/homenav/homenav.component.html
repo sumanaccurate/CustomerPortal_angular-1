@@ -13,14 +13,14 @@
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <ul class="kt-menu__nav ">
-                <li class="kt-menu__item" aria-haspopup="false"><a [routerLink]="['/SuperAdmin/dashboard']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">User List</span></a></li>
-                <li class="kt-menu__item" aria-haspopup="false"><a [routerLink]="['/SuperAdmin/profile']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-profile"></i><span
+                <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SuperAdmin/dashboard']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">User List</span></a></li>
+                <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SuperAdmin/profile']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-profile"></i><span
                             class="kt-menu__link-text">My Profile</span></a></li>
-                <li class="kt-menu__item  " aria-haspopup="false"><a [routerLink]="['/SuperAdmin/AddAdmin']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-avatar"></i><span class="kt-menu__link-text">Add User</span></a></li>
+                <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SuperAdmin/AddAdmin']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-avatar"></i><span class="kt-menu__link-text">Add User</span></a></li>
                 <!-- <li class="kt-menu__item " aria-haspopup="true"><a [routerLink]="['/SuperAdmin/profile']" class="kt-menu__link" data-toggle="modal"><i class="kt-menu__link-icon la la-key"></i><span class="kt-menu__link-text">Change Password</span></a></li> -->
                 <!-- <%--<li class="kt-menu__item " aria-haspopup="true"><a href="ChangePassword.aspx" class="kt-menu__link "><i class="kt-menu__link-icon la la-key"></i><span class="kt-menu__link-text">Change Password</span></a></li>--%> -->
                 <!--<li class="kt-menu__item" aria-haspopup="false"><a href="index.html" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-3"></i><span class="kt-menu__link-text">Reports</span></a></li>-->
-                <li class="kt-menu__item" aria-haspopup="false"><a (click)="onLogout()" class="kt-menu__link "><i
+                <li class="kt-menu__item" aria-haspopup="false" id="logoutClick"><a (click)="onLogout()" class="kt-menu__link "><i
                             class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">Log
                             Out</span></a></li>
             </ul>
@@ -29,7 +29,7 @@
                 <div class="kt-header-custom-user">
                     <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
                     <span class="kt-header__topbar-username">Super Admin</span>
-
+                    <img src="../assets/media/app_images/user.jpg" alt="Pic" class="kt-radius-100">
                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
 
                     <!--<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>-->
