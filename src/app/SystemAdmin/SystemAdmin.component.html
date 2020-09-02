@@ -1,13 +1,11 @@
 <mat-toolbar>
     <mat-toolbar-row>
-
         <button mat-icon-button>
             <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
         </button>
         <div class="kt-padding-r-25  kt-padding-l-25 d-flex align-items-center  ">
             <a [routerLink]="['/SystemAdmin/dashboard']">
-                <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo"
-                    runat="server" id="logo1">
+                <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo" runat="server" id="logo1">
             </a>
         </div>
         <span class="menu-spacer"></span>
@@ -20,23 +18,17 @@
             <a mat-button (click)="onLogout()" class="kt-menu__link "><i
                     class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">Log
                     Out</span></a>
-
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
-
-
-
 <mat-sidenav-container class=" ">
     <mat-sidenav #sidenav>
         <mat-nav-list>
 
             <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-                <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1"
-                    data-ktmenu-dropdown-timeout="500">
+                <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
                     <ul class="kt-menu__nav">
-                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="Dashboard.aspx"
-                                class="kt-menu__link "><i
+                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="Dashboard.aspx" class="kt-menu__link "><i
                                     class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span
                                     class="kt-menu__link-text">Home</span></a></li>
                         <li class="kt-menu__section ">
@@ -48,15 +40,13 @@
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon flaticon-avatar"></i><span
-                                            class="kt-menu__link-text"> Employee Management</span>
+                                        <i class="kt-menu__link-icon flaticon-avatar"></i><span class="kt-menu__link-text"> Employee Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <p class=" p-2"><a href="EmployeeMgt.aspx" class="kt-menu__link left-align "><i
+                                <p class="p-2"><a href="EmployeeMgt.aspx" class="kt-menu__link left-align "><i
                                             class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                             class="kt-menu__link-text">Upload Employee</span></a></p>
-                                <p class=" p-2 "><a href="EmployeeDetails.aspx"
-                                        class="kt-menu__link right-align "><i
+                                <p class="p-2 "><a href="EmployeeDetails.aspx" class="kt-menu__link right-align "><i
                                             class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                             class="kt-menu__link-text">Employee Details</span></a></p>
                             </mat-expansion-panel>
@@ -67,8 +57,7 @@
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon flaticon2-avatar"></i><span
-                                            class="kt-menu__link-text">Customer Management</span>
+                                        <i class="kt-menu__link-icon flaticon2-avatar"></i><span class="kt-menu__link-text">Customer Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <p class=" p-2">
@@ -77,7 +66,7 @@
                                             class="kt-menu__link-text">Upload Employee</span></a>
                                 </p>
                                 <p class=" p-2 ">
-                                    <a [routerLink]="['/SystemAdmin/CustomerDetail']"  class="kt-menu__link "><i
+                                    <a [routerLink]="['/SystemAdmin/CustomerDetail']" class="kt-menu__link "><i
                                             class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                             class="kt-menu__link-text">Customer Details</span></a>
                                 </p>
@@ -91,21 +80,16 @@
                             </mat-expansion-panel>
                         </mat-accordion>
 
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="ContentDetails.aspx"
-                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="ContentDetails.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span
                                     class="kt-menu__link-text">Content Details</span></a></li>
 
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="AssignRoles.aspx"
-                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-rotate"></i><span
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="AssignRoles.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-rotate"></i><span
                                     class="kt-menu__link-text">Role Management</span></a></li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="BroadCastDetails.aspx"
-                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-browser"></i><span
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="BroadCastDetails.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-browser"></i><span
                                     class="kt-menu__link-text">BroadCast Details</span></a></li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="SwitchUser.aspx"
-                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-group"></i><span
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="SwitchUser.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-group"></i><span
                                     class="kt-menu__link-text">Swicth User</span></a></li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="ComplaintMgt.aspx"
-                                class="kt-menu__link "><i class="kt-menu__link-icon flaticon-layers"></i><span
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="ComplaintMgt.aspx" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-layers"></i><span
                                     class="kt-menu__link-text">View Complaints</span></a></li>
 
 
@@ -115,8 +99,7 @@
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon flaticon-interface-3"></i><span
-                                            class="kt-menu__link-text">Feedback</span>
+                                        <i class="kt-menu__link-icon flaticon-interface-3"></i><span class="kt-menu__link-text">Feedback</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <p class=" p-2">
