@@ -1,7 +1,6 @@
 import { UserService } from '../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({

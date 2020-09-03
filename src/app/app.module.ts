@@ -2,7 +2,7 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { GestureConfig, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import { GestureConfig, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatRippleModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 // Angular in memory
@@ -75,6 +75,7 @@ import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-vi
 import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
 
 import { TokenInterceptor } from './services/token.interceptor';
+import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -85,6 +86,7 @@ import { TokenInterceptor } from './services/token.interceptor';
     CustomerSalesOrderDetailComponent,
     CustomerCreateOrderComponent,
     CustomerDispatchOrderDetailComponent,
+    CustomerOrderListComponent,
     AppComponent,
     UserComponent,
     CustomerInvoiceViewComponent,
@@ -125,8 +127,16 @@ import { TokenInterceptor } from './services/token.interceptor';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
- 
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

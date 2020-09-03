@@ -97,8 +97,9 @@
                 (click)="pass(this.Order.SalesOrderNumbervtxt)" ><i class="fa fa-eye"></i>
               </button>
             </div>
+            
           </div>
-
+          <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
 
           <div class="container mw-100">
             <div class="row">
