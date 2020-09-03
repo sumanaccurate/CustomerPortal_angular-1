@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-   ApiUrl: 'https://localhost:44335',
-  //  ApiUrl: 'http://103.131.93.13:952',
+   //  ApiUrl: 'https://localhost:44335',
+  ApiUrl: 'http://103.131.93.13:952',
 };
 
 /*

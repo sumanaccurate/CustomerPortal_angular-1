@@ -1,115 +1,99 @@
 <!--begin:: Widgets/Finance Summary-->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor ">
 
-  <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid  m-4">
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid ">
     <div class="kt-portlet ">
-      <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm">
-        <div class="kt-portlet__head-label">
-          <h3 class="kt-portlet__head-title">Customers(Total:{{totalCustomersCount}})
-          </h3>
-        </div>
-      </div>
-      <div class="kt-portlet__body  ">
-        <div >
-        <div *ngFor="let Customer of Customers" class="customerCustomers-list border shadow-sm p-3 mb-3">
-          <div class="row">
-            <!-- set1 -->
-            <div class="col-md-4 ">
-              <div>
-                Customer Code & Name : {{Customer.CustCodevtxt}} -
-                  {{Customer.CustNamevtxt}}
-              </div>
-              <div>
-                Mobile No : <span class="kt-font-bold">{{Customer.TelNumber1vtxt}}</span>
-              </div>
-              <div >
-                Customer Type : <span class="kt-font-bold">{{Customer.Typevtxt}}</span>
-              </div>
-              <div >
-                Address : <span class="kt-font-bold">{{Customer.Address1vtxt}}</span>
-              </div>
-              <div >
-                City : <span class="kt-font-bold">{{Customer.CityCdvtxt}}</span>
-              </div>
+        <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Customers(Total:{{totalCustomersCount}})
+                </h3>
             </div>
-
-            <div class="col-md-4 ">
-              
-              <div >
-                Postal Code : <span class="kt-font-bold">{{Customer.PostalCodevtxt}}</span>
-              </div>
-              <div >
-                GST No : <span class="kt-font-bold">{{Customer.Gstnovtxt}}</span>
-              </div>
-
-              <div >
-                Pan No : <span class="kt-font-bold">{{Customer.PanNovtxt}}</span>
-              </div>
-              
-              <div >
-                Order Block : <span class="kt-font-bold">{{Customer.OrderBlockvtxt}}</span>
-              </div>
-            </div>
-            <div class="col-md-4 ">
-              <div >
-                Sales Office Destrict : <span class="kt-font-bold">{{Customer.SalesOfficeDescvtxt}}</span>
-              </div>
-              <div >
-                Sales Promoter Code & Name : <span class="kt-font-bold">{{Customer.Spcodevtxt}} - {{Customer.Spnamevtxt}}</span>
-              </div>
-              <div >
-                CF Code & Name : <span class="kt-font-bold">{{Customer.Cfacodevtxt}} - {{Customer.Cfanamevtxt}}</span>
-              </div>
-              
-              <div >
-                Company Code & Name : <span class="kt-font-bold">{{Customer.CompanyCodevtxt}} - {{Customer.CompanyNamevtxt}}</span>
-              </div>
-            
-            </div>
-
-          </div>
         </div>
+        <div class="kt-portlet__body  ">
+            <div>
+                <div *ngFor="let Customer of Customers" class="customerCustomers-list border shadow-sm p-3 mb-3">
+                    <div class="row">
+                        <!-- set1 -->
+                        <div class="col-md-4 ">
+                            <div>
+                                Customer Code & Name : {{Customer.CustCodevtxt}} - {{Customer.CustNamevtxt}}
+                            </div>
+                            <div>
+                                Mobile No : <span class="kt-font-bold">{{Customer.TelNumber1vtxt}}</span>
+                            </div>
+                            <div>
+                                Customer Type : <span class="kt-font-bold">{{Customer.Typevtxt}}</span>
+                            </div>
+                            <div>
+                                Address : <span class="kt-font-bold">{{Customer.Address1vtxt}}</span>
+                            </div>
+                            <div>
+                                City : <span class="kt-font-bold">{{Customer.CityCdvtxt}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 ">
+
+                            <div>
+                                Postal Code : <span class="kt-font-bold">{{Customer.PostalCodevtxt}}</span>
+                            </div>
+                            <div>
+                                GST No : <span class="kt-font-bold">{{Customer.Gstnovtxt}}</span>
+                            </div>
+
+                            <div>
+                                Pan No : <span class="kt-font-bold">{{Customer.PanNovtxt}}</span>
+                            </div>
+
+                            <div>
+                                Order Block : <span class="kt-font-bold">{{Customer.OrderBlockvtxt}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div>
+                                Sales Office Destrict : <span class="kt-font-bold">{{Customer.SalesOfficeDescvtxt}}</span>
+                            </div>
+                            <div>
+                                Sales Promoter Code & Name : <span class="kt-font-bold">{{Customer.Spcodevtxt}} -
+                  {{Customer.Spnamevtxt}}</span>
+                            </div>
+                            <div>
+                                CF Code & Name : <span class="kt-font-bold">{{Customer.Cfacodevtxt}} - {{Customer.Cfanamevtxt}}</span>
+                            </div>
+
+                            <div>
+                                Company Code & Name : <span class="kt-font-bold">{{Customer.CompanyCodevtxt}} -
+                  {{Customer.CompanyNamevtxt}}</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
 
 
-        <div class="container mw-100">
-          <div class="row">
-            <div class="col-md-3"> </div>
-            <div *ngIf="Customers !=0" class="col-md-6">
-              <ul class="pagination justify-content-center">
-                <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item">
-                  <a (click)="showPrevCustomers()"
-                    [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
-                    style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
-                <li *ngFor="let page of pageField;let i=index" class="page-item">
-                  <a (click)="showCustomersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
-                    style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
+                <div class="container mw-100">
+                    <div class="row">
+                        <div class="col-md-3"> </div>
+                        <div *ngIf="Customers !=0" class="col-md-6">
+                            <ul class="pagination justify-content-center">
+                                <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item">
+                                    <a (click)="showPrevCustomers()" [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'" style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
+                                <li *ngFor="let page of pageField;let i=index" class="page-item">
+                                    <a (click)="showCustomersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'" style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 
-                </li>
-                <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item"><a
-                    (click)="showNextCustomers()"
-                    [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
-                    style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
-              </ul>
-              <div style="text-align: center;">
-                Page {{currentPage}} of Total page {{paginationService.exactPageList}}
-              </div>
+                                </li>
+                                <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item"><a (click)="showNextCustomers()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                            </ul>
+                            <div style="text-align: center;">
+                                Page {{currentPage}} of Total page {{paginationService.exactPageList}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-
-        </div>
-      </div>
     </div>
-  </div>
-  </div>
-  <!--end:: Widgets/Finance Summary-->
+</div>
 
-
-
-
-
-
-
-
-
-
+<!--end:: Widgets/Finance Summary-->
