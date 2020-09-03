@@ -75,7 +75,7 @@ import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-vi
 import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
 
 import { TokenInterceptor } from './services/token.interceptor';
-import { OrderListComponent } from './order-list/order-list.component';
+import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -86,6 +86,7 @@ import { OrderListComponent } from './order-list/order-list.component';
     CustomerSalesOrderDetailComponent,
     CustomerCreateOrderComponent,
     CustomerDispatchOrderDetailComponent,
+    CustomerOrderListComponent,
     AppComponent,
     UserComponent,
     CustomerInvoiceViewComponent,
@@ -105,7 +106,6 @@ import { OrderListComponent } from './order-list/order-list.component';
     CustomerDetailComponent,
     ProgressSpinnerOverviewExample,
     DispatchOrderViewComponent,
-    OrderListComponent,
   ],
   imports: [
     BrowserModule,
