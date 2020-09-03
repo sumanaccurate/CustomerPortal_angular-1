@@ -1,233 +1,226 @@
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
     <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
-    <div class="kt-portlet kt-portlet--responsive-mobile">
-        <div class="kt-portlet__head bg-light">
-            <div class="kt-portlet__head-label">
-                <h3 class="kt-portlet__head-title">Create Order
-                </h3>
+        <div class="kt-portlet kt-portlet--responsive-mobile">
+            <div class="kt-portlet__head bg-light">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">Create Order
+                    </h3>
+                </div>
             </div>
-        </div>
 
-        <div class="kt-portlet__body">
-            <div class="kt-form">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="kt-section p-3">
-                           
-                            <div class="kt-section__body">
+            <div class="kt-portlet__body">
+                <div class="kt-form">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="kt-section p-3">
 
-                                <!-- <div >
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest"></label>
-                                        <div class="col-md-9">
+                                <div class="kt-section__body">
+                                    <div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Customer Code</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.CustCodevtxt}}
+                                            </div>
+                                            <label class="col-md-3 kt-font-boldest">Customer Name</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.CustNamevtxt}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Division</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.DivisionCdvtxt}}
+                                            </div>
+                                            <label class="col-md-3 kt-font-boldest">Sales Group</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.SalesOrgNamevtxt}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Company</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.CompanyNamevtxt}}
+                                            </div>
+                                            <label class="col-md-3 kt-font-boldest">Billing Address</label>
+                                            <div class="col-md-3">
+                                                {{this.CustomerData.Address1vtxt}} , {{this.CustomerData.Address2vtxt}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Order No</label>
+                                            <div class="col-md-3">
+                                                {{this.OrderInfo.ReqOrderNo}}
+                                            </div>
+                                            <label class="col-md-3 kt-font-boldest">Order Date</label>
+                                            <div class="col-md-3">
+                                                {{this.OrderInfo.OrderDatedate | date :'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">PO No</label>
+                                            <div class="col-md-3">
+                                                <input type="text" (change)="updatePono($event.target.value)"
+                                                    value="{{Pono}}">
+                                            </div>
+                                            <label class="col-md-3 kt-font-boldest">PO Date</label>
+                                            <div class="col-md-3">
+                                                <input type="text" (change)="updatePoDate($event.target.value)"
+                                                    value="{{PoDate}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Ship to Name </label>
+                                            <div class="col-md-5">
+                                                <select (change)="getShipToNameData($event.target.value)">
+                                                    <option value="0">--All--</option>
+                                                    <option *ngFor="let ShiptoAddress of ShiptoAddresss"
+                                                        value={{ShiptoAddress.ShipToCodevtxt}}>
+                                                        {{ShiptoAddress.ShipToNamevtxt}}
+                                                    </option>
+                                                </select>
+                                            </div>
 
                                         </div>
-                                    </div>
-                                </div> -->
-                                <div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Customer Code</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.CustCodevtxt}}
-                                        </div>
-                                        <label class="col-md-3 kt-font-boldest">Customer Name</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.CustNamevtxt}}
+                                        <div class="form-group row">
+                                            <label class="col-md-3 kt-font-boldest">Ship to Address</label>
+                                            <div class="col-md-6">
+                                                {{this.Addressvtxt}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Division</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.DivisionCdvtxt}}
-                                        </div>
-                                        <label class="col-md-3 kt-font-boldest">Sales Group</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.SalesOrgNamevtxt}}
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Company</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.CompanyNamevtxt}}
-                                        </div>
-                                        <label class="col-md-3 kt-font-boldest">Billing Address</label>
-                                        <div class="col-md-3">
-                                            {{this.CustomerData.Address1vtxt}} , {{this.CustomerData.Address2vtxt}}
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Order No</label>
-                                        <div class="col-md-3">
-                                            {{this.OrderInfo.ReqOrderNo}} 
-                                        </div>
-                                        <label class="col-md-3 kt-font-boldest">Order Date</label>
-                                        <div class="col-md-3">
-                                            {{this.OrderInfo.OrderDatedate}} 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">PO No</label>
-                                        <div class="col-md-3">
-                                            <input type="text"  value="{{this.Pono}}" />
-                                        </div>
-                                        <label class="col-md-3 kt-font-boldest">PO Date</label>
-                                        <div class="col-md-3">
-                                            <input type="text"  value="{{this.PoDate}}" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Ship to Address</label>
+                                        <label class="col-md-3 kt-font-boldest">Select Item</label>
                                         <div class="col-md-5">
-                                            <select (change)="getShipToNameData($event.target.value)">
+                                            <select (change)="ChangeItemCodeForNewItem($event.target.value)">
                                                 <option value="0">--All--</option>
-                                                <option *ngFor="let ShiptoAddress of ShiptoAddresss"
-                                                    value={{ShiptoAddress.ShipToCodevtxt}}>
-                                                    {{ShiptoAddress.ShipToNamevtxt}}
+                                                <option *ngFor="let Item of AllItemMasterDate"
+                                                    value={{Item.ItemCodevtxt}}>
+                                                    {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
                                                 </option>
                                             </select>
                                         </div>
 
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Ship to Name</label>
-                                        <div class="col-md-6">
-                                            {{this.ShipTo.Addressvtxt}}
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 kt-font-boldest">Select Item</label>
-                                    <div class="col-md-5">
-                                        <select (change)="AddDataInItemMaster($event.target.value)">
-                                            <option value="0">--All--</option>
-                                            <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
-                                                {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
-                                            </option>
-                                        </select>
-                                    </div>
 
-                                </div>
                             </div>
-                            
+                            <a (click)="AddDataInItemMaster()" Class="btn btn-brand btn-sm">Save To List</a>
+
                         </div>
                     </div>
                 </div>
-                <a Class="btn btn-brand btn-sm">Save To List</a>
-            </div>
-            <div class="border mt-3">
+                <div class="border mt-3">
 
-                <!--begin::Portlet-->
-                <div class="kt-portlet mb-0">
-                    <div class="kt-portlet__head bg-light">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title text-dark">Item List
-                            </h3>
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet mb-0">
+                        <div class="kt-portlet__head bg-light">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title text-dark">Item List
+                                </h3>
+                            </div>
                         </div>
+                        <div class="kt-portlet__body kt-portlet__body--fit">
+                            <!--begin::Section-->
+                            <div class="kt-section mb-0">
+                                <div class="kt-section__content p-2">
+                                    <table class="" style="width:100%;">
+                                        <thead style="vertical-align:bottom">
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <th class=" mr-3">
+                                                    ItemCode
+                                                </th>
+                                                <th class=" mr-3">ItemDesc
+                                                </th>
+                                                <th class=" mr-3">Uomnvtxt
+                                                </th>
+                                                <th class=" mr-3">Rate
+                                                </th>
+                                                <th class=" mr-3">
+                                                    Quantity
+                                                </th>
+                                                <th class=" mr-3">
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr *ngFor="let Item of ItemMaster; let i = index">
+                                                <td>
+                                                    <span [hidden]="Item.Idint">{{Item.Idint}}</span>
+                                                </td>
+                                                <td class=" mr-3">
+                                                    <span>{{Item.ItemCodevtxt}}</span>
+                                                </td>
+                                                <td class=" mr-3"><span>{{Item.ItemDescvtxt}}</span>
+                                                </td>
+                                                <td class=" mr-3"><span>{{Item.Uomnvtxt}}</span>
+                                                </td>
+                                                <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
+                                                </td>
+                                                <td class=" mr-3">
+
+                                                    <mat-form-field>
+                                                        <input type="number" onlyNumber matInput
+                                                            (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)"
+                                                            value="{{Item.qty}}">
+                                                    </mat-form-field>
+                                                </td>
+                                                <td class=" mr-3">
+                                                    {{Item.Amount }}
+                                                </td>
+
+                                                <td>
+                                                    <div class="btnactions">
+                                                        <button class="btn btn-warning"
+                                                            (click)="onDeleteClick( i)">Delete</button>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 kt-font-boldest">Total Order Quantity</label>
+                                <div class="col-md-2">
+                                    {{this.TotalQuantity}}
+                                </div>
+                                <label class="col-md-2 kt-font-boldest">Total Order Amount</label>
+                                <div class="col-md-2">
+                                    {{this.TotalAmount}}
+                                </div>
+                                <label class="col-md-2 kt-font-boldest">Other Charges</label>
+                                <div class="col-md-2">
+                                    <input type="text" (change)="updateothercharges($event.target.value)"
+                                        value="{{othercharges}}">
+                                </div>
+                            </div>
+                            <!--end::Section-->
+                        </div>
+                        <!--end::Form-->
                     </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit">
-                        <!--begin::Section-->
-                        <div class="kt-section mb-0">
-                            <div class="kt-section__content p-2">
-                                <table class="" style="width:100%;">
-                                    <thead style="vertical-align:bottom">
-                                        <tr>
-                                            <th>
-                                            </th>
-                                            <th class=" mr-3">
-                                                ItemCode
-                                            </th>
-                                            <th class=" mr-3">ItemDesc
-                                            </th>
-                                            <th class=" mr-3">Uomnvtxt
-                                            </th>
-                                            <th class=" mr-3">Rate
-                                            </th>
-                                            <th class=" mr-3">
-                                                Quantity
-                                            </th>
-                                            <th class=" mr-3">
-                                                Amount
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr *ngFor="let Item of ItemMaster; let i = index">
-                                            <td>
-                                                <span [hidden]="Item.Idint">{{Item.Idint}}</span>
-                                            </td>
-                                            <td class=" mr-3">
-                                                <span>{{Item.ItemCodevtxt}}</span>
-                                            </td>
-                                            <td class=" mr-3"><span>{{Item.ItemDescvtxt}}</span>
-                                            </td>
-                                            <td class=" mr-3"><span>{{Item.Uomnvtxt}}</span>
-                                            </td>
-                                            <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
-                                            </td>
-                                            <td class=" mr-3">
-
-                                                <mat-form-field>
-                                                    <input type="number" onlyNumber class="form-control" matInput
-                                                        (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)"
-                                                        value="{{Item.qty}}">
-                                                </mat-form-field>
-                                            </td>
-                                            <td class=" mr-3">
-                                                {{Item.Amount }}
-                                            </td>
-
-                                            <td>
-                                                <div class="btnactions">
-                                                    <button class="btn btn-warning"
-                                                        (click)="onDeleteClick( i)">Delete</button>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 kt-font-boldest">Total Order Quantity</label>
-                            <div class="col-md-2">
-                                {{this.TotalQuantity}}
-                            </div>
-                            <label class="col-md-2 kt-font-boldest">Total Order Amount</label>
-                            <div class="col-md-2">
-                                {{this.TotalAmount}}
-                            </div>
-                            <label class="col-md-2 kt-font-boldest">Other Charges</label>
-                            <div class="col-md-2">
-                                    <input type="number"  value="{{this.othercharges}}"
-                                        value="othercharges">
-                             
-                            </div>
-                        </div>
-                         
-
-                        <!--end::Section-->
-                    </div>
-                    <!--end::Form-->
                 </div>
             </div>
-        </div>
-        <div class="kt-portlet__foot kt-portlet__foot--sm bg-light">
-            <div class="kt-form__actions">
-                <div class="row">
-                    <div class="col">
-                        <a  type="Submit" Class="btn btn-brand btn-sm">Submit</a>
-                        <a Class="btn btn-brand btn-sm">Save in Drafts</a>
-                        <a Class="btn btn-brand btn-sm">Cancel</a>
+
+            <div class="kt-portlet__foot kt-portlet__foot--sm bg-light">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col">
+                            <a type="Submit" (click)="onSubmit('Pending')" Class="btn btn-brand btn-sm">Submit</a>
+                            <a type="Submit" (click)="onSubmit('Draft')"  Class="btn btn-brand btn-sm">Save in Drafts</a>
+                            <a Class="btn btn-brand btn-sm">Cancel</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
