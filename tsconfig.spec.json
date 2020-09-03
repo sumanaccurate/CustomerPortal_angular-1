@@ -15,7 +15,7 @@
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ],
-  ,
+
   "paths": {
     "@app/*": ["src/app/*"],
     "@assets/*": ["src/assets/*"],
