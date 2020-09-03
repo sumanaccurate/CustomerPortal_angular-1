@@ -27,6 +27,7 @@ import { CustomerInvoiceViewComponent } from './Customer/Invoice-view/Invoice-vi
 import { CustomerCreateOrderComponent } from './Customer/create-order/create-order.component';
 import { AuthGuard } from './services/auth.guard';
 import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
+import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -72,6 +73,7 @@ const routes: Routes = [
       { path: 'DispatchOrderDetailView', component: DispatchOrderViewComponent, canActivate: [AuthGuard] },
       { path: 'CreateOrderRequest', component: CustomerCreateOrderComponent, canActivate: [AuthGuard] },
       { path: 'OrderList', component: CustomerOrderListComponent, canActivate: [AuthGuard] },
+      { path: 'OrderView', component: CustomerOrderViewComponent, canActivate: [AuthGuard] },
       { path: 'InvoiceDetail', component: CustomerInvoiceDetailComponent, canActivate: [AuthGuard] },
       { path: 'InvoiceDetailView', component: CustomerInvoiceViewComponent, canActivate: [AuthGuard] },
       { path: 'SalesOrderDetail', component: CustomerSalesOrderDetailComponent, canActivate: [AuthGuard] },

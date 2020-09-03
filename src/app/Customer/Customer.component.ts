@@ -2,6 +2,7 @@ import { UserService } from '../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AlertComponent } from '../component/alert.component';
 
 @Component({
   selector: 'app-SA',

@@ -179,9 +179,14 @@ export class CustomerCreateOrderComponent implements OnInit {
   }
 
   onSubmit(type) {
-    this.getOrderInfo();
-    this.UpdateHeaderData(type);
-    this.InsertOrderHeader(this.HeaderData, this.ItemMaster);
+    if(this.ShiptoAddresss!=''&&this.ShiptoAddresss!=null&&this.TotalQuantity!=0&&this.TotalQuantity!=null&&this.TotalQuantity!=''){
+      this.getOrderInfo();
+      this.UpdateHeaderData(type);
+      this.InsertOrderHeader(this.HeaderData, this.ItemMaster);
+    }else{
+      this.alertService.warn("Please fill the mandatory fields..");
+    }
+    
   }
 
 
@@ -265,5 +270,7 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
     console.log(this.HeaderData);
   }
-
+  Back(){
+    this.router.navigateByUrl('/Customer/OrderList');
+  }
 }

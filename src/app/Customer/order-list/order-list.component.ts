@@ -7,6 +7,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
+import { OrderService } from 'src/app/shared/OrderService';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -14,7 +15,7 @@ import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 })
 export class CustomerOrderListComponent implements OnInit {
   Orders: any[]; 
-  constructor(private _DeliveryOrderService :DeliveryOrderService,private service: UserService,private router: Router, private _CustomerService: CustomerService
+  constructor(private _OrderServiceService :OrderService,private service: UserService,private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData ; 
   pageNo: any = 1;  
@@ -60,14 +61,14 @@ export class CustomerOrderListComponent implements OnInit {
   }
 
   getAllOrders() {  
-       this._DeliveryOrderService.getAllOrderData(localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
+       this._OrderServiceService.GetOrderDetails(null,null,'ALL',localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
       this.Orders = data as any[];
       this.getAllOrdersCount();
     })
     
   }  
   getAllOrdersCount() {  
-    this._DeliveryOrderService.getAllOrderCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
+    this._OrderServiceService.getOrderCount(null,null,'ALL',localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
       this.totalOrdersCount = res;  
       this.totalNoOfPages();  
     })  
@@ -139,7 +140,7 @@ export class CustomerOrderListComponent implements OnInit {
   pass(value): void {
     // console.log('recieved= key:' + key + 'value:' + val);
     this.storage.set('OrderId',value);
-    this.router.navigateByUrl('/Customer/DispatchOrderDetailView');
+    this.router.navigateByUrl('/Customer/OrderView');
    }
 
   

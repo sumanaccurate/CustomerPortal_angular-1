@@ -73,7 +73,7 @@
                                     </div>
                                     <div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Ship to Name </label>
+                                            <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                             <div class="col-md-5">
                                                 <select (change)="getShipToNameData($event.target.value)">
                                                     <option value="0">--All--</option>
@@ -142,7 +142,7 @@
                                                 <th class=" mr-3">Rate
                                                 </th>
                                                 <th class=" mr-3">
-                                                    Quantity
+                                                    Quantity *
                                                 </th>
                                                 <th class=" mr-3">
                                                     Amount
@@ -179,7 +179,7 @@
                                                 <td>
                                                     <div class="btnactions">
                                                         <button class="btn btn-warning"
-                                                            (click)="onDeleteClick( i)">Delete</button>
+                                                            (click)="onDeleteClick( i)"><i class="fa flaticon-delete"></i></button>
                                                     </div>
 
                                                 </td>
@@ -214,9 +214,9 @@
                 <div class="kt-form__actions">
                     <div class="row">
                         <div class="col">
-                            <a type="Submit" (click)="onSubmit('Pending')" Class="btn btn-brand btn-sm">Submit</a>
-                            <a type="Submit" (click)="onSubmit('Draft')"  Class="btn btn-brand btn-sm">Save in Drafts</a>
-                            <a Class="btn btn-brand btn-sm">Cancel</a>
+                            <a type="Submit" (click)="onSubmit('Pending')" Class="btn mr-3 btn-brand btn-sm">Submit</a>
+                            <a type="Submit" (click)="onSubmit('Draft')"  Class="btn mr-3  btn-brand btn-sm">Save in Drafts</a>
+                            <a  (click)="Back()"  Class="btn mr-3  btn-brand btn-sm">Cancel</a>
                         </div>
                     </div>
                 </div>

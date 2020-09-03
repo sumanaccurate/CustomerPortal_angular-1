@@ -76,11 +76,18 @@ import { CustomerCreateOrderComponent } from './Customer/create-order/create-ord
 
 import { TokenInterceptor } from './services/token.interceptor';
 import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
+import { TechnicalComponent } from './Technical/Technical.component';
+import { TechnicalProfileComponent } from './Technical/profile/profile.component';
+import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
+import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
 @NgModule({
   declarations: [
     CustomerComponent,
     CustomerInvoiceDetailComponent,
     CustomerDashboardComponent,
+    TechnicalComponent,
+    TechnicalProfileComponent,
+    TechnicalDashboardComponent,
     CustomerProfileEditComponent,
     CustomerProfileComponent,
     CustomerSalesOrderDetailComponent,
@@ -106,6 +113,7 @@ import { CustomerOrderListComponent } from './Customer/order-list/order-list.com
     CustomerDetailComponent,
     ProgressSpinnerOverviewExample,
     DispatchOrderViewComponent,
+    CustomerOrderViewComponent,
   ],
   imports: [
     BrowserModule,

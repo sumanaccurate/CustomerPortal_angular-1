@@ -24,8 +24,41 @@ export class OrderService {
     return this.http.post(this.BaseURI + '/Order/InsertOrderDetails',OrderDate);
   } 
 
+  
+  GetOrderDetails(fromdate, todate, status, customercode, PageNo, PageSize, KeyWord): Observable<any> {
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    } if (fromdate == null || fromdate == "") {
+      fromdate = "NoSearch";
+    } if (todate == null || todate == "") {
+      todate = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/Order/GetOrdersByCustomerCode/'+fromdate+','+todate+','+status+','+customercode+','+PageNo+','+PageSize+','+KeyWord);
+  } 
+
+  getOrderCount(fromdate, todate, status, customercode, KeyWord): Observable<any> {
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    } if (fromdate == null || fromdate == "") {
+      fromdate = "NoSearch";
+    } if (todate == null || todate == "") {
+      todate = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/Order/GetOrdersByCustomerCodeCount/' + fromdate+','+todate+','+status+','+customercode+','+KeyWord);
+  }
   getOrderInfo(): Observable<any> {
 
     return this.http.get(this.BaseURI + '/Order/GetReqOrderNo');
   } 
+
+
+
+  
+  GetOrderDetailsByOrderID(no) {
+    return this.http.get(this.BaseURI + '/Order/GetOrderDetailsByOrderID/' + no);
+  }
+  
+  GetOrderHeaderByOrderID(no) {
+    return this.http.get(this.BaseURI + '/Order/GetOrderHeaderByOrderID/' + no);
+  }
 }
