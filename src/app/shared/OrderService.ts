@@ -20,6 +20,14 @@ export class OrderService {
     return this.http.post(this.BaseURI + '/Order/InsertOrderHeader',OrderDate);
   }   
 
+  UpdateOrderHeader(OrderDate): Observable<any> {
+    return this.http.put(this.BaseURI + '/Order/UpdateOrderHeader',OrderDate);
+  }   
+
+  DeleteOrderDetails(OrderID): Observable<any> {
+    return this.http.delete(this.BaseURI + '/Order/DeleteOrderDetails/'+OrderID);
+  } 
+
   InsertOrderDetails(OrderDate): Observable<any> {
     return this.http.post(this.BaseURI + '/Order/InsertOrderDetails',OrderDate);
   } 

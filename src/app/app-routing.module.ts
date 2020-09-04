@@ -28,6 +28,7 @@ import { CustomerCreateOrderComponent } from './Customer/create-order/create-ord
 import { AuthGuard } from './services/auth.guard';
 import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
+<<<<<<< HEAD
 import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
 import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
 import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
@@ -40,6 +41,9 @@ import { ViewComplaintsComponent } from './SystemAdmin/view-complaints/view-comp
 import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
 import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
 import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
+=======
+import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+>>>>>>> a1fb40f75694d48e53562c4c17082fa283c8ed11
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -98,6 +102,7 @@ const routes: Routes = [
       { path: 'CreateOrderRequest', component: CustomerCreateOrderComponent, canActivate: [AuthGuard] },
       { path: 'OrderList', component: CustomerOrderListComponent, canActivate: [AuthGuard] },
       { path: 'OrderView', component: CustomerOrderViewComponent, canActivate: [AuthGuard] },
+      { path: 'OrderEdit', component: CustomerOrderEditComponent, canActivate: [AuthGuard] },
       { path: 'InvoiceDetail', component: CustomerInvoiceDetailComponent, canActivate: [AuthGuard] },
       { path: 'InvoiceDetailView', component: CustomerInvoiceViewComponent, canActivate: [AuthGuard] },
       { path: 'SalesOrderDetail', component: CustomerSalesOrderDetailComponent, canActivate: [AuthGuard] },

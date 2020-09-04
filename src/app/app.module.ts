@@ -80,6 +80,7 @@ import { TechnicalComponent } from './Technical/Technical.component';
 import { TechnicalProfileComponent } from './Technical/profile/profile.component';
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
+<<<<<<< HEAD
 import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
 import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
 import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
@@ -92,6 +93,9 @@ import { ViewComplaintsComponent } from './SystemAdmin/view-complaints/view-comp
 import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
 import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
 import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
+=======
+import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+>>>>>>> a1fb40f75694d48e53562c4c17082fa283c8ed11
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -126,6 +130,7 @@ import { CreateDepartmentComponent } from './SystemAdmin/create-department/creat
     ProgressSpinnerOverviewExample,
     DispatchOrderViewComponent,
     CustomerOrderViewComponent,
+<<<<<<< HEAD
     UploadEmployeeComponent,
     EmployeeDetailsComponent,
     UploadCustomerComponent,
@@ -138,6 +143,9 @@ import { CreateDepartmentComponent } from './SystemAdmin/create-department/creat
     UserDetailsComponent,
     UploadUserComponent,
     CreateDepartmentComponent,
+=======
+    CustomerOrderEditComponent,
+>>>>>>> a1fb40f75694d48e53562c4c17082fa283c8ed11
   ],
   imports: [
     BrowserModule,
