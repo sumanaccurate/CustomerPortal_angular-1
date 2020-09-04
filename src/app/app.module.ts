@@ -80,6 +80,7 @@ import { TechnicalComponent } from './Technical/Technical.component';
 import { TechnicalProfileComponent } from './Technical/profile/profile.component';
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
+import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -114,6 +115,7 @@ import { CustomerOrderViewComponent } from './Customer/order-view/order-view.com
     ProgressSpinnerOverviewExample,
     DispatchOrderViewComponent,
     CustomerOrderViewComponent,
+    CustomerOrderEditComponent,
   ],
   imports: [
     BrowserModule,

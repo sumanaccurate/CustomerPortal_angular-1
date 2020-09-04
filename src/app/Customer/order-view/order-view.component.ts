@@ -37,4 +37,8 @@ export class CustomerOrderViewComponent implements OnInit {
     this.storage.remove('OrderId');
     this.router.navigateByUrl('/Customer/OrderList');
   }
+  
+  Edit(){
+    this.router.navigateByUrl('/Customer/OrderEdit');
+  }
 }
