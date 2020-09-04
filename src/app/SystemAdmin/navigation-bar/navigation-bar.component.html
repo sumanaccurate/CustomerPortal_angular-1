@@ -7,12 +7,12 @@
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <ul class="kt-menu__nav ">
                 <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SystemAdmin/dashboard']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
-                <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SystemAdmin/CustomerDetail']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">CustomerDetail</span></a></li>
+                <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SystemAdmin/CustomerDetail']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-users"></i><span class="kt-menu__link-text">Customer Details</span></a></li>
                 <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']" aria-haspopup="false"><a [routerLink]="['/SystemAdmin/profile']" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-profile"></i><span class="kt-menu__link-text">My Profile</span></a></li>
                 <!-- <li class="kt-menu__item " aria-haspopup="true"><a [routerLink]="['/SuperAdmin/profile']" class="kt-menu__link" data-toggle="modal"><i class="kt-menu__link-icon la la-key"></i><span class="kt-menu__link-text">Change Password</span></a></li> -->
                 <!-- <%--<li class="kt-menu__item " aria-haspopup="true"><a href="ChangePassword.aspx" class="kt-menu__link "><i class="kt-menu__link-icon la la-key"></i><span class="kt-menu__link-text">Change Password</span></a></li>--%> -->
                 <!--<li class="kt-menu__item" aria-haspopup="false"><a href="index.html" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-3"></i><span class="kt-menu__link-text">Reports</span></a></li>-->
-                <li class="kt-menu__item" aria-haspopup="false"><a (click)="onLogout()" class="kt-menu__link "><i
+                <li class="kt-menu__item" id="logoutClick" aria-haspopup="false"><a (click)="onLogout()" class="kt-menu__link "><i
                             class="kt-menu__link-icon flaticon-logout"></i><span class="kt-menu__link-text">Log
                             Out</span></a></li>
             </ul>
