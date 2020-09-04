@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 @Component({
   selector: 'app-dispatch-order-view',
   templateUrl: './dispatch-order-view.component.html',

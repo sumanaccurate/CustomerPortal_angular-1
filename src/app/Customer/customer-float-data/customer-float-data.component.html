@@ -1,0 +1,50 @@
+<div class="kt-portlet">
+    <div class="kt-portlet__body  kt-portlet__body--fit">
+
+        <div class="row row-no-padding row-col-separator-lg">
+            <div class="row col-md-6 pt-2 pb-2 pl-5 col-lg-3 col-xl-3">
+                <b>
+                    Customer :
+
+                </b>
+                <a class=" pl-2" >
+                    {{this.CustomerData.CustCodevtxt}} - {{this.CustomerData.CustNamevtxt}}
+
+                </a>
+                       
+            </div>
+            <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-4 col-xl-4">
+                    <b>
+                        Address :
+
+                    </b>
+                    <a class=" pl-2" >
+                    {{this.CustomerData.Address1vtxt}} {{this.CustomerData.Address2vtxt}} {{this.CustomerData.CityCdvtxt}}
+
+                </a>
+            </div>
+            <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-3 col-xl-3">
+                
+                <b>
+                    Contact Persion :
+                </b>
+                <a class=" pl-2" >
+                    {{this.CustomerData.Contactpersonvtxt }}
+
+                </a>
+                       
+            </div>
+            
+            <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-2 col-xl-2">
+                <b>
+                    Date :
+                </b>
+                <a class=" pl-2" >
+                    {{datestring  | date :'dd/MM/yyyy' }}
+
+                </a>
+    </div>
+            
+        </div>
+    </div>
+</div>

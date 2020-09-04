@@ -6,15 +6,15 @@ import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/fo
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
-import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { OrderService } from 'src/app/shared/OrderService';
+
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  selector: 'app-pending-order',
+  templateUrl: './pending-order.component.html',
+  styleUrls: ['./pending-order.component.css']
 })
-export class CustomerOrderListComponent implements OnInit {
+export class OrderAnalystPendingOrderListComponent implements OnInit {
   Orders: any[]; 
   constructor(private _OrderServiceService :OrderService,private service: UserService,private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
@@ -24,8 +24,6 @@ export class CustomerOrderListComponent implements OnInit {
   pageNumber: boolean[] = [];  
   sortOrder: any = 'CompanyName_ASC';  
   order:any='CompanyName';  
-  //Pagination Variables  
-  //Page Row variables  
   Userid;
   User;
   pageField = [];  
@@ -62,14 +60,14 @@ export class CustomerOrderListComponent implements OnInit {
   }
 
   getAllOrders() {  
-       this._OrderServiceService.GetOrderDetails(null,null,'ALL',localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
+       this._OrderServiceService.GetAllOrderDetails(null,null,'ALL',this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
       this.Orders = data as any[];
       this.getAllOrdersCount();
     })
     
   }  
   getAllOrdersCount() {  
-    this._OrderServiceService.getOrderCount(null,null,'ALL',localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
+    this._OrderServiceService.getAllOrderCount(null,null,'ALL',this.search).subscribe((res: any) => {  
       this.totalOrdersCount = res;  
       this.totalNoOfPages();  
     })  
@@ -141,7 +139,7 @@ export class CustomerOrderListComponent implements OnInit {
   pass(value): void {
     // console.log('recieved= key:' + key + 'value:' + val);
     this.storage.set('OrderId',value);
-    this.router.navigateByUrl('/Customer/OrderView');
+    //this.router.navigateByUrl('/Customer/OrderView');
    }
 
   

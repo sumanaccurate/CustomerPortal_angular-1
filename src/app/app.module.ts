@@ -81,6 +81,12 @@ import { TechnicalProfileComponent } from './Technical/profile/profile.component
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+import {MatNativeDateModule} from '@angular/material/core';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
+import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
+import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -116,6 +122,9 @@ import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.com
     DispatchOrderViewComponent,
     CustomerOrderViewComponent,
     CustomerOrderEditComponent,
+    OrderAnalystComponent,
+    OrderAnalystPendingOrderListComponent,
+    CustomerFloatDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,6 +144,8 @@ import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.com
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatIconModule,
     MatMenuModule,
     MatFormFieldModule,

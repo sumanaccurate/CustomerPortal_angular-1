@@ -6,6 +6,7 @@ import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/fo
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './SalesOrder-detail.component.html',

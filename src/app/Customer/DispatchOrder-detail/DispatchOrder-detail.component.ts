@@ -7,6 +7,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './DispatchOrder-detail.component.html',

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { InvoiceService } from 'src/app/shared/InvoiceService';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 
 @Component({
   selector: 'app-Invoice-view',

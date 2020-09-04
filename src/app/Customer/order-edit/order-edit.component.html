@@ -1,3 +1,5 @@
+<app-customer-float-data></app-customer-float-data>
+
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
     <form [formGroup]="OrderInfo" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
@@ -43,7 +45,7 @@
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">Billing Address</label>
                                             <div class="col-md-3">
-                                                {{this.OrderInfo.Address}} 
+                                                {{this.OrderInfo.Address}}
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -66,6 +68,15 @@
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">PO Date</label>
                                             <div class="col-md-3">
+                                                <!-- <mat-form-field appearance="fill">
+                                                    <mat-label>Choose a date</mat-label>
+                                                 
+                                                    <input matInput [matDatepicker]="picker" (change)="updatePoDate($event.target.value)"
+                                                    value="PoDate  | date :'dd/MM/yyyy'">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                  
+                                                  </mat-form-field> -->
                                                 <input type="text" (change)="updatePoDate($event.target.value)"
                                                     value="{{PoDate}}">
                                             </div>
@@ -84,10 +95,10 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                                <label class="col-md-3 kt-font-boldest">Selected Ship to Name</label>
+                                            <label class="col-md-3 kt-font-boldest">Selected Ship to Name</label>
                                             <div class="col-md-3">
                                                 {{this.ShipToName}}
-                                            
+
                                             </div>
 
                                         </div>
@@ -184,8 +195,8 @@
 
                                                 <td>
                                                     <div class="btnactions">
-                                                        <button class="btn btn-warning"
-                                                            (click)="onDeleteClick( i)"><i class="fa flaticon-delete"></i></button>
+                                                        <button class="btn btn-warning" (click)="onDeleteClick( i)"><i
+                                                                class="fa flaticon-delete"></i></button>
                                                     </div>
 
                                                 </td>
@@ -221,8 +232,9 @@
                     <div class="row">
                         <div class="col">
                             <a type="Submit" (click)="onSubmit('Pending')" Class="btn mr-3 btn-brand btn-sm">Submit</a>
-                            <a type="Submit" (click)="onSubmit('Draft')"  Class="btn mr-3  btn-brand btn-sm">Save in Drafts</a>
-                            <a  (click)="Back()"  Class="btn mr-3  btn-brand btn-sm">Cancel</a>
+                            <a type="Submit" (click)="onSubmit('Draft')" Class="btn mr-3  btn-brand btn-sm">Save in
+                                Drafts</a>
+                            <a (click)="Back()" Class="btn mr-3  btn-brand btn-sm">Cancel</a>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/fo
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

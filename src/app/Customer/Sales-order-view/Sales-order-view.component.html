@@ -1,3 +1,5 @@
+<app-customer-float-data></app-customer-float-data>
+
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
 	<div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
 		<!--begin::Portlet-->
@@ -38,7 +40,7 @@
 							<th scope="row">Total Delivery Quantity : </th>
 							<td>{{this.OrderInfo.TotalDeliveryQuantity}}</td>
 							<th scope="row">Total balance Quantity : </th>
-							<td>{{this.OrderInfo.BalanceQuantity - this.OrderInfo.DeliveryQuantityint}}</td>
+							<td>{{this.OrderInfo.BalanceQuantity }}</td>
 							
 						</tr>
 						<tr class="mt-4">
@@ -67,9 +69,7 @@
 									<div>
 										Quantity : <span class="kt-font-bold">{{Order.OrderQuantityint}}</span>
 									</div>
-									<div>
-										Status : <span class="kt-font-bold">{{Order.ItemStatusvtxt}}</span>
-									</div>
+								
 								</div>
 
 								<div class="col-md-4 ">
@@ -85,12 +85,15 @@
 										Unit of Measurement :
 										<span class="kt-font-bold">{{Order.UnitOfMeasurevtxt}}</span>
 									</div>
-									
-
+									<div>
+										Status : <span class="kt-font-bold">{{Order.ItemStatusvtxt}}</span>
+									</div>
+<!-- 
+	sir Told to remove
 									<div>
 										Delivery Quantity :
 										<span class="kt-font-bold">{{Order.DeliveryQuantityint}}</span>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

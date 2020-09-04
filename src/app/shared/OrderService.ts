@@ -44,6 +44,17 @@ export class OrderService {
     return this.http.get(this.BaseURI + '/Order/GetOrdersByCustomerCode/'+fromdate+','+todate+','+status+','+customercode+','+PageNo+','+PageSize+','+KeyWord);
   } 
 
+  GetAllOrderDetails(fromdate, todate, status, PageNo, PageSize, KeyWord): Observable<any> {
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    } if (fromdate == null || fromdate == "") {
+      fromdate = "NoSearch";
+    } if (todate == null || todate == "") {
+      todate = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/Order/GetAllOrderLists/'+fromdate+','+todate+','+status+','+PageNo+','+PageSize+','+KeyWord);
+  } 
+
   getOrderCount(fromdate, todate, status, customercode, KeyWord): Observable<any> {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
@@ -54,6 +65,18 @@ export class OrderService {
     }
     return this.http.get(this.BaseURI + '/Order/GetOrdersByCustomerCodeCount/' + fromdate+','+todate+','+status+','+customercode+','+KeyWord);
   }
+
+  getAllOrderCount(fromdate, todate, status, KeyWord): Observable<any> {
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    } if (fromdate == null || fromdate == "") {
+      fromdate = "NoSearch";
+    } if (todate == null || todate == "") {
+      todate = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/Order/GetAllOrdersCount/' + fromdate+','+todate+','+status+','+KeyWord);
+  }
+
   getOrderInfo(): Observable<any> {
 
     return this.http.get(this.BaseURI + '/Order/GetReqOrderNo');

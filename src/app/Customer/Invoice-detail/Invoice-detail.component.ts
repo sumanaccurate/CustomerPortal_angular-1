@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';    
 import { PaginationService } from '../../component/pagination/pagination.service';
 import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { InvoiceService } from 'src/app/shared/InvoiceService';
 @Component({

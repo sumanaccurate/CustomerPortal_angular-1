@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebStorageService, SESSION_STORAGE } from 'ngx-webstorage-service';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { OrderService } from 'src/app/shared/OrderService';
 
 @Component({

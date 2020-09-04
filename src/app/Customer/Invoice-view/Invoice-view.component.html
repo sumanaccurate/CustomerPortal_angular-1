@@ -1,3 +1,4 @@
+<app-customer-float-data></app-customer-float-data>
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
 	<div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
 		<!--begin::Portlet-->
@@ -63,9 +64,42 @@
 					<div>
 						<div *ngFor="let Invoice of Invoices" class="customerCustomers-list border shadow-sm p-3 mb-3">
 							<div class="row col-11">
+								<div class="row col-12">
+									<div class="col-md-4 ">
+										Material Code : <span class="kt-font-bold">{{Invoice.MaterialCodevtxt}}</span>
+
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+								</div>
+								<div class="row col-12">
+									<div class="col-md-4 ">
+
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+								</div>
+								<div class="row col-12">
+									<div class="col-md-4 ">
+
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+									<div class="col-md-4 ">
+										
+									</div>
+								</div>
 								<div class="col-md-4 ">
 									<div>
-										Material Code : <span class="kt-font-bold">{{Invoice.MaterialCodevtxt}}</span>
 									</div>
 									<div>
 										Quantity : <span class="kt-font-bold">{{Invoice.InvoiceQuantityint}}</span>
@@ -74,10 +108,7 @@
 								</div>
 
 								<div class="col-md-4 ">
-									<div>
-										Material Description :
-										<span class="kt-font-bold">{{Invoice.MaterialDescriptionvtxt}}</span>
-									</div>
+								
 									<div>
 										Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
 									</div>

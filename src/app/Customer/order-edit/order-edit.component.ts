@@ -3,9 +3,12 @@ import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { ItemMasterService } from 'src/app/shared/ItemMasterService';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { OrderService } from 'src/app/shared/OrderService';
 import { AlertService } from 'src/app/component/alert.service';
@@ -30,6 +33,7 @@ export class CustomerOrderEditComponent implements OnInit {
   private TotalQuantity;
   AllItemMasterData;
   OrderInfo;
+  status;
   OrderID;
   Userid;
   ShipToAddress
@@ -61,7 +65,7 @@ export class CustomerOrderEditComponent implements OnInit {
       data => {
         this.OrderInfo = data[0];
         this.UpdateOtherFromData(this.OrderInfo);
-        
+
       }
     );
   }
@@ -72,7 +76,7 @@ export class CustomerOrderEditComponent implements OnInit {
       this._CustomerService.GetShipToAddress(Userid).subscribe((res: any) => {
         this.ShipToAddress = res['0'].Addressvtxt;
         this.ShipToName = res['0'].ShipToNamevtxt;
-        this.ShipToCode= res['0'].ShipToCodevtxt;
+        this.ShipToCode = res['0'].ShipToCodevtxt;
       })
     }
     else {
@@ -137,13 +141,13 @@ export class CustomerOrderEditComponent implements OnInit {
     this.TotalAmount = Data.TotalNetValuedcl;
     this.TotalQuantity = Data.TotalOrderQuantityint;
     this.othercharges = Data.OtherCharges1dcl;
-    this.ShipToName =Data.ShipToNamevtxt;
-    this.ShipToCode=Data.ShipToCodevtxt;
+    this.ShipToName = Data.ShipToNamevtxt;
+    this.ShipToCode = Data.ShipToCodevtxt;
   }
   AddDataInItemMaster() {
     if (this.ItemCodeforadd != 'undefined' && this.ItemCodeforadd != 0 && this.ItemCodeforadd != '' && this.ItemCodeforadd != null) {
       let AddItem = false;
-      if(this.ItemMaster.length>0){
+      if (this.ItemMaster.length > 0) {
         for (let i = 0; i < this.ItemMaster.length; i++) {
           if (this.ItemMaster[i].MaterialCodevtxt != this.ItemCodeforadd) {
             AddItem = true;
@@ -152,21 +156,21 @@ export class CustomerOrderEditComponent implements OnInit {
             return;
           }
         }
-      }else{
+      } else {
         AddItem = true;
       }
-      
+
       if (AddItem == true) {
         this._ItemMasterService.getItemMasterDataByKeyword(this.ItemCodeforadd).subscribe(
           data => {
             let item = {
-              MaterialCodevtxt    : data['0'].ItemCodevtxt,
-              MaterialDescriptionvtxt  : data['0'].ItemDescvtxt,
-              UoMvtxt   : data['0'].Uomnvtxt,
-              HSNCodevtxt   : data['0'].HSNCodevtxt,
-              Ratedcl     : data['0'].Ratedcl,
-              Quantityint:0,
-              Amountdcl:0,
+              MaterialCodevtxt: data['0'].ItemCodevtxt,
+              MaterialDescriptionvtxt: data['0'].ItemDescvtxt,
+              UoMvtxt: data['0'].Uomnvtxt,
+              HSNCodevtxt: data['0'].HSNCodevtxt,
+              Ratedcl: data['0'].Ratedcl,
+              Quantityint: 0,
+              Amountdcl: 0,
             }
             this.ItemMaster.push(item);
           }
@@ -202,6 +206,7 @@ export class CustomerOrderEditComponent implements OnInit {
       this.UpdateHeaderData(type);
       this.DeleteDetailData();
       this.UpdateOrderHeader(this.HeaderData, this.ItemMaster);
+      this.Redirect(this.status);
     } else {
       this.alertService.warn("Please fill the mandatory fields..");
     }
@@ -223,7 +228,7 @@ export class CustomerOrderEditComponent implements OnInit {
   }
 
   InsertOrderDetails(OrderDetails, id) {
-
+    this.status = 1;
     for (let i = 0; i <= OrderDetails.length; i++) {
 
       if (OrderDetails[i].Quantityint > 0) {
@@ -238,13 +243,16 @@ export class CustomerOrderEditComponent implements OnInit {
         }
         this._OrderService.InsertOrderDetails(orderdetail).subscribe(
           (res: any) => {
-            this.alertService.success('Order Inserted.');
+
+            this.status =0;
           },
           err => {
             if (err.status == 400)
               this.alertService.error('Error Order not Inserted.');
             else
               console.log(err);
+              this.status=1;
+              return
           }
         );
       }
@@ -252,6 +260,13 @@ export class CustomerOrderEditComponent implements OnInit {
 
   }
 
+
+  Redirect(status){
+    if(status==0){
+      this.router.navigateByUrl('/Customer/OrderList');
+      this.alertService.success('Order Inserted.');
+    }
+  }
 
   UpdateOrderHeader(OrderHeader, OrderDetails) {
     this._OrderService.UpdateOrderHeader(OrderHeader).subscribe(
@@ -277,9 +292,6 @@ export class CustomerOrderEditComponent implements OnInit {
   }
 
   UpdateHeaderData(type) {
-
- 
-
     this.HeaderData = {
       IDbint: this.OrderID,
       OrderNovtxt: this.OrderInfo.OrderNovtxt,
@@ -292,7 +304,7 @@ export class CustomerOrderEditComponent implements OnInit {
       CustomerNamevtxt: this.OrderInfo.CustomerNamevtxt,
       Divisionvtxt: this.OrderInfo.Divisionvtxt,
       ShipToCodevtxt: this.ShipToCode,
-      ShipToNamevtxt:  this.ShipToName ,
+      ShipToNamevtxt: this.ShipToName,
       ShipToAddressvtxt: this.ShipToAddress,
       TotalNetValuedcl: this.TotalAmount,
       TotalOrderQuantityint: this.TotalQuantity,

@@ -5,6 +5,7 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 import { ItemMasterService } from 'src/app/shared/ItemMasterService';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { MatInputModule } from '@angular/material/input';
 import { OrderService } from 'src/app/shared/OrderService';
@@ -25,6 +26,7 @@ export class CustomerCreateOrderComponent implements OnInit {
   CustomerData: any;
   PoDate;
   ItemCodeforadd;
+  status;
   private TotalQuantity;
   AllItemMasterDate;
   OrderInfo;
@@ -69,8 +71,8 @@ export class CustomerCreateOrderComponent implements OnInit {
     let tempamount = 0;
     let tempQuantity = 0;
     for (let j = 0; j < Item.length; j++) {
-      let amount = parseFloat(Item[j].Amount);
-      let qty = parseInt(Item[j].Quantity);
+      let amount = parseFloat(Item[j].Amount) ;
+      let qty = parseFloat( Item[j].Quantity);
       if (!qty) {
         qty = 0;
       } else {
@@ -81,12 +83,13 @@ export class CustomerCreateOrderComponent implements OnInit {
       } else {
         tempamount += amount;
       }
-      this.TotalQuantity = tempQuantity;
-      this.TotalAmount = tempamount;
+      this.TotalQuantity = tempQuantity.toFixed(2);
+      this.TotalAmount = tempamount.toFixed(2);
     }
   };
 
   updateTotalvalue(Item, qty, Ratedcl) {
+
     if (qty >= 0) {
       if (!qty || !Ratedcl) {
         Item.Amount = 0;
@@ -182,6 +185,7 @@ export class CustomerCreateOrderComponent implements OnInit {
       this.getOrderInfo();
       this.UpdateHeaderData(type);
       this.InsertOrderHeader(this.HeaderData, this.ItemMaster);
+      this.Redirect(this.status);
     }else{
       this.alertService.warn("Please fill the mandatory fields..");
     }
@@ -190,7 +194,7 @@ export class CustomerCreateOrderComponent implements OnInit {
 
 
   InsertOrderDetails(OrderDetails, id) {
-
+this.status = 1;
     for (let i = 0; i <= OrderDetails.length; i++) {
 
       if( OrderDetails[i].Quantity>0){
@@ -205,19 +209,28 @@ export class CustomerCreateOrderComponent implements OnInit {
         }
         this._OrderService.InsertOrderDetails(orderdetail).subscribe(
           (res: any) => {
-            this.alertService.success('Order Inserted.');
+          
+            this.status =0;
           },
           err => {
             if (err.status == 400)
               this.alertService.error('Error Order not Inserted.');
             else
-              console.log(err);
+              console.log(err);;
+              this.status=1;
+              return
           }
         );
       }
     }
-
   }
+
+Redirect(status){
+  if(status==0){
+    this.router.navigateByUrl('/Customer/OrderList');
+    this.alertService.success('Order Inserted.');
+  }
+}
 
 
   InsertOrderHeader(OrderHeader, OrderDetails) {

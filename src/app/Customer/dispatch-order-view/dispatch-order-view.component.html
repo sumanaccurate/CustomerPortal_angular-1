@@ -1,3 +1,5 @@
+
+<app-customer-float-data></app-customer-float-data>
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
 	<div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
 		<!--begin::Portlet-->
@@ -78,22 +80,19 @@
 						<div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
 							<div class="row col-11">
 								<div class="col-md-4 ">
-									<div>
+									
 										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
-									</div>
+								
 								</div>
-
 								<div class="col-md-4 ">
-									<div>
-										Material Description : <span
-											class="kt-font-bold">{{Order.MaterialDescriptionvtxt}}
-										</span></div>
+									
+										UOM : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+								
 								</div>
-
 								<div class="col-md-4 ">
-									<div>
+								
 										Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
-									</div>
+									
 								</div>
 							</div>
 						</div>

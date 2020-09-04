@@ -1,3 +1,5 @@
+
+<app-customer-float-data></app-customer-float-data>
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
     <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
@@ -17,30 +19,6 @@
                                 <div class="kt-section__body">
                                     <div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Customer Code</label>
-                                            <div class="col-md-3">
-                                                {{this.CustomerData.CustCodevtxt}}
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Customer Name</label>
-                                            <div class="col-md-3">
-                                                {{this.CustomerData.CustNamevtxt}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Division</label>
-                                            <div class="col-md-3">
-                                                {{this.CustomerData.DivisionCdvtxt}}
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Sales Group</label>
-                                            <div class="col-md-3">
-                                                {{this.CustomerData.SalesOrgNamevtxt}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Company</label>
-                                            <div class="col-md-3">
-                                                {{this.CustomerData.CompanyNamevtxt}}
-                                            </div>
                                             <label class="col-md-3 kt-font-boldest">Billing Address</label>
                                             <div class="col-md-3">
                                                 {{this.CustomerData.Address1vtxt}} , {{this.CustomerData.Address2vtxt}}
@@ -133,11 +111,9 @@
                                                 <th>
                                                 </th>
                                                 <th class=" mr-3">
-                                                    ItemCode
+                                                    Item
                                                 </th>
-                                                <th class=" mr-3">ItemDesc
-                                                </th>
-                                                <th class=" mr-3">Uomnvtxt
+                                                <th class=" mr-3">Uom
                                                 </th>
                                                 <th class=" mr-3">Rate
                                                 </th>
@@ -157,8 +133,6 @@
                                                 </td>
                                                 <td class=" mr-3">
                                                     <span>{{Item.ItemCodevtxt}}</span>
-                                                </td>
-                                                <td class=" mr-3"><span>{{Item.ItemDescvtxt}}</span>
                                                 </td>
                                                 <td class=" mr-3"><span>{{Item.Uomnvtxt}}</span>
                                                 </td>
