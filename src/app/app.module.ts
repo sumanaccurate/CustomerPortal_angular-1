@@ -39,7 +39,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
 import { UserService } from './shared/user.service';
-// import { MatSliderModule } from '@angular/material/slider';
+// import { MatSliderModule } from '@angular/material/slider'; 
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
@@ -80,7 +80,22 @@ import { TechnicalComponent } from './Technical/Technical.component';
 import { TechnicalProfileComponent } from './Technical/profile/profile.component';
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
+
+import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
+import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
+import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
+import { UploadMappingComponent } from './SystemAdmin/upload-mapping/upload-mapping.component';
+import { ContentDetailsComponent } from './SystemAdmin/content-details/content-details.component';
+import { RoleManagementComponent } from './SystemAdmin/role-management/role-management.component';
+import { BroadcastdetailsComponent } from './SystemAdmin/broadcastdetails/broadcastdetails.component';
+import { SwitchUserComponent } from './SystemAdmin/switch-user/switch-user.component';
+import { ViewComplaintsComponent } from './SystemAdmin/view-complaints/view-complaints.component';
+import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
+import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
+import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
+
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+
 import {MatNativeDateModule} from '@angular/material/core';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -121,6 +136,19 @@ import { CustomerFloatDataComponent } from './Customer/customer-float-data/custo
     ProgressSpinnerOverviewExample,
     DispatchOrderViewComponent,
     CustomerOrderViewComponent,
+
+    UploadEmployeeComponent,
+    EmployeeDetailsComponent,
+    UploadCustomerComponent,
+    UploadMappingComponent,
+    ContentDetailsComponent,
+    RoleManagementComponent,
+    BroadcastdetailsComponent,
+    SwitchUserComponent,
+    ViewComplaintsComponent,
+    UserDetailsComponent,
+    UploadUserComponent,
+    CreateDepartmentComponent,
     CustomerOrderEditComponent,
     OrderAnalystComponent,
     OrderAnalystPendingOrderListComponent,

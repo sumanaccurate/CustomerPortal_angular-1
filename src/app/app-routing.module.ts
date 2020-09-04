@@ -28,6 +28,18 @@ import { CustomerCreateOrderComponent } from './Customer/create-order/create-ord
 import { AuthGuard } from './services/auth.guard';
 import { CustomerOrderListComponent } from './Customer/order-list/order-list.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
+import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
+import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
+import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
+import { UploadMappingComponent } from './SystemAdmin/upload-mapping/upload-mapping.component';
+import { ContentDetailsComponent } from './SystemAdmin/content-details/content-details.component';
+import { RoleManagementComponent } from './SystemAdmin/role-management/role-management.component';
+import { BroadcastdetailsComponent } from './SystemAdmin/broadcastdetails/broadcastdetails.component';
+import { SwitchUserComponent } from './SystemAdmin/switch-user/switch-user.component';
+import { ViewComplaintsComponent } from './SystemAdmin/view-complaints/view-complaints.component';
+import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
+import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
+import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -60,6 +72,18 @@ const routes: Routes = [
       { path: 'profile', component: SystemAdminProfileComponent, canActivate: [AuthGuard] },
       { path: 'Editprofile', component: SystemAdminProfileEditComponent, canActivate: [AuthGuard] },
       { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
+      { path: 'UploadEmployee', component: UploadEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'EmployeeDetails', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
+      { path: 'UploadCustomer', component: UploadCustomerComponent, canActivate: [AuthGuard] },
+      { path: 'UploadMapping', component: UploadMappingComponent, canActivate: [AuthGuard] },
+      { path: 'ContentDetails', component: ContentDetailsComponent, canActivate: [AuthGuard] },
+      { path: 'RoleManagement', component: RoleManagementComponent, canActivate: [AuthGuard] },
+      { path: 'BroadCastDetails', component: BroadcastdetailsComponent, canActivate: [AuthGuard] },
+      { path: 'SwicthUser', component: SwitchUserComponent, canActivate: [AuthGuard] },
+      { path: 'ViewComplaints', component: ViewComplaintsComponent, canActivate: [AuthGuard] },
+      { path: 'UploadUser', component: UploadUserComponent, canActivate: [AuthGuard] },
+      { path: 'UserDetails', component: UserDetailsComponent, canActivate: [AuthGuard] },
+      { path: 'CreateDepartment', component: CreateDepartmentComponent, canActivate: [AuthGuard] },
     ]
   },
   {
