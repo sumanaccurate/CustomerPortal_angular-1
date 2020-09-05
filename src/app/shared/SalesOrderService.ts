@@ -20,13 +20,13 @@ export class SalesOrderService {
 getSalesOrderHeaderDataByOrderNo(no): Observable<any> {  
     return this.http.get(this.BaseURI + '/SalesOrder/getAllSalesOrderHeaderDataByOrderNo/'+no);
   } 
-  getAllSalesOrderData(SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
+  getAllSalesOrderData(fromdate,todate,status,SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
     if(KeyWord==null ||KeyWord==""){
       KeyWord="NoSearch";
     }
     return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrder/'+SoldToPartyCodevtxt+','+pageNo+','+DataPerPage+','+KeyWord); 
   }  
-  getAllSalesOrderCount(SoldToPartyCode,KeyWord): Observable<any> {  
+  getAllSalesOrderCount(fromdate,todate,status,SoldToPartyCode,KeyWord): Observable<any> {  
     if(KeyWord==null ||KeyWord==""){
       KeyWord="NoSearch";
     }

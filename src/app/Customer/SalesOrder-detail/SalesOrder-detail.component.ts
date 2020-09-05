@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';    
+import { NgModule } from '@angular/core';
 import { PaginationService } from '../../component/pagination/pagination.service';
-import { FormGroup, FormControl ,Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
@@ -13,116 +13,124 @@ import { CustomerFloatDataComponent } from '../customer-float-data/customer-floa
   styleUrls: ['./SalesOrder-detail.component.css']
 })
 export class CustomerSalesOrderDetailComponent implements OnInit {
-  Orders: any[]; 
-  constructor(private router: Router,private _SalesService: SalesOrderService,
-      public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
-  userData ; 
-  pageNo: any = 1;  
-  search=null;
-  pageNumber: boolean[] = [];  
-  sortOrder: any = 'CompanyName_ASC';  
-  order:any='CompanyName';  
+  Orders: any[];
+  constructor(private router: Router, private _SalesService: SalesOrderService,
+    public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  userData;
+  pageNo: any = 1;
+  search = null;
+  status = null;
+  FromDate = null;
+  Todate = null;
+  pageNumber: boolean[] = [];
+  sortOrder: any = 'CompanyName_ASC';
+  order: any = 'CompanyName';
   //Pagination Variables  
   //Page Row variables  
-  
-  pageField = [];  
-  exactPageList: any;  
-  paginationData: number;  
-  OrdersPerPage: any = 10;  
-  orderBy: string='Asc';  
-  
-  totalOrders: any;  
-  totalOrdersCount: any;  
-  currentPage = 1;  
-  
-  ngOnInit() {  
-    this.pageNumber[0] = true;  
-    this.paginationService.temppage = 0;  
-    this.getAllOrders();  
-  }  
 
-  getAllOrders() {  
-       this._SalesService.getAllSalesOrderData(localStorage.getItem('UserCode'),this.pageNo,this.OrdersPerPage,this.search).subscribe((data: any) => {
+  pageField = [];
+  exactPageList: any;
+  paginationData: number;
+  OrdersPerPage: any = 10;
+  orderBy: string = 'Asc';
+
+  totalOrders: any;
+  totalOrdersCount: any;
+  currentPage = 1;
+
+  ngOnInit() {
+    this.pageNumber[0] = true;
+    this.paginationService.temppage = 0;
+    this.getAllOrders();
+  }
+
+  getAllOrders() {
+    this._SalesService.getAllSalesOrderData(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.pageNo, this.OrdersPerPage, this.search).subscribe((data: any) => {
       this.Orders = data as any[];
       this.getAllOrdersCount();
     })
-    
-  }  
-  getAllOrdersCount() {  
-    this._SalesService.getAllSalesOrderCount(localStorage.getItem('UserCode'),this.search).subscribe((res: any) => {  
-      this.totalOrdersCount = res;  
-      this.totalNoOfPages();  
-    })  
-  }  
-  
+
+  }
+  getAllOrdersCount() {
+    this._SalesService.getAllSalesOrderCount(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.totalOrdersCount = res;
+      this.totalNoOfPages();
+    })
+  }
+
   //Method For Pagination  
-  totalNoOfPages() {  
-  
-    this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);  
-    let tempPageData = this.paginationData.toFixed();  
-    if (Number(tempPageData) < this.paginationData) {  
-      this.exactPageList = Number(tempPageData) + 1;  
-      this.paginationService.exactPageList = this.exactPageList;  
-    } else {  
-      this.exactPageList = Number(tempPageData);  
-      this.paginationService.exactPageList = this.exactPageList  
-    }  
-    this.paginationService.pageOnLoad();  
-    this.pageField = this.paginationService.pageField;  
-  
-  }  
-  showOrdersByPageNumber(page, i) {  
-    this.Orders = [];  
-    this.pageNumber = [];  
-    this.pageNumber[i] = true;  
-    this.pageNo = page;  
-    this.currentPage =page;  
-    this.getAllOrders();  
-  }  
-  
+  totalNoOfPages() {
+
+    this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);
+    let tempPageData = this.paginationData.toFixed();
+    if (Number(tempPageData) < this.paginationData) {
+      this.exactPageList = Number(tempPageData) + 1;
+      this.paginationService.exactPageList = this.exactPageList;
+    } else {
+      this.exactPageList = Number(tempPageData);
+      this.paginationService.exactPageList = this.exactPageList
+    }
+    this.paginationService.pageOnLoad();
+    this.pageField = this.paginationService.pageField;
+
+  }
+  showOrdersByPageNumber(page, i) {
+    this.Orders = [];
+    this.pageNumber = [];
+    this.pageNumber[i] = true;
+    this.pageNo = page;
+    this.currentPage = page;
+    this.getAllOrders();
+  }
+
   //Pagination Start  
-  
-  showPrevOrders() {  
-  
-    if (this.paginationService.showNoOfCurrentPage != 1) {  
-      this.paginationService.prevPage();  
-      this.pageNumber = [];  
-      this.pageNumber[0] = true;  
-      this.currentPage = this.paginationService.pageField[0];  
-      this.getAllOrders();  
-    }  
-  
-  }  
-  
-  showNextOrders() {  
-  
-    if (this.paginationService.disabledNextBtn == false) {  
-      this.pageNumber = [];  
-      this.paginationService.nextPage();  
-      this.pageNumber[0] = true;  
-      this.currentPage = this.paginationService.pageField[0];  
-      this.getAllOrders();  
-    }  
-  }  
-  sortByHeading(value: string, id) {  
-    this.Orders = [];  
-    this.sortOrder = value;  
-    this.order =value;  
-    if (this.orderBy == "Desc") {  
-      this.orderBy = "Asc"  
-      this.sortOrder =this.sortOrder+'_ASC';  
-    } else {  
-      this.orderBy = "Desc";  
-      this.sortOrder =this.sortOrder+'_DESC'  
-    }  
-    this.getAllOrders();  
-  }  
-  
-  
+
+  showPrevOrders() {
+
+    if (this.paginationService.showNoOfCurrentPage != 1) {
+      this.paginationService.prevPage();
+      this.pageNumber = [];
+      this.pageNumber[0] = true;
+      this.currentPage = this.paginationService.pageField[0];
+      this.getAllOrders();
+    }
+
+  }
+
+  showNextOrders() {
+
+    if (this.paginationService.disabledNextBtn == false) {
+      this.pageNumber = [];
+      this.paginationService.nextPage();
+      this.pageNumber[0] = true;
+      this.currentPage = this.paginationService.pageField[0];
+      this.getAllOrders();
+    }
+  }
+  sortByHeading(value: string, id) {
+    this.Orders = [];
+    this.sortOrder = value;
+    this.order = value;
+    if (this.orderBy == "Desc") {
+      this.orderBy = "Asc"
+      this.sortOrder = this.sortOrder + '_ASC';
+    } else {
+      this.orderBy = "Desc";
+      this.sortOrder = this.sortOrder + '_DESC'
+    }
+    this.getAllOrders();
+  }
+
+
   pass(value): void {
-    // console.log('recieved= key:' + key + 'value:' + val);
-    this.storage.set('OrderId',value);
+    this.storage.set('OrderId', value);
     this.router.navigateByUrl('/Customer/SalesOrderDetailView');
-   }
+  }
+
+  ChangeStatus(Value) {
+    if (Value !== null && Value !== "") {
+     this.status=Value;
+    }
+  }
 
 }   

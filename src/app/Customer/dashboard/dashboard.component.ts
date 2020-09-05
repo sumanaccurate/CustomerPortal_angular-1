@@ -23,8 +23,8 @@ CreditLimit;
 RetailOrder;
   ngOnInit(): void {
     this.getAllCreditLimitforDashboard();
-    this.getAllOrdersCountforDashboard();
     this.getAllOutStandingforDashboard();
+    this.getAllOrdersCountforDashboard();
     this.getAllSalesOrderforDashboard();
   }
   getAllOrdersCountforDashboard() {  

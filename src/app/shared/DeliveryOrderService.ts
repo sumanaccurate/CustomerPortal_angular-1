@@ -17,7 +17,7 @@ export class DeliveryOrderService {
   readonly BaseURI = environment.ApiUrl;
 
 
-  getAllOrderData(SoldToPartyCodevtxt, pageNo, DataPerPage, KeyWord) {
+  getAllOrderData(fromdate,todate,status,SoldToPartyCodevtxt, pageNo, DataPerPage, KeyWord) {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
@@ -29,7 +29,7 @@ export class DeliveryOrderService {
   getDeliveryOrderHeaderDataByOrderNo(no) {
     return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderHeaderByOrderNo/' + no);
   }
-  getAllOrderCount(SoldToPartyCode, KeyWord): Observable<any> {
+  getAllOrderCount(fromdate,todate,status,SoldToPartyCode, KeyWord): Observable<any> {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
