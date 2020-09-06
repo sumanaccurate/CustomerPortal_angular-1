@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class DeliveryOrderService {
+export class OutStandingService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
   constructor( public datepipe: DatePipe,private fb: FormBuilder, private http: HttpClient,) {
@@ -18,7 +18,7 @@ export class DeliveryOrderService {
   readonly BaseURI = environment.ApiUrl;
 
 
-  getAllOrderData(fromdate,todate,status,SoldToPartyCodevtxt, pageNo, DataPerPage, KeyWord) {
+  getAllDataData(fromdate,todate,status,SoldToPartyCodevtxt, pageNo, DataPerPage, KeyWord) {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
@@ -38,13 +38,7 @@ export class DeliveryOrderService {
     }
     return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderSearch/'+fromdate + ',' +todate + ',' +status + ',' + SoldToPartyCodevtxt + ',' + pageNo + ',' + DataPerPage + ',' + KeyWord);
   }
-  getAllOrderDataByOrderNo(no) {
-    return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderByOrderNo/' + no);
-  }
-  getDeliveryOrderHeaderDataByOrderNo(no) {
-    return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderHeaderByOrderNo/' + no);
-  }
-  getAllOrderCount(fromdate,todate,status,SoldToPartyCode, KeyWord): Observable<any> {
+  getAllDataCount(fromdate,todate,status,SoldToPartyCode, KeyWord): Observable<any> {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
@@ -64,33 +58,6 @@ export class DeliveryOrderService {
     }
     return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderCount/' +fromdate + ',' +todate+ ',' +status+ ',' +SoldToPartyCode + ',' + KeyWord);
   }
-  getAllDeliveryOrderDataBySalesOrderNo(no): Observable<any> {
-    return this.http.get(this.BaseURI + '/DeliveryOrder/getAllDeliveryOrderDataBySalesOrderNo/' + no);
-  }
-  getAllOrdersCountforDashboard(UserCode): Observable<any> {
 
-    return this.http.get(this.BaseURI + '/DeliveryOrder/getAllOrdersCountforCustomerDashboard/' + UserCode );
-  }
-  downloadFile(fromdate,todate,status,SoldToPartyCodevtxt, KeyWord): any {
-
-    if (fromdate == null || fromdate == "") {
-      fromdate = new Date();
-      fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
-       fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
-    }else{
-      fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
-    }
-    if (todate == null || todate == "") {
-      todate = new Date();
-      todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
-    }else{
-      todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
-    }
-    if (KeyWord == null || KeyWord == "") {
-      KeyWord = "NoSearch";
-    }
-    return this.http.get(this.BaseURI + '/DeliveryOrder/Excel/' +fromdate + ',' +todate+ ',' +status+ ',' +SoldToPartyCodevtxt + ',' + KeyWord, {responseType: 'blob'});
-  }
   
 }

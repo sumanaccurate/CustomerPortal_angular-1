@@ -80,7 +80,7 @@ import { TechnicalComponent } from './Technical/Technical.component';
 import { TechnicalProfileComponent } from './Technical/profile/profile.component';
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
-
+import { DatePipe } from '@angular/common'
 import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
 import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
 import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
@@ -102,6 +102,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
 import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
 import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
+import { OutStandingComponent } from './Customer/out-standing/out-standing.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -153,6 +154,7 @@ import { CustomerFloatDataComponent } from './Customer/customer-float-data/custo
     OrderAnalystComponent,
     OrderAnalystPendingOrderListComponent,
     CustomerFloatDataComponent,
+    OutStandingComponent,
   ],
   imports: [
     BrowserModule,
@@ -186,9 +188,10 @@ import { CustomerFloatDataComponent } from './Customer/customer-float-data/custo
     MatInputModule,
     MatRippleModule,
   ],
-  providers: [UserService, {
+  providers: [UserService, DatePipe, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
+   
     multi: true
   },
   

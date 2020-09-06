@@ -4,30 +4,61 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
+import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient,public datepipe: DatePipe) {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
    }
   readonly BaseURI =  environment.ApiUrl;
 
 
-getAllInvoiceData(SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
-    if(KeyWord==null ||KeyWord==""){
-      KeyWord="NoSearch";
-    }
-    return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoice/'+SoldToPartyCodevtxt+','+pageNo+','+DataPerPage+','+KeyWord); 
+getAllInvoiceData(fromdate,todate,status,SoldToPartyCodevtxt,pageNo,DataPerPage,KeyWord) {  
+  
+  if (fromdate == null || fromdate == "") {
+    fromdate = new Date();
+    fromdate = new Date(fromdate);
+    fromdate.setDate(fromdate.getDate() - 8);
+     fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
+  }else{
+    fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
+  }
+  if (todate == null || todate == "") {
+    todate = new Date();
+    todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
+  }else{
+    todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
+  }
+  if (KeyWord == null || KeyWord == "") {
+    KeyWord = "NoSearch";
+  }
+    return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoiceSearch/'+fromdate + ',' +todate + ',' +status + ','+SoldToPartyCodevtxt+','+pageNo+','+DataPerPage+','+KeyWord); 
   }  
-  getAllInvoiceCount(SoldToPartyCode,KeyWord): Observable<any> {  
-    if(KeyWord==null ||KeyWord==""){
-      KeyWord="NoSearch";
+  getAllInvoiceCount(fromdate,todate,status,SoldToPartyCode,KeyWord): Observable<any> {  
+   
+    if (fromdate == null || fromdate == "") {
+      fromdate = new Date();
+      fromdate = new Date(fromdate);
+      fromdate.setDate(fromdate.getDate() - 8);
+       fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
+    }else{
+      fromdate =this.datepipe.transform(fromdate,  'yyyy-MM-dd');
     }
-    return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoiceCount/'+SoldToPartyCode+','+KeyWord);
+    if (todate == null || todate == "") {
+      todate = new Date();
+      todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
+    }else{
+      todate =this.datepipe.transform(todate,  'yyyy-MM-dd');
+    }
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoiceCount/'+fromdate + ',' +todate + ',' +status + ','+SoldToPartyCode+','+KeyWord);
   }  
   getAllInvoiceDataByInvoiceNo(no) {  
     return this.http.get(this.BaseURI + '/InvoiceMaster/getAllInvoiceDataByInvoiceNo/'+no); 

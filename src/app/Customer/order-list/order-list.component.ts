@@ -21,7 +21,7 @@ export class CustomerOrderListComponent implements OnInit {
   userData;
   pageNo: any = 1;
   search = null;
-  status = null;
+  status = 'All';
   FromDate = null;
   Todate = null;
   pageNumber: boolean[] = [];

@@ -10,6 +10,7 @@
           <h3 class="kt-portlet__head-title text-dark">
             {{this.User.UserNametxt}} - Dispatch List
           </h3>
+          <button class="btn btn-dark" (click)="download()" title="bigger">ExportToXL</button>
         </div>
 
       </div>
@@ -142,7 +143,7 @@
                     <a (click)="showPrevOrders()"
                       [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
                       style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
-                  <li *ngFor="let page of pageField;let i=index" class="page-item">
+                  <li  *ngFor="let page of pageField;let i=index" class="page-item">
                     <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
                       style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 

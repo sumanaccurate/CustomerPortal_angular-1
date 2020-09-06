@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PaginationService } from '../../component/pagination/pagination.service';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import * as fileSaver from 'file-saver';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
@@ -19,7 +20,7 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   userData;
   pageNo: any = 1;
   search = null;
-  status = null;
+  status = 'All';
   FromDate = null;
   Todate = null;
   pageNumber: boolean[] = [];
@@ -133,4 +134,14 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
     }
   }
 
+  download() {
+    this._SalesService.downloadFile(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe(response => {
+			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
+			//const url= window.URL.createObjectURL(blob);
+			//window.open(url);
+			window.location.href = response.url;
+			//fileSaver.saveAs(blob, 'employees.json');
+		}), error => console.log('Error downloading the file'),
+                 () => console.info('File downloaded successfully');
+  }
 }   

@@ -19,6 +19,7 @@ export class CustomerInvoiceDetailComponent implements OnInit {
   pageNo: any = 1;
   search = null;
   FromDate = null;
+  Status='All';
   Todate = null;
   pageNumber: boolean[] = [];
   sortInvoice: any = 'CompanyName_ASC';
@@ -43,14 +44,14 @@ export class CustomerInvoiceDetailComponent implements OnInit {
   }
 
   getAllInvoices() {
-    this._InvoiceService.getAllInvoiceData(localStorage.getItem('UserCode'), this.pageNo, this.InvoicesPerPage, this.search).subscribe((data: any) => {
+    this._InvoiceService.getAllInvoiceData(this.FromDate,this.Todate,this.Status,localStorage.getItem('UserCode'), this.pageNo, this.InvoicesPerPage, this.search).subscribe((data: any) => {
       this.Invoices = data as any[];
       this.getAllInvoicesCount();
     })
 
   }
   getAllInvoicesCount() {
-    this._InvoiceService.getAllInvoiceCount(localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+    this._InvoiceService.getAllInvoiceCount(this.FromDate,this.Todate,this.Status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
       this.totalInvoicesCount = res;
       this.totalNoOfPages();
     })
@@ -69,7 +70,13 @@ export class CustomerInvoiceDetailComponent implements OnInit {
       this.paginationService.exactPageList = this.exactPageList
     }
     this.paginationService.pageOnLoad();
-    this.pageField = this.paginationService.pageField;
+    if(this.totalInvoicesCount > this.InvoicesPerPage){
+      this.pageField = this.paginationService.pageField;
+    }
+    else{
+      this.pageField = [1];
+    }
+   
 
   }
   showInvoicesByPageNumber(page, i) {

@@ -6,18 +6,17 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
-
-import * as fileSaver from 'file-saver';
-import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
+import { OutStandingService } from 'src/app/shared/OutStandingService';
+
 @Component({
-  selector: 'app-COrder-detail',
-  templateUrl: './DispatchOrder-detail.component.html',
-  styleUrls: ['./DispatchOrder-detail.component.css']
+  selector: 'app-out-standing',
+  templateUrl: './out-standing.component.html',
+  styleUrls: ['./out-standing.component.css']
 })
-export class CustomerDispatchOrderDetailComponent implements OnInit {
-  Orders: any[];
-  constructor(private _DeliveryOrderService: DeliveryOrderService, private service: UserService, private router: Router, private _CustomerService: CustomerService
+export class OutStandingComponent implements OnInit {
+  DetailData: any[];
+  constructor(private _OutStandingService: OutStandingService, private service: UserService, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData;
   pageNo: any = 1;
@@ -35,11 +34,11 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   pageField = [];
   exactPageList: any;
   paginationData: number;
-  OrdersPerPage: any = 10;
+  DetailDataPerPage: any = 10;
   orderBy: string = 'Asc';
 
-  totalOrders: any;
-  totalOrdersCount: any;
+  totalDetailData: any;
+  totalDetailDataCount: any;
   currentPage = 1;
 
 
@@ -47,7 +46,7 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   ngOnInit() {
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
-    this.getAllOrders();
+    this.getAllDetailData();
     this.getUserInfo();
   }
 
@@ -65,16 +64,16 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
     }
   }
 
-  getAllOrders() {
-    this._DeliveryOrderService.getAllOrderData(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.pageNo, this.OrdersPerPage, this.search).subscribe((data: any) => {
-      this.Orders = data as any[];
-      this.getAllOrdersCount();
+  getAllDetailData() {
+    this._OutStandingService.getAllDataData(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.pageNo, this.DetailDataPerPage, this.search).subscribe((data: any) => {
+      this.DetailData = data as any[];
+      this.getAllDetailDataCount();
     })
 console.log(this.status+this.FromDate+this.Todate);
   }
-  getAllOrdersCount() {
-    this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
-      this.totalOrdersCount = res;
+  getAllDetailDataCount() {
+    this._OutStandingService.getAllDataCount(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.totalDetailDataCount = res;
       this.totalNoOfPages();
     })
   }
@@ -82,7 +81,7 @@ console.log(this.status+this.FromDate+this.Todate);
   //Method For Pagination  
   totalNoOfPages() {
 
-    this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);
+    this.paginationData = Number(this.totalDetailDataCount / this.DetailDataPerPage);
     let tempPageData = this.paginationData.toFixed();
     if (Number(tempPageData) < this.paginationData) {
       this.exactPageList = Number(tempPageData) + 1;
@@ -92,7 +91,7 @@ console.log(this.status+this.FromDate+this.Todate);
       this.paginationService.exactPageList = this.exactPageList
     }
     this.paginationService.pageOnLoad();
-    if(this.totalOrdersCount > this.OrdersPerPage){
+    if(this.totalDetailDataCount > this.DetailDataPerPage){
       this.pageField = this.paginationService.pageField;
     }
     else{
@@ -101,41 +100,41 @@ console.log(this.status+this.FromDate+this.Todate);
    
 
   }
-  showOrdersByPageNumber(page, i) {
-    this.Orders = [];
+  showDetailDataByPageNumber(page, i) {
+    this.DetailData = [];
     this.pageNumber = [];
     this.pageNumber[i] = true;
     this.pageNo = page;
     this.currentPage = page;
-    this.getAllOrders();
+    this.getAllDetailData();
   }
 
   //Pagination Start  
 
-  showPrevOrders() {
+  showPrevDetailData() {
 
     if (this.paginationService.showNoOfCurrentPage != 1) {
       this.paginationService.prevPage();
       this.pageNumber = [];
       this.pageNumber[0] = true;
       this.currentPage = this.paginationService.pageField[0];
-      this.getAllOrders();
+      this.getAllDetailData();
     }
 
   }
 
-  showNextOrders() {
+  showNextDetailData() {
 
     if (this.paginationService.disabledNextBtn == false) {
       this.pageNumber = [];
       this.paginationService.nextPage();
       this.pageNumber[0] = true;
       this.currentPage = this.paginationService.pageField[0];
-      this.getAllOrders();
+      this.getAllDetailData();
     }
   }
   sortByHeading(value: string, id) {
-    this.Orders = [];
+    this.DetailData = [];
     this.sortOrder = value;
     this.order = value;
     if (this.orderBy == "Desc") {
@@ -145,7 +144,7 @@ console.log(this.status+this.FromDate+this.Todate);
       this.orderBy = "Desc";
       this.sortOrder = this.sortOrder + '_DESC'
     }
-    this.getAllOrders();
+    this.getAllDetailData();
   }
 
   pass(value): void {
@@ -160,14 +159,4 @@ console.log(this.status+this.FromDate+this.Todate);
     }
   }
 
-  download() {
-    this._DeliveryOrderService.downloadFile(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe(response => {
-			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
-			//const url= window.URL.createObjectURL(blob);
-			//window.open(url);
-			window.location.href = response.url;
-			//fileSaver.saveAs(blob, 'employees.json');
-		}), error => console.log('Error downloading the file'),
-                 () => console.info('File downloaded successfully');
-  }
 }   
