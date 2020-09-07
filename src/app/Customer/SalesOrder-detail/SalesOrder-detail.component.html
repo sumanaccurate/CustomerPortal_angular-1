@@ -11,9 +11,11 @@
 
           <h3 class="kt-portlet__head-title text-dark">Sales Order List
           </h3>
-          <button class="btn btn-dark" (click)="download()" title="bigger">ExportToXL</button>
-        </div>
 
+        </div>
+<div class="kt-portlet__head-toolbar">
+          <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()">  <i class="fa fa-file-download"></i></button>
+                </div>
       </div>
       <div class="p-4 bg-light border-top border-bottom">
         <!--begin: Search Form -->
@@ -150,7 +152,7 @@
 
         <!--end: Datatable -->
       </div>
-    </div>
+    </div> 
   </div>
 
 </div>

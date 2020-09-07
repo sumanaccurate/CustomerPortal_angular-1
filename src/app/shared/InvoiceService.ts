@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
+
+import * as fileSaver from 'file-saver';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
 import { DatePipe } from '@angular/common';

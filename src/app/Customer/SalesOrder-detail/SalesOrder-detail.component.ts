@@ -133,14 +133,13 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
      this.status=Value;
     }
   }
-
-  download() {
+ download() {
     this._SalesService.downloadFile(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe(response => {
-			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
-			//const url= window.URL.createObjectURL(blob);
+			let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+			const url = window.URL.createObjectURL(blob);
 			//window.open(url);
-			window.location.href = response.url;
-			//fileSaver.saveAs(blob, 'employees.json');
+			//window.location.href = response.url;
+			fileSaver.saveAs(blob, 'Excel.xlsx');
 		}), error => console.log('Error downloading the file'),
                  () => console.info('File downloaded successfully');
   }
