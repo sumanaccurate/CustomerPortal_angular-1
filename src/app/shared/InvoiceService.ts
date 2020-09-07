@@ -69,4 +69,25 @@ getAllInvoiceData(fromdate,todate,status,SoldToPartyCodevtxt,pageNo,DataPerPage,
     return this.http.get(this.BaseURI + '/InvoiceMaster/getInvoiceHeaderDataByInvoiceNo/'+no); 
   }  
 
+  downloadFile(fromdate, todate, status, SoldToPartyCodevtxt, KeyWord): any {
+
+    if (fromdate == null || fromdate == "") {
+      fromdate = new Date();
+      fromdate = new Date(fromdate);
+      fromdate.setDate(fromdate.getDate() - 8);
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    } else {
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    }
+    if (todate == null || todate == "") {
+      todate = new Date();
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    } else {
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    }
+    if (KeyWord == null || KeyWord == "") {
+      KeyWord = "NoSearch";
+    }
+    return this.http.get(this.BaseURI + '/InvoiceMaster/GetInvoiceDownload/' + fromdate + ',' + todate + ',' + status + ',' + SoldToPartyCodevtxt + ',' + KeyWord, { responseType: 'blob' });
+  }
 }

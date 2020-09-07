@@ -102,7 +102,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
 import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
 import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
-import { OutStandingComponent } from './Customer/out-standing/out-standing.component';
+import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -154,7 +154,7 @@ import { OutStandingComponent } from './Customer/out-standing/out-standing.compo
     OrderAnalystComponent,
     OrderAnalystPendingOrderListComponent,
     CustomerFloatDataComponent,
-    OutStandingComponent,
+    CustomerOutStandingComponent,
   ],
   imports: [
     BrowserModule,

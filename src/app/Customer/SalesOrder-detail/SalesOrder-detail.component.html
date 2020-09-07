@@ -13,9 +13,10 @@
           </h3>
 
         </div>
-<div class="kt-portlet__head-toolbar">
-          <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()">  <i class="fa fa-file-download"></i></button>
-                </div>
+        <div class="kt-portlet__head-toolbar">
+          <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
+              class="fa fa-file-download"></i></button>
+        </div>
       </div>
       <div class="p-4 bg-light border-top border-bottom">
         <!--begin: Search Form -->
@@ -24,8 +25,8 @@
             <div class="col-xl-12 order-2 order-xl-1">
               <div class="row align-items-center">
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div >
-                    <select class="form-control"  (change)="ChangeStatus($event.target.value)">
+                  <div>
+                    <select class="form-control" (change)="ChangeStatus($event.target.value)">
                       <option value="All">Select Status</option>
                       <option value="Pending">Pending</option>
                       <option value="Completely processed">Completely processed</option>
@@ -35,7 +36,8 @@
                 </div>
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control" [(ngModel)]="FromDate"  placeholder="From Date" id="kt_datepicker_1">
+                    <input type="text" class="form-control" [(ngModel)]="FromDate" placeholder="From Date"
+                      id="kt_datepicker_1">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
                       <span><i class="la la-calendar"></i></span>
                     </span>
@@ -43,7 +45,8 @@
                 </div>
                 <div class="col-md kt-margin-b-20-tablet-and-mobile">
                   <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control" [(ngModel)]="Todate"  placeholder="To Date" id="kt_datepicker_2">
+                    <input type="text" class="form-control" [(ngModel)]="Todate" placeholder="To Date"
+                      id="kt_datepicker_2">
                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
                       <span><i class="la la-calendar"></i></span>
                     </span>
@@ -110,16 +113,16 @@
                 <div>
                   Total balance Quantity : <span class="kt-font-bold">{{Order.BalanceQuantity}}</span>
                 </div>
-                
-               
+
+
               </div>
             </div>
             <div class=" col-md-1">
               <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
-                (click)="pass(this.Order.SalesOrderNumbervtxt)" ><i class="fa fa-eye"></i>
+                (click)="pass(this.Order.SalesOrderNumbervtxt)"><i class="fa fa-eye"></i>
               </button>
             </div>
-            
+
           </div>
           <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
 
@@ -152,7 +155,7 @@
 
         <!--end: Datatable -->
       </div>
-    </div> 
+    </div>
   </div>
 
 </div>

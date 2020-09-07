@@ -8,157 +8,87 @@
       <div class="kt-portlet__head kt-portlet__head--lg bg-light">
         <div class="kt-portlet__head-label">
           <h3 class="kt-portlet__head-title text-dark">
-            {{this.User.UserNametxt}} - Dispatch List
+            OutStanding
           </h3>
         </div>
 
       </div>
-      <div class="p-4 bg-light border-top border-bottom">
-        <!--begin: Search Form -->
-        <div class="kt-form kt-form--label-right ">
-          <div class="row align-items-center">
-            <div class="col-xl-12 order-2 order-xl-1">
-              <div class="row align-items-center">
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div >
-                    <select class="form-control"  (change)="ChangeStatus($event.target.value)">
-                      <option value="All">Select Status</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Completely processed">Completely processed</option>
-                      <option value="Partially processed">Partially processed</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  matInput [matDatepicker]="picker" [(ngModel)]="FromDate" placeholder="From Date"
-                      id="kt_datepicker_1">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-calendar"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  matInput [matDatepicker]="picker" [(ngModel)]="Todate" placeholder="To Date"
-                      id="kt_datepicker_2">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-calendar"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-search"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-1">
-                  <button class="btn btn-dark" (click)="getAllDetailData()" title="bigger">Search</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--end: Search Form -->
-      </div>
+     
       <div class="kt-portlet__body ">
 
-        <div>
           <div *ngFor="let Data of DetailData" class="customerCustomers-list row border shadow-sm p-3 mb-3">
             <div class="row col-md-11">
-              <div class="col-md-4 ">
-                <div>
-                  Sold To Party: {{Data.SoldToPartyCodevtxt}} - {{Data.SoldTopPartyNamevtxt}}
-                </div>
-                <div>
-                  Delivery Date : <span class="kt-font-bold">{{Data.DeliveryDatedate | date :'dd/MM/yyyy'}}</span>
-                </div>
-                <div>
-                  TruckNo : <span class="kt-font-bold">{{Data.TruckNovtxt}}</span>
-                </div>
-                <div>
-                  LR No : <span class="kt-font-bold">{{Data.Lrnumbervtxt}}</span>
-                </div>
-                <div>
-                  Driver Mobile No : <span class="kt-font-bold">{{Data.DriverMobileNovtxt}}</span>
-                </div>
+              <div class="row col-md-12">
+               
+                <div class="col-md-2 ">
+                  3 Days : ₹ {{Data.D3dcl | number}} 
 
+                </div>
+                <div class="col-md-2 ">
+                  7 Days : ₹ {{Data.D7dcl | number}} 
 
+                </div>
+                <div class="col-md-2 ">
+                  15 Days : ₹ {{Data.D15dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  30 Days : ₹ {{Data.D30dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  45 Days : ₹ {{Data.D45dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  60 Days : ₹ {{Data.D60dcl  | number}} 
+
+                </div>
               </div>
-              <div class="col-md-4 ">
-                <div>
-                  Ship To Party: {{Data.ShipToPartyCodevtxt}} - {{Data.ShipToPartyNamevtxt}}
-                </div>
-                <div>
-                  Sales Order No : <span class="kt-font-bold">{{Data.SalesOrderNovtxt}}</span>
-                </div>
-                <div>
-                  Transporter No : <span class="kt-font-bold">{{Data.Transportervtxt}}</span>
-                </div>
-                <div>
-                  LR date : <span class="kt-font-bold">{{Data.Lrdatedate | date :'dd/MM/yyyy'}}</span>
-                </div>
 
-                <div>
-                  Driver : <span class="kt-font-bold">{{Data.Drivervtxt}}</span>
-                </div>
+              <div class="row col-md-12">
+                <div class="col-md-2 ">
+                  90 Days : ₹ {{Data.D90dcl | number}} 
 
+                </div>
+                <div class="col-md-2 ">
+                  120 Days : ₹ {{Data.D120dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  150 Days : ₹ {{Data.D150dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  180 Days : ₹ {{Data.D180dcl | number}} 
+
+                </div>
+                <div class="col-md-2 ">
+                  360 Days : ₹ {{Data.D360dcl | number}} 
+
+                </div>
+                
+                <div class="col-md-2 ">
+                 > 360 Days : ₹ {{Data.gD360dcl | number}} 
+                </div>
               </div>
-              <div class="col-md-4 ">
-                <div>
-                  Delivery Order No : <span class="kt-font-bold">{{Data.DeliveryOrderNovtxt}}</span>
+            
+              <div class="col-md-12 row mt-3 ">
+                <div class="col-md-4 ">
+                  Advanced : ₹ {{Data.Advancedcl | number}} 
                 </div>
-
-                <div>
-                  Invoice No : <span class="kt-font-bold">{{Data.InvoiceNumbervtxt}}</span>
+                <div class="col-md-4 ">
+                  Gross OutStanding Amount : ₹ {{Data.GrossOutsatndingAmtdcl | number}} 
                 </div>
-                <div>
-                  Total Order Quantity : <span class="kt-font-bold">{{Data.Qtyint}}</span>
+                <div class="col-md-4 ">
+                  Net OutStanding Amount : ₹ {{Data.NetOutstandingAmtdcl | number}} 
                 </div>
-                <div>
-                  Status : <span class="kt-font-bold">{{Data.DeliveryStatusvtxt}}</span>
-                </div>
-
               </div>
-            </div>
-            <div class=" col-md-1">
-              <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
-                (click)="pass(this.Order.DeliveryOrderNovtxt)"><i class="fa fa-eye"></i>
-              </button>
             </div>
           </div>
           <h2 *ngIf="this.DetailData[0]==null">No Data Available</h2>
-          <div class="container mw-100">
-            <div class="row">
-              <div class="col-md-3"> </div>
-              <div *ngIf="DetailData !=0" class="col-md-6">
-                <ul class="pagination justify-content-center">
-                  <li *ngIf="totalDetailDataCount > this.DetailDataPerPage" class="page-item">
-                    <a (click)="showPrevDetailData()"
-                      [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
-                      style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
-                  <li  *ngFor="let page of pageField;let i=index" class="page-item">
-                    <a (click)="showDetailDataByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
-                      style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
+        
 
-                  </li>
-                  <li *ngIf="totalDetailDataCount > this.DetailDataPerPage" class="page-item"><a (click)="showNextDetailData()"
-                      [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
-                      style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
-                </ul>
-                <div style="text-align: center;">
-                  Page {{currentPage}} of Total page {{paginationService.exactPageList}}
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
 
         <!--end: Datatable -->
       </div>

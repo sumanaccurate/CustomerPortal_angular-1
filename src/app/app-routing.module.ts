@@ -41,6 +41,7 @@ import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.compo
 import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
 import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -104,6 +105,7 @@ const routes: Routes = [
       { path: 'InvoiceDetailView', component: CustomerInvoiceViewComponent, canActivate: [AuthGuard] },
       { path: 'SalesOrderDetail', component: CustomerSalesOrderDetailComponent, canActivate: [AuthGuard] },
       { path: 'SalesOrderDetailView', component: CustomerSalesOrderViewComponent, canActivate: [AuthGuard] },
+      { path: 'OutStanding', component: CustomerOutStandingComponent, canActivate: [AuthGuard] },
     ]
   },
 

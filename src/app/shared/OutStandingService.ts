@@ -36,7 +36,7 @@ export class OutStandingService {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
-    return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderSearch/'+fromdate + ',' +todate + ',' +status + ',' + SoldToPartyCodevtxt + ',' + pageNo + ',' + DataPerPage + ',' + KeyWord);
+    return this.http.get(this.BaseURI + '/Outstanding/GetOutStandingData/'+ SoldToPartyCodevtxt );
   }
   getAllDataCount(fromdate,todate,status,SoldToPartyCode, KeyWord): Observable<any> {
     if (fromdate == null || fromdate == "") {
@@ -56,7 +56,7 @@ export class OutStandingService {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
-    return this.http.get(this.BaseURI + '/DeliveryOrder/GetDeliveryOrderCount/' +fromdate + ',' +todate+ ',' +status+ ',' +SoldToPartyCode + ',' + KeyWord);
+    return this.http.get(this.BaseURI + '/Outstanding/GetOutstandingCount/' +SoldToPartyCode);
   }
 
   
