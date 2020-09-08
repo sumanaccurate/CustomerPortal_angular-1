@@ -24,10 +24,14 @@ export class CustomerCreateOrderComponent implements OnInit {
   private TotalAmount;
   Pono;
   CustomerData: any;
+  UOMs : any;
   PoDate;
+  TotalMT;
+  TotalKgs;
   ItemCodeforadd;
   OutStanding;
   CreditLimit;
+  AlternativeUnit;
   status;
   private TotalQuantity;
   AllItemMasterDate;
@@ -48,6 +52,7 @@ export class CustomerCreateOrderComponent implements OnInit {
     this.GetTopItemMaster();
     this.getAllItemMasterData();
     this.getOrderInfo();
+    this.getUOM();
     this.ShipTo.Addressvtxt = '';
   }
 
@@ -73,6 +78,11 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
   }
 
+  getUOM() {
+      this._CustomerService.getUOM().subscribe((res: any) => {
+        this.UOMs = res;
+      })
+  }
   getOrderInfo() {
     this._OrderService.getOrderInfo().subscribe(
       data => {
@@ -102,6 +112,45 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
   };
 
+  
+  updateTotalUOM(Item,Quantity) {
+    
+    if( Quantity>0){
+      Item.Quantity = ( parseFloat(Quantity)).toFixed(2);
+      Item.QtyKg=( parseFloat(Quantity) *  parseFloat(Item.Weight)).toFixed(2);
+      Item.QtyMt= (parseFloat(Quantity )* parseFloat(Item.RateOfConversion)).toFixed(2);
+    }else{
+      Item.QtyKg=0;
+      Item.QtyMt=0;
+    }
+    let tempqtyKg = 0;
+    let tempqtyMt = 0;
+    let tempQuantity = 0;
+    for (let j = 0; j < this.ItemMaster.length; j++) {
+      let qtyKg = parseFloat(this.ItemMaster[j].QtyKg) ;
+      let qtyMt = parseFloat( this.ItemMaster[j].QtyMt);
+      let qty = parseFloat( this.ItemMaster[j].Quantity);
+      if (!qty) {
+        qty = 0;
+      } else {
+        tempQuantity += qty;
+      }
+      if (!qtyMt) {
+        qtyMt = 0;
+      } else {
+        tempqtyMt += qtyMt;
+      }
+      if (!qtyKg) {
+        qtyKg = 0;
+      } else {
+        tempqtyKg += qtyKg;
+      }
+      this.TotalMT = tempqtyMt.toFixed(2);
+      this.TotalQuantity = tempQuantity.toFixed(2);
+      this.TotalKgs = tempqtyKg.toFixed(2);
+    }
+  };
+
   updateTotalvalue(Item, qty, Ratedcl) {
 
     if (qty >= 0) {
@@ -118,6 +167,23 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
 
     this.updateTotal(this.ItemMaster);
+  };
+
+  
+  updateUOM(ID,Item) {
+   
+    this._CustomerService.getUOMById(ID).subscribe(
+      data => {
+        Item.Uomnvtxt =  data[0].AlternativeUnit;
+        Item.RateOfConversion= data[0].RateOfConversion;
+        Item.Weight= data[0].Weight;
+        if(Item.Quantity==null){
+          Item.Quantity=0
+        }
+            this.updateTotalUOM(Item,Item.Quantity);
+      }
+    );
+
   };
 
   getAllItemMasterData() {

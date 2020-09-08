@@ -41,6 +41,10 @@ import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.compo
 import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
 import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
 import { UserListComponent } from './Customer/user-list/user-list.component';
 import { CustomerUploadUserComponent } from './Customer/customer-upload-user/customer-upload-user.component';
 import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
@@ -51,7 +55,12 @@ import { CompanyStockComponent } from './Customer/company-stock/company-stock.co
 import { RaiseComplaintsComponent } from './Customer/raise-complaints/raise-complaints.component';
 import { RetailOrdersComponent } from './Customer/retail-orders/retail-orders.component';
 import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-status.component';
+<<<<<<< HEAD
 import { RegisterComponent } from './user/register/register.component';
+=======
+import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
+import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
+>>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
 
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -96,6 +105,7 @@ const routes: Routes = [
       { path: 'ViewComplaints', component: ViewComplaintsComponent, canActivate: [AuthGuard] },
       { path: 'UploadUser', component: UploadUserComponent, canActivate: [AuthGuard] },
       { path: 'UserDetails', component: UserDetailsComponent, canActivate: [AuthGuard] },
+      { path: 'TargetSales', component: SystemAdminTargetSalesComponent, canActivate: [AuthGuard] },
       { path: 'CreateDepartment', component: CreateDepartmentComponent, canActivate: [AuthGuard] },
     ]
   },
@@ -127,6 +137,10 @@ const routes: Routes = [
       { path: 'RetailOrder', component: RetailOrdersComponent, canActivate: [AuthGuard] },
       { path: 'RaiseComplaint', component: RaiseComplaintsComponent, canActivate: [AuthGuard] },
       { path: 'ComplaintStatus', component: ComplaintStatusComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
+=======
+      { path: 'OutStanding', component: CustomerOutStandingComponent, canActivate: [AuthGuard] },
+>>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
     ]
   },
 

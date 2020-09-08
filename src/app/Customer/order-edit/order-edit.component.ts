@@ -23,10 +23,14 @@ export class CustomerOrderEditComponent implements OnInit {
   name: string;
   ItemMaster;
   othercharges;
+  SelectedValue=1;
   private TotalAmount;
   Pono;
   ShipToName;
   PoDate;
+  UOMs;
+  TotalKgs;
+  TotalMT;
   CustomerData: any;
   ShipToCode;
   ItemCodeforadd;
@@ -45,6 +49,7 @@ export class CustomerOrderEditComponent implements OnInit {
   ngOnInit() {
     this.Userid = localStorage.getItem('UserCode');
     this.OrderID = this.storage.get('OrderId');
+    this.getUOM();
     this.getShiptoAddressData(this.Userid);
     this.getAllOrderDataByOrderNo(this.OrderID);
     this.getAllItemMasterData();
@@ -123,6 +128,66 @@ export class CustomerOrderEditComponent implements OnInit {
     this.updateTotal(this.ItemMaster);
   };
 
+  
+  updateUOM(ID,Item) {
+   
+    this._CustomerService.getUOMById(ID).subscribe(
+      data => {
+        Item.Uomnvtxt =  data[0].AlternativeUnit;
+        Item.RateOfConversion= data[0].RateOfConversion;
+        Item.Weight= data[0].Weight;
+        if(Item.Quantity==null){
+          Item.Quantity=0
+        }
+            this.updateTotalUOM(Item,Item.Quantity);
+      }
+    );
+
+  };
+
+
+  updateTotalUOM(Item,Quantity) {
+    
+    if( Quantity>0){
+      Item.Quantity = ( parseFloat(Quantity)).toFixed(2);
+      Item.QtyKg=( parseFloat(Quantity) *  parseFloat(Item.Weight)).toFixed(2);
+      Item.QtyMt= (parseFloat(Quantity )* parseFloat(Item.RateOfConversion)).toFixed(2);
+    }else{
+      Item.QtyKg=0;
+      Item.QtyMt=0;
+    }
+    let tempqtyKg = 0;
+    let tempqtyMt = 0;
+    let tempQuantity = 0;
+    for (let j = 0; j < this.ItemMaster.length; j++) {
+      let qtyKg = parseFloat(this.ItemMaster[j].QtyKg) ;
+      let qtyMt = parseFloat( this.ItemMaster[j].QtyMt);
+      let qty = parseFloat( this.ItemMaster[j].Quantity);
+      if (!qty) {
+        qty = 0;
+      } else {
+        tempQuantity += qty;
+      }
+      if (!qtyMt) {
+        qtyMt = 0;
+      } else {
+        tempqtyMt += qtyMt;
+      }
+      if (!qtyKg) {
+        qtyKg = 0;
+      } else {
+        tempqtyKg += qtyKg;
+      }
+      this.TotalMT = tempqtyMt.toFixed(2);
+      this.TotalQuantity = tempQuantity.toFixed(2);
+      this.TotalKgs = tempqtyKg.toFixed(2);
+    }
+  };
+
+
+
+
+
   getAllItemMasterData() {
     this._ItemMasterService.getAllItemMasterData().subscribe(
       data => {
@@ -134,6 +199,11 @@ export class CustomerOrderEditComponent implements OnInit {
     this.ItemCodeforadd = ItemCode;
   }
 
+  getUOM() {
+    this._CustomerService.getUOM().subscribe((res: any) => {
+      this.UOMs = res;
+    })
+}
   UpdateOtherFromData(Data) {
     this.Pono = Data.RefNovtxt;
     this.PoDate = Data.RefDatedate;

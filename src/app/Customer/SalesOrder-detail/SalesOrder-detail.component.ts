@@ -23,6 +23,9 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   status = 'All';
   FromDate = null;
   Todate = null;
+  CompletedCount;
+  PendingCount;
+  partiallyCompletedCount;
   pageNumber: boolean[] = [];
   sortOrder: any = 'CompanyName_ASC';
   order: any = 'CompanyName';
@@ -39,10 +42,40 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   totalOrdersCount: any;
   currentPage = 1;
 
+    
+  getPending() {
+    this._SalesService.getAllSalesOrderCount(this.FromDate,this.Todate,'Pending',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.PendingCount = res;
+      if(res=="" || res==null ){
+        this.PendingCount = 0;
+      }
+    })
+  } 
+  getCompleted() {
+    this._SalesService.getAllSalesOrderCount(this.FromDate,this.Todate,'Completely processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.CompletedCount = res;
+      if(res=="" || res==null ){
+        this.CompletedCount  = 0;
+      }
+    })
+  }
+
+  getPartiallyCompleted() {
+    this._SalesService.getAllSalesOrderCount(this.FromDate,this.Todate,'Partially processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.partiallyCompletedCount = res;
+      if(res=="" || res==null ){
+        this.partiallyCompletedCount  = 0;
+      }
+    })
+  }
+
   ngOnInit() {
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
     this.getAllOrders();
+    this.getPending();
+    this.getCompleted()
+    this.getPartiallyCompleted();
   }
 
   getAllOrders() {

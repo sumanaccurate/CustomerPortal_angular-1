@@ -35,4 +35,11 @@ GetShipToAddress(Id) {
 getGetShipToData(Id) {
   return this.http.get(this.BaseURI + '/CustomerMaster/GetShipTo/'+Id);
 }
+
+getUOM() {
+  return this.http.get(this.BaseURI + '/Order/GetUOM/');
+}
+getUOMById(id) {
+  return this.http.get(this.BaseURI + '/Order/GetUOMByID/'+id);
+}
 }

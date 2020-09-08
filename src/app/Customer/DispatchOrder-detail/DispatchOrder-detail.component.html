@@ -11,6 +11,9 @@
            Dispatch List
           </h3>
       
+          Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
+
+        
         </div>
         <div class="kt-portlet__head-toolbar">
           <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
@@ -28,9 +31,9 @@
                   <div >
                     <select class="form-control"  (change)="ChangeStatus($event.target.value)">
                       <option value="All">Select Status</option>
-                      <option value="Pending">Pending</option>
+                      <option value="Not Relevant">Pending</option>
                       <option value="Completely processed">Completely processed</option>
-                      <option value="Partially processed">Partially processed</option>
+                      <option value="PGI DONE">Partially processed</option>
                     </select>
                   </div>
                 </div>
@@ -62,7 +65,7 @@
                   </div>
                 </div>
                 <div class="col-1">
-                  <button class="btn btn-dark" (click)="getAllOrders()" title="bigger">Search</button>
+                  <button class="btn btn-dark" (click)="ngOnInit()" title="bigger">Search</button>
                 </div>
               </div>
             </div>
