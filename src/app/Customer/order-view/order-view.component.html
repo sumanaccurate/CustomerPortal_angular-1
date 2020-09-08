@@ -57,15 +57,27 @@
 							<td>{{this.OrderInfo.TotalOrderQuantityint }}</td>
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">Total Amount : </th>
-							<td>{{this.OrderInfo.TotalNetValuedcl}}</td>
-							<th scope="row">Other Charges : </th>
-							<td>{{this.OrderInfo.OtherCharges1dcl}}</td>
+						
+							<th scope="row">PaymentTerms : </th>
+							<td>{{this.OrderInfo.PaymentTermsvtxt}}</td>
+							<th scope="row">DeliveryTerms :</th>
+							<td>{{this.OrderInfo.DeliveryTermsvtxt}}</td>
+							
 						</tr>
 						<tr class="mt-4">
+						
+							<th scope="row">Delivery Address : </th>
+							<td>{{this.OrderInfo.DeliveryAddressvtxt}}</td>
 							<th scope="row">Status :</th>
 							<td>{{this.OrderInfo.Statusvtxt}}</td>
+							
 						</tr>
+						<!-- <tr class="mt-4">
+	<!-- <th scope="row">Total Amount : </th>
+							<td>{{this.OrderInfo.TotalNetValuedcl}}</td> 
+							 <th scope="row">Other Charges : </th>
+							<td>{{this.OrderInfo.OtherCharges1dcl}}</td> 
+						</tr> -->
 					</tbody>
 				</table>
 
@@ -81,7 +93,14 @@
 									<div class="col-md-4 ">
 										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
 									</div>
+									<div class="col-md-4 ">
+										UoM : <span class="kt-font-bold">{{Order.UoMvtxt}}</span>
+									</div>
 
+									<div class="col-md-4 ">
+										Quantity : <span class="kt-font-bold">{{Order.Quantityint}}</span>
+									</div>
+<!-- 
 									<div class="col-md-4 ">
 										Material Description : <span
 											class="kt-font-bold">{{Order.MaterialDescriptionvtxt}}
@@ -89,27 +108,21 @@
 									</div>
 									<div class="col-md-4 ">
 										HSN Code : <span class="kt-font-bold">{{Order.HSNCodevtxt}}</span>
-									</div>
+									</div> -->
 								</div>
-								<div class="row col-12">
-									<div class="col-md-4 ">
-										Unit Of Measurement : <span class="kt-font-bold">{{Order.UoMvtxt}}</span>
-									</div>
-
-									<div class="col-md-4 ">
-										Quantity : <span class="kt-font-bold">{{Order.Quantityint}}</span>
-									</div>
-									<div class="col-md-4 ">
-										Rate : <span
-											class="kt-font-bold">{{Order.Ratedcl}}
-										</span>
-									</div>
-								</div>
-								<div class="col-md-4 ">
+								<!-- <div class="row col-12">
+									 <div class="col-md-4 ">
 									Amount : <span
 										class="kt-font-bold">{{Order.Amountdcl}}
 									</span>
 								</div>
+									<div class="col-md-4 ">
+										Rate : <span
+											class="kt-font-bold">{{Order.Ratedcl}}
+										</span>
+									</div> 
+								</div> -->
+							
 							</div>
 						</div>
 					</div>
