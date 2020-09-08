@@ -4,7 +4,7 @@ import { AlertComponent } from './component';
 import { Subscription } from 'rxjs';
 // Angular
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router'
+import { NavigationEnd, Router } from '@angular/router';
 import {
   transition,
   trigger,
@@ -15,7 +15,7 @@ import {
   animateChild
 } from '@angular/animations';
 
-@Component({ selector: 'app',styleUrls: ['./app.component.css'], templateUrl: 'app.component.html',
+@Component({ selector: 'app', styleUrls: ['./app.component.css'], templateUrl: 'app.component.html',
 animations: [
     trigger('myAnimation', [
       transition('* => *', [
@@ -36,11 +36,8 @@ animations: [
         )
       ])
     ]),
-    
-      ] 
+
+      ]
 
 })
-export class AppComponent {
-   
-   
-}
+export class AppComponent {}

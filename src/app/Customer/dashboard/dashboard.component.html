@@ -1,87 +1,86 @@
-<app-customer-float-data></app-customer-float-data>
-    <!-- begin:: Content -->
-    <div  style="height: 88vh;"  class="kt-container   kt-container--fluid  kt-grid__item kt-grid__item--fluid mt-4">
+<!-- begin:: Content -->
+<div class="kt-container   kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <app-customer-float-data></app-customer-float-data>
+    <!--Begin::Dashboard 1-->
+    <!--Begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__body  kt-portlet__body--fit">
 
-        <!--Begin::Dashboard 1-->
-        <!--Begin::Portlet-->
-        <div class="kt-portlet">
-            <div class="kt-portlet__body  kt-portlet__body--fit">
+            <div class="row row-no-padding row-col-separator-lg">
+                <div class="col-md-6 col-lg-3 col-xl-3">
 
-                <div class="row row-no-padding row-col-separator-lg">
-                    <div class="col-md-6 col-lg-3 col-xl-3">
-
-                        <!--begin::New Orders-->
-                        <div class="kt-widget24">
-                            <div class="kt-widget24__details">
-                                <div class="kt-widget24__info">
-                                    <h4 class="kt-widget24__title">Total Dispatch Orders Count
-														</h4>
-                                </div>
-                                <span class="kt-widget24__stats kt-font-success">{{ this.TotalOrders}}
+                    <!--begin::New Orders-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">Total Dispatch Orders Count
+                                </h4>
+                            </div>
+                            <span class="kt-widget24__stats kt-font-success">{{ this.TotalOrders}}
 													</span>
-                            </div>
                         </div>
-                        <!--end::New Orders-->
                     </div>
-                    <div class="col-md-6 col-lg-3 col-xl-3">
+                    <!--end::New Orders-->
+                </div>
+                <div class="col-md-6 col-lg-3 col-xl-3">
 
-                        <!--begin::Total Profit-->
-                        <div class="kt-widget24">
-                            <div class="kt-widget24__details">
-                                <div class="kt-widget24__info">
-                                    <h4 class="kt-widget24__title">Total Sales  Order Count
-														</h4>
-                                </div>
-                                <span class="kt-widget24__stats kt-font-brand">{{this.RetailOrder}}</span>
+                    <!--begin::Total Profit-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">Total Sales Order Count
+                                </h4>
                             </div>
+                            <span class="kt-widget24__stats kt-font-brand">{{this.RetailOrder}}</span>
                         </div>
-
-                        <!--end::Total Profit-->
                     </div>
 
-                    <div class="col-md-6 col-lg-3 col-xl-3">
+                    <!--end::Total Profit-->
+                </div>
 
-                        <!--begin::New Feedbacks-->
-                        <div class="kt-widget24">
-                            <div class="kt-widget24__details">
-                                <div class="kt-widget24__info">
-                                    <h4 class="kt-widget24__title">OutStanding Amount
-														</h4>
-                                </div>
-                                <span class="kt-widget24__stats kt-font-info">{{this.OutStanding}}
+                <div class="col-md-6 col-lg-3 col-xl-3">
+
+                    <!--begin::New Feedbacks-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">OutStanding Amount
+                                </h4>
+                            </div>
+                            <span class="kt-widget24__stats kt-font-info">{{this.OutStanding}}
 													</span>
-                            </div>
                         </div>
-
-                        <!--end::New Feedbacks-->
                     </div>
-                    <div class="col-md-6 col-lg-3 col-xl-3">
 
-                        <!--begin::New Feedbacks-->
-                        <div class="kt-widget24">
-                            <div class="kt-widget24__details">
-                                <div class="kt-widget24__info">
-                                    <h4 class="kt-widget24__title">Available Credit Limit
-														</h4>
-                                </div>
-                                <span class="kt-widget24__stats kt-font-info">{{ this.CreditLimit}}
+                    <!--end::New Feedbacks-->
+                </div>
+                <div class="col-md-6 col-lg-3 col-xl-3">
+
+                    <!--begin::New Feedbacks-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">Available Credit Limit
+                                </h4>
+                            </div>
+                            <span class="kt-widget24__stats kt-font-info">{{ this.CreditLimit}}
 													</span>
-                            </div>
                         </div>
-
-                        <!--end::New Feedbacks-->
                     </div>
+
+                    <!--end::New Feedbacks-->
                 </div>
             </div>
         </div>
-        <!--End::Portlet-->
+    </div>
+    <!--End::Portlet-->
 
-        <!--Begin::Row-->
-        <div class="row">
-            <div class="col-xl-8 order-lg-1 order-xl-1">
+    <!--Begin::Row-->
+    <div class="row">
+        <div class="col-xl-8 order-lg-1 order-xl-1">
 
-                <!--[html-partial:begin:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
-                <!-- <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
+            <!--[html-partial:begin:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
+            <!-- <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
                     <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm bg-light">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">Invoices Pending for Payment
@@ -107,15 +106,14 @@
                     </div>
                 </div> -->
 
-                <!--[html-partial:end:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
-            </div>
-           
+            <!--[html-partial:end:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
         </div>
 
-        <!--End::Row-->
-
-        <!--End::Dashboard 1-->
     </div>
 
-    <!-- end:: Content -->
+    <!--End::Row-->
 
+    <!--End::Dashboard 1-->
+</div>
+
+<!-- end:: Content -->

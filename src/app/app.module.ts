@@ -39,7 +39,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
 import { UserService } from './shared/user.service';
-// import { MatSliderModule } from '@angular/material/slider'; 
+// import { MatSliderModule } from '@angular/material/slider';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
@@ -80,7 +80,7 @@ import { TechnicalComponent } from './Technical/Technical.component';
 import { TechnicalProfileComponent } from './Technical/profile/profile.component';
 import { TechnicalDashboardComponent } from './Technical/dashboard/dashboard.component';
 import { CustomerOrderViewComponent } from './Customer/order-view/order-view.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 import { UploadEmployeeComponent } from './SystemAdmin/upload-employee/upload-employee.component';
 import { EmployeeDetailsComponent } from './SystemAdmin/employee-details/employee-details.component';
 import { UploadCustomerComponent } from './SystemAdmin/upload-customer/upload-customer.component';
@@ -99,10 +99,27 @@ import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.com
 import {MatNativeDateModule} from '@angular/material/core';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
+
 import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
 import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
 import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
 import { OutStandingComponent } from './Customer/out-standing/out-standing.component';
+import { SystemAsideComponent } from './SystemAdmin/system-aside/system-aside.component';
+import { CustomerAsideComponent } from './Customer/customer-aside/customer-aside.component';
+import { CustomerMenuComponent } from './Customer/customer-menu/customer-menu.component';
+import { UserListComponent } from './Customer/user-list/user-list.component';
+import { CustomerUploadUserComponent } from './Customer/customer-upload-user/customer-upload-user.component';
+import { CustLedgerStatusComponent } from './Customer/cust-ledger-status/cust-ledger-status.component';
+import { CustomerLedgerComponent } from './Customer/customer-ledger/customer-ledger.component';
+import { PaymentOutstandingComponent } from './Customer/payment-outstanding/payment-outstanding.component';
+import { StockComponent } from './Customer/stock/stock.component';
+import { CompanyStockComponent } from './Customer/company-stock/company-stock.component';
+import { RetailOrdersComponent } from './Customer/retail-orders/retail-orders.component';
+import { RaiseComplaintsComponent } from './Customer/raise-complaints/raise-complaints.component';
+import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-status.component';
+import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
+import { HistoryComponent } from './Customer/history/history.component';
+
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -155,6 +172,22 @@ import { OutStandingComponent } from './Customer/out-standing/out-standing.compo
     OrderAnalystPendingOrderListComponent,
     CustomerFloatDataComponent,
     OutStandingComponent,
+    SystemAsideComponent,
+    CustomerAsideComponent,
+    CustomerMenuComponent,
+    UserListComponent,
+    CustomerUploadUserComponent,
+    CustLedgerStatusComponent,
+    CustomerLedgerComponent,
+    PaymentOutstandingComponent,
+    StockComponent,
+    CompanyStockComponent,
+    RetailOrdersComponent,
+    RaiseComplaintsComponent,
+    ComplaintStatusComponent,
+    CurrentLedgerComponent,
+    HistoryComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -168,7 +201,7 @@ import { OutStandingComponent } from './Customer/out-standing/out-standing.compo
     AlertModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-		AppRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -191,10 +224,9 @@ import { OutStandingComponent } from './Customer/out-standing/out-standing.compo
   providers: [UserService, DatePipe, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-   
     multi: true
   },
-  
+
   PaginationService,
   JWTTokenService,
 ],

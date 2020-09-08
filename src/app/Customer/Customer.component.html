@@ -1,3 +1,63 @@
+<!-- begin:: Page -->
+
+<!-- begin:: Header Mobile -->
+<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+    <div class="kt-header-mobile__logo">
+        <img src="assets/media/app_images/johnson-logo.png" class="img-fluid py-2" alt="Logo" runat="server" id="logo">
+    </div>
+    <div class="kt-header-mobile__toolbar">
+        <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+        <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+    </div>
+</div>
+
+<!-- end:: Header Mobile -->
+<div class="kt-grid kt-grid--hor kt-grid--root">
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+        <!-- begin:: Aside -->
+        <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+        <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+
+            <!-- begin:: Aside -->
+            <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+                <div class="kt-aside__brand-logo">
+                    <img src="assets/media/app_images/johnson-logo.png" class="img-fluid" alt="Logo" runat="server" id="logo1">
+                </div>
+            </div>
+            <!-- end:: Aside -->
+
+            <!-- begin:: Aside Menu -->
+            <app-customer-aside></app-customer-aside>
+            <!-- end:: Aside Menu -->
+        </div>
+
+        <!-- end:: Aside -->
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+            <!-- begin:: Header -->
+            <app-customer-menu></app-customer-menu>
+            <!-- end:: Header -->
+            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                <router-outlet></router-outlet>
+            </div>
+
+            <!-- begin:: Footer -->
+            <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+                <div class="kt-container  kt-container--fluid ">
+                    <div class="kt-footer__copyright">
+                        2019&nbsp;&copy;&nbsp;<a class="kt-link">Prism Johnson Limited</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end:: Footer -->
+        </div>
+    </div>
+</div>
+
+<!-- end:: Page -->
+
+<!-- 
 <mat-toolbar>
     <mat-toolbar-row>
 
@@ -6,11 +66,10 @@
         </button>
         <div class="align-items-center  ">
             <a [routerLink]="['/Customer/dashboard']">
-                <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo"
-                    runat="server" id="logo1">
+                <img class="img-flui custom-logo" src="assets/media/app_images/johnson-logo.png" alt="Logo" runat="server" id="logo1">
             </a>
         </div>
-      
+
         <span class="menu-spacer"></span>
         <div class="top-nava">
             <a mat-button [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
@@ -24,13 +83,14 @@
                     Out</span></a>
 
         </div>
-        
-            <button class="Mob-btn" mat-icon-button>
+
+        <button class="Mob-btn" mat-icon-button>
                 <mat-icon (click)="topnav.toggle() ; sidenav.close()">menu</mat-icon>
             </button>
-      
+
     </mat-toolbar-row>
 </mat-toolbar>
+
 
 <mat-sidenav-container class=" ">
     <mat-sidenav #topnav class="topnav">
@@ -51,20 +111,17 @@
         <mat-nav-list>
 
             <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-                <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1"
-                    data-ktmenu-dropdown-timeout="500">
+                <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
                     <ul class="kt-menu__nav">
-                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                                [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
+                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i
                                     class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span
                                     class="kt-menu__link-text">Home</span></a></li>
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                          
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon fa fa-user"></i><span
-                                            class="kt-menu__link-text">User
+                                        <i class="kt-menu__link-icon fa fa-user"></i><span class="kt-menu__link-text">User
                                             Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
@@ -76,23 +133,21 @@
                         </mat-accordion>
 
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                          
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
                                         <i class="kt-menu__link-icon fa fa-box-open">
-
                                         </i><span class="kt-menu__link-text">Order Management</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <p class=" p-2">
-                                    <a [routerLink]="['/Customer/OrderList']"  class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                    <a [routerLink]="['/Customer/OrderList']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
                                             class="kt-menu__link-text">Order List</span></a>
                                 </p>
                                 <p class=" p-2 ">
-                                    <a  [routerLink]="['/Customer/CreateOrderRequest']"  class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
-                                            class="kt-menu__link-text">Place Order
-                                            Request</span></a>
+                                    <a [routerLink]="['/Customer/CreateOrderRequest']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span
+                                            class="kt-menu__link-text">Place Order Request</span></a>
                                 </p>
                                 <p class=" p-2 ">
                                     <a [routerLink]="['/Customer/SalesOrderDetail']" class="kt-menu__link "><i
@@ -103,7 +158,7 @@
                         </mat-accordion>
 
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                           
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
@@ -120,12 +175,11 @@
                         </mat-accordion>
 
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                          
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <i class="kt-menu__link-icon fa fa-clipboard-list"></i><span
-                                            class="kt-menu__link-text">Invoices</span>
+                                        <i class="kt-menu__link-icon fa fa-clipboard-list"></i><span class="kt-menu__link-text">Invoices</span>
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <p class=" p-2">
@@ -139,7 +193,7 @@
                         </mat-accordion>
 
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                         
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
@@ -163,7 +217,7 @@
                         </mat-accordion>
 
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                         
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
@@ -188,7 +242,7 @@
                                     class="kt-menu__link-icon fa fa-money-bill"></i><span
                                     class="kt-menu__link-text">Retail Order</span></a></p>
                         <mat-accordion>
-                            <!-- #enddocregion basic-panel -->
+                          
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
@@ -209,7 +263,7 @@
                                 </p>
                             </mat-expansion-panel>
                         </mat-accordion>
-                        <!-- Below is the Example For Menu Link Submenu || Copy code and Use-->
+                       
                     </ul>
                 </div>
             </div>
@@ -218,7 +272,7 @@
     <mat-sidenav-content style="margin-left: 200px;" class="mat-drawer-content mat-sidenav-content">
         <main class="content">
             <alert></alert>
-                <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
         </main>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
