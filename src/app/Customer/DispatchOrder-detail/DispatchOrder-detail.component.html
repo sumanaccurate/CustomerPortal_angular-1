@@ -9,9 +9,11 @@
         <div class="kt-portlet__head-label">
           <h3 class="kt-portlet__head-title text-dark">
            Dispatch List
+           <small>
+            Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
+           </small>
           </h3>
       
-          Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
 
         
         </div>
@@ -32,8 +34,8 @@
                     <select class="form-control"  (change)="ChangeStatus($event.target.value)">
                       <option value="All">Select Status</option>
                       <option value="Not Relevant">Pending</option>
-                      <option value="Completely processed">Completely processed</option>
                       <option value="PGI DONE">Partially processed</option>
+                      <option value="Completely processed">Completely processed</option>
                     </select>
                   </div>
                 </div>
