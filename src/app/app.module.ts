@@ -119,11 +119,8 @@ import { RaiseComplaintsComponent } from './Customer/raise-complaints/raise-comp
 import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-status.component';
 import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
 import { HistoryComponent } from './Customer/history/history.component';
-<<<<<<< HEAD
 import { RegisterComponent } from './user/register/register.component';
-=======
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
 
 @NgModule({
   declarations: [
@@ -192,11 +189,8 @@ import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/targ
     ComplaintStatusComponent,
     CurrentLedgerComponent,
     HistoryComponent,
-<<<<<<< HEAD
     RegisterComponent,
-=======
     SystemAdminTargetSalesComponent,
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
 
   ],
   imports: [
