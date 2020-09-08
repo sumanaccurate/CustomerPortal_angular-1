@@ -2461,7 +2461,7 @@ textarea.form-control {
 }
 
 .form-group {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .form-text {
@@ -15149,7 +15149,7 @@ code {
 }
 
 .form-group {
-    margin-bottom: 2rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .form-group.form-group-marginless,

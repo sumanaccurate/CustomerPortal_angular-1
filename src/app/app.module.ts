@@ -63,10 +63,10 @@ import { CustomerDashboardComponent } from './Customer/dashboard/dashboard.compo
 import { CustomerProfileComponent } from './Customer/profile/profile.component';
 import { CustomerProfileEditComponent } from './Customer/edit-profile/edit-profile.component';
 import { CustomerDispatchOrderDetailComponent } from './Customer/DispatchOrder-detail/DispatchOrder-detail.component';
-import {ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
+import { ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
 import { PaginationService } from './component/pagination/pagination.service';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatExpansionModule} from '@angular/material/expansion';
 import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoice-detail.component';
 import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/SalesOrder-detail.component';
 import { DispatchOrderViewComponent } from './Customer/dispatch-order-view/dispatch-order-view.component';
@@ -103,8 +103,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
 import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
 import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
-<<<<<<< HEAD
-import { OutStandingComponent } from './Customer/out-standing/out-standing.component';
+import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
 import { SystemAsideComponent } from './SystemAdmin/system-aside/system-aside.component';
 import { CustomerAsideComponent } from './Customer/customer-aside/customer-aside.component';
 import { CustomerMenuComponent } from './Customer/customer-menu/customer-menu.component';
@@ -120,10 +119,8 @@ import { RaiseComplaintsComponent } from './Customer/raise-complaints/raise-comp
 import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-status.component';
 import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
 import { HistoryComponent } from './Customer/history/history.component';
+import { RegisterComponent } from './user/register/register.component';
 
-=======
-import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
->>>>>>> b3f2fef5e567084a933ead6184d1f193c5b9eff9
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -175,8 +172,7 @@ import { CustomerOutStandingComponent } from './Customer/out-standing/out-standi
     OrderAnalystComponent,
     OrderAnalystPendingOrderListComponent,
     CustomerFloatDataComponent,
-<<<<<<< HEAD
-    OutStandingComponent,
+    CustomerOutStandingComponent,
     SystemAsideComponent,
     CustomerAsideComponent,
     CustomerMenuComponent,
@@ -192,10 +188,8 @@ import { CustomerOutStandingComponent } from './Customer/out-standing/out-standi
     ComplaintStatusComponent,
     CurrentLedgerComponent,
     HistoryComponent,
+    RegisterComponent,
 
-=======
-    CustomerOutStandingComponent,
->>>>>>> b3f2fef5e567084a933ead6184d1f193c5b9eff9
   ],
   imports: [
     BrowserModule,

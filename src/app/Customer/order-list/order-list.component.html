@@ -2,27 +2,15 @@
     <app-customer-float-data></app-customer-float-data>
     <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
-<<<<<<< HEAD
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title text-dark">
                     <!-- {{this.User.UserNametxt}} - -->
                     Request Order List
+                    <small> Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}</small>
                 </h3>
             </div>
+            <div class="kt-portlet__head-toolbar"></div>
 
-=======
-          <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title text-dark">
-              <!-- {{this.User.UserNametxt}} - -->
-               Request Order List
-            </h3>
-          </div>
-          <div class="kt-portlet__head-toolbar">
-            <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
-                class="fa fa-file-download"></i></button>
-          </div>
-  
->>>>>>> b3f2fef5e567084a933ead6184d1f193c5b9eff9
         </div>
         <div class="p-4 bg-light border-top border-bottom">
             <!--begin: Search Form -->
