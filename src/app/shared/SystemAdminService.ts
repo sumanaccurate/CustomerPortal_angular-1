@@ -36,4 +36,9 @@ getAllCustomer(Division,pageNo,pageSize,KeyWord) {
 getAllCustomerCount(Division): Observable<any> {  
   return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerCount/'+Division);
 }  
+
+uploadExcelData(formdata) {  
+  return this.http.post(this.BaseURI + '/Mail/ExcelUpload',formdata);
+}  
+
 }
