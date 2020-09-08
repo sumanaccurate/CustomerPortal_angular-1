@@ -19,36 +19,6 @@
                                 <div class="kt-section__body">
                                     <div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Customer Code</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.CustomerCodevtxt}}
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Customer Name</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.CustomerNamevtxt}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Division</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.Divisionvtxt}}
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Sales Group</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.SalesOrgNamevtxt}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 kt-font-boldest">Company</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.CompanyNamevtxt}}
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Billing Address</label>
-                                            <div class="col-md-3">
-                                                {{this.OrderInfo.Address}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-md-3 kt-font-boldest">Order No</label>
                                             <div class="col-md-3">
                                                 {{this.OrderInfo.OrderNovtxt}}
@@ -86,14 +56,17 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                             <div class="col-md-3">
+                                                <select  (change)="getShipToNameData($event.target.value)" [(ngModel)]="this.ShipToCode" (input)="onInput($event)">
+                                                    <option *ngFor="let ShiptoAddress of ShiptoAddresss" value= {{ShiptoAddress.ShipToCodevtxt}}> {{ShiptoAddress.ShipToNamevtxt}}</option>
+                                                  </select>
 
-                                                <select (change)="getShipToNameData($event.target.value)">
+                                                <!-- <select (change)="getShipToNameData($event.target.value)">
                                                     <option value="0">--All--</option>
                                                     <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                         value={{ShiptoAddress.ShipToCodevtxt}}>
                                                         {{ShiptoAddress.ShipToNamevtxt}}
                                                     </option>
-                                                </select>
+                                                </select> -->
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">Selected Ship to Name</label>
                                             <div class="col-md-3">
@@ -150,20 +123,26 @@
                                                 <th>
                                                 </th>
                                                 <th class=" mr-3">
-                                                    ItemCode
+                                                    Item
                                                 </th>
-                                                <th class=" mr-3">ItemDesc
+                                                <!-- <th class=" mr-3">ItemDesc
+                                                </th> -->
+                                                <th class=" mr-3">UOM
                                                 </th>
-                                                <th class=" mr-3">Uomnvtxt
-                                                </th>
-                                                <th class=" mr-3">Rate
-                                                </th>
+                                                <!-- <th class=" mr-3">Rate
+                                                </th> -->
                                                 <th class=" mr-3">
                                                     Quantity *
                                                 </th>
                                                 <th class=" mr-3">
-                                                    Amount
+                                                    Quantity in Kgs
                                                 </th>
+                                                <th class=" mr-3">
+                                                    Quantity in MT
+                                                </th>
+                                                <!-- <th class=" mr-3">
+                                                    Amount
+                                                </th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -175,31 +154,44 @@
                                                 <td class=" mr-3">
                                                     <span>{{Item.MaterialCodevtxt}}</span>
                                                 </td>
-                                                <td class=" mr-3"><span>{{Item.MaterialDescriptionvtxt}}</span>
-                                                </td>
+                                                <!-- <td class=" mr-3"><span>{{Item.MaterialDescriptionvtxt}}</span>
+                                                </td> -->
                                                 <td class=" mr-3"><span>{{Item.UoMvtxt}}</span>
+                                                    <!-- <select  (change)="updateUOM($event.target.value,Item)" [(ngModel)]="Item.UoMint" (input)="onInput($event)">
+                                                        <option *ngFor="let UOM of UOMs" value= {{UOM.IDint}}>{{UOM.AlternativeUnit}}</option>
+                                                      </select> -->
+                                                    <select  (change)="updateUOM($event.target.value,Item)" (input)="onInput($event)">
+                                                        <option *ngFor="let UOM of UOMs" value= {{UOM.IDint}}>{{UOM.AlternativeUnit}}</option>
+                                                      </select>
+
                                                 </td>
-                                                <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
-                                                </td>
+                                                <!-- <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
+                                                </td> -->
                                                 <td class=" mr-3">
 
                                                     <mat-form-field>
                                                         <input type="number" onlyNumber matInput
-                                                            (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)"
+                                                            (change)="updateTotalUOM(Item,$event.target.value,Item.Ratedcl)"
                                                             value="{{Item.Quantityint}}">
                                                     </mat-form-field>
                                                 </td>
                                                 <td class=" mr-3">
-                                                    {{Item.Amountdcl }}
+                                                    {{Item.QtyKg }}
                                                 </td>
+                                                <td class=" mr-3">
+                                                   {{Item.QtyMt }}
+                                               </td>
+                                                <!-- <td class=" mr-3">
+                                                    {{Item.Amountdcl }}
+                                                </td> -->
 
-                                                <td>
+                                                <!-- <td>
                                                     <div class="btnactions">
                                                         <button class="btn btn-warning" (click)="onDeleteClick( i)"><i
                                                                 class="fa flaticon-delete"></i></button>
                                                     </div>
 
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         </tbody>
                                     </table>

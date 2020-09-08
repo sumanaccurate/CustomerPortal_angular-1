@@ -1,160 +1,148 @@
-<app-customer-float-data></app-customer-float-data>
-<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
-
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid  m-4">
-  
-      <div class="kt-portlet kt-portlet--mobile">
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <app-customer-float-data></app-customer-float-data>
+    <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
-          <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title text-dark">
-              <!-- {{this.User.UserNametxt}} - -->
-               Request Order List
-            </h3>
-          </div>
-          <div class="kt-portlet__head-toolbar">
-            <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
-                class="fa fa-file-download"></i></button>
-          </div>
-  
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title text-dark">
+                    <!-- {{this.User.UserNametxt}} - -->
+                    Request Order List
+                    <small>
+                        Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
+                       </small>    
+                </h3>
+          
+            </div>
+
         </div>
         <div class="p-4 bg-light border-top border-bottom">
-          <!--begin: Search Form -->
-          <div class="kt-form kt-form--label-right ">
-            <div class="row align-items-center">
-              <div class="col-xl-12 order-2 order-xl-1">
+            <!--begin: Search Form -->
+            <div class="kt-form kt-form--label-right ">
                 <div class="row align-items-center">
-                  <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                    <div >
-                      <select class="form-control"  (change)="ChangeStatus($event.target.value)">
+                    <div class="col-xl-12 order-2 order-xl-1">
+                        <div class="row align-items-center">
+                            <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                                <div>
+                                    <select class="form-control" (change)="ChangeStatus($event.target.value)">
                         <option value="All">Select Status</option>
                         <option value="Pending">Pending</option>
                         <option value="Completely processed">Completely processed</option>
                         <option value="Partially processed">Partially processed</option>
                       </select>
-                    </div>
-                  </div>
-                  <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                    <div class="kt-input-icon kt-input-icon--left">
-                      <input type="text" class="form-control" [(ngModel)]="FromDate"  placeholder="From Date" id="kt_datepicker_1">
-                      <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                </div>
+                            </div>
+                            <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control" [(ngModel)]="FromDate" placeholder="From Date" id="kt_datepicker_1">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
                         <span><i class="la la-calendar"></i></span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                    <div class="kt-input-icon kt-input-icon--left">
-                      <input type="text" class="form-control" [(ngModel)]="Todate"  placeholder="To Date" id="kt_datepicker_2">
-                      <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control" [(ngModel)]="Todate" placeholder="To Date" id="kt_datepicker_2">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
                         <span><i class="la la-calendar"></i></span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                    <div class="kt-input-icon kt-input-icon--left">
-                      <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
-                      <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
                         <span><i class="la la-search"></i></span>
-                      </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <button class="btn btn-dark" (click)="getAllOrders()" title="bigger">Search</button>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-1">
-                    <button class="btn btn-dark" (click)="getAllOrders()" title="bigger">Search</button>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-  
-          <!--end: Search Form -->
+
+            <!--end: Search Form -->
         </div>
         <div class="kt-portlet__body ">
-  
-          <div>
-            <div *ngFor="let Order of Orders" class="customerCustomers-list row border shadow-sm p-3 mb-3">
-              <div class="row col-md-11">
-                <div  class="row col-md-12">
-                  <div class="col-md-4 ">
-                    Customer : {{Order.CustomerCodevtxt}} - {{Order.CustomerNamevtxt}}
-                  </div>
-                  <div class="col-md-4 ">
-                    Ship To Party: {{Order.ShipToCodevtxt}} - {{Order.ShipToNamevtxt}}
-                  </div>
-                  <div class="col-md-4 ">
-                    Order No : <span class="kt-font-bold">{{Order.OrderNovtxt}}</span>
-                  </div>
+
+            <div>
+                <div *ngFor="let Order of Orders" class="customerCustomers-list row border shadow-sm p-3 mb-3">
+                    <div class="row col-md-11">
+                        <div class="row col-md-12">
+                            <div class="col-md-4 ">
+                                Customer : {{Order.CustomerCodevtxt}} - {{Order.CustomerNamevtxt}}
+                            </div>
+                            <div class="col-md-4 ">
+                                Ship To Party: {{Order.ShipToCodevtxt}} - {{Order.ShipToNamevtxt}}
+                            </div>
+                            <div class="col-md-4 ">
+                                Order No : <span class="kt-font-bold">{{Order.OrderNovtxt}}</span>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 ">
+                                Order Date : <span class="kt-font-bold">{{Order.OrderDatedate | date :'dd/MM/yyyy'}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                                PO No : <span class="kt-font-bold">{{Order.RefNovtxt}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                                PO Date : <span class="kt-font-bold">{{Order.RefDatedate | date :'dd/MM/yyyy'}}</span>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 ">
+                                SAP Order No : <span class="kt-font-bold">{{Order.SAPOrderNovtxt}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                                SAP Order Date : <span class="kt-font-bold">{{Order.SAPOrderDatedate | date :'dd/MM/yyyy'}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                                Total Order Quantity : <span class="kt-font-bold">{{Order.TotalOrderQuantityint}}</span>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 ">
+                                Total Amount : <span class="kt-font-bold">{{Order.TotalNetValuedcl}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                                Status : <span class="kt-font-bold">{{Order.Statusvtxt}}</span>
+                            </div>
+                            <div class="col-md-4 ">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class=" col-md-1">
+                        <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle" (click)="pass(this.Order.IDbint)"><i class="fa fa-eye"></i>
+                </button>
+                    </div>
                 </div>
-                <div  class="row col-md-12">
-                  <div class="col-md-4 ">
-                    Order Date : <span class="kt-font-bold">{{Order.OrderDatedate | date :'dd/MM/yyyy'}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                    PO No : <span class="kt-font-bold">{{Order.RefNovtxt}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                    PO Date : <span class="kt-font-bold">{{Order.RefDatedate | date :'dd/MM/yyyy'}}</span>
-                  </div>
-                </div>
-                <div  class="row col-md-12">
-                  <div class="col-md-4 ">
-                    SAP Order No : <span class="kt-font-bold">{{Order.SAPOrderNovtxt}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                    SAP Order Date : <span class="kt-font-bold">{{Order.SAPOrderDatedate | date :'dd/MM/yyyy'}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                    Total Order Quantity : <span class="kt-font-bold">{{Order.TotalOrderQuantityint}}</span>
-                  </div>
-                </div>
-                <div  class="row col-md-12">
-                  <div class="col-md-4 ">
-                    Total Amount : <span class="kt-font-bold">{{Order.TotalNetValuedcl}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                    Status : <span class="kt-font-bold">{{Order.Statusvtxt}}</span>
-                  </div>
-                  <div class="col-md-4 ">
-                  </div>
+                <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
+                <div class="container mw-100">
+                    <div class="row">
+                        <div class="col-md-3"> </div>
+                        <div *ngIf="Orders !=0" class="col-md-6">
+                            <ul class="pagination justify-content-center">
+                                <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item">
+                                    <a (click)="showPrevOrders()" [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'" style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
+                                <li *ngFor="let page of pageField;let i=index" class="page-item">
+                                    <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'" style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
+
+                                </li>
+                                <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item"><a (click)="showNextOrders()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                            </ul>
+                            <div style="text-align: center;">
+                                Page {{currentPage}} of Total page {{paginationService.exactPageList}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-              </div>
-              <div class=" col-md-1">
-                <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle"
-                  (click)="pass(this.Order.IDbint)"><i class="fa fa-eye"></i>
-                </button>
-              </div>
             </div>
-            <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
-            <div class="container mw-100">
-              <div class="row">
-                <div class="col-md-3"> </div>
-                <div *ngIf="Orders !=0" class="col-md-6">
-                  <ul class="pagination justify-content-center">
-                    <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item">
-                      <a (click)="showPrevOrders()"
-                        [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
-                        style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
-                    <li *ngFor="let page of pageField;let i=index" class="page-item">
-                      <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
-                        style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
-  
-                    </li>
-                    <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item"><a (click)="showNextOrders()"
-                        [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
-                        style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
-                  </ul>
-                  <div style="text-align: center;">
-                    Page {{currentPage}} of Total page {{paginationService.exactPageList}}
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-          </div>
-  
-          <!--end: Datatable -->
+
+            <!--end: Datatable -->
         </div>
-      </div>
     </div>
-  
-  </div>
+</div>

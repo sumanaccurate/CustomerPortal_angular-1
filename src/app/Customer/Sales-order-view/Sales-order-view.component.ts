@@ -19,14 +19,14 @@ export class CustomerSalesOrderViewComponent implements OnInit {
   OrderInfo: any;
   ngOnInit() {
     let OrderNo =this.storage.get('OrderId');
-    this.getAllDeliveryOrderDataBySalesOrderNo(OrderNo);
+    // this.getAllDeliveryOrderDataBySalesOrderNo(OrderNo);
     this.getAllSalesOrderDataByOrderNo(OrderNo);
     this.getSalesOrderHeaderDataByOrderNo(OrderNo);
    
   }
 
   getAllDeliveryOrderDataBySalesOrderNo(OrderNo){
-    this._DeliveryOrder.getAllDeliveryOrderDataBySalesOrderNo(OrderNo).subscribe((data: any) => {
+    this._SalesService.getAllDeliveryOrderDataBySalesOrderNo(OrderNo).subscribe((data: any) => {
       this.DeliveryOrders = data as any[];
     });
   }

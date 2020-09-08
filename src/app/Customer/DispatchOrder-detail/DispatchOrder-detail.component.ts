@@ -25,6 +25,9 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   status = 'All';
   FromDate = null;
   Todate = null;
+  CompletedCount;
+  PendingCount;
+  partiallyCompletedCount;
   pageNumber: boolean[] = [];
   sortOrder: any = 'CompanyName_ASC';
   order: any = 'CompanyName';
@@ -49,6 +52,9 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
     this.paginationService.temppage = 0;
     this.getAllOrders();
     this.getUserInfo();
+    this.getPending();
+    this.getCompleted()
+    this.getPartiallyCompleted();
   }
 
   getUserInfo() {
@@ -76,6 +82,32 @@ console.log(this.status+this.FromDate+this.Todate);
     this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
       this.totalOrdersCount = res;
       this.totalNoOfPages();
+    })
+  }
+    
+  getPending() {
+      this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,'Not Relevant',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.PendingCount = res;
+        if(res=="" || res==null ){
+          this.PendingCount = 0;
+        }
+    })
+  } 
+  getCompleted() {
+     this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,'Completely processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.CompletedCount = res;
+        if(res=="" || res==null ){
+          this.CompletedCount  = 0;
+        }
+    })
+  }
+
+  getPartiallyCompleted() {
+      this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,'PGI DONE',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.partiallyCompletedCount = res;
+        if(res=="" || res==null ){
+          this.partiallyCompletedCount  = 0;
+        }
     })
   }
 
