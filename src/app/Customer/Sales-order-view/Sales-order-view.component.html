@@ -62,38 +62,48 @@
 					<div>
 						<div *ngFor="let Order of Orders;  let i=index" class="customerCustomers-list border shadow-sm p-3 mb-3">
 							<div class="row col-11">
-								<div class="col-md-4 ">
-									<div>
-										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
-									</div>
-									<div>
-										Quantity : <span class="kt-font-bold">{{Order.OrderQuantityint}}</span>
-									</div>
 								
+								<div class="row col-12">
+									<div class="col-md-3 ">
+										Sales Order No : {{Order.SalesOrderNumbervtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Creation Date : {{Order.SystemDateTimedatetime  | date :'dd/MM/yyyy'}}
+									</div>
+									<div class="col-md-3 ">
+										Material : {{Order.MaterialCodevtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Qty : {{Order.OrderQuantityint}}
+									</div>
+								</div>
+								<div class="row col-12">
+									<div class="col-md-3 ">
+										Delivery Order No : {{Order.DDeliveryOrderNovtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Delivery Date : {{Order.DDeliveryDatedate | date :'dd/MM/yyyy'}}
+									</div>
+									<div class="col-md-3 ">
+										Delivery Qty : {{Order.DQtyint}}
+									</div>
 								</div>
 
-								<div class="col-md-4 ">
-									<div>
-										Material Description :
-										<span class="kt-font-bold">{{Order.MateriaDescriptionvtxt}}</span>
-									</div>
+
+								<div class="row col-12">
 									
+									<div class="col-md-3 ">
+										Invoice No : {{Order.IInvoiceDocumentNovtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Invoice Date : {{Order.IBillingDatedate | date :'dd/MM/yyyy'}}
+									</div>
+									<div class="col-md-3 ">
+										Invoice Qty : {{Order.IInvoiceQuantityint}}
+									</div>
 								</div>
 
-								<div class="col-md-4 ">
-									<div>
-										Unit of Measurement :
-										<span class="kt-font-bold">{{Order.UnitOfMeasurevtxt}}</span>
-									</div>
-									<div>
-										Status : <span class="kt-font-bold">{{Order.ItemStatusvtxt}}</span>
-									</div>
-<!-- 
-	sir Told to remove
-									<div>
-										Delivery Quantity :
-										<span class="kt-font-bold">{{Order.DeliveryQuantityint}}</span>
-									</div> -->
+									<h2 *ngIf="this.Orders[0]==null">No Data Available for Dispatch Order </h2>
 								</div>
 							</div>
 						</div>
@@ -102,7 +112,7 @@
 
 				</div>
 			</div>
-			<h5 class="mt-4">Dispatch Order Detail</h5>
+			<!-- <h5 class="mt-4">Dispatch Order Detail</h5>
 			<div >
 				<div class="kt-portlet__body ">
 
@@ -154,7 +164,7 @@
 
 
 				</div>
-			</div>
+			</div> -->
 
 			<button (click)="Back()" class="btn col-md-1 btn-primary">Close</button>
 		</div>

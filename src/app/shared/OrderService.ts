@@ -38,12 +38,16 @@ export class OrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
-       fromdate =this.datepipe.transform(fromdate, 'dd-MM-yyyy');
+      fromdate.setDate(fromdate.getDate() - 10);
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    } else {
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     }
     if (todate == null || todate == "") {
       todate = new Date();
-      todate =this.datepipe.transform(todate, 'dd-MM-yyyy');
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    } else {
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
@@ -55,12 +59,16 @@ export class OrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
-       fromdate =this.datepipe.transform(fromdate, 'dd-MM-yyyy');
+      fromdate.setDate(fromdate.getDate() - 10);
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    } else {
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     }
     if (todate == null || todate == "") {
       todate = new Date();
-      todate =this.datepipe.transform(todate, 'dd-MM-yyyy');
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    } else {
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
@@ -72,12 +80,16 @@ export class OrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
-       fromdate =this.datepipe.transform(fromdate, 'dd-MM-yyyy');
+      fromdate.setDate(fromdate.getDate() - 10);
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    } else {
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     }
     if (todate == null || todate == "") {
       todate = new Date();
-      todate =this.datepipe.transform(todate, 'dd-MM-yyyy');
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    } else {
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
@@ -89,12 +101,16 @@ export class OrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
-       fromdate =this.datepipe.transform(fromdate, 'dd-MM-yyyy');
+      fromdate.setDate(fromdate.getDate() - 10);
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    } else {
+      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     }
     if (todate == null || todate == "") {
       todate = new Date();
-      todate =this.datepipe.transform(todate, 'dd-MM-yyyy');
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    } else {
+      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
@@ -115,7 +131,7 @@ export class OrderService {
   }
 
   GetOrderHeaderByOrderID(no) {
-    return this.http.get(this.BaseURI + '/cc/GetOrderHeaderByOrderID/' + no);
+    return this.http.get(this.BaseURI + '/Order/GetOrderHeaderByOrderID/' + no);
   }
 
   
@@ -124,7 +140,7 @@ export class OrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
+      fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     } else {
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');

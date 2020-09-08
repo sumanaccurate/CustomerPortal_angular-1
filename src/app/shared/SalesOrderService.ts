@@ -25,7 +25,7 @@ export class SalesOrderService {
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
+      fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     } else {
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
@@ -43,11 +43,10 @@ export class SalesOrderService {
 
   }
   getAllSalesOrderCount(fromdate, todate, status, SoldToPartyCode, KeyWord): Observable<any> {
-
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
+      fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     } else {
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
@@ -61,7 +60,7 @@ export class SalesOrderService {
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
-    return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrderSearch/' + fromdate + ',' + todate + ',' + status + ',' + SoldToPartyCode + ',' + KeyWord);
+    return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrderSearchCount/' + fromdate + ',' + todate + ',' + status + ',' + SoldToPartyCode + ',' + KeyWord);
   }
 
 
@@ -70,16 +69,18 @@ export class SalesOrderService {
     return this.http.get(this.BaseURI + '/SalesOrder/GetSalesOrderCount/' + UserCode + ',NoSearch');
   }
 
+  getAllDeliveryOrderDataBySalesOrderNo(no): Observable<any> {
+    return this.http.get(this.BaseURI + '/SalesOrder/getAllSalesOrderDataByOrderNo/' + no);
+  }ys
 
   getAllSalesOrderDataByOrderNo(no): Observable<any> {
     return this.http.get(this.BaseURI + '/SalesOrder/getAllSalesOrderDataByOrderNo/' + no);
   }
   downloadFile(fromdate, todate, status, SoldToPartyCodevtxt, KeyWord): any {
-
     if (fromdate == null || fromdate == "") {
       fromdate = new Date();
       fromdate = new Date(fromdate);
-      fromdate.setDate(fromdate.getDate() - 8);
+      fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
     } else {
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');

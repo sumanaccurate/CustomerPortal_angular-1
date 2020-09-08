@@ -57,6 +57,7 @@
                                                         {{ShiptoAddress.ShipToNamevtxt}}
                                                     </option>
                                                 </select>
+                                                
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">Ship to Address</label>
                                             <div class="col-md-3">
@@ -74,23 +75,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=" mt-2 row">
-                                        <label class="col-md-3 kt-font-boldest">Select Item</label>
-                                        <div class="col-md-5">
-                                            <select   class=" form-control"  (change)="ChangeItemCodeForNewItem($event.target.value)">
-                                                <option value="0">Select Item</option>
-                                                <option *ngFor="let Item of AllItemMasterDate"
-                                                    value={{Item.ItemCodevtxt}}>
-                                                    {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                    </div>
                                 </div>
 
                             </div>
-                            <a (click)="AddDataInItemMaster()" Class="btn btn-brand btn-sm">Save To List</a>
 
                         </div>
                     </div>
@@ -115,17 +102,23 @@
                                             <tr>
                                                 <th>
                                                 </th>
-                                                <th class=" mr-3">
+                                                <th  style="padding:0 15px 0 15px;">
                                                     Item
                                                 </th>
-                                                <th class=" mr-3">Uom
+                                                <th  style="padding:0 15px 0 15px;">Uom
                                                 </th>
-                                                <!-- <th class=" mr-3">Rate
+                                                <!-- <th  style="padding:0 15px 0 15px;">Rate
                                                 </th> -->
-                                                <th class=" mr-3">
+                                                <th  style="padding:0 15px 0 15px;">
                                                     Quantity *
                                                 </th>
-                                                <!-- <th class=" mr-3">
+                                                <th  style="padding:0 15px 0 15px;">
+                                                    Quantity in Kgs
+                                                </th>
+                                                <th  style="padding:0 15px 0 15px;">
+                                                    Quantity in MT
+                                                </th>
+                                                <!-- <th  style="padding:0 15px 0 15px;">
                                                     Amount
                                                 </th> -->
                                             </tr>
@@ -135,51 +128,89 @@
                                                 <td>
                                                     <span [hidden]="Item.Idint">{{Item.Idint}}</span>
                                                 </td>
-                                                <td class=" mr-3">
+                                                <td  style="padding:0 15px 0 15px;">
                                                     <span>{{Item.ItemCodevtxt}}</span>
                                                 </td>
-                                                <td class=" mr-3"><span>{{Item.Uomnvtxt}}</span>
+                                                <td  style="padding:0 15px 0 15px;">
+                                                    <select  (change)="updateUOM($event.target.value,Item)">
+                                                        <option value="0">Select UOM</option>
+                                                    <option *ngFor="let UOM of UOMs"
+                                                        value="{{UOM.IDint}}" >
+                                                        {{UOM.AlternativeUnit}}
+                                                    </option>
+                                                    </select>
                                                 </td>
-                                                <!-- <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
+                                                <!-- <td  style="padding:0 15px 0 15px;"><span>{{Item.Ratedcl}}</span>
                                                 </td> -->
-                                                <td class=" mr-3">
+                                                
+                                                <td  style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
                                                         <input type="number" onlyNumber matInput
-                                                            (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)"
+                                                            (change)="updateTotalUOM(Item,$event.target.value)"
                                                             value="{{Item.qty}}">
                                                     </mat-form-field>
                                                 </td>
-                                                <!-- <td class=" mr-3">
+                                                 <td  style="padding:0 15px 0 15px;">
+                                                    {{Item.QtyKg }}
+                                                </td>
+                                                <td  style="padding:0 15px 0 15px;">
+                                                   {{Item.QtyMt }}
+                                               </td>
+                                                <!-- <td  style="padding:0 15px 0 15px;">
                                                     {{Item.Amount }}
                                                 </td> -->
 
-                                                <td>
+                                                <!-- <td>
                                                     <div class="btnactions">
                                                         <button class="btn btn-warning"
                                                             (click)="onDeleteClick( i)"><i class="fa flaticon-delete"></i></button>
                                                     </div>
 
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            
+                            <div class=" mt-2 row">
+                                <label class="col-md-auto kt-font-boldest">Select Item</label>
+                                <div class="col-md-auto">
+                                    <select   class=" form-control"  (change)="ChangeItemCodeForNewItem($event.target.value)">
+                                        <option value="0">Select Item</option>
+                                        <option *ngFor="let Item of AllItemMasterDate"
+                                            value={{Item.ItemCodevtxt}}>
+                                            {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <a (click)="AddDataInItemMaster()" Class="btn btn-brand btn-sm">Save To List</a>
+
+                            </div>
+                            <div class="form-group mt-2  row">
                                 <label class="col-md-auto kt-font-boldest">Total Order Quantity</label>
                                 <div class="col-md-auto">
                                     {{this.TotalQuantity}}
+                                </div>
+                                <label class="col-md-auto kt-font-boldest">Total Order Quantity in MT</label>
+                                <div class="col-md-auto">
+                                    {{this.TotalMT}}
+                                </div>
+                                <label class="col-md-auto kt-font-boldest">Total Order Quantity in Kgs</label>
+                                <div class="col-md-auto">
+                                    {{this.TotalKgs}}
                                 </div>
                                 <!-- <label class="col-md-auto kt-font-boldest">Total Order Amount</label>
                                 <div class="col-md-auto">
                                     {{this.TotalAmount}}
                                 </div> -->
-                                <label class="col-md-auto kt-font-boldest">Payment Charges</label>
+                                <!-- <label class="col-md-auto kt-font-boldest">Payment Charges</label>
                                 <div class="col-md-auto">
                                     <input type="text" (change)="updateothercharges($event.target.value)"
                                         value="{{othercharges}}">
-                                </div>
+                                </div> -->
                             </div>
                             <!--end::Section-->
                         </div>

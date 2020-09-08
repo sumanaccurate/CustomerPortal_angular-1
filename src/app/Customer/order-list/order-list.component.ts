@@ -42,13 +42,44 @@ export class CustomerOrderListComponent implements OnInit {
   totalOrdersCount: any;
   currentPage = 1;
 
+  CompletedCount;
+  PendingCount;
+  partiallyCompletedCount;
 
+  getPending() {
+      this._OrderServiceService.getOrderCount(this.FromDate,this.Todate,'Pending',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.PendingCount = res;
+        if(res=="" || res==null ){
+          this.PendingCount = 0;
+        }
+    })
+  } 
+  getCompleted() {
+      this._OrderServiceService.getOrderCount(this.FromDate,this.Todate,'Completely processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.CompletedCount = res;
+        if(res=="" || res==null ){
+          this.CompletedCount  = 0;
+        }
+    })
+  }
+
+  getPartiallyCompleted() {
+      this._OrderServiceService.getOrderCount(this.FromDate,this.Todate,'Partially processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+        this.partiallyCompletedCount = res;
+        if(res=="" || res==null ){
+          this.partiallyCompletedCount  = 0;
+        }
+    })
+  }
 
   ngOnInit() {
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
     this.getAllOrders();
     this.getUserInfo();
+    this.getPending();
+    this.getCompleted()
+    this.getPartiallyCompleted();
   }
 
   getUserInfo() {
