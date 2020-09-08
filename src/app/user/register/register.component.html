@@ -12,38 +12,45 @@
                                 <div class="kt-login__head">
                                     <h3 class="kt-login__title">Sign In</h3>
                                 </div>
-                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+                                <form autocomplete="off">
                                     <div class="kt-login__form">
                                         <div class="kt-form">
                                             <div class="form-group">
-                                                <input class="form-control" formControlName="UserCodetxt" placeholder="Email" required>
+                                                <input class="form-control" type="text" placeholder="User Code" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" formControlName="Passwordvtxt" class="form-control" placeholder="Password" required>
+                                                <input class="form-control" type="text" placeholder="User Name" required>
                                             </div>
-
-                                            <div class="kt-login__extra">
-                                                <!-- <label class="kt-checkbox">
-                                                    <input type="checkbox" name="remember" />
-                                                    Remember me
-                                                    <span></span>
-                                                </label> -->
-                                                <a [routerLink]="['/forgotpassword.component']">Forget Password ?</a>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Access Token" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Mobile" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Date Of Birth" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Contact Person" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" placeholder="Address">Address</textarea>
                                             </div>
                                             <div class="kt-login__actions">
-                                                <button type="submit" class="btn btn-brand btn-pill btn-elevate" [disabled]="this.loginForm.invalid">Login</button>
+                                                <button type="submit" class="btn btn-brand btn-pill btn-elevate">Register</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-<<<<<<< HEAD
                             <div class="kt-login__account">
-                                <a id="kt_login_signup" [routerLink]="['/user/register']" class="kt-login__account-link">Register</a>
+                                <span class="kt-login__account-msg">Already have an account?
+                                </span>
+                                <a id="kt_login_signup" class="kt-login__account-link kt-font-brand" [routerLink]="['/user/login']">Login here</a>
                             </div>
-=======
-                           
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
                         </div>
                     </div>
                 </div>
