@@ -14,7 +14,7 @@ import { OutStandingService } from 'src/app/shared/OutStandingService';
   templateUrl: './out-standing.component.html',
   styleUrls: ['./out-standing.component.css']
 })
-export class OutStandingComponent implements OnInit {
+export class CustomerOutStandingComponent implements OnInit {
   DetailData: any[];
   constructor(private _OutStandingService: OutStandingService, private service: UserService, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PaginationService } from '../../component/pagination/pagination.service';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/CustomerService';
+import * as fileSaver from 'file-saver';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { UserService } from 'src/app/shared/user.service';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
@@ -152,5 +153,15 @@ export class CustomerOrderListComponent implements OnInit {
     }
   }
 
+  download() {
+    this._OrderServiceService.downloadFile(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe(response => {
+			let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+			const url = window.URL.createObjectURL(blob);
+			//window.open(url);
+			//window.location.href = response.url;
+			fileSaver.saveAs(blob, 'Excel.xlsx');
+		}), error => console.log('Error downloading the file'),
+                 () => console.info('File downloaded successfully');
+  }
 
 }   

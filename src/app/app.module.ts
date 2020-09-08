@@ -103,6 +103,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { OrderAnalystComponent } from './OrderAnalyst/order-analyst/order-analyst.component';
 import { OrderAnalystPendingOrderListComponent } from './OrderAnalyst/pending-order/pending-order.component';
 import { CustomerFloatDataComponent } from './Customer/customer-float-data/customer-float-data.component';
+<<<<<<< HEAD
 import { OutStandingComponent } from './Customer/out-standing/out-standing.component';
 import { SystemAsideComponent } from './SystemAdmin/system-aside/system-aside.component';
 import { CustomerAsideComponent } from './Customer/customer-aside/customer-aside.component';
@@ -120,6 +121,9 @@ import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-
 import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
 import { HistoryComponent } from './Customer/history/history.component';
 
+=======
+import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
+>>>>>>> b3f2fef5e567084a933ead6184d1f193c5b9eff9
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -171,6 +175,7 @@ import { HistoryComponent } from './Customer/history/history.component';
     OrderAnalystComponent,
     OrderAnalystPendingOrderListComponent,
     CustomerFloatDataComponent,
+<<<<<<< HEAD
     OutStandingComponent,
     SystemAsideComponent,
     CustomerAsideComponent,
@@ -188,6 +193,9 @@ import { HistoryComponent } from './Customer/history/history.component';
     CurrentLedgerComponent,
     HistoryComponent,
 
+=======
+    CustomerOutStandingComponent,
+>>>>>>> b3f2fef5e567084a933ead6184d1f193c5b9eff9
   ],
   imports: [
     BrowserModule,
