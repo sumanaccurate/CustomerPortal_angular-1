@@ -1,19 +1,19 @@
-
-<app-customer-float-data></app-customer-float-data>
-<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+    <app-customer-float-data></app-customer-float-data>
     <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">Create Order  
+                    <h3 class="kt-portlet__head-title">Create Order
                     </h3>
-                    <b>
-                        Available Credit Limit : {{ this.CreditLimit}}
-                    </b>
+
+                </div>
+                <div class="kt-portlet__head-label">
+                    Available Credit Limit : {{ this.CreditLimit}}
                 </div>
             </div>
 
-            <div >
+            <div class="kt-portlet__body">
                 <div class="kt-form">
                     <div class="row">
                         <div class="col-xl-12">
@@ -36,13 +36,11 @@
                                         <div class=" row">
                                             <label class="col-md-3 kt-font-boldest">PO No</label>
                                             <div class="col-md-3">
-                                                <input type="text"  class=" form-control"  (change)="updatePono($event.target.value)"
-                                                    value="{{Pono}}">
+                                                <input type="text" class=" form-control" (change)="updatePono($event.target.value)" value="{{Pono}}">
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">PO Date</label>
                                             <div class="col-md-3">
-                                                <input type="text"  class=" form-control"  (change)="updatePoDate($event.target.value)"
-                                                    value="{{PoDate}}">
+                                                <input type="text" class=" form-control" (change)="updatePoDate($event.target.value)" value="{{PoDate}}">
                                             </div>
                                         </div>
                                     </div>
@@ -50,7 +48,7 @@
                                         <div class=" mt-2  row">
                                             <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                             <div class="col-md-3">
-                                                <select   class=" form-control"  (change)="getShipToNameData($event.target.value)">
+                                                <select class=" form-control" (change)="getShipToNameData($event.target.value)">
                                                     <option value="0">Select Ship To Name</option>
                                                     <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                         value={{ShiptoAddress.ShipToCodevtxt}}>
@@ -65,13 +63,13 @@
                                             </div>
                                         </div>
                                         <div class=" mt-2  row">
-                                          
+
                                             <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                             <div class="col-md-3">
-                                                <textarea rows = "3"  class=" form-control" type="text" name = "Address">
+                                                <textarea rows="3" class=" form-control" type="text" name="Address">
                                                  
                                                  </textarea>
-                                              
+
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border mt-3  col-xl-7 col-lg-7">
+                <div class="border mt-3  col-xl-7 col-lg-9">
 
                     <!--begin::Portlet-->
                     <div class="kt-portlet mb-0">
@@ -97,7 +95,7 @@
                             <div class="kt-section mb-0">
                                 <div class="kt-section__content p-2 table-responsive">
                                     <!-- <table class="" style="width:100%;"> -->
-                                        <table class="" >
+                                    <table class="">
                                         <thead style="vertical-align:bottom">
                                             <tr>
                                                 <th>
@@ -163,8 +161,7 @@
 
                                                 <!-- <td>
                                                     <div class="btnactions">
-                                                        <button class="btn btn-warning"
-                                                            (click)="onDeleteClick( i)"><i class="fa flaticon-delete"></i></button>
+                                                        <button class="btn btn-warning" (click)="onDeleteClick( i)"><i class="fa flaticon-delete"></i></button>
                                                     </div>
 
                                                 </td> -->
@@ -208,6 +205,7 @@
                                 </div> -->
                                 <!-- <label class="col-md-auto kt-font-boldest">Payment Charges</label>
                                 <div class="col-md-auto">
+
                                     <input type="text" (change)="updateothercharges($event.target.value)"
                                         value="{{othercharges}}">
                                 </div> -->
@@ -224,8 +222,8 @@
                     <div class="row">
                         <div class="col">
                             <a type="Submit" (click)="onSubmit('Pending')" Class="btn mr-3 btn-brand btn-sm">Submit</a>
-                            <a type="Submit" (click)="onSubmit('Draft')"  Class="btn mr-3  btn-brand btn-sm">Save as Drafts</a>
-                            <a  (click)="Back()"  Class="btn mr-3  btn-brand btn-sm">Cancel</a>
+                            <a type="Submit" (click)="onSubmit('Draft')" Class="btn mr-3  btn-brand btn-sm">Save as Drafts</a>
+                            <a (click)="Back()" Class="btn mr-3  btn-brand btn-sm">Cancel</a>
                         </div>
                     </div>
                 </div>

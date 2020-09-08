@@ -63,10 +63,10 @@ import { CustomerDashboardComponent } from './Customer/dashboard/dashboard.compo
 import { CustomerProfileComponent } from './Customer/profile/profile.component';
 import { CustomerProfileEditComponent } from './Customer/edit-profile/edit-profile.component';
 import { CustomerDispatchOrderDetailComponent } from './Customer/DispatchOrder-detail/DispatchOrder-detail.component';
-import {ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
+import { ProgressSpinnerOverviewExample} from './component/loader/progress-spinner-overview-example';
 import { PaginationService } from './component/pagination/pagination.service';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatExpansionModule} from '@angular/material/expansion';
 import { CustomerInvoiceDetailComponent } from './Customer/Invoice-detail/Invoice-detail.component';
 import { CustomerSalesOrderDetailComponent } from './Customer/SalesOrder-detail/SalesOrder-detail.component';
 import { DispatchOrderViewComponent } from './Customer/dispatch-order-view/dispatch-order-view.component';
@@ -119,6 +119,7 @@ import { RaiseComplaintsComponent } from './Customer/raise-complaints/raise-comp
 import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-status.component';
 import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger.component';
 import { HistoryComponent } from './Customer/history/history.component';
+import { RegisterComponent } from './user/register/register.component';
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
 
 @NgModule({
@@ -188,6 +189,7 @@ import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/targ
     ComplaintStatusComponent,
     CurrentLedgerComponent,
     HistoryComponent,
+    RegisterComponent,
     SystemAdminTargetSalesComponent,
 
   ],

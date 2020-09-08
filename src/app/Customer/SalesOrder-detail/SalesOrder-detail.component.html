@@ -10,9 +10,11 @@
         <div class="kt-portlet__head-label">
 
           <h3 class="kt-portlet__head-title text-dark">Sales Order List
+            <small>
+              Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
+            </small>
           </h3>
 
-          Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
         </div>
         <div class="kt-portlet__head-toolbar">
           <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
@@ -30,8 +32,8 @@
                     <select class="form-control" (change)="ChangeStatus($event.target.value)">
                       <option value="All">Select Status</option>
                       <option value="Pending">Pending</option>
-                      <option value="Completely processed">Completely processed</option>
                       <option value="Partially processed">Partially processed</option>
+                      <option value="Completely processed">Completely processed</option>
                     </select>
                   </div>
                 </div>
