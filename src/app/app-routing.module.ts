@@ -54,6 +54,7 @@ import { ComplaintStatusComponent } from './Customer/complaint-status/complaint-
 import { RegisterComponent } from './user/register/register.component';
 import { CustomerOutStandingComponent } from './Customer/out-standing/out-standing.component';
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
+import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -131,6 +132,7 @@ const routes: Routes = [
       { path: 'RaiseComplaint', component: RaiseComplaintsComponent, canActivate: [AuthGuard] },
       { path: 'ComplaintStatus', component: ComplaintStatusComponent, canActivate: [AuthGuard] },
       { path: 'OutStanding', component: CustomerOutStandingComponent, canActivate: [AuthGuard] },
+      { path: 'AccountStatement', component: CustomerAccountStatementComponent, canActivate: [AuthGuard] },
     ]
   },
 

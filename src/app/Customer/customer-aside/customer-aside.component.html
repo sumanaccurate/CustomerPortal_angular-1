@@ -37,6 +37,7 @@
             <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-layer-group"></i><span class="kt-menu__link-text">Accounts Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
+                        <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/AccountStatement']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Account Statement</span></a></li>
                         <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/OutStanding']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Outstanding</span></a></li>
                         <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/CurrentLedger']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Current Ledger</span></a></li>
                         <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/History']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">History</span></a></li>
