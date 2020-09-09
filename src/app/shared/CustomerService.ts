@@ -24,6 +24,10 @@ getAllCreditLimitforDashboard(UserCode): Observable<any> {
   return this.http.get(this.BaseURI + '/Creditlimit/GetCreditlimit/'+UserCode);
 } 
 
+getAllAvailableCreditLimitforDashboard(UserCode): Observable<any> {  
+  return this.http.get(this.BaseURI + '/Creditlimit/GetAvailableCreditlimit/'+UserCode);
+} 
+
 getCustomerData(Id) {
   return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerDataByUserId/'+Id);
 }

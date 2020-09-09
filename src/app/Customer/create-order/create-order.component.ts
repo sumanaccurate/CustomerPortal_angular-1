@@ -20,6 +20,7 @@ export class CustomerCreateOrderComponent implements OnInit {
   ShipTo;
   name: string;
   ItemMaster;
+  DeliveryAddress;
   othercharges;
   private TotalAmount;
   Pono;
@@ -30,6 +31,7 @@ export class CustomerCreateOrderComponent implements OnInit {
   TotalKgs;
   ItemCodeforadd;
   OutStanding;
+  AvailableCreditLimit;
   CreditLimit;
   AlternativeUnit;
   status;
@@ -64,6 +66,9 @@ export class CustomerCreateOrderComponent implements OnInit {
   getAllCreditLimitforDashboard() {  
     this._CustomerService.getAllCreditLimitforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
       this.CreditLimit = res;  
+    })  
+     this._CustomerService.getAllAvailableCreditLimitforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
+      this.AvailableCreditLimit = res;  
     })  
   }  
   getShipToNameData(Userid) {
@@ -114,6 +119,10 @@ export class CustomerCreateOrderComponent implements OnInit {
 
   
   updateTotalUOM(Item,Quantity) {
+    if(Item.RateOfConversion==null ||Item.RateOfConversion==''){
+      this.alertService.error('Please Select Unit Of Measurement First');
+      return null;
+    }
     
     if( Quantity>0){
       Item.Quantity = ( parseFloat(Quantity)).toFixed(2);
@@ -262,10 +271,11 @@ export class CustomerCreateOrderComponent implements OnInit {
 
   onSubmit(type) {
     if(this.ShiptoAddresss!=''&&this.ShiptoAddresss!=null&&this.TotalQuantity!=0&&this.TotalQuantity!=null&&this.TotalQuantity!=''){
+this.status = 1;
       this.getOrderInfo();
       this.UpdateHeaderData(type);
       this.InsertOrderHeader(this.HeaderData, this.ItemMaster);
-      this.Redirect(this.status);
+     
     }else{
       this.alertService.warn("Please fill the mandatory fields..");
     }
@@ -274,8 +284,7 @@ export class CustomerCreateOrderComponent implements OnInit {
 
 
   InsertOrderDetails(OrderDetails, id) {
-this.status = 1;
-    for (let i = 0; i <= OrderDetails.length; i++) {
+    for (let i = 0; i < OrderDetails.length; i++) {
 
       if( OrderDetails[i].Quantity>0){
         let orderdetail = {
@@ -289,8 +298,8 @@ this.status = 1;
         }
         this._OrderService.InsertOrderDetails(orderdetail).subscribe(
           (res: any) => {
-          
             this.status =0;
+            this.Redirect(this.status,id);
           },
           err => {
             if (err.status == 400)
@@ -303,11 +312,14 @@ this.status = 1;
         );
       }
     }
+   
   }
 
-Redirect(status){
+Redirect(status,value){
   if(status==0){
-    this.router.navigateByUrl('/Customer/OrderList');
+    this.storage.set('OrderId', value);
+    this.router.navigateByUrl('/Customer/OrderView');
+    // this.router.navigateByUrl('/Customer/OrderList');
     this.alertService.success('Order Inserted.');
   }
 }
@@ -318,9 +330,10 @@ Redirect(status){
       (res: any) => {
         this.InsertOrderDetails(OrderDetails, res);
       },
-      err => {
+      err => { 
+        this.alertService.error('An error occured');
         if (err.status == 400)
-          this.alertService.error('Error user not updated.');
+          this.alertService.error('Due to some error order not inserted.');
         else
           console.log(err);
       }
@@ -336,29 +349,33 @@ Redirect(status){
     this.othercharges = value;
   }
 
+  updateAddress(value) {
+    this.DeliveryAddress = value;
+  }
   UpdateHeaderData(type) {
+    if(this.Pono==null||this.Pono==''){
+      this.Pono=null;
+    }
+    if(this.PoDate==null||this.PoDate==''){
+      this.PoDate=null;
+    }
+
     this.HeaderData = {
       OrderNovtxt: this.OrderInfo.ReqOrderNo,
       OrderDatedate: this.OrderInfo.OrderDatedate,
       RefNovtxt: this.Pono,
       RefDatedate: this.PoDate,
-      SAPOrderNovtxt: null,
-      SAPOrderDatedate: null,
       CustomerCodevtxt: this.CustomerData.CustCodevtxt,
       CustomerNamevtxt: this.CustomerData.CustNamevtxt,
       Divisionvtxt: this.CustomerData.DivisionCdvtxt,
       ShipToCodevtxt: this.ShipTo.ShipToCodevtxt,
       ShipToNamevtxt: this.ShipTo.ShipToNamevtxt,
       ShipToAddressvtxt: this.ShipTo.Addressvtxt,
-      TotalNetValuedcl: this.TotalAmount,
+      DeliveryAddressvtxt: this.DeliveryAddress,
       TotalOrderQuantityint: this.TotalQuantity,
-      SAPStatusvtxt: null,
-      OtherCharges1dcl: this.othercharges,
-      OtherCharges2dcl: 0.00,
-      OtherCharges3dcl: 0.00,
-      OtherCharges4dcl: 0.00,
       Statusvtxt: type,
       CreatedByvtxt: this.Userid,
+
     }
     console.log(this.HeaderData);
   }
