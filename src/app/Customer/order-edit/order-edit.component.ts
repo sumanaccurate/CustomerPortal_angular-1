@@ -2,13 +2,15 @@ import { Component, Input, Output, EventEmitter, OnInit, Inject } from '@angular
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
+
+import { NgModule } from '@angular/core';
 import { ItemMasterService } from 'src/app/shared/ItemMasterService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { OrderService } from 'src/app/shared/OrderService';
 import { AlertService } from 'src/app/component/alert.service';
@@ -23,12 +25,14 @@ export class CustomerOrderEditComponent implements OnInit {
   name: string;
   ItemMaster;
   othercharges;
-  SelectedValue=1;
+  SelectedValue = 2;
   private TotalAmount;
   Pono;
   ShipToName;
+  CreditLimit;
   PoDate;
   UOMs;
+  AvailableCreditLimit;
   TotalKgs;
   TotalMT;
   CustomerData: any;
@@ -40,7 +44,8 @@ export class CustomerOrderEditComponent implements OnInit {
   status;
   OrderID;
   Userid;
-  ShipToAddress
+  ShipToAddress;
+  
   constructor(private _CustomerService: CustomerService, private _ItemMasterService: ItemMasterService,
     private _OrderService: OrderService, private alertService: AlertService,
     private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
@@ -48,13 +53,13 @@ export class CustomerOrderEditComponent implements OnInit {
   projects = { projectID: 'wxp001', projectName: 'TYC001', dateOfStart: '2018-12-23', teamSize: 'L', inedit: false };
   ngOnInit() {
     this.Userid = localStorage.getItem('UserCode');
-    this.OrderID = this.storage.get('OrderId');
     this.getUOM();
+    this.OrderID = this.storage.get('OrderId');
     this.getShiptoAddressData(this.Userid);
     this.getAllOrderDataByOrderNo(this.OrderID);
     this.getAllItemMasterData();
     this.GetOrderHeaderByOrderID(this.OrderID);
-
+   this.CreditLimit();
   }
 
 
@@ -128,41 +133,57 @@ export class CustomerOrderEditComponent implements OnInit {
     this.updateTotal(this.ItemMaster);
   };
 
-  
-  updateUOM(ID,Item) {
-   
+
+  updateUOM(ID, Item) {
+
     this._CustomerService.getUOMById(ID).subscribe(
       data => {
-        Item.Uomnvtxt =  data[0].AlternativeUnit;
-        Item.RateOfConversion= data[0].RateOfConversion;
-        Item.Weight= data[0].Weight;
-        if(Item.Quantity==null){
-          Item.Quantity=0
+        Item.Uomnvtxt = data[0].AlternativeUnit;
+        Item.RateOfConversion = data[0].RateOfConversion;
+        Item.Weight = data[0].Weight;
+        if (Item.Quantity == null) {
+          Item.Quantity = 0
         }
-            this.updateTotalUOM(Item,Item.Quantity);
+        this.updateTotalUOM(Item, Item.Quantity);
       }
     );
 
   };
 
 
-  updateTotalUOM(Item,Quantity) {
-    
-    if( Quantity>0){
-      Item.Quantity = ( parseFloat(Quantity)).toFixed(2);
-      Item.QtyKg=( parseFloat(Quantity) *  parseFloat(Item.Weight)).toFixed(2);
-      Item.QtyMt= (parseFloat(Quantity )* parseFloat(Item.RateOfConversion)).toFixed(2);
-    }else{
-      Item.QtyKg=0;
-      Item.QtyMt=0;
+  updateTotalUOM(Item, Quantity) {
+
+
+    if (Item.RateOfConversion == null || Item.RateOfConversion == '') {
+      this._CustomerService.getUOMById(Item.UoMint).subscribe(
+        data => {
+          Item.Uomnvtxt = data[0].AlternativeUnit;
+          Item.RateOfConversion = data[0].RateOfConversion;
+          Item.Weight = data[0].Weight;
+          if (Item.Quantity == null) {
+            Item.Quantity = 0
+          }
+          this.updateTotalUOM(Item, Quantity);
+        }
+      );
+    }
+
+
+    if (Quantity > 0) {
+      Item.Quantity = (parseFloat(Quantity)).toFixed(2);
+      Item.QtyKg = (parseFloat(Quantity) * parseFloat(Item.Weight)).toFixed(2);
+      Item.QtyMt = (parseFloat(Quantity) * parseFloat(Item.RateOfConversion)).toFixed(2);
+    } else {
+      Item.QtyKg = 0;
+      Item.QtyMt = 0;
     }
     let tempqtyKg = 0;
     let tempqtyMt = 0;
     let tempQuantity = 0;
     for (let j = 0; j < this.ItemMaster.length; j++) {
-      let qtyKg = parseFloat(this.ItemMaster[j].QtyKg) ;
-      let qtyMt = parseFloat( this.ItemMaster[j].QtyMt);
-      let qty = parseFloat( this.ItemMaster[j].Quantity);
+      let qtyKg = parseFloat(this.ItemMaster[j].QtyKg);
+      let qtyMt = parseFloat(this.ItemMaster[j].QtyMt);
+      let qty = parseFloat(this.ItemMaster[j].Quantity);
       if (!qty) {
         qty = 0;
       } else {
@@ -203,7 +224,14 @@ export class CustomerOrderEditComponent implements OnInit {
     this._CustomerService.getUOM().subscribe((res: any) => {
       this.UOMs = res;
     })
-}
+  }
+
+
+  getUOMNotId(Item) {
+    this._CustomerService.getUomnNotId(Item.UoMint).subscribe((res: any) => {
+      this.UOMs = res;
+    })
+  }
   UpdateOtherFromData(Data) {
     this.Pono = Data.RefNovtxt;
     this.PoDate = Data.RefDatedate;
@@ -314,15 +342,15 @@ export class CustomerOrderEditComponent implements OnInit {
         this._OrderService.InsertOrderDetails(orderdetail).subscribe(
           (res: any) => {
 
-            this.status =0;
+            this.status = 0;
           },
           err => {
             if (err.status == 400)
               this.alertService.error('Error Order not Inserted.');
             else
               console.log(err);
-              this.status=1;
-              return
+            this.status = 1;
+            return
           }
         );
       }
@@ -331,8 +359,8 @@ export class CustomerOrderEditComponent implements OnInit {
   }
 
 
-  Redirect(status){
-    if(status==0){
+  Redirect(status) {
+    if (status == 0) {
       this.router.navigateByUrl('/Customer/OrderList');
       this.alertService.success('Order Inserted.');
     }
@@ -391,4 +419,14 @@ export class CustomerOrderEditComponent implements OnInit {
   Back() {
     this.router.navigateByUrl('/Customer/OrderList');
   }
+
+  
+  getAllCreditLimit() {  
+    this._CustomerService.getAllCreditLimitforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
+      this.CreditLimit = res;  
+    })  
+     this._CustomerService.getAllAvailableCreditLimitforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
+      this.AvailableCreditLimit = res;  
+    })  
+  }  
 }

@@ -24,6 +24,10 @@ getAllCreditLimitforDashboard(UserCode): Observable<any> {
   return this.http.get(this.BaseURI + '/Creditlimit/GetCreditlimit/'+UserCode);
 } 
 
+getAllAvailableCreditLimitforDashboard(UserCode): Observable<any> {  
+  return this.http.get(this.BaseURI + '/Creditlimit/GetAvailableCreditlimit/'+UserCode);
+} 
+
 getCustomerData(Id) {
   return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerDataByUserId/'+Id);
 }
@@ -36,6 +40,9 @@ getGetShipToData(Id) {
   return this.http.get(this.BaseURI + '/CustomerMaster/GetShipTo/'+Id);
 }
 
+getUomnNotId(id) {
+  return this.http.get(this.BaseURI + '/Order/GetUOMNotId/'+id);
+}
 getUOM() {
   return this.http.get(this.BaseURI + '/Order/GetUOM/');
 }
