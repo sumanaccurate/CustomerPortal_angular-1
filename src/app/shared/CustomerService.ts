@@ -40,6 +40,9 @@ getGetShipToData(Id) {
   return this.http.get(this.BaseURI + '/CustomerMaster/GetShipTo/'+Id);
 }
 
+getUomnNotId(id) {
+  return this.http.get(this.BaseURI + '/Order/GetUOMNotId/'+id);
+}
 getUOM() {
   return this.http.get(this.BaseURI + '/Order/GetUOM/');
 }

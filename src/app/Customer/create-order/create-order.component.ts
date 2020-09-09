@@ -47,8 +47,7 @@ export class CustomerCreateOrderComponent implements OnInit {
   projects = { projectID: 'wxp001', projectName: 'TYC001', dateOfStart: '2018-12-23', teamSize: 'L', inedit: false };
   ngOnInit() {
     this.Userid = localStorage.getItem('UserCode');
-    this.getAllCreditLimitforDashboard();
-    this.getAllOutStandingforDashboard();
+    this.getAllCreditLimit();
     this.getCustomerData(this.Userid);
     this.getShiptoAddressData(this.Userid);
     this.GetTopItemMaster();
@@ -58,12 +57,7 @@ export class CustomerCreateOrderComponent implements OnInit {
     this.ShipTo.Addressvtxt = '';
   }
 
-  getAllOutStandingforDashboard() {  
-    this._CustomerService.getAllOutStandingforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
-      this.OutStanding = res;  
-    })  
-  }  
-  getAllCreditLimitforDashboard() {  
+  getAllCreditLimit() {  
     this._CustomerService.getAllCreditLimitforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
       this.CreditLimit = res;  
     })  

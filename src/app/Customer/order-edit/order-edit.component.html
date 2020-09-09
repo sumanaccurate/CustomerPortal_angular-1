@@ -1,6 +1,7 @@
-<app-customer-float-data></app-customer-float-data>
 
-<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid mt-4">
+
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid ">
+    <app-customer-float-data></app-customer-float-data>
     <form [formGroup]="OrderInfo" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
@@ -9,7 +10,21 @@
                     </h3>
                 </div>
             </div>
-
+            <div class="ml-1 text-black-50 kt-font-lg col-md-12 row ">
+                <div class="col-md-6 p-1 bg-primary row">
+                    <label class="kt-font-boldest">Credit Limit : </label>
+                   
+                        {{ this.CreditLimit}}
+                    
+                </div>
+                <div class="col-md-6 p-1 bg-danger row">
+                    <label class="kt-font-boldest"> Available Credit Limit : </label>
+               
+                    {{ this.AvailableCreditLimit}}
+               
+                </div>
+               
+            </div>
             <div class="kt-portlet__body">
                 <div class="kt-form">
                     <div class="row">
@@ -48,7 +63,7 @@
                                                   
                                                   </mat-form-field> -->
                                                 <input type="text" (change)="updatePoDate($event.target.value)"
-                                                    value="{{PoDate}}">
+                                                    value="{{PoDate  | date :'dd/MM/yyyy'}}">
                                             </div>
                                         </div>
                                     </div>
@@ -156,14 +171,22 @@
                                                 </td>
                                                 <!-- <td class=" mr-3"><span>{{Item.MaterialDescriptionvtxt}}</span>
                                                 </td> -->
-                                                <td class=" mr-3"><span>{{Item.UoMvtxt}}</span>
+                                                <td class=" mr-3">  
+                                                    <!-- <span>{{Item.UoMvtxt}}</span> -->
                                                     <!-- <select  (change)="updateUOM($event.target.value,Item)" [(ngModel)]="Item.UoMint" (input)="onInput($event)">
                                                         <option *ngFor="let UOM of UOMs" value= {{UOM.IDint}}>{{UOM.AlternativeUnit}}</option>
-                                                      </select> -->
-                                                    <select  (change)="updateUOM($event.target.value,Item)" (input)="onInput($event)">
-                                                        <option *ngFor="let UOM of UOMs" value= {{UOM.IDint}}>{{UOM.AlternativeUnit}}</option>
-                                                      </select>
+ <option [value]="Item.UoMint">{{Item.UoMvtxt}}</option>
+                                                        <option *ngFor="let UOM of UOMs" [value]="UOM.IDint">{{UOM.AlternativeUnit}}</option>
 
+                                                      </select> -->
+                                                    <!-- <select   (change)="updateUOM($event.target.value,Item)" >
+                                                        <option *ngFor="let UOM of UOMs"  [value]="UOM.IDint" [selected]="UOM.IDint ==Item.UoMint ? true: null">{{UOM.AlternativeUnit}}</option>
+                                                      </select> -->
+                                                      <select class="form-control" name="Item.UoMint"  [(ngModel)]="Item.UoMint" (ngModelChange)="updateUOM($event.target.value,Item)">
+                                                        <option *ngFor="let UOM of UOMs" [ngValue]="UOM.IDint" >
+                                                            {{UOM.AlternativeUnit}}
+                                                        </option>
+                                                    </select>
                                                 </td>
                                                 <!-- <td class=" mr-3"><span>{{Item.Ratedcl}}</span>
                                                 </td> -->
