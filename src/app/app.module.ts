@@ -124,7 +124,6 @@ import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/targ
 import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
 import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-list/target-sales-list.component';
 
-
 @NgModule({
   declarations: [
     CustomerComponent,
