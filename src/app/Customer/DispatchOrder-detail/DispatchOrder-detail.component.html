@@ -1,6 +1,5 @@
 <div class="kt-container  kt-container--fluid ">
     <div class="kt-portlet kt-portlet--mobile">
-<<<<<<< HEAD
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title text-dark">
@@ -17,73 +16,6 @@
             <div class="kt-portlet__head-toolbar">
                 <button class="btn btn-brand btn-sm btn-bold btn-icon" (click)="download()"><i
                         class="fa fa-file-download"></i></button>
-=======
-      <div class="kt-portlet__head kt-portlet__head--lg bg-light">
-        <div class="kt-portlet__head-label">
-          <h3 class="kt-portlet__head-title text-dark">
-           Dispatch List
-           <small>
-            Pending : {{PendingCount}} Partially Completed : {{partiallyCompletedCount}} Completed : {{CompletedCount}}
-           </small>
-          </h3>
-      
-
-        
-        </div>
-        <div class="kt-portlet__head-toolbar">
-          <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
-              class="fa fa-file-download"></i></button>
-        </div>
-
-      </div>
-      <div class="p-4 bg-light border-top border-bottom">
-        <!--begin: Search Form -->
-        <div class="kt-form kt-form--label-right ">
-          <div class="row align-items-center">
-            <div class="col-xl-12 order-2 order-xl-1">
-              <div class="row align-items-center">
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div >
-                    <select class="form-control"  (change)="ChangeStatus($event.target.value)">
-                      <option value="All">Select Status</option>
-                      <option value="Not Relevant">Pending</option>
-                      <option value="PGI DONE">Partially processed</option>
-                      <option value="Completely processed">Completely processed</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  matInput [matDatepicker]="picker" [(ngModel)]="FromDate" placeholder="From Date"
-                      id="kt_datepicker_1">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-calendar"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control"  matInput [matDatepicker]="picker" [(ngModel)]="Todate" placeholder="To Date"
-                      id="kt_datepicker_2">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-calendar"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md kt-margin-b-20-tablet-and-mobile">
-                  <div class="kt-input-icon kt-input-icon--left">
-                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
-                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                      <span><i class="la la-search"></i></span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-1">
-                  <button class="btn btn-dark" (click)="ngOnInit()" title="bigger">Search</button>
-                </div>
-              </div>
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
             </div>
         </div>
         <div class="p-4 bg-light border-top border-bottom">
@@ -196,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
+                <h4 *ngIf="this.Orders[0]==null">No Data Available</h4>
                 <div class="row">
                     <div class="col-md-3"> </div>
                     <div *ngIf="Orders !=0" class="col-md-6">

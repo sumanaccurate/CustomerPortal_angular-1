@@ -54056,6 +54056,14 @@ a:not([href]):hover {
     border-radius: 0.35rem;
 }
 
+.gif-loader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+    width: 50%;
+}
+
 @media (max-width: 768px) {
     .kt-widget.kt-widget--user-profile-3 .kt-widget__top .kt-widget__content .kt-widget__info .kt-widget__desc {
         padding-bottom: 0 !important;
