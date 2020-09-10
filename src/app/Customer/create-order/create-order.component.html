@@ -3,12 +3,22 @@
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
+
+
                     <h3 class="kt-portlet__head-title">Place Order Request
                         <small>
+<<<<<<< HEAD
                             <span>Credit Limit : <span class="kt-font-brand kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
                             <span>Available Credit Limit : <span class="kt-font-warning kt-font-bold mr-3">{{ this.AvailableCreditLimit}}</span></span>
                         </small>
                     </h3>
+=======
+                            <span>Credit Limit:<span class="kt-font-warning kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
+                            <span>Available Credit Limit:<span class="kt-font-success kt-font-bold mr-3">{{ this.AvailableCreditLimit}}</span></span>
+                        </small>
+                    </h3>
+
+>>>>>>> 356ffb0ec7868edcc61db3d109282dd076a71ecd
                 </div>
             </div>
             <div class="kt-portlet__body">
@@ -43,6 +53,7 @@
                                         <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                         <div class="col-md-3">
                                             <select class=" form-control" (change)="getShipToNameData($event.target.value)">
+>>>>>>> 5b1cd8e3b6b4f29cfd031a0b39b48bf419444e2d
                                                 <option value="0">Select Ship To Name</option>
                                                 <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                     value={{ShiptoAddress.ShipToCodevtxt}}>
@@ -60,13 +71,12 @@
 
                                         <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                         <div class="col-md-3">
-
-                                            <input type="text" (change)="updateAddress($event.target.value)" value="{{DeliveryAddress}}">
+<textarea  class=" form-control" type="text" (change)="updateAddress($event.target.value)"
+value="{{DeliveryAddress}}"  ></textarea>
+                                          
                                         </div>
                                     </div>
-
-
-                                </div>
+                            </div>
 
                             </div>
                         </div>
@@ -120,7 +130,7 @@
                                                     <span>{{Item.ItemCodevtxt}}</span>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
-                                                    <select (change)="updateUOM($event.target.value,Item)">
+                                                    <select  class=" form-control form-control-sm" (change)="updateUOM($event.target.value,Item)">
                                                         <option value="0">Select UOM</option>
                                                         <option *ngFor="let UOM of UOMs" value="{{UOM.IDint}}">
                                                             {{UOM.AlternativeUnit}}
@@ -133,7 +143,9 @@
                                                 <td style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
-                                                        <input type="number" onlyNumber matInput (change)="updateTotalUOM(Item,$event.target.value)" value="{{Item.qty}}">
+                                                        <input type="number" onlyNumber matInput class=" text-right"
+                                                            (change)="updateTotalUOM(Item,$event.target.value)"
+                                                            value="{{Item.qty}}">
                                                     </mat-form-field>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
@@ -161,7 +173,8 @@
                             <div class=" mt-2 row">
                                 <label class="col-md-auto kt-font-boldest">Select Item</label>
                                 <div class="col-md-auto">
-                                    <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
+                                    <select class=" form-control"
+                                        (change)="ChangeItemCodeForNewItem($event.target.value)">
                                         <option value="0">Select Item</option>
                                         <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
                                             {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}

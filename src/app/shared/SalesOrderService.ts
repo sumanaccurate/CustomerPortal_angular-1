@@ -27,15 +27,17 @@ export class SalesOrderService {
       fromdate = new Date(fromdate);
       fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    } else {
-      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    }
+    } 
+    // else {
+    //   fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    // }
     if (todate == null || todate == "") {
       todate = new Date();
       todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
-    } else {
-      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
-    }
+    } 
+    // else {
+    //   todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    // }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
@@ -48,15 +50,17 @@ export class SalesOrderService {
       fromdate = new Date(fromdate);
       fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    } else {
-      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    }
+    } 
+    // else {
+    //   fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    // }
     if (todate == null || todate == "") {
       todate = new Date();
       todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
-    } else {
-      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
+    //  else {
+    //   todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    // }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }
@@ -82,15 +86,17 @@ export class SalesOrderService {
       fromdate = new Date(fromdate);
       fromdate.setDate(fromdate.getDate() - 10);
       fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    } else {
-      fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
-    }
+    } 
+    // else {
+    //   fromdate = this.datepipe.transform(fromdate, 'yyyy-MM-dd');
+    // }
     if (todate == null || todate == "") {
       todate = new Date();
       todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
-    } else {
-      todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
     }
+    //  else {
+    //   todate = this.datepipe.transform(todate, 'yyyy-MM-dd');
+    // }
     if (KeyWord == null || KeyWord == "") {
       KeyWord = "NoSearch";
     }

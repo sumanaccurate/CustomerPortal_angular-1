@@ -8,6 +8,7 @@ import * as fileSaver from 'file-saver';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './SalesOrder-detail.component.html',
@@ -15,8 +16,13 @@ import { CustomerFloatDataComponent } from '../customer-float-data/customer-floa
 })
 export class CustomerSalesOrderDetailComponent implements OnInit {
   Orders: any[];
-  constructor(private router: Router, private _SalesService: SalesOrderService,
-    public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  constructor( public datepipe: DatePipe,private router: Router, private _SalesService: SalesOrderService,
+    public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
+      this.FromDate = new Date();
+      this.FromDate.setDate(this.FromDate.getDate() - 10);
+      this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+      this.Todate = new Date();
+      this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy'); }
   userData;
   pageNo: any = 1;
   search = null;

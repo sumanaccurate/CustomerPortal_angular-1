@@ -36,4 +36,33 @@ getAllCustomer(Division,pageNo,pageSize,KeyWord) {
 getAllCustomerCount(Division): Observable<any> {  
   return this.http.get(this.BaseURI + '/CustomerMaster/GetCustomerCount/'+Division);
 }  
+
+uploadExcelData(formdata) {  
+  return this.http.post(this.BaseURI + '/Mail/ExcelUpload',formdata);
+}  
+uploadTargetSalesExcelData(formdata) {  
+  return this.http.post(this.BaseURI + '/TargetSales/TargetSalesExcelUpload',formdata);
+}
+DownloadTargetSalesExcelData(Division,KeyWord) {  
+  if (KeyWord == null || KeyWord == "") {
+    KeyWord = "NoSearch";
+  }
+  return this.http.get(this.BaseURI + '/TargetSales/Excel/'+Division+','+KeyWord, { responseType: 'blob' });
+}
+GetAllTargetSalesExcelData(Division,pageNo,pageSize,KeyWord) {  
+  if (KeyWord == null || KeyWord == "") {
+    KeyWord = "NoSearch";
+  }
+  return this.http.get(this.BaseURI + '/TargetSales/GetAllTargetSalesLists/'+Division+','+pageNo+','+pageSize+','+KeyWord);
+}
+
+DownloadSampleExcel() {  
+  return this.http.get(this.BaseURI + '/TargetSales/DownloadSampleExcel', { responseType: 'blob' });
+}
+getTargetSalesExcelDataCount(Division,KeyWord) {  
+  if (KeyWord == null || KeyWord == "") {
+    KeyWord = "NoSearch";
+  }
+  return this.http.get(this.BaseURI + '/TargetSales/GetAllTargetSalesListsCount/'+Division+','+KeyWord);
+}
 }

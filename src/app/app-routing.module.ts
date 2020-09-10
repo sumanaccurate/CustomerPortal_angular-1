@@ -56,7 +56,6 @@ import { CustomerOutStandingComponent } from './Customer/out-standing/out-standi
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
 import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
 import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-list/target-sales-list.component';
-
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -135,6 +134,7 @@ const routes: Routes = [
       { path: 'ComplaintStatus', component: ComplaintStatusComponent, canActivate: [AuthGuard] },
       { path: 'OutStanding', component: CustomerOutStandingComponent, canActivate: [AuthGuard] },
       { path: 'AccountStatement', component: CustomerAccountStatementComponent, canActivate: [AuthGuard] },
+
     ]
   },
 
