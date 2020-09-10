@@ -42,7 +42,7 @@
 							
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">TruckNo : </th>
+							<th scope="row">Truck No : </th>
 							<td>{{this.OrderInfo.TruckNovtxt}}</td>
 							<th scope="row">Transporter : </th>
 							<td>{{this.OrderInfo.Transportervtxt}}</td>
@@ -79,19 +79,25 @@
 					<div>
 						<div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
 							<div class="row col-11">
-								<div class="col-md-4 ">
+								<div class="col-md-3 ">
 									
-										Material Code : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+										Material : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
 								
 								</div>
-								<div class="col-md-4 ">
+								<div class="col-md-3 ">
 									
-										UOM : <span class="kt-font-bold">{{Order.MaterialCodevtxt}}</span>
+										UOM : <span class="kt-font-bold">{{Order.UOMvtxt}}</span>
 								
 								</div>
-								<div class="col-md-4 ">
+								<!-- <div class="col-md-3 ">
 								
 										Quantity : <span class="kt-font-bold">{{Order.Qtyint}}</span>
+									
+								</div> -->
+								
+								<div class="col-md-3 ">
+								
+										Quantity in MT : <span class="kt-font-bold">{{Order.QtyMt}}</span>
 									
 								</div>
 							</div>

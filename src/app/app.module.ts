@@ -121,6 +121,11 @@ import { CurrentLedgerComponent } from './Customer/current-ledger/current-ledger
 import { HistoryComponent } from './Customer/history/history.component';
 import { RegisterComponent } from './user/register/register.component';
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
+<<<<<<< HEAD
+=======
+import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
+import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-list/target-sales-list.component';
+>>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
 
 @NgModule({
   declarations: [
@@ -191,6 +196,11 @@ import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/targ
     HistoryComponent,
     RegisterComponent,
     SystemAdminTargetSalesComponent,
+<<<<<<< HEAD
+=======
+    CustomerAccountStatementComponent,
+    SystemAdminTargetSalesListComponent,
+>>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
 
   ],
   imports: [
