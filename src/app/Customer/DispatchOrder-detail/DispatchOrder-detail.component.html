@@ -132,13 +132,13 @@
                     <div class="col-md-3"> </div>
                     <div *ngIf="Orders !=0" class="col-md-6">
                         <ul class="pagination justify-content-center">
-                            <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item">
+                            <li *ngIf="this.pageField.length > OrdersPerPage" class="page-item">
                                 <a (click)="showPrevOrders()" [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'" style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
                             <li *ngFor="let page of pageField;let i=index" class="page-item">
                                 <a (click)="showOrdersByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'" style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 
                             </li>
-                            <li *ngIf="totalOrdersCount > this.OrdersPerPage" class="page-item"><a (click)="showNextOrders()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                            <li *ngIf="this.pageField.length > OrdersPerPage" class="page-item"><a (click)="showNextOrders()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
                         </ul>
                         <div style="text-align: center;">
                             Page {{currentPage}} of Total page {{paginationService.exactPageList}}

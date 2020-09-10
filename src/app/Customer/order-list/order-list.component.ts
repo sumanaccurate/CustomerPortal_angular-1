@@ -24,13 +24,15 @@ export class CustomerOrderListComponent implements OnInit {
       this.FromDate.setDate(this.FromDate.getDate() - 10);
       this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
       this.Todate = new Date();
-      this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');}
+      this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
+    }
   userData;
   pageNo: any = 1;
   search = null;
   status = 'All';
   FromDate = null;
   Todate = null;
+  Draft;
   pageNumber: boolean[] = [];
   sortOrder: any = 'CompanyName_ASC';
   order: any = 'CompanyName';
@@ -60,6 +62,16 @@ export class CustomerOrderListComponent implements OnInit {
         }
     })
   } 
+
+  getDraft() {
+    this._OrderServiceService.getOrderCount(this.FromDate,this.Todate,'Draft',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
+      this.Draft = res;
+      if(res=="" || res==null ){
+        this.Draft = 0;
+      }
+  })
+} 
+  
   getCompleted() {
       this._OrderServiceService.getOrderCount(this.FromDate,this.Todate,'Completely processed',localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
         this.CompletedCount = res;
@@ -79,13 +91,11 @@ export class CustomerOrderListComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.pageNumber[0] = true;
-    this.paginationService.temppage = 0;
     this.getAllOrders();
     this.getUserInfo();
     this.getPending();
     this.getCompleted()
+    this.getDraft();
     this.getPartiallyCompleted();
   }
 
@@ -120,6 +130,8 @@ export class CustomerOrderListComponent implements OnInit {
   //Method For Pagination  
   totalNoOfPages() {
 
+    this.pageNumber[0] = true;
+    this.paginationService.temppage = 0;
     this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);
     let tempPageData = this.paginationData.toFixed();
     if (Number(tempPageData) < this.paginationData) {
@@ -130,7 +142,13 @@ export class CustomerOrderListComponent implements OnInit {
       this.paginationService.exactPageList = this.exactPageList
     }
     this.paginationService.pageOnLoad();
-    this.pageField = this.paginationService.pageField;
+    if(this.totalOrdersCount > this.OrdersPerPage){
+      this.pageField = this.paginationService.pageField;
+    }
+    else{
+      this.pageField = [1];
+    }
+   
 
   }
   showOrdersByPageNumber(page, i) {

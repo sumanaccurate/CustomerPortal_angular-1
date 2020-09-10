@@ -1,9 +1,6 @@
-import {  
-    Injectable  
-} from '@angular/core';   
+import { Injectable } from '@angular/core';  
 @Injectable()  
 export class PaginationService {  
-    //Pagination Variables    
     pageNumberPerPage = 0;  
     pageNumberShow = 10;  
     temppage: number = 0;  
@@ -18,10 +15,11 @@ export class PaginationService {
     showNoOfCurrentPage: any = 1;  
     showPageOnlyOntabsChange: boolean = true;  
     lastPage: any = 0;  
-    constructor() {}  
-    // On page load    
+    constructor() {  
+    }  
+    // On page load   
     pageOnLoad() {  
-        if (this.temppage == 0) {  
+        if (this.temppage == 0 ) {  
             this.pageField = [];  
             for (var a = 0; a < this.pageNumberShow; a++) {  
                 this.pageField[a] = this.temppage + 1;  
@@ -53,8 +51,8 @@ export class PaginationService {
                     this.temppage = this.temppage - 10;  
                     this.prevtrue = false;  
                 } else {  
-                    this.temppage = this.lastPage;  
-                    this.nexttrue = false;  
+                    this.temppage = this.lastPage ;  
+                    this.nexttrue =false;  
                     this.prevtrue = false;  
                     this.lastPage = 0;  
                 }  
@@ -89,7 +87,7 @@ export class PaginationService {
                     for (var b = 0; b < this.pageNumberShow - 7; b++) {  
                         if (a == b) {  
                             this.temppage = this.temppage - (b + 1);  
-                            //this.prevtrue = false;    
+                            //this.prevtrue = false;  
                             break;  
                         }  
                     }  

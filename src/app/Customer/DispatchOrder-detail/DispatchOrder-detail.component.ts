@@ -54,8 +54,6 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.pageNumber[0] = true;
-    this.paginationService.temppage = 0;
     this.getAllOrders();
     this.getUserInfo();
     this.getPending();
@@ -120,6 +118,8 @@ console.log(this.status+this.FromDate+this.Todate);
   //Method For Pagination  
   totalNoOfPages() {
 
+    this.pageNumber[0] = true;
+    this.paginationService.temppage = 0;
     this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);
     let tempPageData = this.paginationData.toFixed();
     if (Number(tempPageData) < this.paginationData) {
