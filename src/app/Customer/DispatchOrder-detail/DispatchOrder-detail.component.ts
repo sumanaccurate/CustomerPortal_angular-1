@@ -10,6 +10,7 @@ import { UserService } from 'src/app/shared/user.service';
 import * as fileSaver from 'file-saver';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-COrder-detail',
   templateUrl: './DispatchOrder-detail.component.html',
@@ -17,7 +18,7 @@ import { CustomerFloatDataComponent } from '../customer-float-data/customer-floa
 })
 export class CustomerDispatchOrderDetailComponent implements OnInit {
   Orders: any[];
-  constructor(private _DeliveryOrderService: DeliveryOrderService, private service: UserService, private router: Router, private _CustomerService: CustomerService
+  constructor( public datepipe: DatePipe,private _DeliveryOrderService: DeliveryOrderService, private service: UserService, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData;
   pageNo: any = 1;
@@ -50,6 +51,11 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   ngOnInit() {
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
+    this.FromDate = new Date();
+    this.FromDate.setDate(this.FromDate.getDate() - 10);
+    this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+    this.Todate = new Date();
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
     this.getAllOrders();
     this.getUserInfo();
     this.getPending();

@@ -10,6 +10,7 @@ import { UserService } from 'src/app/shared/user.service';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { OrderService } from 'src/app/shared/OrderService';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -17,7 +18,7 @@ import { OrderService } from 'src/app/shared/OrderService';
 })
 export class CustomerOrderListComponent implements OnInit {
   Orders: any[];
-  constructor(private _OrderServiceService: OrderService, private service: UserService, private router: Router, private _CustomerService: CustomerService
+  constructor( public datepipe: DatePipe,private _OrderServiceService: OrderService, private service: UserService, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userData;
   pageNo: any = 1;
@@ -73,8 +74,14 @@ export class CustomerOrderListComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
+    this.FromDate = new Date();
+    this.FromDate.setDate(this.FromDate.getDate() - 10);
+    this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+    this.Todate = new Date();
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
     this.getAllOrders();
     this.getUserInfo();
     this.getPending();
