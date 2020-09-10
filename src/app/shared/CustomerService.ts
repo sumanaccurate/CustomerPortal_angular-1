@@ -16,7 +16,6 @@ export class CustomerService {
    }
   readonly BaseURI =  environment.ApiUrl;
 
- 
 getAllOutStandingforDashboard(UserCode): Observable<any> {  
   return this.http.get(this.BaseURI + '/Outstanding/GetOutstandingCount/'+UserCode);
 } 

@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-8 order-lg-1 order-xl-1">
+        <div class="col-xl-9  order-lg-1 order-xl-1">
             <!--[html-partial:begin:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
             <!-- <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
                     <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm bg-light">
@@ -92,6 +92,69 @@
                 </div> -->
 
             <!--[html-partial:end:{"id":"demo12/dist/inc/view/partials/content/widgets/list/latest-orders","page":"index"}]/-->
+        </div>
+        <div class="col-xl-3  order-lg-1 order-xl-1">
+           
+                    <div class=" column ">
+                        
+                            <!--begin::New Orders-->
+                            <div class="kt-widget24 kt-portlet">
+                                <div class="kt-widget24__details">
+                                    <div class="kt-widget24__info">
+                                        <h4 class="kt-widget24__title">Monthly Target
+                                        </h4>
+                                    </div>
+                                    <span class="kt-widget24__stats kt-font-success">{{ this.TargetSales.TargetSalesx}}
+                                        Tons    </span>
+                                </div>
+                            </div>
+                            <!--end::New Orders-->
+                     
+                       
+        
+                            <!--begin::Total Profit-->
+                            <div class="kt-widget24 kt-portlet">
+                                <div class="kt-widget24__details">
+                                    <div class="kt-widget24__info">
+                                        <h4 class="kt-widget24__title">MTD Sales 
+                                        </h4>
+                                    </div>
+                                    <span class="kt-widget24__stats kt-font-brand">{{this.TargetSales.ActualSales}}Tons</span>
+                                </div>
+                            </div>
+        
+                            <!--end::Total Profit-->
+                       
+        
+                           <!--begin::New Feedbacks-->
+                            <div class="kt-widget24 kt-portlet">
+                                <div class="kt-widget24__details">
+                                    <div class="kt-widget24__info">
+                                        <h4 class="kt-widget24__title">% Achievement 
+                                        </h4>
+                                    </div>
+                                    <span class="kt-widget24__stats kt-font-info">{{this.TargetSales.Achivement}}
+                                                            </span>
+                                </div>
+                            </div>
+        
+                            <!--end::New Feedbacks-->
+                            <!--begin::New Feedbacks-->
+                            <!-- <div class="kt-widget24 kt-portlet">
+                                <div class="kt-widget24__details">
+                                    <div class="kt-widget24__info">
+                                        <h4 class="kt-widget24__title">Available Credit Limit
+                                        </h4>
+                                    </div>
+                                    <span class="kt-widget24__stats kt-font-info">{{ this.CreditLimit}}
+                                                            </span>
+                                </div>
+                            </div> -->
+        
+                            <!--end::New Feedbacks-->
+                  
+                    </div>
+               
         </div>
     </div>
 

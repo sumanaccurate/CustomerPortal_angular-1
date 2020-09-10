@@ -7,6 +7,8 @@ import { CustomerService } from 'src/app/shared/CustomerService';
 import { SalesOrderService } from 'src/app/shared/SalesOrderService';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
+import { TargetSales } from 'src/app/shared/TargetSales';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,19 +16,30 @@ import { CustomerFloatDataComponent } from '../customer-float-data/customer-floa
 })
 export class CustomerDashboardComponent implements OnInit {
 
-  constructor(private router: Router, private _CustomerService: CustomerService
+  constructor(public datepipe: DatePipe,private _TargetSales:TargetSales, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService ,private _SalesService :SalesOrderService,
     private _DeliveryOrderService :DeliveryOrderService ) { }
 TotalOrders;
+
+TargetSales;
 OutStanding;
 CreditLimit;
+Todate
 RetailOrder;
   ngOnInit(): void {
     this.getAllCreditLimitforDashboard();
     this.getAllOutStandingforDashboard();
     this.getAllOrdersCountforDashboard();
     this.getAllSalesOrderforDashboard();
+    this.getTargetSalesforDashboard();
   }
+  getTargetSalesforDashboard() {  
+    this.Todate  = new Date();
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
+    this._TargetSales.getTargetSalesforDashboard(localStorage.getItem('UserCode'),this.Todate).subscribe((res: any) => {  
+      this.TargetSales = res;  
+    }) 
+  }  
   getAllOrdersCountforDashboard() {  
     this._DeliveryOrderService.getAllOrdersCountforDashboard(localStorage.getItem('UserCode')).subscribe((res: any) => {  
       this.TotalOrders = res;  
