@@ -3,37 +3,18 @@
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
-<<<<<<< HEAD
-                    <h3 class="kt-portlet__head-title">Create Order
+
+                    <h3 class="kt-portlet__head-title">Place Order Request
                         <small>
-                            <span>Available Credit Limit : <span class="kt-font-success kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
+                            <span>Credit Limit:<span class="kt-font-warning kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
+                            <span>Available Credit Limit:<span class="kt-font-success kt-font-bold mr-3">{{ this.AvailableCreditLimit}}</span></span>
                         </small>
                     </h3>
-                </div>
-                <div class="kt-portlet__head-label"></div>
-=======
-                    <h3 class="kt-portlet__head-title">Place Order Request
-                    </h3>
 
                 </div>
 
             </div>
-            <div class="ml-1 text-black-50 kt-font-lg col-md-12 row ">
-                <div class="col-md-6 p-1 bg-primary row">
-                    <label class="kt-font-boldest">Credit Limit : </label>
-                   
-                        {{ this.CreditLimit}}
-                    
-                </div>
-                <div class="col-md-6 p-1 bg-danger row">
-                    <label class="kt-font-boldest"> Available Credit Limit : </label>
-               
-                    {{ this.AvailableCreditLimit}}
-               
-                </div>
-               
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
-            </div>
+
             <div class="kt-portlet__body">
                
                 <div class="kt-form">
@@ -53,41 +34,6 @@
                                             {{this.OrderInfo.OrderDatedate | date :'dd/MM/yyyy'}}
                                         </div>
                                     </div>
-<<<<<<< HEAD
-                                    <div>
-                                        <div class=" mt-2  row">
-                                            <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
-                                            <div class="col-md-3">
-                                                <select class=" form-control" (change)="getShipToNameData($event.target.value)">
-                                                    <option value="0">Select Ship To Name</option>
-                                                    <option *ngFor="let ShiptoAddress of ShiptoAddresss"
-                                                        value={{ShiptoAddress.ShipToCodevtxt}}>
-                                                        {{ShiptoAddress.ShipToNamevtxt}}
-                                                    </option>
-                                                </select>
-
-                                            </div>
-                                            <label class="col-md-3 kt-font-boldest">Ship to Address</label>
-                                            <div class="col-md-3">
-                                                {{this.Addressvtxt}}
-                                            </div>
-                                        </div>
-                                        <div class=" mt-2  row">
-                                            <label class="col-md-3 kt-font-boldest">Delivery Address</label>
-                                            <div class="col-md-3">
-                                                <textarea rows="3" class=" form-control" type="text" name="Address"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" mt-2 row">
-                                        <label class="col-md-3 kt-font-boldest">Select Item</label>
-                                        <div class="col-md-5">
-                                            <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
-                                                <option value="0">Select Item</option>
-                                                <option *ngFor="let Item of AllItemMasterDate"
-                                                    value={{Item.ItemCodevtxt}}>
-                                                    {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
-=======
                                     <div class=" row">
                                         <label class="col-md-3 kt-font-boldest">PO No</label>
                                         <div class="col-md-3">
@@ -104,13 +50,12 @@
                                     <div class=" mt-2  row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                         <div class="col-md-3">
-                                            <select class=" form-control"
+                                            <select class=" form-control form-control-sm"
                                                 (change)="getShipToNameData($event.target.value)">
                                                 <option value="0">Select Ship To Name</option>
                                                 <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                     value={{ShiptoAddress.ShipToCodevtxt}}>
                                                     {{ShiptoAddress.ShipToNamevtxt}}
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
                                                 </option>
                                             </select>
 
@@ -119,23 +64,16 @@
                                         <div class="col-md-3">
                                             {{this.Addressvtxt}}
                                         </div>
-<<<<<<< HEAD
-                                    </div>
-                                </div>
-=======
                                     </div>
                                     <div class=" mt-2  row">
 
                                         <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                         <div class="col-md-3">
-
-                                            <input type="text" (change)="updateAddress($event.target.value)"
-                                                value="{{DeliveryAddress}}">
+<textarea  class=" form-control" type="text" (change)="updateAddress($event.target.value)"
+value="{{DeliveryAddress}}"  ></textarea>
+                                          
                                         </div>
                                     </div>
-
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
-
                             </div>
 
                         </div>
@@ -190,7 +128,7 @@
                                                     <span>{{Item.ItemCodevtxt}}</span>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
-                                                    <select (change)="updateUOM($event.target.value,Item)">
+                                                    <select  class=" form-control form-control-sm" (change)="updateUOM($event.target.value,Item)">
                                                         <option value="0">Select UOM</option>
                                                         <option *ngFor="let UOM of UOMs" value="{{UOM.IDint}}">
                                                             {{UOM.AlternativeUnit}}
@@ -203,15 +141,9 @@
                                                 <td style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
-<<<<<<< HEAD
-                                                        <<<<<<< HEAD <input type="number" onlyNumber matInput (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)" value="{{Item.qty}}">
-                                                            =======
-                                                            <input type="number" onlyNumber matInput (change)="updateTotalUOM(Item,$event.target.value)" value="{{Item.qty}}"> >>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
-=======
-                                                        <input type="number" onlyNumber matInput
+                                                        <input type="number" onlyNumber matInput class=" text-right"
                                                             (change)="updateTotalUOM(Item,$event.target.value)"
                                                             value="{{Item.qty}}">
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
                                                     </mat-form-field>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
@@ -239,12 +171,8 @@
                             <div class=" mt-2 row">
                                 <label class="col-md-auto kt-font-boldest">Select Item</label>
                                 <div class="col-md-auto">
-<<<<<<< HEAD
-                                    <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
-=======
                                     <select class=" form-control"
                                         (change)="ChangeItemCodeForNewItem($event.target.value)">
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
                                         <option value="0">Select Item</option>
                                         <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
                                             {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
@@ -278,10 +206,6 @@
                                     <input type="text" (change)="updateothercharges($event.target.value)"
                                         value="{{othercharges}}">
                                 </div> -->
-<<<<<<< HEAD
-                                >>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
-=======
->>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
                             </div>
                             <!--end::Section-->
 
