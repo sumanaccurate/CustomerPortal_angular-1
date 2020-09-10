@@ -17,7 +17,12 @@ import { DatePipe } from '@angular/common';
 export class CustomerSalesOrderDetailComponent implements OnInit {
   Orders: any[];
   constructor( public datepipe: DatePipe,private router: Router, private _SalesService: SalesOrderService,
-    public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+    public paginationService: PaginationService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
+      this.FromDate = new Date();
+      this.FromDate.setDate(this.FromDate.getDate() - 10);
+      this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+      this.Todate = new Date();
+      this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy'); }
   userData;
   pageNo: any = 1;
   search = null;
@@ -73,11 +78,6 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   ngOnInit() {
     this.pageNumber[0] = true;
     this.paginationService.temppage = 0;
-    this.FromDate = new Date();
-    this.FromDate.setDate(this.FromDate.getDate() - 10);
-    this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
-    this.Todate = new Date();
-    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
     this.getAllOrders();
     this.getPending();
     this.getCompleted()
