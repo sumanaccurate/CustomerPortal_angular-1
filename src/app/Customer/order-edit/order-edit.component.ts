@@ -23,15 +23,15 @@ export class CustomerOrderEditComponent implements OnInit {
 
   HeaderData: any;
   name: string;
-  ItemMaster;
+  ItemMaster:any;
   othercharges;
-  SelectedValue = 2;
+  SelectedValue = 'dfsdf';
   private TotalAmount;
   Pono;
   ShipToName;
   CreditLimit;
   PoDate;
-  UOMs;
+  UOMs: any;
   AvailableCreditLimit;
   TotalKgs;
   TotalMT;
@@ -40,7 +40,7 @@ export class CustomerOrderEditComponent implements OnInit {
   ItemCodeforadd;
   private TotalQuantity;
   AllItemMasterData;
-  OrderInfo;
+  OrderInfo: any;
   status;
   OrderID;
   Userid;
@@ -59,10 +59,16 @@ export class CustomerOrderEditComponent implements OnInit {
     this.getAllOrderDataByOrderNo(this.OrderID);
     this.getAllItemMasterData();
     this.GetOrderHeaderByOrderID(this.OrderID);
-   this.CreditLimit();
+   this.getAllCreditLimit();
   }
+  toppings = new FormControl();
+  myVar:string ='Extra cheese';
 
-
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  onChange(val){
+    this.myVar =val
+    console.log(val);
+  }
 
   getAllOrderDataByOrderNo(OrderNo) {
     this._OrderService.GetOrderDetailsByOrderID(OrderNo).subscribe((data: any) => {
@@ -135,16 +141,15 @@ export class CustomerOrderEditComponent implements OnInit {
 
 
   updateUOM(ID, Item) {
-
     this._CustomerService.getUOMById(ID).subscribe(
       data => {
         Item.Uomnvtxt = data[0].AlternativeUnit;
         Item.RateOfConversion = data[0].RateOfConversion;
         Item.Weight = data[0].Weight;
-        if (Item.Quantity == null) {
-          Item.Quantity = 0
+        if (Item.Quantityint == null) {
+          Item.Quantityint = 0
         }
-        this.updateTotalUOM(Item, Item.Quantity);
+        this.updateTotalUOM(Item, Item.Quantityint);
       }
     );
 
@@ -152,7 +157,6 @@ export class CustomerOrderEditComponent implements OnInit {
 
 
   updateTotalUOM(Item, Quantity) {
-
 
     if (Item.RateOfConversion == null || Item.RateOfConversion == '') {
       this._CustomerService.getUOMById(Item.UoMint).subscribe(
@@ -167,10 +171,8 @@ export class CustomerOrderEditComponent implements OnInit {
         }
       );
     }
-
-
     if (Quantity > 0) {
-      Item.Quantity = (parseFloat(Quantity)).toFixed(2);
+      Item.Quantityint = (parseFloat(Quantity)).toFixed(2);
       Item.QtyKg = (parseFloat(Quantity) * parseFloat(Item.Weight)).toFixed(2);
       Item.QtyMt = (parseFloat(Quantity) * parseFloat(Item.RateOfConversion)).toFixed(2);
     } else {
@@ -183,7 +185,7 @@ export class CustomerOrderEditComponent implements OnInit {
     for (let j = 0; j < this.ItemMaster.length; j++) {
       let qtyKg = parseFloat(this.ItemMaster[j].QtyKg);
       let qtyMt = parseFloat(this.ItemMaster[j].QtyMt);
-      let qty = parseFloat(this.ItemMaster[j].Quantity);
+      let qty = parseFloat(this.ItemMaster[j].Quantityint);
       if (!qty) {
         qty = 0;
       } else {
@@ -238,6 +240,8 @@ export class CustomerOrderEditComponent implements OnInit {
     this.ShipToAddress = Data.ShipToAddressvtxt;
     this.TotalAmount = Data.TotalNetValuedcl;
     this.TotalQuantity = Data.TotalOrderQuantityint;
+    this.TotalKgs = Data.QtyKg;
+    this.TotalMT= Data.QtyMt;
     this.othercharges = Data.OtherCharges1dcl;
     this.ShipToName = Data.ShipToNamevtxt;
     this.ShipToCode = Data.ShipToCodevtxt;
@@ -304,7 +308,6 @@ export class CustomerOrderEditComponent implements OnInit {
       this.UpdateHeaderData(type);
       this.DeleteDetailData();
       this.UpdateOrderHeader(this.HeaderData, this.ItemMaster);
-      this.Redirect(this.status);
     } else {
       this.alertService.warn("Please fill the mandatory fields..");
     }
@@ -334,7 +337,7 @@ export class CustomerOrderEditComponent implements OnInit {
           OrderID: id,
           MaterialCodevtxt: OrderDetails[i].MaterialCodevtxt,
           MaterialDescriptionvtxt: OrderDetails[i].MaterialDescriptionvtxt,
-          UoMvtxt: OrderDetails[i].UoMvtxt,
+          UoMvtxt: OrderDetails[i].Uomnvtxt,
           Quantityint: OrderDetails[i].Quantityint,
           Ratedcl: OrderDetails[i].Ratedcl,
           Amountdcl: OrderDetails[i].Amountdcl,
@@ -343,6 +346,7 @@ export class CustomerOrderEditComponent implements OnInit {
           (res: any) => {
 
             this.status = 0;
+            this.Redirect(this.status,id);
           },
           err => {
             if (err.status == 400)
@@ -359,9 +363,11 @@ export class CustomerOrderEditComponent implements OnInit {
   }
 
 
-  Redirect(status) {
-    if (status == 0) {
-      this.router.navigateByUrl('/Customer/OrderList');
+  Redirect(status,value) {
+    if(status==0){
+      this.storage.set('OrderId', value);
+      this.router.navigateByUrl('/Customer/OrderView');
+      // this.router.navigateByUrl('/Customer/OrderList');
       this.alertService.success('Order Inserted.');
     }
   }
@@ -382,6 +388,9 @@ export class CustomerOrderEditComponent implements OnInit {
   updatePoDate(value) {
     this.PoDate = value;
   }
+  updateAddress(value) {
+    this.OrderInfo.DeliveryAddress = value;
+  }
   updatePono(value) {
     this.Pono = value;
   }
@@ -390,29 +399,46 @@ export class CustomerOrderEditComponent implements OnInit {
   }
 
   UpdateHeaderData(type) {
+    let PaymentTerms ;
+    let DeliveryTerms ;
+    if(this.OrderInfo.PaymentTerms1vtxt==null || this.OrderInfo.PaymentTerms1vtxt==''){
+      PaymentTerms=null;
+    }
+    if( this.OrderInfo.DeliveryTermsvtxt==null|| this.OrderInfo.DeliveryTermsvtxt==''){
+      DeliveryTerms= null;
+    }
+    if(this.Pono==null||this.Pono==''){
+      this.Pono=null;
+    }
+    if(this.PoDate==null||this.PoDate==''){
+      this.PoDate=null;
+    }
+
+    if(this.OrderInfo.DeliveryAddress==null||this.OrderInfo.DeliveryAddress==''){
+      this.OrderInfo.DeliveryAddress=null;
+    }
+
     this.HeaderData = {
-      IDbint: this.OrderID,
-      OrderNovtxt: this.OrderInfo.OrderNovtxt,
-      OrderDatedate: this.OrderInfo.OrderDatedate,
-      RefNovtxt: this.Pono,
-      RefDatedate: this.PoDate,
-      SAPOrderNovtxt: null,
-      SAPOrderDatedate: null,
-      CustomerCodevtxt: this.OrderInfo.CustomerCodevtxt,
-      CustomerNamevtxt: this.OrderInfo.CustomerNamevtxt,
-      Divisionvtxt: this.OrderInfo.Divisionvtxt,
-      ShipToCodevtxt: this.ShipToCode,
-      ShipToNamevtxt: this.ShipToName,
-      ShipToAddressvtxt: this.ShipToAddress,
-      TotalNetValuedcl: this.TotalAmount,
-      TotalOrderQuantityint: this.TotalQuantity,
-      SAPStatusvtxt: null,
-      OtherCharges1dcl: this.othercharges,
-      OtherCharges2dcl: 0.00,
-      OtherCharges3dcl: 0.00,
-      OtherCharges4dcl: 0.00,
-      Statusvtxt: type,
-      CreatedByvtxt: this.Userid,
+     
+     
+      IDbint : this.OrderID,
+      OrderNovtxt : this.OrderInfo.OrderNovtxt,
+      OrderDatedate : this.OrderInfo.OrderDatedate,
+      RefNovtxt :  this.Pono,
+      RefDatedate : this.PoDate,
+      CustomerCodevtxt :  this.OrderInfo.CustomerCodevtxt,
+      CustomerNamevtxt :this.OrderInfo.CustomerNamevtxt,
+      Divisionvtxt :  this.OrderInfo.Divisionvtxt,
+      ShipToCodevtxt :this.ShipToCode,
+      ShipToNamevtxt :  this.ShipToName,
+      ShipToAddressvtxt : this.ShipToAddress,
+      DeliveryAddressvtxt : this.OrderInfo.DeliveryAddress,
+      TotalOrderQuantityint :  this.TotalQuantity,
+      DeliveryTermsvtxt:PaymentTerms,
+      PaymentTermsvtxt:DeliveryTerms,
+      Statusvtxt : type,
+      CreatedByvtxt :  this.Userid,
+
     }
     console.log(this.HeaderData);
   }
