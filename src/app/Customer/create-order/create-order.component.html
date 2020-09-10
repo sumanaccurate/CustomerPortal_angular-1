@@ -1,40 +1,27 @@
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
-    <app-customer-float-data></app-customer-float-data>
     <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">Place Order Request
                     </h3>
-
                 </div>
-
             </div>
             <div class="ml-1 text-black-50 kt-font-lg col-md-12 row ">
                 <div class="col-md-6 p-1 bg-primary row">
-                    <label class="kt-font-boldest">Credit Limit : </label>
-                   
-                        {{ this.CreditLimit}}
-                    
+                    <label class="kt-font-boldest">Credit Limit : </label> {{ this.CreditLimit}}
                 </div>
                 <div class="col-md-6 p-1 bg-danger row">
-                    <label class="kt-font-boldest"> Available Credit Limit : </label>
-               
-                    {{ this.AvailableCreditLimit}}
-               
+                    <label class="kt-font-boldest"> Available Credit Limit : </label> {{ this.AvailableCreditLimit}}
                 </div>
-               
             </div>
             <div class="kt-portlet__body">
-               
                 <div class="kt-form">
                     <div class="row">
-                       
                         <div class="col-xl-12">
                             <div class="kt-section p-3">
-
                                 <div class="kt-section__body">
-                                  
+
                                     <div class=" row">
                                         <label class="col-md-3 kt-font-boldest">Web Order No</label>
                                         <div class="col-md-3">
@@ -48,21 +35,18 @@
                                     <div class=" row">
                                         <label class="col-md-3 kt-font-boldest">PO No</label>
                                         <div class="col-md-3">
-                                            <input type="text" class=" form-control"
-                                                (change)="updatePono($event.target.value)" value="{{Pono}}">
+                                            <input type="text" class=" form-control" (change)="updatePono($event.target.value)" value="{{Pono}}">
                                         </div>
                                         <label class="col-md-3 kt-font-boldest">PO Date</label>
                                         <div class="col-md-3">
-                                            <input type="text" class=" form-control"
-                                                (change)="updatePoDate($event.target.value)" value="{{PoDate}}">
+                                            <input type="text" class=" form-control" (change)="updatePoDate($event.target.value)" value="{{PoDate}}">
                                         </div>
                                     </div>
 
                                     <div class=" mt-2  row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                         <div class="col-md-3">
-                                            <select class=" form-control"
-                                                (change)="getShipToNameData($event.target.value)">
+                                            <select class=" form-control" (change)="getShipToNameData($event.target.value)">
                                                 <option value="0">Select Ship To Name</option>
                                                 <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                     value={{ShiptoAddress.ShipToCodevtxt}}>
@@ -81,29 +65,28 @@
                                         <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                         <div class="col-md-3">
 
-                                            <input type="text" (change)="updateAddress($event.target.value)"
-                                                value="{{DeliveryAddress}}">
+                                            <input type="text" (change)="updateAddress($event.target.value)" value="{{DeliveryAddress}}">
                                         </div>
                                     </div>
 
 
-                            </div>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="border  col-xl-7 col-lg-9">
+                    <div class="border  col-xl-7 col-lg-9">
 
-                    <!--begin::Portlet-->
-                    <div class="kt-portlet mb-0">
-                        <div class="kt-portlet__head bg-light">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title text-dark">Item List
-                                </h3>
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet mb-0">
+                            <div class="kt-portlet__head bg-light">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title text-dark">Item List
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                        <div class="kt-portlet__body kt-portlet__body--fit">
-                            <!--begin::Section-->
+                            <div class="kt-portlet__body kt-portlet__body--fit">
+                                <!--begin::Section-->
                                 <div class="kt-section__content table-responsive">
                                     <!-- <table class="" style="width:100%;"> -->
                                     <table class="">
@@ -154,9 +137,7 @@
                                                 <td style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
-                                                        <input type="number" onlyNumber matInput
-                                                            (change)="updateTotalUOM(Item,$event.target.value)"
-                                                            value="{{Item.qty}}">
+                                                        <input type="number" onlyNumber matInput (change)="updateTotalUOM(Item,$event.target.value)" value="{{Item.qty}}">
                                                     </mat-form-field>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
@@ -184,8 +165,7 @@
                             <div class=" mt-2 row">
                                 <label class="col-md-auto kt-font-boldest">Select Item</label>
                                 <div class="col-md-auto">
-                                    <select class=" form-control"
-                                        (change)="ChangeItemCodeForNewItem($event.target.value)">
+                                    <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
                                         <option value="0">Select Item</option>
                                         <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
                                             {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}

@@ -1,4 +1,54 @@
 <div class="kt-portlet">
+    <div class="kt-portlet__body">
+        <div class="kt-widget kt-widget--user-profile-3">
+            <div class="kt-widget__top">
+                <div class="kt-widget__media">
+                    <img src="assets/media/app_images/user.jpg" alt="image">
+                </div>
+                <div class="kt-widget__content">
+                    <div class="kt-widget__head">
+                        <a href="#" class="kt-widget__username">
+                            {{this.CustomerData.CustNamevtxt}}
+                        </a>
+                    </div>
+                    <div class="kt-widget__info">
+                        <div class="kt-widget__desc w-100">
+                            <div>{{this.CustomerData.CustCodevtxt}}</div>
+                        </div>
+                        <div class="kt-widget__desc">
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-1 mb-md-0">
+                                    <div><span class="kt-font-bold">Address:</span><span class="ml-2">{{this.CustomerData.Address1vtxt}}
+                                            {{this.CustomerData.Address2vtxt}} {{this.CustomerData.CityCdvtxt}} {{this.CustomerData.PostalCodevtxt}}</span></div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-1 mb-md-0">
+                                    <div><span class="kt-font-bold">Sales Person:</span><span class="ml-2">{{this.CustomerData.Spcodevtxt }} -
+                                            {{this.CustomerData.Spnamevtxt }}</span></div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-1 mb-md-0">
+                                    <div><span class="kt-font-bold">Sales Org :
+                                    </span><span class="ml-2">{{this.CustomerData.SalesOrgNamevtxt }}</span></div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-1 mb-md-0">
+                                    <div><span class="kt-font-bold">Contact Person :
+                                    </span><span class="ml-2"> {{this.CustomerData.Contactpersonvtxt }}</span></div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-1 mb-md-0">
+                                    <div><span class="kt-font-bold">Date :
+                                    </span><span class="ml-2">{{datestring  | date :'dd/MM/yyyy' }}</span></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="kt-portlet">
     <div class="kt-portlet__body  kt-portlet__body--fit">
 
         <div class="row ">
@@ -7,65 +57,66 @@
                     Customer :
 
                 </b>
-                <a class=" pl-2" >
+                <a class=" pl-2">
                     {{this.CustomerData.CustCodevtxt}} - {{this.CustomerData.CustNamevtxt}}
 
                 </a>
-                       
+
             </div>
             <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-4 col-xl-4">
-                    <b>
-                        Address :
+                <b>
+                    Address :
 
-                    </b>
-                    <a class=" pl-2" >
-                    {{this.CustomerData.Address1vtxt}} {{this.CustomerData.Address2vtxt}} {{this.CustomerData.CityCdvtxt}}
-                      {{this.CustomerData.PostalCodevtxt}}
+                </b>
+                <a class=" pl-2">
+                    {{this.CustomerData.Address1vtxt}} {{this.CustomerData.Address2vtxt}}
+                    {{this.CustomerData.CityCdvtxt}}
+                    {{this.CustomerData.PostalCodevtxt}}
                 </a>
             </div>
             <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-4 col-xl-4  ">
-                
+
                 <b>
                     Sales Person :
                 </b>
-                <a class=" pl-2" >
+                <a class=" pl-2">
                     {{this.CustomerData.Spcodevtxt }} - {{this.CustomerData.Spnamevtxt }}
 
                 </a>
-                       
+
             </div>
             <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-3 col-xl-3">
-                
+
                 <b>
                     Sales Org :
                 </b>
-                <a class=" pl-2" >
+                <a class=" pl-2">
                     {{this.CustomerData.SalesOrgNamevtxt }}
 
                 </a>
-                       
+
             </div>
             <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-3 col-xl-3">
-                
+
                 <b>
                     Contact Person :
                 </b>
-                <a class=" pl-2" >
+                <a class=" pl-2">
                     {{this.CustomerData.Contactpersonvtxt }}
 
                 </a>
-                       
+
             </div>
             <div class=" row col-md-6 pt-2 pb-2 pl-5 col-lg-2 col-xl-2">
                 <b>
                     Date :
                 </b>
-                <a class=" pl-2" >
+                <a class=" pl-2">
                     {{datestring  | date :'dd/MM/yyyy' }}
 
                 </a>
-    </div>
-            
+            </div>
+
         </div>
     </div>
-</div>
+</div> -->
