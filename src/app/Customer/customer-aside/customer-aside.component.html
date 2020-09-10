@@ -1,8 +1,13 @@
 <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
     <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
         <ul class="kt-menu__nav ">
+<<<<<<< HEAD
+            <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-chart-area"></i><span class="kt-menu__link-text">Home</span></a></li>
+            <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-user"></i><span class="kt-menu__link-text">User Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+=======
             <li class="kt-menu__item kt-menu__item--active"><a [routerLink]="['/Customer/dashboard']" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-chart-area"></i><span class="kt-menu__link-text">Home page</span></a></li>
             <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-user"></i><span class="kt-menu__link-text">User Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+>>>>>>> 4cd25f3bca7b3918e48572c6347ee1e0fd66e495
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left" kt-hidden-height="80">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item " [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/UserList']" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">User List</span></a></li>
@@ -10,7 +15,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-box-open"></i><span class="kt-menu__link-text">Order Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-box-open"></i><span class="kt-menu__link-text">Order Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         
@@ -20,21 +25,21 @@
                     </ul>
                 </div>
             </li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-dolly"></i><span class="kt-menu__link-text">Dispatches</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-dolly"></i><span class="kt-menu__link-text">Dispatches</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/DispatchOrderDetail']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">List of Delivery Doc</span></a></li>
                     </ul>
                 </div>
             </li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-clipboard-list"></i><span class="kt-menu__link-text">Invoices</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-clipboard-list"></i><span class="kt-menu__link-text">Invoices</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item " [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/InvoiceDetail']" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">My Invoices</span></a></li>
                     </ul>
                 </div>
             </li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-layer-group"></i><span class="kt-menu__link-text">Accounts Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-layer-group"></i><span class="kt-menu__link-text">Accounts Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item" [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/AccountStatement']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">Account Statement</span></a></li>
@@ -45,7 +50,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-database"></i><span class="kt-menu__link-text">Stock Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-database"></i><span class="kt-menu__link-text">Stock Management</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item " [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/Stock']" class="kt-menu__link "><i class="kt-menu__link-icon"></i><span class="kt-menu__link-text">My Stocks</span></a></li>
@@ -54,7 +59,7 @@
                 </div>
             </li>
             <li class="kt-menu__item  "><a [routerLink]="['/Customer/RetailOrder']" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-money-bill"></i><span class="kt-menu__link-text">Retail Order</span></a></li>
-            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-ticket-alt"></i><span class="kt-menu__link-text">Feedback</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" [routerLinkActive]="['kt-menu__item--active']"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fa fa-ticket-alt"></i><span class="kt-menu__link-text">Feedback</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                 <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                     <ul class="kt-menu__subnav">
                         <li class="kt-menu__item " [routerLinkActive]="['kt-menu__item--active']"><a [routerLink]="['/Customer/RaiseComplaint']" class="kt-menu__link "><i class="kt-menu__link-icon "></i><span class="kt-menu__link-text">Raise Complaint</span></a></li>
