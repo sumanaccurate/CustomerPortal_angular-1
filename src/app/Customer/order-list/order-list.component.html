@@ -3,14 +3,12 @@
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title text-dark">
-                    <!-- {{this.User.UserNametxt}} - -->Orders Placed List
                     <small>
                         <span>Pending : <span class="kt-font-brand kt-font-bold mr-3">{{PendingCount}}</span></span>
                         <span>Draft : <span class="kt-font-warning kt-font-bold mr-3">{{Draft}}</span></span>
                         <span>Partially Completed : <span class="kt-font-warning kt-font-bold mr-3">{{partiallyCompletedCount}}</span></span>
                         <span>Completed : <span class="kt-font-success kt-font-bold mr-3">{{CompletedCount}}</span></span>
                     </small>
-                    
                 </h3>
             </div>
             <div class="kt-portlet__head-toolbar"></div>
@@ -116,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <h2 *ngIf="this.Orders[0]==null">No Data Available</h2>
+                <h4 *ngIf="this.Orders[0]==null">No Data Available</h4>
 
                 <div class="row">
                     <div class="col-md-3"> </div>
@@ -135,8 +133,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
