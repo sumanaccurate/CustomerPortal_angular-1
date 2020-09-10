@@ -4,6 +4,7 @@
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
 
+
                     <h3 class="kt-portlet__head-title">Place Order Request
                         <small>
                             <span>Credit Limit:<span class="kt-font-warning kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
@@ -44,8 +45,8 @@
                                     <div class=" mt-2  row">
                                         <label class="col-md-3 kt-font-boldest">Ship to Name *</label>
                                         <div class="col-md-3">
-                                            <select class=" form-control form-control-sm"
-                                                (change)="getShipToNameData($event.target.value)">
+                                            <select class=" form-control" (change)="getShipToNameData($event.target.value)">
+>>>>>>> 5b1cd8e3b6b4f29cfd031a0b39b48bf419444e2d
                                                 <option value="0">Select Ship To Name</option>
                                                 <option *ngFor="let ShiptoAddress of ShiptoAddresss"
                                                     value={{ShiptoAddress.ShipToCodevtxt}}>
@@ -63,22 +64,12 @@
 
                                         <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                         <div class="col-md-3">
-<<<<<<< HEAD
 <textarea  class=" form-control" type="text" (change)="updateAddress($event.target.value)"
 value="{{DeliveryAddress}}"  ></textarea>
                                           
                                         </div>
                                     </div>
                             </div>
-=======
-
-                                            <input type="text" (change)="updateAddress($event.target.value)" value="{{DeliveryAddress}}">
-                                        </div>
-                                    </div>
-
-
-                                </div>
->>>>>>> 5b1cd8e3b6b4f29cfd031a0b39b48bf419444e2d
 
                             </div>
                         </div>
@@ -145,13 +136,9 @@ value="{{DeliveryAddress}}"  ></textarea>
                                                 <td style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
-<<<<<<< HEAD
                                                         <input type="number" onlyNumber matInput class=" text-right"
                                                             (change)="updateTotalUOM(Item,$event.target.value)"
                                                             value="{{Item.qty}}">
-=======
-                                                        <input type="number" onlyNumber matInput (change)="updateTotalUOM(Item,$event.target.value)" value="{{Item.qty}}">
->>>>>>> 5b1cd8e3b6b4f29cfd031a0b39b48bf419444e2d
                                                     </mat-form-field>
                                                 </td>
                                                 <td style="padding:0 15px 0 15px;">
@@ -179,12 +166,8 @@ value="{{DeliveryAddress}}"  ></textarea>
                             <div class=" mt-2 row">
                                 <label class="col-md-auto kt-font-boldest">Select Item</label>
                                 <div class="col-md-auto">
-<<<<<<< HEAD
                                     <select class=" form-control"
                                         (change)="ChangeItemCodeForNewItem($event.target.value)">
-=======
-                                    <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
->>>>>>> 5b1cd8e3b6b4f29cfd031a0b39b48bf419444e2d
                                         <option value="0">Select Item</option>
                                         <option *ngFor="let Item of AllItemMasterDate" value={{Item.ItemCodevtxt}}>
                                             {{Item.ItemCodevtxt}} - {{Item.ItemDescvtxt}}
