@@ -367,9 +367,10 @@ Redirect(status,value){
       ShipToAddressvtxt: this.ShipTo.Addressvtxt,
       DeliveryAddressvtxt: this.DeliveryAddress,
       TotalOrderQuantityint: this.TotalQuantity,
+      DeliveryTermsvtxt:this.CustomerData.PaymentTerms1vtxt,
+      PaymentTermsvtxt: this.OrderInfo.DeliveryTermsvtxt,
       Statusvtxt: type,
       CreatedByvtxt: this.Userid,
-
     }
     console.log(this.HeaderData);
   }
