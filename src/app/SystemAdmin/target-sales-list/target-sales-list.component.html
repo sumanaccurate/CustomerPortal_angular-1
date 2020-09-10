@@ -1,1 +1,91 @@
-<p>target-sales-list works!</p>
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid ">
+    <div class="kt-portlet ">
+        <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--break-sm">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Target Sales List
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__head-toolbar">
+            <button class="btn btn-sm  btn-icon btn-icon-md" (click)="download()"> <i
+                class="fa fa-file-download"></i></button>
+          </div>
+          <div class="p-4 bg-light border-top border-bottom">
+            <!--begin: Search Form -->
+            <div class="kt-form kt-form--label-right ">
+              <div class="row align-items-center">
+                <div class="col-xl-12 order-2 order-xl-1">
+                  <div class="row align-items-center">
+                    <div class="col-md kt-margin-b-20-tablet-and-mobile">
+                      <div class="kt-input-icon kt-input-icon--left">
+                        <input type="text" class="form-control" [(ngModel)]="search" placeholder="Type To Search...">
+                        <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                          <span><i class="la la-search"></i></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <button class="btn btn-dark" (click)="ngOnInit()" title="bigger">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!--end: Search Form -->
+          </div>
+        <div class="kt-portlet__body  ">
+            <div>
+                <div *ngFor="let Sales of TargetSales" class="customerCustomers-list border shadow-sm p-3 mb-3">
+                    <div class="row">
+                        <!-- set1 -->
+                        <div class="col-md-12 ">
+                            <div>
+                                Customer Code & Name : {{Sales.CustomerCodevtxt}} - {{Sales.CustomerNamevtxt}}
+                            </div>
+                            <div>
+                                Month : <span class="kt-font-bold">{{Sales.Monthvtxt}}</span>
+                            </div>
+                            <div>
+                                Year : <span class="kt-font-bold">{{Sales.Yearvtxt}}</span>
+                            </div>
+                            <div>
+                                Target Sales (in MT) : <span class="kt-font-bold">{{Sales.TargetSalesdcl}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="container mw-100">
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div *ngIf="TargetSales !=0" class="col-md-6">
+                        <ul class="pagination justify-content-center">
+                            <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item">
+                                <a (click)="showPrevCustomers()"
+                                    [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'"
+                                    style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
+                            <li *ngFor="let page of pageField;let i=index" class="page-item">
+                                <a (click)="showCustomersByPageNumber(page,i)"
+                                    [ngClass]="pageNumber[i] ? 'pageColor':'page-link'"
+                                    style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
+
+                            </li>
+                            <li *ngIf="totalCustomersCount > this.CustomersPerPage" class="page-item"><a
+                                    (click)="showNextCustomers()"
+                                    [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'"
+                                    style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                        </ul>
+                        <div style="text-align: center;">
+                            Page {{currentPage}} of Total page {{paginationService.exactPageList}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
