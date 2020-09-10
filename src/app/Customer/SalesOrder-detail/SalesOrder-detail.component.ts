@@ -76,8 +76,6 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pageNumber[0] = true;
-    this.paginationService.temppage = 0;
     this.getAllOrders();
     this.getPending();
     this.getCompleted()
@@ -101,6 +99,8 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
   //Method For Pagination  
   totalNoOfPages() {
 
+    this.pageNumber[0] = true;
+    this.paginationService.temppage = 0;
     this.paginationData = Number(this.totalOrdersCount / this.OrdersPerPage);
     let tempPageData = this.paginationData.toFixed();
     if (Number(tempPageData) < this.paginationData) {
@@ -111,8 +111,13 @@ export class CustomerSalesOrderDetailComponent implements OnInit {
       this.paginationService.exactPageList = this.exactPageList
     }
     this.paginationService.pageOnLoad();
-    this.pageField = this.paginationService.pageField;
-
+    if(this.totalOrdersCount > this.OrdersPerPage){
+      this.pageField = this.paginationService.pageField;
+    }
+    else{
+      this.pageField = [1];
+    }
+   
   }
   showOrdersByPageNumber(page, i) {
     this.Orders = [];

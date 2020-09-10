@@ -45,8 +45,6 @@ export class CustomerInvoiceDetailComponent implements OnInit {
   currentPage = 1;
 
   ngOnInit() {
-    this.pageNumber[0] = true;
-    this.paginationService.temppage = 0;
     this.getAllInvoices();
   }
 
@@ -67,6 +65,8 @@ export class CustomerInvoiceDetailComponent implements OnInit {
   //Method For Pagination  
   totalNoOfPages() {
 
+    this.pageNumber[0] = true;
+    this.paginationService.temppage = 0;
     this.paginationData = Number(this.totalInvoicesCount / this.InvoicesPerPage);
     let tempPageData = this.paginationData.toFixed();
     if (Number(tempPageData) < this.paginationData) {

@@ -73,34 +73,6 @@
                         </div>
                     </div>
                     <div class="row">
-<<<<<<< HEAD
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Sold To Party : <span class="kt-font-bold">{{Invoice.SoldToPartyCodevtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Billing Date : <span class="kt-font-bold">{{Invoice.BillingDatedate  | date :'dd/MM/yyyy'}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl | number : '1.0-0'  }}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Ship To Party : : <span class="kt-font-bold">{{Invoice.ShipToPartyCodevtxt}} -
-                  {{Invoice.ShipToPartyNamevtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Quantity : {{Invoice.InvoiceQuantityint}}
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Status : <span class="kt-font-bold">{{Invoice.Statusvtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Invoice No : <span class="kt-font-bold">{{Invoice.InvoiceDocumentNovtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl  | number : '1.0-0'  }}</span>
-                        </div>
-
-=======
                        
                             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                 Sold To Party : <span class="kt-font-bold">{{Invoice.SoldToPartyCodevtxt}}</span>
@@ -128,7 +100,6 @@
                                 Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl  | number : '1.0-0'  }}</span>
                             </div>
                     
->>>>>>> 356ffb0ec7868edcc61db3d109282dd076a71ecd
                     </div>
                 </div>
                 <h2 *ngIf="this.Invoices[0]==null">No Data Available</h2>
@@ -137,13 +108,13 @@
                         <div class="col-md-3"> </div>
                         <div *ngIf="Invoices !=0" class="col-md-6">
                             <ul class="pagination justify-content-center">
-                                <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item">
+                                <li *ngIf="this.pageField.length > OrdersPerPage" class="page-item">
                                     <a (click)="showPrevInvoices()" [ngClass]="(paginationService.showNoOfCurrentPage ==1)?'notAllowed':'page-link'" style="margin-top: 5px; margin-right: 20px;cursor: pointer;">Prev</a></li>
                                 <li *ngFor="let page of pageField;let i=index" class="page-item">
                                     <a (click)="showInvoicesByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'" style=" margin-right: 5px;;margin-top: 5px;cursor: pointer;">{{page}}</a>
 
                                 </li>
-                                <li *ngIf="totalInvoicesCount > this.InvoicesPerPage" class="page-item"><a (click)="showNextInvoices()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
+                                <li *ngIf="this.pageField.length > OrdersPerPage" class="page-item"><a (click)="showNextInvoices()" [ngClass]="(paginationService.disabledNextBtn)?'notAllowed':'page-link'" style="margin-top: 5px;margin-left: 20px; cursor: pointer;">Next</a> </li>
                             </ul>
                             <div style="text-align: center;">
                                 Page {{currentPage}} of Total page {{paginationService.exactPageList}}
