@@ -1,24 +1,21 @@
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
-    <app-customer-float-data></app-customer-float-data>
     <form [formGroup]="HeaderData" (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">Create Order
+                        <small>
+                            <span>Available Credit Limit : <span class="kt-font-success kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
+                        </small>
                     </h3>
-
                 </div>
-                <div class="kt-portlet__head-label">
-                    Available Credit Limit : {{ this.CreditLimit}}
-                </div>
+                <div class="kt-portlet__head-label"></div>
             </div>
-
             <div class="kt-portlet__body">
                 <div class="kt-form">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="kt-section p-3">
-
                                 <div class="kt-section__body">
                                     <div>
                                         <div class=" row">
@@ -55,7 +52,7 @@
                                                         {{ShiptoAddress.ShipToNamevtxt}}
                                                     </option>
                                                 </select>
-                                                
+
                                             </div>
                                             <label class="col-md-3 kt-font-boldest">Ship to Address</label>
                                             <div class="col-md-3">
@@ -63,17 +60,12 @@
                                             </div>
                                         </div>
                                         <div class=" mt-2  row">
-
                                             <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                             <div class="col-md-3">
-                                                <textarea rows="3" class=" form-control" type="text" name="Address">
-                                                 
-                                                 </textarea>
-
+                                                <textarea rows="3" class=" form-control" type="text" name="Address"></textarea>
                                             </div>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     <div class=" mt-2 row">
                                         <label class="col-md-3 kt-font-boldest">Select Item</label>
                                         <div class="col-md-5">
@@ -85,10 +77,7 @@
                                                 </option>
                                             </select>
                                         </div>
-
                                     </div>
-=======
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
                                 </div>
 
                             </div>
@@ -116,20 +105,20 @@
                                             <tr>
                                                 <th>
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th style="padding:0 15px 0 15px;">
                                                     Item
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">Uom
+                                                <th style="padding:0 15px 0 15px;">Uom
                                                 </th>
                                                 <!-- <th  style="padding:0 15px 0 15px;">Rate
                                                 </th> -->
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th style="padding:0 15px 0 15px;">
                                                     Quantity *
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th style="padding:0 15px 0 15px;">
                                                     Quantity in Kgs
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th style="padding:0 15px 0 15px;">
                                                     Quantity in MT
                                                 </th>
                                                 <!-- <th  style="padding:0 15px 0 15px;">
@@ -142,11 +131,11 @@
                                                 <td>
                                                     <span [hidden]="Item.Idint">{{Item.Idint}}</span>
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td style="padding:0 15px 0 15px;">
                                                     <span>{{Item.ItemCodevtxt}}</span>
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
-                                                    <select  (change)="updateUOM($event.target.value,Item)">
+                                                <td style="padding:0 15px 0 15px;">
+                                                    <select (change)="updateUOM($event.target.value,Item)">
                                                         <option value="0">Select UOM</option>
                                                     <option *ngFor="let UOM of UOMs"
                                                         value="{{UOM.IDint}}" >
@@ -156,25 +145,21 @@
                                                 </td>
                                                 <!-- <td  style="padding:0 15px 0 15px;"><span>{{Item.Ratedcl}}</span>
                                                 </td> -->
-                                                
-                                                <td  style="padding:0 15px 0 15px;">
+
+                                                <td style="padding:0 15px 0 15px;">
 
                                                     <mat-form-field>
-<<<<<<< HEAD
-                                                        <input type="number" onlyNumber matInput (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)" value="{{Item.qty}}">
-=======
-                                                        <input type="number" onlyNumber matInput
-                                                            (change)="updateTotalUOM(Item,$event.target.value)"
-                                                            value="{{Item.qty}}">
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
+                                                        <<<<<<< HEAD <input type="number" onlyNumber matInput (change)="updateTotalvalue(Item,$event.target.value,Item.Ratedcl)" value="{{Item.qty}}">
+                                                            =======
+                                                            <input type="number" onlyNumber matInput (change)="updateTotalUOM(Item,$event.target.value)" value="{{Item.qty}}"> >>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
                                                     </mat-form-field>
                                                 </td>
-                                                 <td  style="padding:0 15px 0 15px;">
+                                                <td style="padding:0 15px 0 15px;">
                                                     {{Item.QtyKg }}
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
-                                                   {{Item.QtyMt }}
-                                               </td>
+                                                <td style="padding:0 15px 0 15px;">
+                                                    {{Item.QtyMt }}
+                                                </td>
                                                 <!-- <td  style="padding:0 15px 0 15px;">
                                                     {{Item.Amount }}
                                                 </td> -->
@@ -190,11 +175,11 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class=" mt-2 row">
                                 <label class="col-md-auto kt-font-boldest">Select Item</label>
                                 <div class="col-md-auto">
-                                    <select   class=" form-control"  (change)="ChangeItemCodeForNewItem($event.target.value)">
+                                    <select class=" form-control" (change)="ChangeItemCodeForNewItem($event.target.value)">
                                         <option value="0">Select Item</option>
                                         <option *ngFor="let Item of AllItemMasterDate"
                                             value={{Item.ItemCodevtxt}}>
@@ -232,7 +217,7 @@
                                     <input type="text" (change)="updateothercharges($event.target.value)"
                                         value="{{othercharges}}">
                                 </div> -->
->>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
+                                >>>>>>> 2a51735f3293a5d04b3392cda4cc013bb4acf57a
                             </div>
                             <!--end::Section-->
                         </div>
