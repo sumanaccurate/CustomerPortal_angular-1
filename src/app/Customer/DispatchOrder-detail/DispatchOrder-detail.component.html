@@ -37,35 +37,34 @@
 
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
                                 <div class="kt-input-icon kt-input-icon--left">
-                                    <mat-form-field >
+                                    <mat-form-field appearance="outline">
                                         <mat-label>From Date</mat-label>
-                                      <!-- #docregion toggle -->
-                                        <input matInput  class="form-control form-control-sm"  [(ngModel)]="FromDate" [matDatepicker]="picker1">
+                                        <input matInput [formControl]="FromDate" [matDatepicker]="picker1">
                                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
-                                      <!-- #enddocregion toggle -->
-                                      </mat-form-field>
+                                    </mat-form-field>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
-                                <div class="kt-input-icon kt-input-icon--left">
-                                    <mat-form-field >
-                                        <mat-label>To Date</mat-label>
-                                      <!-- #docregion toggle -->
-                                        <input matInput  class="form-control form-control-sm"  [(ngModel)]="Todate" [matDatepicker]="picker2">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                      <!-- #enddocregion toggle -->
-                                      </mat-form-field>
-                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>To Date</mat-label>
+                                    <input matInput [formControl]="Todate" [matDatepicker]="picker2">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
                             </div>
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
-                                <div class="kt-input-icon kt-input-icon--left">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Type To Search...</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                    <mat-icon matSuffix>search</mat-icon>
+                                </mat-form-field>
+                                <!-- <div class="kt-input-icon kt-input-icon--left">
                                     <input type="text" class="form-control form-control-sm" [(ngModel)]="search" placeholder="Type To Search...">
                                     <span class="kt-input-icon__icon kt-input-icon__icon--left">
                                         <span><i class="la la-search"></i></span>
                                     </span>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-auto">
                                 <button class="btn btn-dark btn-sm" (click)="ngOnInit()" title="bigger"><i

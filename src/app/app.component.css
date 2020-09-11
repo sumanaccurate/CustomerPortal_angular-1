@@ -1,88 +1,73 @@
-
-    mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
-}
-
-::ng-deep .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: white !important;
-   }
-   
-   ::ng-deep.mat-form-field-underline {
-    /*change color of underline*/
-    background-color: white !important;
-   } 
-   
-   ::ng-deep.mat-form-field-ripple {
-    /*change color of underline when focused*/
-    background-color: white !important;;
-   }
-   
-   ::ng-deep .mat-form-field-label {
-    /*change color of label*/
-    color: white !important;
-   }
-   
-   
-   mat-datepicker-toggle {
-    color: white !important;
-   }
-
-
+mat-sidenav-container,
+mat-sidenav-content,
 mat-sidenav {
-    width: 250px;
+    height: 100%;
 }
 
 main {
     padding: 10px;
 }
+
+
 /* for sidenav to take a whole page */
-html, body { 
+
+html,
+body {
     margin: 0;
     height: 100%;
 }
+
 a {
     text-decoration: none;
     color: black;
 }
-a:hover, a:active{
+
+a:hover,
+a:active {
     color: red;
 }
-.navigation-items{
+
+.navigation-items {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-mat-toolbar{
+
+mat-toolbar {
     background-color: white;
     border-radius: 3px;
 }
-@media(max-width: 959px){
-    mat-toolbar{
+
+@media(max-width: 959px) {
+    mat-toolbar {
         border-radius: 0px;
     }
 }
-.custom-logo{
+
+.custom-logo {
     padding-top: 15px;
     padding-bottom: 10px;
-    width: 200px;;
+    width: 200px;
+    ;
     height: min-content;
 }
-.Mob-btn{
+
+.Mob-btn {
     display: none;
 }
-.topnav{
+
+.topnav {
     width: 160px;
 }
-@media(max-width: 680px){
-    .top-nava{
-        display: none;
 
+@media(max-width: 680px) {
+    .top-nava {
+        display: none;
     }
-    .Mob-btn{
+    .Mob-btn {
         position: absolute;
-        right:    0;
-        margin-left:5px;
+        right: 0;
+        margin-left: 5px;
         margin-right: 5px;
         align-content: center;
         flex-wrap: wrap;
