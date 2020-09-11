@@ -18,10 +18,12 @@ export class CustomerDashboardComponent implements OnInit {
 
   constructor(public datepipe: DatePipe,private _TargetSales:TargetSales, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService ,private _SalesService :SalesOrderService,
-    private _DeliveryOrderService :DeliveryOrderService ) { }
+    private _DeliveryOrderService :DeliveryOrderService ) {
+     }
 TotalOrders;
-
-TargetSales;
+ActualSales=0;
+Achivement=0;
+TargetSales=0;
 OutStanding;
 CreditLimit;
 Todate
@@ -38,6 +40,12 @@ RetailOrder;
     this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
     this._TargetSales.getTargetSalesforDashboard(localStorage.getItem('UserCode'),this.Todate).subscribe((res: any) => {  
       this.TargetSales = res;  
+      if(res!=null&& res !=''){
+        this.Achivement=res['0'].Achivement;
+        this.TargetSales=res['0'].TargetSales;
+        this.ActualSales=res['0'].ActualSales;
+      }
+
     }) 
   }  
   getAllOrdersCountforDashboard() {  

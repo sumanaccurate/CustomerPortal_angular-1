@@ -22,20 +22,33 @@ export class SystemAdminTargetSalesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private _SystemAdminService: SystemAdminService , private alertService : AlertService) { }
-
+    fileToUpload
   ngOnInit() {
   }
   public uploadFile = (files) => {
     if (files.length === 0) {
       return;
     }
-    let fileToUpload = <File>files[0];
+    this.fileToUpload = <File>files[0];
+  
+    
+  }
+  Submit(){
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('file',  this.fileToUpload,  this.fileToUpload.name);
     this._SystemAdminService.uploadTargetSalesExcelData( formData)
-      .subscribe(event => {
-        this.router.navigateByUrl('/SystemAdmin/TargetSalesList');
-      });
+      .subscribe(
+        (res: any) => {
+          this.router.navigateByUrl('/SystemAdmin/TargetSalesList');
+        },
+        err => {
+          if (err.status == 400)
+            this.alertService.error('Error Order not Inserted.');
+          else
+            console.log(err);;
+            return
+        }
+      );
   }
   download() {
     this._SystemAdminService.DownloadSampleExcel().subscribe(response => {

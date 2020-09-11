@@ -23,24 +23,30 @@ export class UploadCustomerComponent implements OnInit {
     private router: Router,
     private _SystemAdminService: SystemAdminService , private alertService : AlertService
   ) { }
-
+  fileToUpload
   ngOnInit() {
   }
   public uploadFile = (files) => {
     if (files.length === 0) {
       return;
     }
-    let fileToUpload = <File>files[0];
+    this.fileToUpload = <File>files[0];
+  }
+  Submit(){
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('file',  this.fileToUpload,  this.fileToUpload.name);
     this._SystemAdminService.uploadExcelData( formData)
-      .subscribe(event => {
-        // if (event.type === HttpEventType.UploadProgress)
-        //   this.progress = Math.round(100 * event.loaded / event.total);
-        // else if (event.type === HttpEventType.Response) {
-        //   this.message = 'Upload success.';
-        //   this.onUploadFinished.emit(event.body);
-        // }
-      });
+      .subscribe(
+        (res: any) => {
+          // this.router.navigateByUrl('/SystemAdmin/TargetSalesList');
+        },
+        err => {
+          if (err.status == 400)
+            this.alertService.error('Due to Error Data not Uploaded.');
+          else
+            console.log(err);;
+            return
+        }
+      );
   }
 }

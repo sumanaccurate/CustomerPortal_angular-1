@@ -37,17 +37,26 @@
 
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
                                 <div class="kt-input-icon kt-input-icon--left">
-                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="FromDate" placeholder="From Date" id="kt_datepicker_1">
-                                    <span class="kt-input-icon__icon kt-input-icon__icon--left"><span><i class="la la-calendar"></i></span>
-                                    </span>
+                                    <mat-form-field >
+                                        <mat-label>From Date</mat-label>
+                                      <!-- #docregion toggle -->
+                                        <input matInput  class="form-control form-control-sm"  [(ngModel)]="FromDate" [matDatepicker]="picker1">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                      <!-- #enddocregion toggle -->
+                                      </mat-form-field>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
                                 <div class="kt-input-icon kt-input-icon--left">
-                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="Todate" placeholder="To Date" id="kt_datepicker_2">
-                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                    <span><i class="la la-calendar"></i></span>
-                                    </span>
+                                    <mat-form-field >
+                                        <mat-label>To Date</mat-label>
+                                      <!-- #docregion toggle -->
+                                        <input matInput  class="form-control form-control-sm"  [(ngModel)]="Todate" [matDatepicker]="picker2">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                      <!-- #enddocregion toggle -->
+                                      </mat-form-field>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
