@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./dashboard.component.css']
 })
 export class CustomerDashboardComponent implements OnInit {
-
+   
   constructor(public datepipe: DatePipe,private _TargetSales:TargetSales, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService ,private _SalesService :SalesOrderService,
     private _DeliveryOrderService :DeliveryOrderService ) {
@@ -35,15 +35,40 @@ RetailOrder;
     this.getAllSalesOrderforDashboard();
     this.getTargetSalesforDashboard();
   }
+  
   getTargetSalesforDashboard() {  
     this.Todate  = new Date();
     this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
     this._TargetSales.getTargetSalesforDashboard(localStorage.getItem('UserCode'),this.Todate).subscribe((res: any) => {  
       this.TargetSales = res;  
       if(res!=null&& res !=''){
-        this.Achivement=res['0'].Achivement;
-        this.TargetSales=res['0'].TargetSales;
-        this.ActualSales=res['0'].ActualSales;
+        this.Achivement=res['0'].Achivement.toFixed(2);
+        this.TargetSales=res['0'].TargetSales.toFixed(2);
+        this.ActualSales=res['0'].ActualSales.toFixed(2);
+        if( this.ActualSales==0.00){
+          this.ActualSales=0;
+        }
+        if( this.TargetSales==0.00){
+          this.TargetSales=0;
+        }
+        if( this.Achivement==0.00){
+          this.Achivement=0;
+        }
+        // if(res['0'].Achivement>0){
+        //   this.Achivement=res['0'].Achivement.toFixed(2);
+        // }else{
+        //   this.Achivement=0;
+        // }
+        // if(res['0'].TargetSales>0){
+        //   this.TargetSales=res['0'].TargetSales.toFixed(2);
+        // }else{
+        //   this.Achivement=0;
+        // }
+        // if(res['0'].ActualSales>0){
+        // this.ActualSales=res['0'].ActualSales.toFixed(2);
+        // }else{
+        //   this.Achivement=0;
+        // }
       }
 
     }) 

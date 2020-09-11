@@ -367,8 +367,8 @@ Redirect(status,value){
       ShipToAddressvtxt: this.ShipTo.Addressvtxt,
       DeliveryAddressvtxt: this.DeliveryAddress,
       TotalOrderQuantityint: this.TotalQuantity,
-      DeliveryTermsvtxt:this.CustomerData.PaymentTerms1vtxt,
-      PaymentTermsvtxt: this.OrderInfo.DeliveryTermsvtxt,
+      DeliveryTermsvtxt:this.OrderInfo.DeliveryTermsvtxt,
+      PaymentTermsvtxt: this.CustomerData.PaymentTerms1vtxt,
       Statusvtxt: type,
       CreatedByvtxt: this.Userid,
     }

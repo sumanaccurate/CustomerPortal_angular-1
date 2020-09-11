@@ -45,7 +45,7 @@ export class CustomerOrderEditComponent implements OnInit {
   OrderID;
   Userid;
   ShipToAddress;
-  
+  i;
   constructor(private _CustomerService: CustomerService, private _ItemMasterService: ItemMasterService,
     private _OrderService: OrderService, private alertService: AlertService,
     private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
@@ -239,9 +239,9 @@ export class CustomerOrderEditComponent implements OnInit {
     this.PoDate = Data.RefDatedate;
     this.ShipToAddress = Data.ShipToAddressvtxt;
     this.TotalAmount = Data.TotalNetValuedcl;
-    this.TotalQuantity = Data.TotalOrderQuantityint;
-    this.TotalKgs = Data.QtyKg;
-    this.TotalMT= Data.QtyMt;
+    this.TotalQuantity =  (parseFloat(Data.TotalOrderQuantityint)).toFixed(2); 
+    this.TotalKgs =(parseFloat(Data.QtyKg)).toFixed(2); 
+    this.TotalMT= (parseFloat(Data.QtyMt)).toFixed(2); 
     this.othercharges = Data.OtherCharges1dcl;
     this.ShipToName = Data.ShipToNamevtxt;
     this.ShipToCode = Data.ShipToCodevtxt;
@@ -306,6 +306,7 @@ export class CustomerOrderEditComponent implements OnInit {
   onSubmit(type) {
     if (this.ShiptoAddresss != '' && this.ShiptoAddresss != null && this.TotalQuantity != 0 && this.TotalQuantity != null && this.TotalQuantity != '') {
       this.UpdateHeaderData(type);
+      this.i=0;
       this.DeleteDetailData();
       this.UpdateOrderHeader(this.HeaderData, this.ItemMaster);
     } else {
@@ -368,7 +369,11 @@ export class CustomerOrderEditComponent implements OnInit {
       this.storage.set('OrderId', value);
       this.router.navigateByUrl('/Customer/OrderView');
       // this.router.navigateByUrl('/Customer/OrderList');
-      this.alertService.success('Order Inserted.');
+     
+      if(this.i==0){
+        this.alertService.success('Order Inserted.');
+      }
+      this.i++;
     }
   }
 

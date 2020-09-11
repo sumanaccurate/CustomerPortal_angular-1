@@ -1,27 +1,15 @@
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid ">
-    <app-customer-float-data></app-customer-float-data>
     <form (ngSubmit)="onSubmit()">
         <div class="kt-portlet kt-portlet--responsive-mobile">
             <div class="kt-portlet__head bg-light">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">Edit Order
+                        <small>
+                            <span>Credit Limit:<span class="kt-font-warning kt-font-bold mr-3">{{ this.CreditLimit}}</span></span>
+                            <span>Available Credit Limit:<span class="kt-font-success kt-font-bold mr-3">{{ this.AvailableCreditLimit}}</span></span>
+                        </small>
                     </h3>
                 </div>
-            </div>
-            <div class="ml-1 text-black-50 kt-font-lg col-md-12 row ">
-                <div class="col-md-6 p-1 bg-primary row">
-                    <label class="kt-font-boldest">Credit Limit : </label>
-
-                    {{ this.CreditLimit}}
-
-                </div>
-                <div class="col-md-6 p-1 bg-danger row">
-                    <label class="kt-font-boldest"> Available Credit Limit : </label>
-
-                    {{ this.AvailableCreditLimit}}
-
-                </div>
-
             </div>
             <div class="kt-portlet__body">
                 <div class="kt-form">
@@ -88,9 +76,8 @@
 
                                         <label class="col-md-3 kt-font-boldest">Delivery Address</label>
                                         <div class="col-md-3">
-
-                                            <input  class="form-control"  type="text" (change)="updateAddress($event.target.value)"
-                                                value="{{OrderInfo.DeliveryAddressvtxt}}">
+                                            <textarea  class=" form-control" type="text" (change)="updateAddress($event.target.value)"
+                                            value="{{OrderInfo.DeliveryAddressvtxt}}"  ></textarea>
                                         </div>
                                     </div>
 

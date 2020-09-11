@@ -2,40 +2,81 @@
     <div class="kt-portlet__body">
         <div class="kt-widget kt-widget--user-profile-3">
             <div class="kt-widget__top">
-                <div class="kt-widget__media">
+                <!-- <div class="kt-widget__media">
                     <img src="assets/media/app_images/user.jpg" alt="image">
-                </div>
+                </div> -->
                 <div class="kt-widget__content">
                     <div class="kt-widget__head">
-                        <a href="#" class="kt-widget__username">
-                            {{this.CustomerData.CustNamevtxt}}
-                        </a>
+                        <div class="row">
+                            <div class=" col-md-2">
+                                {{this.CustomerData.CustCodevtxt}}
+                            </div>
+                            <div class=" col-md-10">
+                                -  {{this.CustomerData.CustNamevtxt}}
+                            </div>
+                            </div>
                     </div>
                     <div class="kt-widget__info">
-                        <div class="kt-widget__desc w-100">
-                            <div>{{this.CustomerData.CustCodevtxt}}</div>
-                        </div>
+                        
                         <div class="kt-widget__desc">
                             <div class="row">
                                 <div class="col-12 col-md-6 col-xl-4 mb-1 mb-md-0">
-                                    <div><span class="kt-font-bold">Address:</span><span class="ml-2">{{this.CustomerData.Address1vtxt}}
-                                            {{this.CustomerData.Address2vtxt}} {{this.CustomerData.CityCdvtxt}} {{this.CustomerData.PostalCodevtxt}}</span></div>
+                                    <div class="row">
+                                        <div class=" col-md-2">
+                                            <span class="kt-font-bold">Address</span>
+                                        </div>
+                                        <div class=" col-md-10">
+                                            <span class="ml-2">: {{this.CustomerData.Address1vtxt}}
+                                                {{this.CustomerData.Address2vtxt}} {{this.CustomerData.CityCdvtxt}}
+                                                 {{this.CustomerData.PostalCodevtxt}}</span>
+                                        </div>
+                                       
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4 mb-1 mb-md-0">
-                                    <div><span class="kt-font-bold">Sales Person:</span><span class="ml-2">{{this.CustomerData.Spcodevtxt }} -
-                                            {{this.CustomerData.Spnamevtxt }}</span></div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span class="kt-font-bold">Sales Person</span>
+                                        </div>
+                                        <div class=" col-md-9">
+                                            <span class="ml-2">: {{this.CustomerData.Spcodevtxt }} -
+                                                {{this.CustomerData.Spnamevtxt }}</span></div>
+                                        </div>
+                                       
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4 mb-1 mb-md-0">
-                                    <div><span class="kt-font-bold">Sales Org :
-                                    </span><span class="ml-2">{{this.CustomerData.SalesOrgNamevtxt }}</span></div>
+                                    <div class="row">
+                                        <div class=" col-md-2">
+                                            <span class="kt-font-bold">Sales Org</span>
+
+                                        </div>
+                                        <div class=" col-md-10">
+                                            <span class="ml-2">: {{this.CustomerData.SalesOrgNamevtxt }}</span>
+                      
+                                        </div>
+                                       
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4 mb-1 mb-md-0">
-                                    <div><span class="kt-font-bold">Contact Person :
-                                    </span><span class="ml-2"> {{this.CustomerData.Contactpersonvtxt }}</span></div>
+                                    <div class="row">
+                                        <div class=" col-md-3">
+                                            <span class="kt-font-bold">Contact Person</span>
+                                        </div>
+                                        <div class=" col-md-9">
+                                            <span class="ml-2">: {{this.CustomerData.Contactpersonvtxt }}</span></div>
+                                        </div>
+                                       
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4 mb-1 mb-md-0">
-                                    <div><span class="kt-font-bold">Date :
-                                    </span><span class="ml-2">{{datestring  | date :'dd/MM/yyyy' }}</span></div>
+                                    <div class="row">
+                                        <div class=" col-md-2">
+                                            <span class="kt-font-bold">Date
+                                            </span>
+                                        </div>
+                                        <div class=" col-md-10">
+                                            <span class="ml-2">: {{datestring  | date :'dd/MM/yyyy' }}</span></div>
+                      
+                                        </div>
                                 </div>
 
                             </div>
