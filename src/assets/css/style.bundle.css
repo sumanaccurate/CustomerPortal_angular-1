@@ -48958,8 +48958,8 @@ body {
     .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler i {
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
+        font-size: 2.3rem;
         color: #4e4c5f;
-        font-size: 1.5rem;
         line-height: 0;
     }
     .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler.kt-header-mobile__toolbar-topbar-toggler--active i,
@@ -54068,4 +54068,53 @@ a:not([href]):hover {
     .kt-widget.kt-widget--user-profile-3 .kt-widget__top .kt-widget__content .kt-widget__info .kt-widget__desc {
         padding-bottom: 0 !important;
     }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 0.2rem 0 0 0.2rem !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0 0.2rem 0.2rem 0 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    background: #fff !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.85em 0 0.55em 0 !important;
+}
+
+.mat-form-field-infix {
+    border-top: 0.24375em solid transparent !important;
+    width: auto !important;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    transform: translateY(-1.19375em) scale(0.75)!important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label mat-label,
+.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label mat-label {
+    background: #fff !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-color: #e2e5ec !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-gap {
+    border-color: #e2e5ec !important;
+    border-width: 1px 0;
 }

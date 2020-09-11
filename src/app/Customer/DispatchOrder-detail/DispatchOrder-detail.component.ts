@@ -77,6 +77,8 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
   }
 
   getAllOrders() {
+    this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy'); 
     this._DeliveryOrderService.getAllOrderData(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.pageNo, this.OrdersPerPage, this.search).subscribe((data: any) => {
       this.Orders = data as any[];
       this.getAllOrdersCount();
@@ -84,6 +86,8 @@ export class CustomerDispatchOrderDetailComponent implements OnInit {
 console.log(this.status+this.FromDate+this.Todate);
   }
   getAllOrdersCount() {
+    this.FromDate = this.datepipe.transform(this.FromDate, 'dd-MM-yyyy');
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy'); 
     this._DeliveryOrderService.getAllOrderCount(this.FromDate,this.Todate,this.status,localStorage.getItem('UserCode'), this.search).subscribe((res: any) => {
       this.totalOrdersCount = res;
       this.totalNoOfPages();
