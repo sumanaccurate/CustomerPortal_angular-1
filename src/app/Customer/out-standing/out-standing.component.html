@@ -8,7 +8,11 @@
       <div class="kt-portlet__head kt-portlet__head--lg bg-light">
         <div class="kt-portlet__head-label">
           <h3 class="kt-portlet__head-title text-dark">
-            OutStanding
+
+            <b>
+              OutStanding
+
+            </b>
           </h3>
         </div>
 
@@ -20,70 +24,71 @@
             <div class="row col-md-11">
               <div class="row col-md-12">
                
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   3 Days : ₹ {{Data.D3dcl | number}} 
+                  <div class=" col-md-4 row">
+
+                  </div>
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   7 Days : ₹ {{Data.D7dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   15 Days : ₹ {{Data.D15dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   30 Days : ₹ {{Data.D30dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   45 Days : ₹ {{Data.D45dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   60 Days : ₹ {{Data.D60dcl  | number}} 
 
                 </div>
               </div>
 
               <div class="row col-md-12">
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   90 Days : ₹ {{Data.D90dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   120 Days : ₹ {{Data.D120dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   150 Days : ₹ {{Data.D150dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   180 Days : ₹ {{Data.D180dcl | number}} 
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                   360 Days : ₹ {{Data.D360dcl | number}} 
 
                 </div>
                 
-                <div class="col-md-2 ">
+                <div class="m-2 col-md-12 ">
                  > 360 Days : ₹ {{Data.gD360dcl | number}} 
                 </div>
-              </div>
-            
-              <div class="col-md-12 row mt-3 ">
-                <div class="col-md-4 ">
+                <div class="m-2 col-md-12 ">
                   Advanced : ₹ {{Data.Advancedcl | number}} 
                 </div>
-                <div class="col-md-4 ">
+                <div class="m-2 col-md-12 ">
                   Gross OutStanding Amount : ₹ {{Data.GrossOutsatndingAmtdcl | number}} 
                 </div>
-                <div class="col-md-4 ">
+                <div class="m-2 col-md-12 ">
                   Net OutStanding Amount : ₹ {{Data.NetOutstandingAmtdcl | number}} 
                 </div>
               </div>
+            
             </div>
           </div>
           <h2 *ngIf="this.DetailData[0]==null">No Data Available</h2>

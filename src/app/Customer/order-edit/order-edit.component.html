@@ -20,11 +20,11 @@
                                 <div class="kt-section__body">
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 kt-font-boldest">Order No</label>
+                                        <label class="col-md-3 kt-font-boldest">Web Order No</label>
                                         <div class="col-md-3">
                                             {{this.OrderInfo.OrderNovtxt}}
                                         </div>
-                                        <label class="col-md-3 kt-font-boldest">Order Date</label>
+                                        <label class="col-md-3 kt-font-boldest">Web Order Date</label>
                                         <div class="col-md-3">
                                             {{this.OrderInfo.OrderDatedate | date :'dd/MM/yyyy'}}
                                         </div>
@@ -107,25 +107,25 @@
                                             <tr>
                                                 <th>
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th  style="padding:0 15px 5px 15px;">
                                                     Item
                                                 </th>
-                                                <!-- <th  style="padding:0 15px 0 15px;">ItemDesc
+                                                <!-- <th  style="padding:0 15px 5px 15px;">ItemDesc
                                                 </th> -->
-                                                <th  style="padding:0 15px 0 15px;">UOM
+                                                <th  style="padding:0 15px 5px 15px;">UOM
                                                 </th>
-                                                <!-- <th  style="padding:0 15px 0 15px;">Rate
+                                                <!-- <th  style="padding:0 15px 5px 15px;">Rate
                                                 </th> -->
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th  style="padding:0 15px 5px 15px;  text-align: end;">
                                                     Quantity *
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th  style="padding:0 15px 5px 15px;  text-align: end;">
                                                     Quantity in Kgs
                                                 </th>
-                                                <th  style="padding:0 15px 0 15px;">
+                                                <th  style="padding:0 15px 5px 15px;  text-align: end;">
                                                     Quantity in MT
                                                 </th>
-                                                <!-- <th  style="padding:0 15px 0 15px;">
+                                                <!-- <th  style="padding:0 15px 5px 15px;">
                                                     Amount
                                                 </th> -->
                                             </tr>
@@ -136,12 +136,12 @@
                                                 <td>
                                                     <span [hidden]="Item.Idint">{{Item.Idint}}</span>
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td  style="padding:0 15px 5px 15px;">
                                                     <span>{{Item.MaterialCodevtxt}}</span>
                                                 </td>
-                                                <!-- <td  style="padding:0 15px 0 15px;"><span>{{Item.MaterialDescriptionvtxt}}</span>
+                                                <!-- <td  style="padding:0 15px 5px 15px;"><span>{{Item.MaterialDescriptionvtxt}}</span>
                                                 </td> -->
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td  style="padding:0 15px 5px 15px;">
 
                                                     <select (change)="updateUOM($event.target.value,Item)" class="form-control" name="anyName"
                                                    >
@@ -154,20 +154,20 @@
 
 
                                                 </td>
-                                                <!-- <td  style="padding:0 15px 0 15px;"><span>{{Item.Ratedcl}}</span>
+                                                <!-- <td  style="padding:0 15px 5px 15px;"><span>{{Item.Ratedcl}}</span>
                                                 </td> -->
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td  style="padding:0 15px 5px 15px;">
 
-                                                    <mat-form-field>
-                                                        <input type="number" onlyNumber matInput  class="form-control" 
+                                                    
+                                                        <input type="number" onlyNumber matInput  class=" form-control form-control-sm text-right"
                                                             (change)="updateTotalUOM(Item,$event.target.value,Item.Ratedcl)"
                                                             value="{{Item.Quantityint}}">
-                                                    </mat-form-field>
+                                                   
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td  style="padding:0 15px 5px 15px; text-align: end;">
                                                     {{Item.QtyKg }}
                                                 </td>
-                                                <td  style="padding:0 15px 0 15px;">
+                                                <td  style="padding:0 15px 5px 15px; text-align: end;">
                                                     {{Item.QtyMt }}
                                                 </td>
                                                 <!-- <td class=" mr-3">
@@ -237,7 +237,7 @@
                 
                 <div class="row col-md-12">
                     <div class="mt-3 col-md-auto">
-                        <b> Payment Terms :</b> {{OrderInfo.PaymentTerms1vtxt}}
+                        <b> Payment Terms :</b> {{OrderInfo.PaymentTermsvtxt}}
                     </div>
                     <div class="mt-3  ml-3 col-md-auto">
                         <b> Delivery Terms :</b> {{OrderInfo.DeliveryTermsvtxt}}

@@ -3,7 +3,10 @@
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title text-dark">
-                    Orders Placed List
+                    <b>
+                        Orders Placed List
+                    </b>
+                   
                     <small>
                         <span>Pending : <span class="kt-font-brand kt-font-bold mr-3">{{PendingCount}}</span></span>
                         <span>Draft : <span class="kt-font-warning kt-font-bold mr-3">{{Draft}}</span></span>
@@ -75,10 +78,10 @@
                             Ship To Party:<span class="kt-font-bold">{{Order.ShipToCodevtxt}} - {{Order.ShipToNamevtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Order No:<span class="kt-font-bold">{{Order.OrderNovtxt}}</span>
+                           Web Order No:<span class="kt-font-bold">{{Order.OrderNovtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Order Date :<span class="kt-font-bold">{{Order.OrderDatedate | date :'dd/MM/yyyy'}}</span>
+                            Web Order Date :<span class="kt-font-bold">{{Order.OrderDatedate | date :'dd/MM/yyyy'}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             PO No:<span class="kt-font-bold">{{Order.RefNovtxt}}</span>
@@ -87,13 +90,13 @@
                             PO Date:<span class="kt-font-bold">{{Order.RefDatedate | date :'dd/MM/yyyy'}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Total Order Quantity In MT:<span class="kt-font-bold">{{Order.TotalOrderQuantityMTint}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             SAP Order No:<span class="kt-font-bold">{{Order.SAPOrderNovtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             SAP Order Date:<span class="kt-font-bold">{{Order.SAPOrderDatedate | date :'dd/MM/yyyy'}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Order Quantity:<span class="kt-font-bold">{{Order.TotalOrderQuantityint}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Status:<span class="kt-font-bold">{{Order.Statusvtxt}}</span>

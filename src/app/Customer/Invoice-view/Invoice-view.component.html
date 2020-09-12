@@ -12,45 +12,44 @@
 		<div class="kt-portlet__body">
 			<div class="table-responsive">
 				<table class="text-dark col-md-12">
-
 					<tbody>
 						<tr class="mt-4">
-							<th scope="row">Sold To Party : </th>
-							<td>{{this.InvoiceInfo.SoldToPartyCodevtxt}} - {{this.InvoiceInfo.SoldTopPartyNamevtxt}}
+							<th scope="row">Sold To Party </th>
+							<td>: {{this.InvoiceInfo.SoldToPartyCodevtxt}} - {{this.InvoiceInfo.SoldTopPartyNamevtxt}}
 							</td>
-							<th scope="row"> Ship To Party :</th>
-							<td>{{this.InvoiceInfo.ShipToPartyCodevtxt}} - {{this.InvoiceInfo.ShipToPartyNamevtxt}}</td>
+							<th scope="row"> Ship To Party </th>
+							<td>: {{this.InvoiceInfo.ShipToPartyCodevtxt}} - {{this.InvoiceInfo.ShipToPartyNamevtxt}}</td>
 						</tr>
 						<tr class="mt-4">
-							<th scope="row"> Invoice No :</th>
-							<td>{{this.InvoiceInfo.InvoiceDocumentNovtxt}}</td>
-							<th scope="row">Billing Date : </th>
-							<td>{{this.InvoiceInfo.BillingDatedate  | date :'dd/MM/yyyy'}}</td>
+							<th scope="row"> Invoice No </th>
+							<td>: {{this.InvoiceInfo.InvoiceDocumentNovtxt}}</td>
+							<th scope="row">Billing Date </th>
+							<td>: {{this.InvoiceInfo.BillingDatedate  | date :'dd/MM/yyyy'}}</td>
 
 						</tr>
 						<tr class="mt-4">
-							<th scope="row"> Total Quantity : </th>
-							<td>{{this.InvoiceInfo.InvoiceQuantityint}}</td>
-							<th scope="row">Tax Amount : </th>
-							<td>{{this.InvoiceInfo.TaxAmountdcl}}</td>
+							<th scope="row"> Total Quantity In MT </th>
+							<td>: {{this.InvoiceInfo.QtyMt}}</td>
+							<th scope="row">Tax Amount </th>
+							<td>: ₹{{this.InvoiceInfo.TaxAmountdcl}}</td>
 
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">Billing Value : </th>
-							<td>{{this.InvoiceInfo.BillingValuedcl}}</td>
-							<th scope="row"> Delivery Order No: </th>
-							<td>{{this.InvoiceInfo.DeliveryOrder}}</td>
+							<th scope="row">Billing Value </th>
+							<td>: ₹{{this.InvoiceInfo.BillingValuedcl}}</td>
+							<th scope="row"> Delivery Order No</th>
+							<td>: {{this.InvoiceInfo.DeliveryOrder}}</td>
 
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">Shipping From Address :</th>
-							<td>{{this.InvoiceInfo.ShippingFromAddress}}</td>
-							<th scope="row"> Delivery To Address : </th>
-							<td>{{this.InvoiceInfo.DeliveryToAddress}}</td>
+							<th scope="row">Shipping From Address </th>
+							<td>: {{this.InvoiceInfo.ShippingFromAddress}}</td>
+							<th scope="row"> Delivery To Address </th>
+							<td>: {{this.InvoiceInfo.DeliveryToAddress}}</td>
 						</tr>
 						<tr class="mt-4">
-							<th scope="row"> Status : </th>
-							<td>{{this.InvoiceInfo.Statusvtxt}}</td>
+							<th scope="row"> Status </th>
+							<td>: {{this.InvoiceInfo.Statusvtxt}}</td>
 						</tr>
 
 					</tbody>
@@ -63,29 +62,29 @@
 
 					<div>
 						<div *ngFor="let Invoice of Invoices" class="customerCustomers-list border shadow-sm p-3 mb-3">
-							<div class="row col-11">
+							<div class="row col-12">
 
 								<div class="col-md-3 ">
 
 									Material : <span class="kt-font-bold">{{Invoice.MaterialCodevtxt}}</span>
 
 								</div>
-								<div class="col-md-3 ">
+								<div class="col-md-2 ">
 
 									UOM : <span class="kt-font-bold">{{Invoice.InvoiceUoMvtxt}}</span>
 
 								</div>
-								<div class="col-md-3 ">
+								<div class="col-md-2 ">
 
-									Quantity : <span class="kt-font-bold">{{Invoice.InvoiceQuantityint}}</span>
-
-								</div>
-								<div class="col-md-3 ">
-									Tax Amount : <span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
+									Quantity In MT : <span class="kt-font-bold">{{Invoice.QtyMt}}</span>
 
 								</div>
 								<div class="col-md-3 ">
-									Billing Value : <span class="kt-font-bold">{{Invoice.BillingValuedcl}}</span>
+									Tax Amount : ₹<span class="kt-font-bold">{{Invoice.TaxAmountdcl}}</span>
+
+								</div>
+								<div class="col-md-3 ">
+									Billing Value : ₹<span class="kt-font-bold">{{Invoice.BillingValuedcl}}</span>
 								</div>
 								<!-- <div class="col-md-3 ">
 

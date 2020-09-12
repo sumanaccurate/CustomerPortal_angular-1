@@ -56,6 +56,15 @@ import { CustomerOutStandingComponent } from './Customer/out-standing/out-standi
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
 import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
 import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-list/target-sales-list.component';
+import { CustomerRegistrationComponent } from './user/registration/registration.component';
+import { CustomerVerificationComponent } from './user/verification/verification.component';
+import { SystemAdminRmUploadComponent } from './SystemAdmin/rm-upload/rm-upload.component';
+import { SystemAdminOrderAnalystUploadComponent } from './SystemAdmin/order-analyst-upload/order-analyst-upload.component';
+import { SystemAdminBmUploadComponent } from './SystemAdmin/bm-upload/bm-upload.component';
+import { SystemAdminSalesHeirachyViewComponent } from './SystemAdmin/sales-heirachy-view/sales-heirachy-view.component';
+import { SystemAdminSalesHeirachyUploadComponent } from './SystemAdmin/sales-heirachy-upload/sales-heirachy-upload.component';
+import { SystemAdminTsiUploadComponent } from './SystemAdmin/tsi-upload/tsi-upload.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
@@ -63,7 +72,9 @@ const routes: Routes = [
     children: [
       // { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'Verification', component: CustomerVerificationComponent },
+      { path: 'Registration', component: CustomerRegistrationComponent},
     ]
   },
   {
@@ -77,8 +88,15 @@ const routes: Routes = [
       { path: 'EditAdmin', component: AddUserComponent, canActivate: [AuthGuard] },
       { path: 'CustomerDetail', component: CustomerDetailComponent, canActivate: [AuthGuard] },
       { path: 'progress', component: ProgressSpinnerOverviewExample, canActivate: [AuthGuard] },
+      { path: 'OrderAnalystUpload', component: SystemAdminOrderAnalystUploadComponent, canActivate: [AuthGuard] },
+      { path: 'RmUpload', component: SystemAdminRmUploadComponent, canActivate: [AuthGuard] },
+      { path: 'BmUpload', component: SystemAdminBmUploadComponent, canActivate: [AuthGuard] },
+      { path: 'TsiUpload', component: SystemAdminTsiUploadComponent, canActivate: [AuthGuard] },
+      { path: 'SalesHeirachyView', component: SystemAdminSalesHeirachyViewComponent, canActivate: [AuthGuard] },
+      { path: 'SalesHeirachyUpload', component: SystemAdminSalesHeirachyUploadComponent, canActivate: [AuthGuard] },
     ]
   },
+
   {
     path: 'SystemAdmin', component: SystemAdminComponent,
     children: [
@@ -133,8 +151,8 @@ const routes: Routes = [
       { path: 'RaiseComplaint', component: RaiseComplaintsComponent, canActivate: [AuthGuard] },
       { path: 'ComplaintStatus', component: ComplaintStatusComponent, canActivate: [AuthGuard] },
       { path: 'OutStanding', component: CustomerOutStandingComponent, canActivate: [AuthGuard] },
+     
       { path: 'AccountStatement', component: CustomerAccountStatementComponent, canActivate: [AuthGuard] },
-
     ]
   },
 

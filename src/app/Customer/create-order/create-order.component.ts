@@ -1,13 +1,17 @@
 import { Component, Input, Output, EventEmitter, OnInit, Inject } from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { CustomerService } from 'src/app/shared/CustomerService';
 import { ItemMasterService } from 'src/app/shared/ItemMasterService';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
-import { MatInputModule } from '@angular/material/input';
 import { OrderService } from 'src/app/shared/OrderService';
 import { AlertService } from 'src/app/component/alert.service';
 @Component({
@@ -19,17 +23,13 @@ export class CustomerCreateOrderComponent implements OnInit {
   HeaderData: any;
   ShipTo;
   name: string;
-  ItemMaster;
   DeliveryAddress;
-  othercharges;
-  private TotalAmount;
   Pono;
   CustomerData: any;
   UOMs : any;
   PoDate;
   TotalMT;
   TotalKgs;
-  ItemCodeforadd;
   OutStanding;
   AvailableCreditLimit;
   CreditLimit;
@@ -37,6 +37,10 @@ export class CustomerCreateOrderComponent implements OnInit {
   status;
   private TotalQuantity;
   AllItemMasterDate;
+  Uomnvtxt ;
+  RateOfConversion;
+  Weight;
+  ItemCode;
   OrderInfo;
   Userid;
   Addressvtxt
@@ -50,7 +54,6 @@ export class CustomerCreateOrderComponent implements OnInit {
     this.getAllCreditLimit();
     this.getCustomerData(this.Userid);
     this.getShiptoAddressData(this.Userid);
-    this.GetTopItemMaster();
     this.getAllItemMasterData();
     this.getOrderInfo();
     this.getUOM();
@@ -90,100 +93,37 @@ export class CustomerCreateOrderComponent implements OnInit {
     );
   }
 
-  updateTotal(Item) {
-    let tempamount = 0;
-    let tempQuantity = 0;
-    for (let j = 0; j < Item.length; j++) {
-      let amount = parseFloat(Item[j].Amount) ;
-      let qty = parseFloat( Item[j].Quantity);
-      if (!qty) {
-        qty = 0;
-      } else {
-        tempQuantity += qty;
-      }
-      if (!amount) {
-        amount = 0;
-      } else {
-        tempamount += amount;
-      }
-      this.TotalQuantity = tempQuantity.toFixed(2);
-      this.TotalAmount = tempamount.toFixed(2);
-    }
-  };
-
   
-  updateTotalUOM(Item,Quantity) {
-    if(Item.RateOfConversion==null ||Item.RateOfConversion==''){
+  updateTotal(QTY) {
+    if(this.RateOfConversion==null ||this.RateOfConversion==''){
       this.alertService.error('Please Select Unit Of Measurement First');
       return null;
-    }
-    
-    if( Quantity>0){
-      Item.Quantity = ( parseFloat(Quantity)).toFixed(2);
-      Item.QtyKg=( parseFloat(Quantity) *  parseFloat(Item.Weight)).toFixed(2);
-      Item.QtyMt= (parseFloat(Quantity )* parseFloat(Item.RateOfConversion)).toFixed(2);
-    }else{
-      Item.QtyKg=0;
-      Item.QtyMt=0;
     }
     let tempqtyKg = 0;
     let tempqtyMt = 0;
     let tempQuantity = 0;
-    for (let j = 0; j < this.ItemMaster.length; j++) {
-      let qtyKg = parseFloat(this.ItemMaster[j].QtyKg) ;
-      let qtyMt = parseFloat( this.ItemMaster[j].QtyMt);
-      let qty = parseFloat( this.ItemMaster[j].Quantity);
-      if (!qty) {
-        qty = 0;
-      } else {
-        tempQuantity += qty;
-      }
-      if (!qtyMt) {
-        qtyMt = 0;
-      } else {
-        tempqtyMt += qtyMt;
-      }
-      if (!qtyKg) {
-        qtyKg = 0;
-      } else {
-        tempqtyKg += qtyKg;
-      }
-      this.TotalMT = tempqtyMt.toFixed(2);
-      this.TotalQuantity = tempQuantity.toFixed(2);
-      this.TotalKgs = tempqtyKg.toFixed(2);
-    }
-  };
-
-  updateTotalvalue(Item, qty, Ratedcl) {
-
-    if (qty >= 0) {
-      if (!qty || !Ratedcl) {
-        Item.Amount = 0;
-      } else {
-        Item.Quantity = qty;
-        Item.Amount = qty * Ratedcl;
-      }
-    } else {
-      qty = 0;
-      Item.Quantity = qty;
-      Item.Amount = qty * Ratedcl;
-    }
-
-    this.updateTotal(this.ItemMaster);
+    if( QTY>0){
+      this.TotalQuantity = ( parseFloat(QTY)).toFixed(2);
+      this.TotalKgs=( parseFloat(this.TotalQuantity) *  parseFloat(this.Weight)).toFixed(2);
+      this.TotalMT= (parseFloat(this.TotalQuantity )* parseFloat(this.RateOfConversion)).toFixed(2);
+    }else{
+      this.TotalMT =0;
+      this.TotalQuantity = 0;
+      this.TotalKgs =0;
+    }  
   };
 
   
-  updateUOM(ID,Item) {
-   
+  updateUOM(ID) {
     this._CustomerService.getUOMById(ID).subscribe(
       data => {
-        Item.Uomnvtxt =  data[0].AlternativeUnit;
-        Item.RateOfConversion= data[0].RateOfConversion;
-        Item.Weight= data[0].Weight;
-        if(Item.Quantity==null){
-          Item.Quantity=0
+        this.Uomnvtxt =  data[0].AlternativeUnit;
+        this.RateOfConversion= data[0].RateOfConversion;
+        this.Weight= data[0].Weight;
+        if(this.TotalQuantity==null){
+          this.TotalQuantity=0
         }
-            this.updateTotalUOM(Item,Item.Quantity);
+        this.updateTotal(this.TotalQuantity);
       }
     );
 
@@ -196,32 +136,7 @@ export class CustomerCreateOrderComponent implements OnInit {
       }
     );
   }
-  ChangeItemCodeForNewItem(ItemCode) {
-    this.ItemCodeforadd=ItemCode;
-  }
-  AddDataInItemMaster() {
-    if(this.ItemCodeforadd!='undefined'&& this.ItemCodeforadd!=0 && this.ItemCodeforadd!=''&&this.ItemCodeforadd!=null){
-      let AddItem=false;
-      for (let i = 0; i < this.ItemMaster.length; i++) {
-        if( this.ItemMaster[i].ItemCodevtxt != this.ItemCodeforadd){
-          AddItem=true;
-        }else{
-          AddItem=false;
-          return;
-        }
-      }
-      if(AddItem==true){
-        this._ItemMasterService.getItemMasterDataByKeyword(this.ItemCodeforadd).subscribe(
-          data => {
-            this.ItemMaster.push(data['0']);
-          }
-        );
-        this.updateTotal(this.ItemMaster);
-      }
-    }
-    
-  }
-
+  
   getShiptoAddressData(Userid) {
     if (Userid !== null && Userid !== "") {
 
@@ -233,22 +148,16 @@ export class CustomerCreateOrderComponent implements OnInit {
     }
   }
 
-
-  onDeleteClick(i) {
-    // const index: number = this.ItemMaster.indexOf(msg);
-    if (i !== -1) {
-      this.ItemMaster.splice(i, 1);
+  AddDataInItemMaster(ItemCode) {
+    if(ItemCode!='undefined'&& ItemCode!=0 && ItemCode!=''&& ItemCode!=null){
+        this._ItemMasterService.getItemMasterDataByKeyword(ItemCode).subscribe(
+          data => {
+            this.ItemCode=data['0'].ItemCodevtxt;
+          }
+        );
     }
-    this.updateTotal(this.ItemMaster);
   }
 
-  GetTopItemMaster() {
-    this._ItemMasterService.GetTopItemMaster().subscribe(
-      data => {
-        this.ItemMaster = data;
-      }
-    );
-  }
 
   getCustomerData(Userid) {
     if (Userid !== null && Userid !== "") {
@@ -268,7 +177,7 @@ export class CustomerCreateOrderComponent implements OnInit {
 this.status = 1;
       this.getOrderInfo();
       this.UpdateHeaderData(type);
-      this.InsertOrderHeader(this.HeaderData, this.ItemMaster);
+      this.InsertOrderHeader(this.HeaderData);
      
     }else{
       this.alertService.warn("Please fill the mandatory fields..");
@@ -277,36 +186,29 @@ this.status = 1;
   }
 
 
-  InsertOrderDetails(OrderDetails, id) {
-    for (let i = 0; i < OrderDetails.length; i++) {
-
-      if( OrderDetails[i].Quantity>0){
-        let orderdetail = {
-          OrderID: id,
-          MaterialCodevtxt: OrderDetails[i].ItemCodevtxt,
-          MaterialDescriptionvtxt: OrderDetails[i].ItemDescvtxt,
-          UoMvtxt: OrderDetails[i].Uomnvtxt,
-          Quantityint: OrderDetails[i].Quantity,
-          Ratedcl: OrderDetails[i].Ratedcl,
-          Amountdcl: OrderDetails[i].Amount,
-        }
-        this._OrderService.InsertOrderDetails(orderdetail).subscribe(
-          (res: any) => {
-            this.status =0;
-            this.Redirect(this.status,id);
-          },
-          err => {
-            if (err.status == 400)
-              this.alertService.error('Error Order not Inserted.');
-            else
-              console.log(err);;
-              this.status=1;
-              return
-          }
-        );
-      }
+  InsertOrderDetails(id) {
+    let orderdetail = {
+      OrderID: id,
+      MaterialCodevtxt:this.ItemCode,
+      MaterialDescriptionvtxt: this.ItemCode,
+      UoMvtxt: this.Uomnvtxt,
+      Quantityint: this.TotalQuantity,
+      Ratedcl: 0.00,
     }
-   
+    this._OrderService.InsertOrderDetails(orderdetail).subscribe(
+      (res: any) => {
+        this.status =0;
+        this.Redirect(this.status,id);
+      },
+      err => {
+        if (err.status == 400)
+          this.alertService.error('Error Order not Inserted.');
+        else
+          console.log(err);;
+          this.status=1;
+          return
+      }
+    );
   }
 
 Redirect(status,value){
@@ -314,15 +216,15 @@ Redirect(status,value){
     this.storage.set('OrderId', value);
     this.router.navigateByUrl('/Customer/OrderView');
     // this.router.navigateByUrl('/Customer/OrderList');
-    this.alertService.success('Order Inserted.');
+      this.alertService.success('Order Inserted.');
   }
 }
 
 
-  InsertOrderHeader(OrderHeader, OrderDetails) {
+  InsertOrderHeader(OrderHeader) {
     this._OrderService.InsertOrderHeader(OrderHeader).subscribe(
       (res: any) => {
-        this.InsertOrderDetails(OrderDetails, res);
+        this.InsertOrderDetails( res);
       },
       err => { 
         this.alertService.error('An error occured');
@@ -339,9 +241,6 @@ Redirect(status,value){
   updatePono(value) {
     this.Pono = value;
   }
-  updateothercharges(value) {
-    this.othercharges = value;
-  }
 
   updateAddress(value) {
     this.DeliveryAddress = value;
@@ -352,6 +251,24 @@ Redirect(status,value){
     }
     if(this.PoDate==null||this.PoDate==''){
       this.PoDate=null;
+    }
+    let PaymentTerms ;
+    let DeliveryTerms ;
+    if( this.CustomerData.PaymentTerms1vtxt==null ||  this.CustomerData.PaymentTerms1vtxt==''){
+      PaymentTerms=null;
+    }
+    else{
+      PaymentTerms= this.CustomerData.PaymentTerms1vtxt;
+    }
+    if( this.CustomerData.PaymentTerms1vtxt==null||  this.CustomerData.PaymentTerms1vtxt==''){
+      DeliveryTerms= null;
+    }
+    else{
+      DeliveryTerms=this.OrderInfo.DeliveryTermsvtxt;
+    }
+   
+    if( this.DeliveryAddress==null|| this.DeliveryAddress==''){
+      this.DeliveryAddress=null;
     }
 
     this.HeaderData = {
@@ -367,10 +284,20 @@ Redirect(status,value){
       ShipToAddressvtxt: this.ShipTo.Addressvtxt,
       DeliveryAddressvtxt: this.DeliveryAddress,
       TotalOrderQuantityint: this.TotalQuantity,
-      DeliveryTermsvtxt:this.OrderInfo.DeliveryTermsvtxt,
-      PaymentTermsvtxt: this.CustomerData.PaymentTerms1vtxt,
+      TotalOrderQuantityKgsint: this.TotalKgs,
+      TotalOrderQuantityMTint : this.TotalMT,
+      DeliveryTermsvtxt:DeliveryTerms,
+      PaymentTermsvtxt:PaymentTerms,
       Statusvtxt: type,
       CreatedByvtxt: this.Userid,
+      SAPOrderNovtxt :0,
+      SAPOrderDatedate :'01/01/1000',
+      TotalNetValuedcl :'0.00',
+      SAPStatusvtxt :null,
+      OtherCharges1dcl :'0.00',
+      OtherCharges2dcl :'0.00',
+      OtherCharges3dcl :'0.00',
+      OtherCharges4dcl :'0.00',
     }
     console.log(this.HeaderData);
   }

@@ -1,0 +1,83 @@
+<div class="kt-grid kt-grid--ver kt-grid--root kt-page" style="min-height: 100vh;">
+    <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v6 kt-login--signin" id="kt_login">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+            <div class="kt-grid__item  kt-grid__item--order-tablet-and-mobile-2  kt-grid kt-grid--hor kt-login__aside">
+                <div class="kt-login__wrapper">
+                    <div class="kt-login__container">
+                        <div class="kt-login__body">
+                            <div class="kt-login__logo">
+                                <img src="assets/media/app_images/johnson-logo.png" class="img-fluid" />
+                            </div>
+                            <div class="kt-login__signin">
+                                <div class="kt-login__head">
+                                    <h3 class="kt-login__title">Set Profile</h3>
+                                </div>
+                                <form  [formGroup]="Customer"  (ngSubmit)="Submit()"  autocomplete="off">
+                                    <div class="kt-login__form">
+                                        <div class="kt-form">
+                                            <div class="form-group row">
+                                                 Customer Code
+                                              <label class=" kt-font-bold">: {{this.Customers.CustCodevtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Contact Person
+                                                <label class=" kt-font-bold">: {{this.Customers.Contactpersonvtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                GST No
+                                                <label class=" kt-font-bold">: {{this.Customers.Gstnovtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                PAN No
+                                                <label class=" kt-font-bold">: {{this.Customers.PanNovtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Sales Office
+                                                <label class=" kt-font-bold">: {{this.Customers.SalesOfficevtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Customers Group
+                                                <label class=" kt-font-bold">: {{this.Customers.CustGrp1vtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Name
+                                                <label class=" kt-font-bold">: {{this.Customers.CustNamevtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Mobile
+                                                <label class=" kt-font-bold">: {{this.Customers.TelNumber1vtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Email
+                                                <label class=" kt-font-bold">: {{this.Customers.Emailvtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                Address
+                                                <label class=" kt-font-bold">: {{this.Customers.Address1vtxt}} </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <input   class="form-control"  type="text" formControlName="Password"  placeholder="Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" formControlName="ConfirmPassword"  placeholder="Confirm Password" required>
+                                            </div>
+                                            <div class="kt-login__actions">
+                                                <button type="submit"   class="btn btn-brand ml-3 btn-pill btn-elevate">Submit</button>
+                                                
+                                                <button  [routerLink]="['user/login']"  class="btn btn-brand btn-pill mr-3 btn-elevate">Cancel</button>
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(assets/media/app_images/login-bg.jpg);">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -143,7 +143,7 @@ export class CustomerOrderEditComponent implements OnInit {
   updateUOM(ID, Item) {
     this._CustomerService.getUOMById(ID).subscribe(
       data => {
-        Item.Uomnvtxt = data[0].AlternativeUnit;
+        Item.UoMvtxt = data[0].AlternativeUnit;
         Item.RateOfConversion = data[0].RateOfConversion;
         Item.Weight = data[0].Weight;
         if (Item.Quantityint == null) {
@@ -161,7 +161,7 @@ export class CustomerOrderEditComponent implements OnInit {
     if (Item.RateOfConversion == null || Item.RateOfConversion == '') {
       this._CustomerService.getUOMById(Item.UoMint).subscribe(
         data => {
-          Item.Uomnvtxt = data[0].AlternativeUnit;
+          Item.UoMvtxt = data[0].AlternativeUnit;
           Item.RateOfConversion = data[0].RateOfConversion;
           Item.Weight = data[0].Weight;
           if (Item.Quantity == null) {
@@ -240,8 +240,8 @@ export class CustomerOrderEditComponent implements OnInit {
     this.ShipToAddress = Data.ShipToAddressvtxt;
     this.TotalAmount = Data.TotalNetValuedcl;
     this.TotalQuantity =  (parseFloat(Data.TotalOrderQuantityint)).toFixed(2); 
-    this.TotalKgs =(parseFloat(Data.QtyKg)).toFixed(2); 
-    this.TotalMT= (parseFloat(Data.QtyMt)).toFixed(2); 
+    this.TotalKgs =(parseFloat(Data.TotalOrderQuantityKgsint)).toFixed(2); 
+    this.TotalMT= (parseFloat(Data.TotalOrderQuantityMTint)).toFixed(2); 
     this.othercharges = Data.OtherCharges1dcl;
     this.ShipToName = Data.ShipToNamevtxt;
     this.ShipToCode = Data.ShipToCodevtxt;
@@ -268,7 +268,7 @@ export class CustomerOrderEditComponent implements OnInit {
             let item = {
               MaterialCodevtxt: data['0'].ItemCodevtxt,
               MaterialDescriptionvtxt: data['0'].ItemDescvtxt,
-              UoMvtxt: data['0'].Uomnvtxt,
+              UoMvtxt: data['0'].UoMvtxt,
               HSNCodevtxt: data['0'].HSNCodevtxt,
               Ratedcl: data['0'].Ratedcl,
               Quantityint: 0,
@@ -338,7 +338,7 @@ export class CustomerOrderEditComponent implements OnInit {
           OrderID: id,
           MaterialCodevtxt: OrderDetails[i].MaterialCodevtxt,
           MaterialDescriptionvtxt: OrderDetails[i].MaterialDescriptionvtxt,
-          UoMvtxt: OrderDetails[i].Uomnvtxt,
+          UoMvtxt: OrderDetails[i].UoMvtxt,
           Quantityint: OrderDetails[i].Quantityint,
           Ratedcl: OrderDetails[i].Ratedcl,
           Amountdcl: OrderDetails[i].Amountdcl,
@@ -406,11 +406,17 @@ export class CustomerOrderEditComponent implements OnInit {
   UpdateHeaderData(type) {
     let PaymentTerms ;
     let DeliveryTerms ;
-    if(this.OrderInfo.PaymentTerms1vtxt==null || this.OrderInfo.PaymentTerms1vtxt==''){
+    if(this.OrderInfo.PaymentTermsvtxt==null || this.OrderInfo.PaymentTermsvtxt==''){
       PaymentTerms=null;
+    }
+    else{
+      PaymentTerms=this.OrderInfo.PaymentTermsvtxt;
     }
     if( this.OrderInfo.DeliveryTermsvtxt==null|| this.OrderInfo.DeliveryTermsvtxt==''){
       DeliveryTerms= null;
+    }
+    else{
+      DeliveryTerms=this.OrderInfo.DeliveryTermsvtxt;
     }
     if(this.Pono==null||this.Pono==''){
       this.Pono=null;
@@ -439,13 +445,15 @@ export class CustomerOrderEditComponent implements OnInit {
       ShipToAddressvtxt : this.ShipToAddress,
       DeliveryAddressvtxt : this.OrderInfo.DeliveryAddress,
       TotalOrderQuantityint :  this.TotalQuantity,
-      DeliveryTermsvtxt:PaymentTerms,
-      PaymentTermsvtxt:DeliveryTerms,
+      TotalOrderQuantityKgsint: this.TotalKgs,
+      TotalOrderQuantityMTint : this.TotalMT,
+      DeliveryTermsvtxt:DeliveryTerms,
+      PaymentTermsvtxt:PaymentTerms,
       Statusvtxt : type,
       CreatedByvtxt :  this.Userid,
 
     }
-    console.log(this.HeaderData);
+    // console.log(this.HeaderData);
   }
   Back() {
     this.router.navigateByUrl('/Customer/OrderList');

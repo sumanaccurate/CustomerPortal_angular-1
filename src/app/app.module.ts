@@ -123,6 +123,15 @@ import { RegisterComponent } from './user/register/register.component';
 import { SystemAdminTargetSalesComponent } from './SystemAdmin/target-sales/target-sales.component';
 import { CustomerAccountStatementComponent } from './Customer/account-statement/account-statement.component';
 import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-list/target-sales-list.component';
+import { CustomerVerificationComponent } from './user/verification/verification.component';
+import { CustomerRegistrationComponent } from './user/registration/registration.component';
+import { SystemAdminSalesHeirachyUploadComponent } from './SystemAdmin/sales-heirachy-upload/sales-heirachy-upload.component';
+import { SystemAdminSalesHeirachyViewComponent } from './SystemAdmin/sales-heirachy-view/sales-heirachy-view.component';
+import { SystemAdminTsiUploadComponent } from './SystemAdmin/tsi-upload/tsi-upload.component';
+import { SystemAdminBmUploadComponent } from './SystemAdmin/bm-upload/bm-upload.component';
+import { SystemAdminRmUploadComponent } from './SystemAdmin/rm-upload/rm-upload.component';
+import { SystemAdminOrderAnalystUploadComponent } from './SystemAdmin/order-analyst-upload/order-analyst-upload.component';
+
 
 @NgModule({
   declarations: [
@@ -195,6 +204,14 @@ import { SystemAdminTargetSalesListComponent } from './SystemAdmin/target-sales-
     SystemAdminTargetSalesComponent,
     CustomerAccountStatementComponent,
     SystemAdminTargetSalesListComponent,
+    CustomerVerificationComponent,
+    CustomerRegistrationComponent,
+    SystemAdminSalesHeirachyUploadComponent,
+    SystemAdminSalesHeirachyViewComponent,
+    SystemAdminTsiUploadComponent,
+    SystemAdminBmUploadComponent,
+    SystemAdminRmUploadComponent,
+    SystemAdminOrderAnalystUploadComponent,
 
   ],
   imports: [

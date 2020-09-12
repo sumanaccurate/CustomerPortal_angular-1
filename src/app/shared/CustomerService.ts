@@ -48,4 +48,10 @@ getUOM() {
 getUOMById(id) {
   return this.http.get(this.BaseURI + '/Order/GetUOMByID/'+id);
 }
+Verify(Customercode,accesskey) {
+  return this.http.get(this.BaseURI + '/CustomerMaster/CheckValidCustomer/'+Customercode+','+accesskey);
+}
+Update(CustomerData) {
+  return this.http.put(this.BaseURI + '/CustomerMaster/UpdateCustomer',CustomerData);
+}
 }

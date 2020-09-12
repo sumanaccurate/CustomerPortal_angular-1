@@ -3,7 +3,9 @@
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title text-dark">
+                 <b>
                     Dispatch List
+                 </b>  
                     <small>
                         <span>Pending : <span class="kt-font-brand kt-font-bold mr-3">{{PendingCount}}</span></span>
                         <span>Partially Completed : <span
@@ -34,8 +36,31 @@
                                     </select>
                                 </div>
                             </div>
-
-                         
+                            <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="FromDate" placeholder="From Date" id="kt_datepicker_1">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                  <span><i class="la la-calendar"></i></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="Todate" placeholder="To Date" id="kt_datepicker_2">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                  <span><i class="la la-calendar"></i></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
+                                <div class="kt-input-icon kt-input-icon--left">
+                                    <input type="text" class="form-control form-control-sm" [(ngModel)]="search" placeholder="Type To Search...">
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                  <span><i class="la la-search"></i></span>
+                                    </span>
+                                </div>
+                            </div>
+<!--                          
                             <div class="col-12 col-md-6 col-lg mb-2 mb-lg-0">
                                 <div class="kt-input-icon kt-input-icon--left">
                                     <mat-form-field appearance="outline">
@@ -60,13 +85,7 @@
                                     <input  [(ngModel)]="search"  matInput placeholder="Placeholder">
                                     <mat-icon matSuffix>search</mat-icon>
                                 </mat-form-field>
-                                <!-- <div class="kt-input-icon kt-input-icon--left">
-                                    <input type="text" class="form-control form-control-sm"placeholder="Type To Search...">
-                                    <span class="kt-input-icon__icon kt-input-icon__icon--left">
-                                        <span><i class="la la-search"></i></span>
-                                    </span>
-                                </div> -->
-                            </div>
+                            </div> -->
                             <div class="col-auto">
                                 <button class="btn btn-dark btn-sm" (click)="ngOnInit()" title="bigger"><i
                                         class="fa fa-search ml-2 ml-md-0"></i><span
@@ -81,31 +100,11 @@
         </div>
         <div class="kt-portlet__body ">
             <div>
-                <div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
-                    <div class="row">
-                        <div class="col">
-                            <h5>{{Order.SoldTopPartyNamevtxt}}</h5>
-                        </div>
-                        <div class="col-auto text-right">
-                            <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle" (click)="pass(this.Order.DeliveryOrderNovtxt)"><i class="fa fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
+                <div *ngFor="let Order of Orders" class="customerCustomers-list border row shadow-sm p-3 mb-3">
+                   
+                    <div class="row col-md-11">
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Sold To Party:<span class="kt-font-bold">{{Order.SoldToPartyCodevtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Delivery Date:<span class="kt-font-bold">{{Order.DeliveryDatedate | date :'dd/MM/yyyy'}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            TruckNo:<span class="kt-font-bold">{{Order.TruckNovtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            LR No:<span class="kt-font-bold">{{Order.Lrnumbervtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Driver Mobile No:<span class="kt-font-bold">{{Order.DriverMobileNovtxt}}</span>
+                            Sold To Party:<span class="kt-font-bold">{{Order.SoldToPartyCodevtxt}} - {{Order.SoldTopPartyNamevtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Ship To Party:{{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
@@ -114,7 +113,22 @@
                             Sales Order No:<span class="kt-font-bold">{{Order.SalesOrderNovtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Delivery Order No:<span class="kt-font-bold">{{Order.DeliveryOrderNovtxt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Delivery Date:<span class="kt-font-bold">{{Order.DeliveryDatedate | date :'dd/MM/yyyy'}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Invoice No:<span class="kt-font-bold">{{Order.InvoiceNumbervtxt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Transporter No:<span class="kt-font-bold">{{Order.Transportervtxt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            TruckNo:<span class="kt-font-bold">{{Order.TruckNovtxt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            LR No:<span class="kt-font-bold">{{Order.Lrnumbervtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             LR date:<span class="kt-font-bold">{{Order.Lrdatedate | date :'dd/MM/yyyy'}}</span>
@@ -123,18 +137,22 @@
                             Driver:<span class="kt-font-bold">{{Order.Drivervtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Delivery Order No:<span class="kt-font-bold">{{Order.DeliveryOrderNovtxt}}</span>
+                            Driver Mobile No:<span class="kt-font-bold">{{Order.DriverMobileNovtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Invoice No:<span class="kt-font-bold">{{Order.InvoiceNumbervtxt}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Order Quantity:<span class="kt-font-bold">{{Order.Qtyint}}</span>
+                            Total Order Quantity In MT:<span class="kt-font-bold">{{Order.QtyMt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Status:<span class="kt-font-bold">{{Order.DeliveryStatusvtxt}}</span>
                         </div>
                     </div>
+                    <div class="row  col-md-1">
+                       
+                      
+                        <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle" (click)="pass(this.Order.DeliveryOrderNovtxt)"><i class="fa fa-eye"></i>
+                        </button>
+                  
+                </div>
                 </div>
                 <h4 *ngIf="this.Orders[0]==null">No Data Available</h4>
                 <div class="row">

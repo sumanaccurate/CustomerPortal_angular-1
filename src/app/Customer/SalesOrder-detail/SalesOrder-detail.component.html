@@ -2,7 +2,10 @@
     <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg bg-light">
             <div class="kt-portlet__head-label">
-                <h3 class="kt-portlet__head-title text-dark">My Order List
+                <h3 class="kt-portlet__head-title text-dark">
+                    <b>
+                        My Order List
+                    </b>
                     <small>
                       <span>Pending : <span class="kt-font-brand kt-font-bold mr-3">{{PendingCount}}</span></span>
                       <span>Partially Completed : <span class="kt-font-warning kt-font-bold mr-3">{{partiallyCompletedCount}}</span></span>
@@ -66,50 +69,55 @@
             <!--end: Search Form -->
         </div>
         <div class="kt-portlet__body ">
-            <div *ngFor="let Order of Orders" class="customerCustomers-list border shadow-sm p-3 mb-3">
+            <div *ngFor="let Order of Orders" class="customerCustomers-list row border shadow-sm p-3 mb-3">
                 <div class="col-md-11">
-                    <div class="row">
-                        <div class="col">
-                            <h5>{{Order.SoldTopPartyNamevtxt}}</h5>
-                        </div>
-                        <div class="col-auto text-right">
-                            <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle" (click)="pass(this.Order.SalesOrderNumbervtxt)"><i class="fa fa-eye"></i></button>
-                        </div>
-                    </div>
-                    <div class="row">
+                   
+                    <div class="row" >
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Sold To Party : <span class="kt-font-bold">{{Order.SoldToPartyCodevtxt}}</span>
+                            Sold To Party : <span class="kt-font-bold">{{Order.SoldToPartyCodevtxt}} - {{Order.SoldTopPartyNamevtxt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Ship To Party : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Sales Order Number : <span class="kt-font-bold">{{Order.SalesOrderNumbervtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Sales Order Date : <span class="kt-font-bold">{{Order.CreatedOndatetime | date :'dd/MM/yyyy'}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Order Value : <span class="kt-font-bold">{{Order.NetValuedcl | number : '1.0-0'  }}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Delivery Quantity : <span class="kt-font-bold">{{Order. TotalDeliveryQuantity}}</span>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Ship To Party : {{Order.ShipToPartyCodevtxt}} - {{Order.ShipToPartyNamevtxt}}
+                            Web Order No : <span class="kt-font-bold"></span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             PO No : <span class="kt-font-bold">{{Order.Ponumbervtxt}}</span>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Total Order Quantity In MT: <span class="kt-font-bold">{{Order.OrderQuantityintMt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Total Delivery Quantity In MT: <span class="kt-font-bold">{{Order. TotalDeliveryQuantityMt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Total balance Quantity In MT: <span class="kt-font-bold">{{Order.BalanceQuantityMt}}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Total Order Value : ₹<span class="kt-font-bold">{{Order.NetValuedcl | number : '1.0-0'  }}</span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            City : <span class="kt-font-bold"></span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            Address : <span class="kt-font-bold"></span>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                             Status : <span class="kt-font-bold">{{Order.SalesOrderStatusvtxt}}</span>
                         </div>
-
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Sales Order Number : <span class="kt-font-bold">{{Order.SalesOrderNumbervtxt}}</span>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total Order Quantity : <span class="kt-font-bold">{{Order.OrderQuantityint}}</span>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            Total balance Quantity : <span class="kt-font-bold">{{Order.BalanceQuantity}}</span>
-                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-1">
+                       
+                    <div class="col-auto text-right">
+                        <button class="btn btn-brand btn-icon btn-sm btn-bold rounded-circle" (click)="pass(this.Order.SalesOrderNumbervtxt)"><i class="fa fa-eye"></i></button>
                     </div>
                 </div>
             </div>

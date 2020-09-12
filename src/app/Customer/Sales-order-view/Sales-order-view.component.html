@@ -17,37 +17,52 @@
 
 					<tbody>
 						<tr class="mt-4">
-							<th scope="row">Sold To Party : </th>
-							<td>{{this.OrderInfo.SoldToPartyCodevtxt}} - {{this.OrderInfo.SoldTopPartyNamevtxt}}</td>
-							<th scope="row"> Ship To Party :</th>
-							<td>{{this.OrderInfo.ShipToPartyCodevtxt}} - {{this.OrderInfo.ShipToPartyNamevtxt}}</td>
+							<th scope="row">Sold To Party </th>
+							<td>: {{this.OrderInfo.SoldToPartyCodevtxt}} - {{this.OrderInfo.SoldTopPartyNamevtxt}}</td>
+							<th scope="row"> Ship To Party </th>
+							<td>: {{this.OrderInfo.ShipToPartyCodevtxt}} - {{this.OrderInfo.ShipToPartyNamevtxt}}</td>
 							
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">Sales Order Number : </th>
-							<td>{{this.OrderInfo.SalesOrderNumbervtxt}}</td>
-							<th scope="row">Sales Order Date : </th>
-							<td>{{this.OrderInfo.CreatedOndatetime | date :'dd/MM/yyyy'}}</td>
+							<th scope="row">Sales Order Number </th>
+							<td>: {{this.OrderInfo.SalesOrderNumbervtxt}}</td>
+							<th scope="row">Sales Order Date </th>
+							<td>: {{this.OrderInfo.CreatedOndatetime | date :'dd/MM/yyyy'}}</td>
 							
 						</tr>
 						<tr class="mt-4">
-							<th scope="row"> PO No : </th>
-							<td>{{this.OrderInfo.Ponumbervtxt}}</td>
-							<th scope="row"> Total Order Quantity : </th>
-							<td>{{this.OrderInfo.TotalOrderQuantity }}</td>
+							<th scope="row"> Web Order No </th>
+							<td>: </td>
+							<th scope="row"> PO No </th>
+							<td>: {{this.OrderInfo.Ponumbervtxt}}</td>
 						</tr>
 						<tr class="mt-4">
-							<th scope="row">Total Delivery Quantity : </th>
-							<td>{{this.OrderInfo.TotalDeliveryQuantity}}</td>
-							<th scope="row">Total balance Quantity : </th>
-							<td>{{this.OrderInfo.BalanceQuantity }}</td>
+							<th scope="row">Total Delivery Quantity In MT</th>
+							<td>: {{this.OrderInfo.TotalDeliveryQuantity}}</td>
+							<th scope="row">Total balance Quantity In MT</th>
+							<td>: {{this.OrderInfo.BalanceQuantity }}</td>
 							
 						</tr>
 						<tr class="mt-4">
-							<th scope="row"> Total Order Value : </th>
-							<td>{{this.OrderInfo.TotalOrderValue}}</td>
-							<th scope="row">Status : </th>
-							<td>{{this.OrderInfo.SalesOrderStatusvtxt}}</td>
+							<th scope="row"> Total Order Quantity In MT</th>
+							<td>: {{this.OrderInfo.TotalOrderQuantity }}</td>
+							<th scope="row"> Total Order Value </th>
+							<td>: ₹{{this.OrderInfo.TotalOrderValue}}</td>
+						
+						</tr>
+
+						<tr class="mt-4">
+							<th scope="row"> City</th>
+							<td>: </td>
+							<th scope="row"> Address </th>
+							<td>: </td>
+							
+						</tr>
+
+						<tr class="mt-4">
+							
+							<th scope="row">Status </th>
+							<td>: {{this.OrderInfo.SalesOrderStatusvtxt}}</td>
 						
 						</tr>
 
@@ -68,24 +83,27 @@
 										Sales Order No : {{Order.SalesOrderNumbervtxt}}
 									</div>
 									<div class="col-md-3 ">
-										Creation Date : {{Order.SystemDateTimedatetime  | date :'dd/MM/yyyy'}}
+										Creation Date : {{Order.CreatedOndatetime  | date :'dd/MM/yyyy'}}
 									</div>
 									<div class="col-md-3 ">
 										Material : {{Order.MaterialCodevtxt}}
 									</div>
 									<div class="col-md-3 ">
-										Qty : {{Order.OrderQuantityint}}
+										Qty In MT : {{Order.OrderQuantityint}}
 									</div>
 								</div>
 								<div class="row col-12">
 									<div class="col-md-3 ">
-										Delivery Order No : {{Order.DDeliveryOrderNovtxt}}
+										Dl Order No : {{Order.DDeliveryOrderNovtxt}}
 									</div>
 									<div class="col-md-3 ">
-										Delivery Date : {{Order.DDeliveryDatedate | date :'dd/MM/yyyy'}}
+										Dl Date : {{Order.DDeliveryDatedate | date :'dd/MM/yyyy'}}
 									</div>
 									<div class="col-md-3 ">
-										Delivery Qty : {{Order.DQtyint}}
+										Material : {{Order.MaterialCodevtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Dl Qty In MT : {{Order.DQtyint}}
 									</div>
 								</div>
 
@@ -93,13 +111,16 @@
 								<div class="row col-12">
 									
 									<div class="col-md-3 ">
-										Invoice No : {{Order.IInvoiceDocumentNovtxt}}
+										Inv No : {{Order.IInvoiceDocumentNovtxt}}
 									</div>
 									<div class="col-md-3 ">
-										Invoice Date : {{Order.IBillingDatedate | date :'dd/MM/yyyy'}}
+										Inv Date : {{Order.IBillingDatedate | date :'dd/MM/yyyy'}}
 									</div>
 									<div class="col-md-3 ">
-										Invoice Qty : {{Order.IInvoiceQuantityint}}
+										Material : {{Order.MaterialCodevtxt}}
+									</div>
+									<div class="col-md-3 ">
+										Inv Qty In MT : {{Order.IInvoiceQuantityint}}
 									</div>
 								</div>
 
