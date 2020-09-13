@@ -20,5 +20,7 @@ export class TargetSales {
   getTargetSalesforDashboard(UserCode,date): Observable<any> {  
     return this.http.get(this.BaseURI + '/TargetSales/GetTargetSalesForDashboardbyMonth/'+UserCode+','+date);
   } 
- 
+  getTargetSalesforDashboardBarChart(UserCode,date): Observable<any> {  
+    return this.http.get(this.BaseURI + '/TargetSales/GetTargetSalesForDashboardbyYear/'+UserCode+','+date);
+  } 
 }

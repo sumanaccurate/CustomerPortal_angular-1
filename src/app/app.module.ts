@@ -91,7 +91,6 @@ import { BroadcastdetailsComponent } from './SystemAdmin/broadcastdetails/broadc
 import { SwitchUserComponent } from './SystemAdmin/switch-user/switch-user.component';
 import { ViewComplaintsComponent } from './SystemAdmin/view-complaints/view-complaints.component';
 import { UserDetailsComponent } from './SystemAdmin/user-details/user-details.component';
-import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
 import { CreateDepartmentComponent } from './SystemAdmin/create-department/create-department.component';
 
 import { CustomerOrderEditComponent } from './Customer/order-edit/order-edit.component';
@@ -131,6 +130,7 @@ import { SystemAdminTsiUploadComponent } from './SystemAdmin/tsi-upload/tsi-uplo
 import { SystemAdminBmUploadComponent } from './SystemAdmin/bm-upload/bm-upload.component';
 import { SystemAdminRmUploadComponent } from './SystemAdmin/rm-upload/rm-upload.component';
 import { SystemAdminOrderAnalystUploadComponent } from './SystemAdmin/order-analyst-upload/order-analyst-upload.component';
+import { UploadUserComponent } from './SystemAdmin/upload-user/upload-user.component';
 
 
 @NgModule({

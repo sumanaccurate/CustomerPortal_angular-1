@@ -9,13 +9,19 @@ import { DeliveryOrderService } from 'src/app/shared/DeliveryOrderService';
 import { CustomerFloatDataComponent } from '../customer-float-data/customer-float-data.component';
 import { TargetSales } from 'src/app/shared/TargetSales';
 import { DatePipe } from '@angular/common';
+import { Chart } from 'chart.js';  
+import {Targetsalesdata} from 'src/app/models/Targetsalesdata';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class CustomerDashboardComponent implements OnInit {
-   
+  data: Targetsalesdata[];  
+  Month = [];  
+  TotalActualSales = [];  
+  TotalTargetSales = [];  
+  Linechart = [];  
   constructor(public datepipe: DatePipe,private _TargetSales:TargetSales, private router: Router, private _CustomerService: CustomerService
     , public paginationService: PaginationService ,private _SalesService :SalesOrderService,
     private _DeliveryOrderService :DeliveryOrderService ) {
@@ -34,8 +40,57 @@ RetailOrder;
     this.getAllOrdersCountforDashboard();
     this.getAllSalesOrderforDashboard();
     this.getTargetSalesforDashboard();
+    this.getbarchart();
   }
   
+  getbarchart()
+  {
+    this.Todate  = new Date();
+    this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
+    this._TargetSales.getTargetSalesforDashboardBarChart(localStorage.getItem('UserCode'),this.Todate).subscribe((result: Targetsalesdata[]) => {  
+      result.forEach(x => {  
+        this.Month.push(x.Month);  
+        this.TotalTargetSales.push(x.TotalTargetSales);  
+        this.TotalActualSales.push(x.TotalActualSales); 
+      });  
+      var ytargetData = {
+        label: 'Target Sales Data',
+        data: this.TotalTargetSales,
+        backgroundColor: 'rgba(0, 99, 132, 0.6)',
+        borderColor: 'rgba(0, 99, 132, 1)',
+        yAxisID: "y-axis-Target"
+      };
+      var yActualData = {
+        label: 'Actual Sales Data',
+        data: this.TotalActualSales,
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+        yAxisID: "y-axis-Sales"
+      };
+      var xMonthData = {
+        labels: this.Month,
+        datasets: [ytargetData, yActualData]
+      };
+      var chartOptions = {
+        scales: {
+          xAxes: [{
+            display: true,
+          }],
+          yAxes: [{
+            id: "y-axis-Target"
+          }, {
+            id: "y-axis-Sales"
+          }]
+        }
+      };
+      this.Linechart = new Chart('canvas', {  
+        type: 'bar',  
+        data: xMonthData,
+        options: chartOptions  
+      });  
+    });  
+  }
+
   getTargetSalesforDashboard() {  
     this.Todate  = new Date();
     this.Todate = this.datepipe.transform(this.Todate, 'dd-MM-yyyy');
